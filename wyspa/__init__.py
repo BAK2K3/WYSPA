@@ -13,13 +13,11 @@ for complete documentation.
 
 import os
 from flask import Flask
+from wyspa.core.views import core
 if os.path.exists("env.py"):
     import env
 
 app = Flask(__name__)
 app.secret_key = os.environ.get("SECRET_KEY")
 
-
-@app.route("/")
-def index():
-    return "Hello, World!"
+app.register_blueprint(core)
