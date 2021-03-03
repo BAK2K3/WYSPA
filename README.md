@@ -1,3 +1,5 @@
+![WYSPA Logo](https://res.cloudinary.com/bak2k3/image/upload/v1614792358/WYSPA/WYSPA-logo_asepp4.jpg)
+
 # WYSPA
 
 Whisper Your Secrets Publicly and Anonymously
