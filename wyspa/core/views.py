@@ -8,5 +8,7 @@ core = Blueprint('core', __name__)
 
 @core.route('/')
 def index():
-    messages = list(mongo.db.messages.find())
+
+    messages = [{"Name": "Ben", "Location": "Northampton"},
+                {"Name": "Deiza", "Location": "Northampton"}]
     return render_template('index.html', messages=messages)
