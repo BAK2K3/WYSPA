@@ -11,13 +11,9 @@ for complete documentation.
 
 """
 
-import os
-from flask import Flask
 from wyspa.core.views import core
-if os.path.exists("env.py"):
-    import env
+from wyspa.factory.initialisation import create_app
 
-app = Flask(__name__)
-app.secret_key = os.environ.get("SECRET_KEY")
 
+app = create_app()
 app.register_blueprint(core)
