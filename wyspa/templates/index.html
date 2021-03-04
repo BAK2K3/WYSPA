@@ -1,6 +1,10 @@
 {% extends "base.html" %}
 {% block content %}
 
-<h1>Hello, World!</h1>
+{% for message in messages %}
+
+<h1>Hello, {{message}}</h1>
+
+{% endfor %}
 
 {% endblock %}
