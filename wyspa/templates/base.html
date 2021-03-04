@@ -11,13 +11,38 @@
     <!-- Materialize CSS Import -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
+    <!-- local css -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='/css/style.css') }}" type="text/css">
+
     <title>WYSPA</title>
 </head>
 
 <body>
+    <header>
+        <nav id="navbar" class="transparent-banner">
+            <div class="nav-wrapper">
+                <a href="#" class="brand-logo center heading-font">WYSPA</a>
+                <ul id="nav-mobile" class="left hide-on-med-and-down">
+                    <li><a href="#">Login</a></li>
+                    <li><a href="#">Messages</a></li>
+                    <li><a href="#">Map</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
 
-    {% block content %}
-    {%endblock%}
+    <main>
+        {% block content %}
+        {%endblock%}
+    </main>
+
+
+    <footer class="page-footer transparent-banner">
+        <div class="container">
+            © 2021 BAK2K3
+            <a class="grey-text text-lighten-4 right" href="#!">GitHub</a>
+        </div>
+    </footer>
 
 
     <!-- Materialize JS Import -->
