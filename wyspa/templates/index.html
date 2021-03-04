@@ -1,10 +1,14 @@
 {% extends "base.html" %}
 {% block content %}
 
-{% for message in messages %}
+{% for dict_item in messages %}
+<section class="container">
 
-<h1>Hello, {{message}}</h1>
+    {% for key, value in dict_item.items() %}
+    <h2>{{key}}: {{value}} </h2>
+    {% endfor %}
 
+</section>
 {% endfor %}
 
 {% endblock %}
