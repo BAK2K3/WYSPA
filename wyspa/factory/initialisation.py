@@ -19,6 +19,7 @@ def create_app():
     app.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME")
     app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
     app.secret_key = os.environ.get("SECRET_KEY")
+    app.static_folder = os.path.abspath('wyspa/static')
 
     mongo.init_app(app)
 
