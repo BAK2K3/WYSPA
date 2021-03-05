@@ -19,13 +19,13 @@
 
 <body>
     <header>
-        <nav id="navbar" class="transparent-banner">
+        <nav class="transparent-banner">
             <div class="nav-wrapper">
-                <a href="#" class="brand-logo center heading-font">WYSPA</a>
+                <a href="{{ url_for('core.index') }}" class="brand-logo center heading-font">WYSPA</a>
                 <ul id="nav-mobile" class="left hide-on-med-and-down">
                     <li><a href="#">Login</a></li>
                     <li><a href="#">Messages</a></li>
-                    <li><a href="#">Map</a></li>
+                    <li><a href="{{ url_for('maps.map_overview') }}">Map</a></li>
                 </ul>
             </div>
         </nav>
@@ -44,9 +44,12 @@
         </div>
     </footer>
 
-
     <!-- Materialize JS Import -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+    {% block scripts %}
+    {% endblock %}
+
 </body>
 
 </html>
