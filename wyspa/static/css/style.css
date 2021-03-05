@@ -60,6 +60,7 @@ nav .button-collapse i {
     }
 }
 
+/* https://stackoverflow.com/questions/10209704/set-google-maps-container-div-width-and-height-100 */
 /* Maps */
   #map {
     position: absolute; 
