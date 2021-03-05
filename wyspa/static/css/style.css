@@ -13,6 +13,14 @@ main {
     flex: 1 0 auto;
 }
 
+header, footer {
+    z-index: 10;
+}
+
+main {
+    z-index: 5;
+}
+
   /* Headings  */
 .heading-font {
     font-family: 'Cinzel Decorative', cursive;
@@ -52,6 +60,16 @@ nav .button-collapse i {
     }
 }
 
+/* Maps */
+  #map {
+    position: absolute; 
+    top: 0; 
+    right: 0;
+    bottom: 0; 
+    left: 0;
+    z-index:-1;
+    
+  }
 
 /* Footer */
 .page-footer {
