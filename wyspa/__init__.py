@@ -13,9 +13,11 @@ for complete documentation.
 
 from wyspa.core.views import core
 from wyspa.maps.views import maps
+from wyspa.messages.views import messages
 from wyspa.factory.initialisation import create_app
 
 
 app = create_app()
 app.register_blueprint(core)
 app.register_blueprint(maps)
+app.register_blueprint(messages)
