@@ -24,7 +24,7 @@
                 <a href="{{ url_for('core.index') }}" class="brand-logo center heading-font">WYSPA</a>
                 <ul id="nav-mobile" class="left hide-on-med-and-down">
                     <li><a href="#">Login</a></li>
-                    <li><a href="#">Messages</a></li>
+                    <li><a href="{{ url_for('messages.view_message') }}">Messages</a></li>
                     <li><a href="{{ url_for('maps.map_overview') }}">Map</a></li>
                 </ul>
             </div>
