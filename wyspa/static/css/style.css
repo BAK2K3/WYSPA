@@ -1,7 +1,7 @@
 /* Google Font Import */
 @import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
-/* Main CSS Tags */
+/********** Main CSS Tags **********/
 body {
     font-family: 'Roboto', sans-serif;
     display: flex;
@@ -21,12 +21,15 @@ main {
     z-index: 5;
 }
 
-  /* Headings  */
+/********** Headings **********/
+
 .heading-font {
     font-family: 'Cinzel Decorative', cursive;
 }
 
-/* Nav Bar */
+
+/********** Nav Bar **********/
+
 .transparent-banner{
     background-color: rgba(0, 0, 0, 0.7);
 }
@@ -65,7 +68,8 @@ nav .button-collapse i {
     }
 }
 
-/* Index */
+
+/********** Index Page **********/
 
 .card-panel {
     background-color: rgba(0, 0, 0, 0.7);
@@ -100,8 +104,10 @@ nav .button-collapse i {
     position: absolute;
 }
 
+
+/********** Maps **********/
+
 /* https://stackoverflow.com/questions/10209704/set-google-maps-container-div-width-and-height-100 */
-/* Maps */
   #map, #staticMap {
     position: absolute; 
     top: 0; 
@@ -109,10 +115,10 @@ nav .button-collapse i {
     bottom: 0; 
     left: 0;
     z-index:-1;
-    
   }
 
-/* Footer */
+
+/********** Footer **********/
 .page-footer {
     padding-top:5px;
     padding-bottom:5px;
