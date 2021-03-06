@@ -83,6 +83,13 @@ nav .button-collapse i {
   pointer-events: none; /* make the pseudo class click-through */
 }
 
+/* https://stackoverflow.com/questions/31854696/horizontal-and-vertical-alignment-in-materialize-framework */
+.valign-wrapper {
+    width:100%;
+    height:70%;
+    position: absolute;
+}
+
 /* https://stackoverflow.com/questions/10209704/set-google-maps-container-div-width-and-height-100 */
 /* Maps */
   #map, #staticMap {
