@@ -17,41 +17,48 @@
     <title>WYSPA</title>
 </head>
 
+{% if GMAPS_API %}
+
 <body>
-    <header>
-        <nav class="transparent-banner">
-            <div class="nav-wrapper">
-                <a href="{{ url_for('core.index') }}" class="brand-logo center heading-font">WYSPA</a>
-                <ul id="nav-mobile" class="left hide-on-med-and-down">
-                    <li><a href="#">Login</a></li>
-                    <li><a href="{{ url_for('messages.view_message') }}">Messages</a></li>
-                    <li><a href="{{ url_for('maps.map_overview') }}">Map</a></li>
-                </ul>
-                <span class="right hide-on-med-and-down sub-heading"><em>Whisper Your Secrets, Publicly and
-                        Anonymously</em></span>
+
+    {%else%}
+
+    <body id="staticMap">
+        {%endif%}
+
+        <header>
+            <nav class="transparent-banner">
+                <div class="nav-wrapper">
+                    <a href="{{ url_for('core.index') }}" class="brand-logo center heading-font">WYSPA</a>
+                    <ul id="nav-mobile" class="left hide-on-med-and-down">
+                        <li><a href="#">Login</a></li>
+                        <li><a href="{{ url_for('messages.view_message') }}">Messages</a></li>
+                        <li><a href="{{ url_for('maps.map_overview') }}">Map</a></li>
+                    </ul>
+                    <span class="right hide-on-med-and-down sub-heading"><em>Whisper Your Secrets, Publicly and
+                            Anonymously</em></span>
+                </div>
+            </nav>
+        </header>
+
+        <main>
+            {% block content %}
+            {%endblock%}
+        </main>
+
+        <footer class="page-footer transparent-banner">
+            <div class="container">
+                © 2021 BAK2K3
+                <a class="grey-text text-lighten-4 right" href="#!">GitHub</a>
             </div>
-        </nav>
-    </header>
+        </footer>
 
-    <main>
-        {% block content %}
-        {%endblock%}
-    </main>
+        <!-- Materialize JS Import -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
+        {% block scripts %}
+        {% endblock %}
 
-    <footer class="page-footer transparent-banner">
-        <div class="container">
-            © 2021 BAK2K3
-            <a class="grey-text text-lighten-4 right" href="#!">GitHub</a>
-        </div>
-    </footer>
-
-    <!-- Materialize JS Import -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-
-    {% block scripts %}
-    {% endblock %}
-
-</body>
+    </body>
 
 </html>
