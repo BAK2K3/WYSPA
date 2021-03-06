@@ -62,6 +62,7 @@ nav .button-collapse i {
 
 /* Index */
 
+/* https://css-tricks.com/perfect-full-page-background-image/ */
 #staticMap { 
   background: url(../img/map-backdrop.jpg) no-repeat center center fixed; 
   -webkit-background-size: cover;
