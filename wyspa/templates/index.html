@@ -1,17 +1,21 @@
 {% extends "base.html" %}
 {% block content %}
 
+<!-- Background Static Map -->
 <div id="staticMap"></div>
 
-{% for dict_item in messages %}
-
-<section class="container">
-
-    {% for key, value in dict_item.items() %}
-    <h2>{{key}}: {{value}} </h2>
-    {% endfor %}
-
+<!-- Welcome Splash -->
+<section class="welcome valign-wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col s8 offset-s2">
+                <div class="card-panel black">
+                    <span class="white-text">Welcome to WSYPA
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
-{% endfor %}
 
 {% endblock %}
