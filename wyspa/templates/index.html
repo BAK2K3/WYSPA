@@ -1,7 +1,10 @@
 {% extends "base.html" %}
 {% block content %}
 
+<div id="staticMap"></div>
+
 {% for dict_item in messages %}
+
 <section class="container">
 
     {% for key, value in dict_item.items() %}
