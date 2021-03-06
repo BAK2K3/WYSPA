@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+
+<!-- <div id="map"></div> -->
+<div id="map"></div>
+{% endblock %}
+
+
+{% block scripts %}
+<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+<script
+    src="https://maps.googleapis.com/maps/api/js?key={{GMAPS_API}}&map_ids=65f95462d95daa3&callback=initMap&libraries=&v=weekly"
+    async></script>
+<script src="{{ url_for('static', filename='/js/maps.js') }}"> </script>
+
+{% endblock %}
