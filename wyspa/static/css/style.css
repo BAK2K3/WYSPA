@@ -31,13 +31,18 @@ main {
     background-color: rgba(0, 0, 0, 0.7);
 }
 
-/* https://stackoverflow.com/questions/35552708/is-materialize-navbar-height-adjustment-possible */
 nav .brand-logo {
-        font-weight: 900;
+    font-weight: 900;
     letter-spacing: 1px;
     font-size: 3em;
 }
 
+.sub-heading em {
+    font-size: 1em;
+    padding-right: 10px;
+}
+
+/* https://stackoverflow.com/questions/35552708/is-materialize-navbar-height-adjustment-possible */
 nav {
     height: 75px;
     line-height: 75px;
@@ -61,6 +66,11 @@ nav .button-collapse i {
 }
 
 /* Index */
+
+.card-panel {
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 25px;
+}
 
 /* https://css-tricks.com/perfect-full-page-background-image/ */
 #staticMap { 
