@@ -14,6 +14,9 @@
     <!-- local css -->
     <link rel="stylesheet" href="{{ url_for('static', filename='/css/style.css') }}" type="text/css">
 
+    <!-- Add Favicon -->
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+
     <title>WYSPA</title>
 </head>
 
@@ -32,7 +35,7 @@
                 <div class="nav-wrapper">
                     <a href="{{ url_for('core.index') }}" class="brand-logo center heading-font">WYSPA</a>
                     <a href="#" data-target="mobile-sidenav" class="sidenav-trigger"><i
-                            class="material-icons">menu</i></a>
+                            class="material-icons">gps_fixed</i></a>
                     <ul id="nav-mobile" class="left hide-on-med-and-down">
                         <li {% if active_page == "login" %} class="active" {% endif %}><a href="#">Login</a></li>
                         <li {% if active_page == "view_message" %} class="active" {% endif %}><a
