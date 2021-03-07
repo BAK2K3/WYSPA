@@ -148,7 +148,12 @@ nav .button-collapse i {
     text-decoration: underline;
 }
 
-.welcome, .message {  
+.welcome {  
+    margin: auto;
+}
+
+/********** Messages **********/
+.message {  
     margin: auto;
 }
 
