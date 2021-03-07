@@ -13,10 +13,12 @@ main {
     flex: 1 0 auto;
 }
 
-header, footer {
+header {
+    z-index: 20;
+} 
+footer {
     z-index: 10;
 }
-
 main {
     z-index: 5;
 }
@@ -48,6 +50,44 @@ nav .brand-logo {
 nav ul li.active {
     background-color: rgba(255, 255, 255, 0.1);
 }
+
+nav ul li:hover {
+   background-color: rgba(255, 255, 255, 0.1);
+
+}
+
+/********** Side Nav **********/
+
+.sidenav {
+    /* https://cssgradient.io/ */
+    background: linear-gradient(0.33turn, rgba(4,23,37,1) 0%, rgba(4,23,37,1) 20%, rgba(0,0,0,0) 40%, rgba(0,0,0,0) 100%); 
+    width: 200px;
+    box-shadow: none;
+    height: calc(100% - 15px);
+    top:75px;
+}
+
+.sidenav-header {
+    padding-top: 15px;
+    height: 75px;
+    background-color: #010204;
+    color: white;
+    border-right: none;
+}
+
+.sidenav li.active {
+    background-color: #02070B;
+}
+
+.sidenav a, .sidenav li a {
+    color: white;
+    text-decoration: none;
+}
+
+.sidenav li.active a {
+     color: white;
+}
+
 
 
 /* https://stackoverflow.com/questions/35552708/is-materialize-navbar-height-adjustment-possible */
