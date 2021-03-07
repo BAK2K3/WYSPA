@@ -37,11 +37,13 @@
                     <a href="#" data-target="mobile-sidenav" class="sidenav-trigger"><i
                             class="material-icons">gps_fixed</i></a>
                     <ul id="nav-mobile" class="left hide-on-med-and-down">
-                        <li {% if active_page == "login" %} class="active" {% endif %}><a href="#">Login</a></li>
+                        <li {% if active_page == "index" %} class="active" {% endif %}><a
+                                href="{{ url_for('core.index') }}">Home</a></li>
                         <li {% if active_page == "view_message" %} class="active" {% endif %}><a
                                 href="{{ url_for('messages.view_message') }}">Messages</a></li>
                         <li {% if active_page == "map_overview" %} class="active" {% endif %}><a
                                 href="{{ url_for('maps.map_overview') }}">Map</a></li>
+                        <li {% if active_page == "login" %} class="active" {% endif %}><a href="#">Login</a></li>
                     </ul>
                     <span class="right hide-on-med-and-down sub-heading"><em>Whisper Your Secrets, Publicly and
                             Anonymously</em></span>
@@ -54,23 +56,24 @@
             <ul class="sidenav" id="mobile-sidenav">
                 <span class="right hide-on-med-and-down sub-heading"><em>Whisper Your Secrets, Publicly and
                         Anonymously</em></span>
-                <li {% if active_page == "login" %} class="active" {% endif %}><a href="#">Login</a></li>
+                <li {% if active_page == "index" %} class="active" {% endif %}><a
+                        href="{{ url_for('core.index') }}">Home</a></li>
                 <li {% if active_page == "view_message" %} class="active" {% endif %}><a
                         href="{{ url_for('messages.view_message') }}">Messages</a></li>
                 <li {% if active_page == "map_overview" %} class="active" {% endif %}><a
                         href="{{ url_for('maps.map_overview') }}">Map</a></li>
+                <li {% if active_page == "login" %} class="active" {% endif %}><a href="#">Login</a></li>
             </ul>
 
         </section>
 
-
-
-
+        <!-- Main Block Content -->
         <main>
             {% block content %}
             {%endblock%}
         </main>
 
+        <!-- Footer -->
         <footer class="page-footer transparent-banner">
             <div class="container">
                 © 2021 BAK2K3
