@@ -31,9 +31,11 @@
                 <div class="nav-wrapper">
                     <a href="{{ url_for('core.index') }}" class="brand-logo center heading-font">WYSPA</a>
                     <ul id="nav-mobile" class="left hide-on-med-and-down">
-                        <li><a href="#">Login</a></li>
-                        <li><a href="{{ url_for('messages.view_message') }}">Messages</a></li>
-                        <li><a href="{{ url_for('maps.map_overview') }}">Map</a></li>
+                        <li {% if active_page == "login" %} class="active" {% endif %}><a href="#">Login</a></li>
+                        <li {% if active_page == "view_message" %} class="active" {% endif %}><a
+                                href="{{ url_for('messages.view_message') }}">Messages</a></li>
+                        <li {% if active_page == "map_overview" %} class="active" {% endif %}><a
+                                href="{{ url_for('maps.map_overview') }}">Map</a></li>
                     </ul>
                     <span class="right hide-on-med-and-down sub-heading"><em>Whisper Your Secrets, Publicly and
                             Anonymously</em></span>
