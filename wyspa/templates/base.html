@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
     <!-- local css -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='/css/style.css', _scheme='https', _external=True) }}"
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css', _scheme='https', _external=True) }}"
         type="text/css">
 
     <!-- Add Favicon -->
@@ -87,7 +87,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
         <!-- Javascript Initialisation Import -->
-        <script src="{{ url_for('static', filename='/js/init.js', _scheme='https', _external=True) }}"> </script>
+        <script src="{{ url_for('static', filename='js/init.js', _scheme='https', _external=True) }}"> </script>
 
         {% block scripts %}
         {% endblock %}
