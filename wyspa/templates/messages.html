@@ -12,7 +12,7 @@
                 <div class="card-content white-text">
                     <div class="row">
                         <div class="col s12 center wyspa-container">
-                            <em>"{{ messages_dict.Message }}"</em>
+                            <em>"{{ message_entry[0].message }}"</em>
                         </div>
                         <div class="col s12 center action-container">
                         </div>
@@ -29,87 +29,57 @@
             <ul class="collapsible">
                 <li>
                     <div class="collapsible-header card-panel center white-text">
-                        <i class="material-icons">filter_drama</i>Comments
+                        <i class="material-icons">chat_bubble_outline</i>Comments
                     </div>
                     <!-- Comments  -->
                     <div class="collapsible-body">
+
+                        {% for comment in message_entry[0].comments.values() %}
+
+                        {% if loop.index%2 == 0 %}
+
                         <!-- Right Comment -->
                         <div class="col s8 push-s4">
                             <div class="speech-bubble right-arrow">
-                                Hello, world! Hello, world! Hello, world! Hello, world! Hello, world! Hello, world!
-                                Hello, world! Hello, world! Hello, world! Hello, world!
+                                {{comment}}
                             </div>
                         </div>
+
+                        {% else %}
 
                         <!-- left Comment -->
                         <div class="col s8">
                             <div class="speech-bubble left-arrow">
-                                Hello, world!
+                                {{ comment }}
                             </div>
                         </div>
 
-                        <!-- right comment -->
-                        <div class="col s8 push-s4">
-                            <div class="speech-bubble right-arrow">
-                                Hello, world!
-                            </div>
-                        </div>
+                        {% endif %}
 
-                        <!-- left Comment -->
-                        <div class="col s8">
-                            <div class="speech-bubble left-arrow">
-                                Hello, world!
-                            </div>
-                        </div>
-
-                        <!-- right comment -->
-                        <div class="col s8 push-s4">
-                            <div class="speech-bubble right-arrow">
-                                Hello, world!
-                            </div>
-                        </div>
-
-                        <!-- left Comment -->
-                        <div class="col s8">
-                            <div class="speech-bubble left-arrow">
-                                Hello, world!
-                            </div>
-                        </div>
-
-                        <!-- right comment -->
-                        <div class="col s8 push-s4">
-                            <div class="speech-bubble right-arrow">
-                                Hello, world!
-                            </div>
-                        </div>
-
-                        <!-- left Comment -->
-                        <div class="col s8">
-                            <div class="speech-bubble left-arrow">
-                                Hello, world!
-                            </div>
-                        </div>
-
-                        <!-- right comment -->
-                        <div class="col s8 push-s4">
-                            <div class="speech-bubble right-arrow">
-                                Hello, world!
-                            </div>
-                        </div>
+                        {% endfor %}
 
                         <!-- Comment Box -->
+
+                        {% if (message_entry[0].comments|length%2) == 0 %}
                         <div class="col s8">
                             <form>
                                 <div class="speech-bubble comment-box left-arrow">
 
-                                    <div class="input-field col s12">
-                                        <textarea id="commentReply" class="materialize-textarea"></textarea>
-                                        <label for="commentReply">Comment:</label>
+                                    {% else %}
+                                    <div class="col s8 push-s4">
+                                        <form>
+                                            <div class="speech-bubble comment-box right-arrow">
+
+                                                {% endif %}
+
+                                                <div class="input-field col s12">
+                                                    <textarea id="commentReply" class="materialize-textarea"></textarea>
+                                                    <label for="commentReply">Comment:</label>
+                                                </div>
+                                            </div>
+                                        </form>
                                     </div>
                                 </div>
-                            </form>
-                        </div>
-                    </div>
                 </li>
             </ul>
         </div>
