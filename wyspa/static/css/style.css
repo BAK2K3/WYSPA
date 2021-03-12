@@ -280,6 +280,19 @@ textarea.materialize-textarea {
 /*  */
 
 
+.btn {
+    background-color: transparent;
+    border: 1px solid white;
+    color: white;
+    border-radius: 25px;
+}
+
+.btn:hover {
+    background-color: white;
+    /* border: 1px solid white; */
+    color: black;
+}
+
 /********** Maps **********/
 
 /* https://stackoverflow.com/questions/10209704/set-google-maps-container-div-width-and-height-100 */
