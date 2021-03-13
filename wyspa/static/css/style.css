@@ -112,6 +112,119 @@ nav .button-collapse i {
      color: white;
 }
 
+/********** Toasts **********/
+
+#toast-container {
+    z-index: 10000;
+    top: 65px;
+    right: 50%;
+    transform: translateX(50%);
+    max-width: 86%;
+}
+
+.styled-toast {
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 25px;;
+    box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.14),
+    0 1px 7px 0 rgba(0, 0, 0, 0.12), 
+    0 3px 1px -1px rgba(0, 0, 0, 0.2);
+}
+
+@media only screen and (min-width: 993px) {
+    #toast-container {
+    top: 65px;
+    margin: auto;
+    
+    }
+}
+
+/********** Log in Modal **********/
+
+.modal {
+    border-radius:25px;
+    width: 40%;
+}
+
+.modal .modal-content {
+    padding-bottom: 0;
+}
+
+.footer-modal {
+    margin-bottom: 0;
+}
+
+/* Inactive/Active Default input field color */
+.login-field input[type]:not([readonly]),
+.login-field input[type]:focus:not([readonly]),
+.login-field input:not([readonly]),
+.login-field input:focus:not([readonly]) {
+    border-bottom: 1px solid black;
+    box-shadow: 0 1px 0 0 black;
+}
+
+/* Inactive/Active Default input label color */
+.login-field input[type]:focus:not([readonly])+label,
+.login-field input:focus:not([readonly])+label {
+    color: black;
+}
+
+/* Active/Inactive Invalid input field colors */
+.input-field.login-field input[type].invalid,
+.input-field.login-field input[type].invalid:focus,
+.input-field.login-field input.invalid,
+.input-field.login-field input.invalid:focus {
+    border-bottom: 1px solid black;
+    box-shadow: 0 1px 0 0 black;
+}
+
+/* Active/Inactive Invalid input label color */
+.input-field.login-field input[type].invalid:focus+label,
+.input-field.login-field input[type].invalid~.helper-text::after,
+.input-field.login-field input[type].invalid:focus~.helper-text::after, 
+.input-field.login-field input.invalid:focus+label,
+.input-field.login-field input.invalid~.helper-text::after,
+.input-field.login-field input.invalid:focus~.helper-text::after {
+    color: black;
+}
+
+/* Active/Inactive Valid input field color */
+.input-field.login-field input[type].valid,
+.input-field.login-field input[type].valid:focus,
+.input-field.login-field input.valid,
+.input-field.login-field input.valid:focus {
+    border-bottom: 1px solid black;
+    box-shadow: 0 1px 0 0 black;
+}
+
+/* Active/Inactive Valid input label color */
+.input-field.login-field input.valid:focus+label,
+.input-field.login-field input.valid~.helper-text::after,
+.input-field.login-field input.valid:focus~.helper-text::after {
+    color: black;
+}
+
+ .login-field.input-field .prefix.active {
+     color: #000;
+   }
+/*  */
+
+.btn.login-button {
+    background-color: white;
+    border: 1px solid black;
+    color: black;
+    border-radius: 25px;
+}
+
+.btn.login-button:hover {
+    background-color: black;
+    border: 1px solid white;
+    color: white;
+    box-shadow: 0 3px 3px 0 rgba(255, 255, 255, 0.14),
+    0 1px 7px 0 rgba(255, 255, 255, 0.12), 
+    0 3px 1px -1px rgba(255, 255, 255, 0.2);
+}
+
+
 /********** Index Page **********/
 
 .card-panel {
@@ -225,71 +338,70 @@ textarea.materialize-textarea {
 /* Overriding Textinput CSS without using Important */
 /* https://stackoverflow.com/questions/37127123/change-color-of-underline-input-and-label-in-materialize-css-framework */
 
-    /* Inactive/Active Default input field color */
-.input-field input[type]:not([readonly]),
-.input-field input[type]:focus:not([readonly]),
-.input-field textarea:not([readonly]),
-.input-field textarea:focus:not([readonly]) {
+/* Inactive/Active Default input field color */
+.message-field.input-field input[type]:not([readonly]),
+.message-field.input-field input[type]:focus:not([readonly]),
+.message-field.input-field textarea:not([readonly]),
+.message-field.input-field textarea:focus:not([readonly]) {
     border-bottom: 1px solid white;
     box-shadow: 0 1px 0 0 white;
 }
 
 /* Inactive/Active Default input label color */
-.input-field input[type]:focus:not([readonly])+label,
-.input-field textarea:focus:not([readonly])+label {
+.message-field.input-field input[type]:focus:not([readonly])+label,
+.message-field.input-field textarea:focus:not([readonly])+label {
     color: white;
 }
 
 /* Active/Inactive Invalid input field colors */
-.input-field input[type].invalid,
-.input-field input[type].invalid:focus,
-.input-field textarea.invalid,
-.input-field textarea.invalid:focus {
+.message-field.input-field input[type].invalid,
+.message-field.input-field input[type].invalid:focus,
+.message-field.input-field textarea.invalid,
+.message-field.input-field textarea.invalid:focus {
     border-bottom: 1px solid white;
     box-shadow: 0 1px 0 0 white;
 }
 
 /* Active/Inactive Invalid input label color */
-.input-field input[type].invalid:focus+label,
-.input-field input[type].invalid~.helper-text::after,
-.input-field input[type].invalid:focus~.helper-text::after, 
-.input-field textarea.invalid:focus+label,
-.input-field textarea.invalid~.helper-text::after,
-.input-field textarea.invalid:focus~.helper-text::after {
+.message-field.input-field input[type].invalid:focus+label,
+.message-field.input-field input[type].invalid~.helper-text::after,
+.message-field.input-field input[type].invalid:focus~.helper-text::after, 
+.message-field.input-field textarea.invalid:focus+label,
+.message-field.input-field textarea.invalid~.helper-text::after,
+.message-field.input-field textarea.invalid:focus~.helper-text::after {
     color: white;
 }
 
 /* Active/Inactive Valid input field color */
-.input-field input[type].valid,
-.input-field input[type].valid:focus,
-.input-field textarea.valid,
-.input-field textarea.valid:focus {
+.message-field.input-field input[type].valid,
+.message-field.input-field input[type].valid:focus,
+.message-field.input-field textarea.valid,
+.message-field.input-field textarea.valid:focus {
     border-bottom: 1px solid white;
     box-shadow: 0 1px 0 0 white;
 }
 
 /* Active/Inactive Valid input label color */
-.input-field input[type].valid:focus+label,
-.input-field input[type].valid~.helper-text::after,
-.input-field input[type].valid:focus~.helper-text::after,
-.input-field textarea.valid:focus+label,
-.input-field textarea.valid~.helper-text::after,
-.input-field textarea.valid:focus~.helper-text::after {
+.message-field.input-field input[type].valid:focus+label,
+.message-field.input-field input[type].valid~.helper-text::after,
+.message-field.input-field input[type].valid:focus~.helper-text::after,
+.message-field.input-field textarea.valid:focus+label,
+.message-field.input-field textarea.valid~.helper-text::after,
+.message-field.input-field textarea.valid:focus~.helper-text::after {
     color: white;
 }
 /*  */
 
 
-.btn {
+.btn.add-comment {
     background-color: transparent;
     border: 1px solid white;
     color: white;
     border-radius: 25px;
 }
 
-.btn:hover {
+.btn.add-comment:hover {
     background-color: white;
-    /* border: 1px solid white; */
     color: black;
 }
 
@@ -327,6 +439,15 @@ textarea.materialize-textarea {
 
     .valign-wrapper-extension {
     position: relative;
+    }
+
+    .modal {
+        width: 80%;
+    }
+
+    .modal .modal-content {
+        padding-left: 0px;
+        padding-right: 10px;
     }
 
 }
