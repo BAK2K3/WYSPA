@@ -45,9 +45,20 @@
                                 href="{{ url_for('messages.view_message') }}">Messages</a></li>
                         <li {% if active_page == "map_overview" %} class="active" {% endif %}><a
                                 href="{{ url_for('maps.map_overview') }}">Map</a></li>
-                        <li {% if active_page == "login" %} class="active" {% endif %}><a href="#">Login</a></li>
+
+                        {%if current_user.is_authenticated %}
+
+                        <li><a href="{{ url_for('users.logout') }}">Logout</a></li>
+
+                        {% else %}
+
+                        <li><a href="#loginModal" class="modal-trigger">Login</a></li>
+                        <li><a href="#registerModal" class="modal-trigger">Register</a></li>
+
+                        {% endif %}
+
                     </ul>
-                    <span class="right hide-on-med-and-down sub-heading"><em>Whisper Your Secrets, Publicly and
+                    <span class=" right hide-on-med-and-down sub-heading"><em>Whisper Your Secrets, Publicly and
                             Anonymously</em></span>
                 </div>
             </nav>
@@ -64,7 +75,17 @@
                         href="{{ url_for('messages.view_message') }}">Messages</a></li>
                 <li {% if active_page == "map_overview" %} class="active" {% endif %}><a
                         href="{{ url_for('maps.map_overview') }}">Map</a></li>
-                <li {% if active_page == "login" %} class="active" {% endif %}><a href="#">Login</a></li>
+
+                {%if current_user.is_authenticated %}
+
+                <li><a href="{{ url_for('users.logout') }}">Logout</a></li>
+
+                {% else %}
+
+                <li><a href="#loginModal" class="modal-trigger sidenav-close">Login</a></li>
+                <li><a href="#registerModal" class="modal-trigger sidenav-close">Register</a></li>
+
+                {% endif %}
             </ul>
 
         </section>
@@ -83,11 +104,91 @@
             </div>
         </footer>
 
+
+        <!-- Login Modal -->
+        <div id="loginModal" class="modal">
+            <div class="modal-content center">
+                <h4>Login</h4>
+
+                <div class="row">
+                    <form class="col s12" method="POST" action="{{url_for('users.login')}}">
+                        <div class="row">
+                            <div class="input-field login-field col s12">
+                                <i class="material-icons prefix">group</i>
+                                <input id="usernameLogin" name="usernameLogin" type="text" class="validate">
+                                <label for="usernameLogin">Username</label>
+                            </div>
+                            <div class="input-field login-field col s12">
+                                <i class="material-icons prefix">lock</i>
+                                <input id="passwordLogin" name="passwordLogin" type="password" class="validate">
+                                <label for="passwordLogin">Password</label>
+                            </div>
+                        </div>
+                        <div class="row footer-modal">
+                            <button class="btn login-button waves-effect waves-light" type="submit" name="action">Log In
+                                <i class="material-icons right">check_circle</i>
+                            </button>
+                            <button class="btn login-button modal-close waves-effect waves-light" type="button">Close<i
+                                    class="material-icons right">cancel</i></button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Register Modal -->
+        <div id="registerModal" class="modal">
+            <div class="modal-content center">
+                <h4>Register</h4>
+
+                <div class="row">
+                    <form class="col s12" method="POST" action="{{url_for('users.register')}}">
+                        <div class="row">
+                            <div class="input-field login-field col s12">
+                                <i class="material-icons prefix">group</i>
+                                <input id="usernameRegister" name="usernameRegister" type="text" class="validate">
+                                <label for="usernameRegister">Username</label>
+                            </div>
+                            <div class="input-field login-field col s12">
+                                <i class="material-icons prefix">lock</i>
+                                <input id="passwordRegister" name="passwordRegister" type="password" class="validate">
+                                <label for="passwordRegister">Password</label>
+                            </div>
+                            <div class="input-field login-field col s12">
+                                <i class="material-icons prefix">lock_open</i>
+                                <input id="passwordConfirm" name="passwordConfirm" type="password" class="validate">
+                                <label for="passwordConfirm">Confirm Password</label>
+                            </div>
+                        </div>
+                        <div class="row footer-modal">
+                            <button class="btn login-button waves-effect waves-light" type="submit"
+                                name="action">Register
+                                <i class="material-icons right">check_circle</i>
+                            </button>
+                            <button class="btn login-button modal-close waves-effect waves-light" type="button">Close<i
+                                    class="material-icons right">cancel</i></button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
         <!-- Materialize JS Import -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
         <!-- Javascript Initialisation Import -->
         <script src="{{ url_for('static', filename='js/init.js', _scheme='https', _external=True) }}"> </script>
+
+        <!-- Javascript custom Toast Script Import -->
+        <script src="{{ url_for('static', filename='js/toasts.js', _scheme='https', _external=True) }}"> </script>
+
+        <!-- https://stackoverflow.com/questions/15321431/how-to-pass-a-list-from-python-by-jinja2-to-javascript -->
+        <!-- Flash Messages -->
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <script>displayToast({{ messages| tojson | safe}})</script>
+        {%endif%}
+        {%endwith%}
 
         {% block scripts %}
         {% endblock %}
