@@ -275,6 +275,25 @@ nav .button-collapse i {
     width: 100%;
 }
 
+.collection {
+    background-color: rgba(0,0,0,0);
+    border: none;
+}
+
+.collection .collection-item {
+    background-color: rgba(0,0,0,0);
+    border-radius: 25px;
+    border: 1px solid white; 
+}
+
+.collection .collection-item i {
+    color: white;
+}
+
+.collection .collection-item:last-child {
+    border-bottom: 1px solid white; ;
+}
+
 /********** Messages **********/
 .message {  
     margin: auto;
