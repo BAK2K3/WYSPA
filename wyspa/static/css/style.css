@@ -130,6 +130,10 @@ nav .button-collapse i {
     0 3px 1px -1px rgba(0, 0, 0, 0.2);
 }
 
+#toast-container .toast-action {
+    color: white;
+}
+
 @media only screen and (min-width: 993px) {
     #toast-container {
     top: 65px;
