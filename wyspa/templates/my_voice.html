@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% set active_page = "my_voice" %}
+
+{% block content %}
+
+<section class="my-voice">
+    <div class="container row">
+        <div class="col s12">
+            <!-- Card Panel -->
+            <div class="card-panel z-depth-5 white-text center">
+                <h2>Hi, {{current_user.username}}</h2>
+                <!-- Card Content -->
+                <div class="card-content white-text">
+                    <div class="row">
+                        {% for entry in users_messages %}
+                        <div class="col s12 center wyspa-container">
+                            <em>"{{ entry.message }}"</em>
+                        </div>
+                        {%endfor%}
+                        <div class="col s12 center action-container">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
