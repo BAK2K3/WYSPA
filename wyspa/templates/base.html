@@ -41,6 +41,13 @@
                     <ul id="nav-mobile" class="left hide-on-med-and-down">
                         <li {% if active_page == "index" %} class="active" {% endif %}><a
                                 href="{{ url_for('core.index') }}">Home</a></li>
+
+                        {%if current_user.is_authenticated %}
+                        <li {% if active_page == "my_voice" %} class="active" {% endif %}><a
+                                href="{{ url_for('messages.my_voice') }}">My Voice</a></li>
+                        {% endif %}
+
+
                         <li {% if active_page == "view_message" %} class="active" {% endif %}><a
                                 href="{{ url_for('messages.view_message') }}">Messages</a></li>
                         <li {% if active_page == "map_overview" %} class="active" {% endif %}><a
@@ -71,6 +78,13 @@
                         Anonymously</em></span>
                 <li {% if active_page == "index" %} class="active" {% endif %}><a
                         href="{{ url_for('core.index') }}">Home</a></li>
+
+                {%if current_user.is_authenticated %}
+                <li {% if active_page == "my_voice" %} class="active" {% endif %}><a
+                        href="{{ url_for('messages.my_voice') }}">My Voice</a></li>
+                {% endif %}
+
+
                 <li {% if active_page == "view_message" %} class="active" {% endif %}><a
                         href="{{ url_for('messages.view_message') }}">Messages</a></li>
                 <li {% if active_page == "map_overview" %} class="active" {% endif %}><a
