@@ -12,7 +12,7 @@
                 <div class="card-content white-text">
                     <div class="row">
                         <div class="col s12 center wyspa-container">
-                            <em>"{{ message_entry[0].message }}"</em>
+                            <em>"{{ message_entry.message }}"</em>
                         </div>
                         <div class="col s12 center action-container">
                         </div>
@@ -34,58 +34,65 @@
                     <!-- Comments  -->
                     <div class="collapsible-body">
 
-                        {% for comment in message_entry[0].comments.values() %}
+                        {# For each comment in the message #}
+                        {% for entry in message_entry.comments %}
 
+                        {# Check the index for speech bubble positioning #}
                         {% if loop.index%2 == 0 %}
 
                         <!-- Right Comment -->
                         <div class="col s8 push-s4">
                             <div class="speech-bubble right-arrow">
-                                {{comment}}
-                            </div>
-                        </div>
 
-                        {% else %}
+                                {% else %}
 
-                        <!-- left Comment -->
-                        <div class="col s8">
-                            <div class="speech-bubble left-arrow">
-                                {{ comment }}
-                            </div>
-                        </div>
+                                <!-- left Comment -->
+                                <div class="col s8">
+                                    <div class="speech-bubble left-arrow">
 
-                        {% endif %}
+                                        {% endif %}
 
-                        {% endfor %}
+                                        {# Grab the author and comment for the comment #}
+                                        {% for author, comment in entry.items() %}
 
-                        <!-- Comment Box -->
-
-                        {% if (message_entry[0].comments|length%2) == 0 %}
-                        <div class="col s8">
-                            <form>
-                                <div class="speech-bubble comment-box left-arrow">
-
-                                    {% else %}
-                                    <div class="col s8 push-s4">
-                                        <form>
-                                            <div class="speech-bubble comment-box right-arrow">
-
-                                                {% endif %}
-
-                                                <div class="input-field message-field col s12">
-                                                    <textarea id="commentReply" class="materialize-textarea"></textarea>
-                                                    <label for="commentReply">Comment:</label>
-                                                </div>
-                                                <div class="col 12 submit-col">
-                                                    <button class="btn add-comment waves-effect" type="submit"
-                                                        name="action">Add
-                                                        <i class="material-icons right">comment</i>
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </form>
+                                        {{comment}}
                                     </div>
                                 </div>
+
+                                {% endfor %}
+
+                                {% endfor %}
+
+                                <!-- Comment Box -->
+
+                                {# Find out how long the comments section is to determine which way to place "add comment" Speech bubble #}
+                                {% if (message_entry.comments|length%2) == 0 %}
+                                <div class="col s8">
+                                    <form>
+                                        <div class="speech-bubble comment-box left-arrow">
+
+                                            {% else %}
+                                            <div class="col s8 push-s4">
+                                                <form>
+                                                    <div class="speech-bubble comment-box right-arrow">
+
+                                                        {% endif %}
+
+                                                        <div class="input-field message-field col s12">
+                                                            <textarea id="commentReply"
+                                                                class="materialize-textarea"></textarea>
+                                                            <label for="commentReply">Comment:</label>
+                                                        </div>
+                                                        <div class="col 12 submit-col">
+                                                            <button class="btn add-comment waves-effect" type="submit"
+                                                                name="action">Add
+                                                                <i class="material-icons right">comment</i>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
                 </li>
             </ul>
         </div>
