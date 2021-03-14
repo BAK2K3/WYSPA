@@ -269,6 +269,12 @@ nav .button-collapse i {
     margin: auto;
 }
 
+/********** My Voice **********/
+.my-voice {  
+    margin: auto;
+    width: 100%;
+}
+
 /********** Messages **********/
 .message {  
     margin: auto;
