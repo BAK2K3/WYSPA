@@ -9,6 +9,7 @@ messages = Blueprint('messages', __name__)
 @messages.route('/view_message')
 def view_message():
 
-    message_entry = mongo.db.messages.find()
+    message_entry = list(mongo.db.messages.aggregate(
+        [{"$sample": {"size": 1}}]))
 
-    return render_template('messages.html', message_entry=message_entry)
+    return render_template('messages.html', message_entry=message_entry[0])
