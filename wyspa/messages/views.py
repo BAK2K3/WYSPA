@@ -1,4 +1,5 @@
 from flask import render_template, Blueprint
+from flask_login import current_user
 from wyspa.factory.initialisation import mongo
 
 
@@ -13,3 +14,14 @@ def view_message():
         [{"$sample": {"size": 1}}]))
 
     return render_template('messages.html', message_entry=message_entry[0])
+
+
+@messages.route('/my_voice')
+def my_voice():
+
+    users_messages = list(mongo.db.messages.find(
+        {"author": current_user.username}))
+
+    print(users_messages)
+
+    return render_template('my_voice.html', users_messages=users_messages)
