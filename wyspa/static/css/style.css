@@ -335,6 +335,10 @@ textarea.materialize-textarea {
     color: white; 
 }
 
+.submit-col {
+    width:100%;
+}
+
 /* Overriding Textinput CSS without using Important */
 /* https://stackoverflow.com/questions/37127123/change-color-of-underline-input-and-label-in-materialize-css-framework */
 
@@ -435,6 +439,10 @@ textarea.materialize-textarea {
     .card-panel{
         margin-top: 0.5em;
         margin-bottom: 0.5em;
+    }
+
+    .collapsible-header.card-panel {
+        margin-bottom: 17px;
     }
 
     .valign-wrapper-extension {
