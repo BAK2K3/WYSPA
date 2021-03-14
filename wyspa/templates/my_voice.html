@@ -8,20 +8,59 @@
         <div class="col s12">
             <!-- Card Panel -->
             <div class="card-panel z-depth-5 white-text center">
-                <h2>Hi, {{current_user.username}}</h2>
+                <h2>Your Wyspas</h2>
                 <!-- Card Content -->
                 <div class="card-content white-text">
                     <div class="row">
-                        {% for entry in users_messages %}
-                        <div class="col s12 center wyspa-container">
-                            <em>"{{ entry.message }}"</em>
+
+                        {% if users_messages %}
+                        <ul class="collection">
+
+                            {% for entry in users_messages %}
+                            <li class="collection-item">
+                                <div><em>"{{ entry.message }}"</em><a href="#!" class="secondary-content"><i
+                                            class="material-icons">send</i></a></div>
+                            </li>
+                            {%endfor%}
+                        </ul>
+
+                        {% else %}
+
+                        <div><em>It doesn't look like you've left any WYSPAs yet!</em>
                         </div>
-                        {%endfor%}
-                        <div class="col s12 center action-container">
-                        </div>
+
+                        {% endif %}
+
                     </div>
                 </div>
             </div>
+        </div>
+
+        <div class="col s12">
+            <!-- Collapsable WYSPA -->
+            <ul class="collapsible">
+                <li>
+                    <div class="collapsible-header card-panel center white-text">
+                        Create a WYSPA<i class="material-icons right">chat_bubble_outline</i>
+                    </div>
+                    <!-- Comments  -->
+                    <div class="collapsible-body">
+                        <form method="POST" action="{{url_for('mesaages.create_wyspa')}}">
+                            <div class="speech-bubble comment-box">
+                                <div class="input-field message-field col s12">
+                                    <textarea id="wyspaContent" class="materialize-textarea"></textarea>
+                                    <label for="wyspaContent">Your Wyspa</label>
+                                </div>
+                                <div class="col 12 submit-col">
+                                    <button class="btn add-comment waves-effect" type="submit" name="action">Wyspa
+                                        <i class="material-icons right">comment</i>
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </li>
+            </ul>
         </div>
     </div>
 </section>
