@@ -45,10 +45,11 @@
                     </div>
                     <!-- Comments  -->
                     <div class="collapsible-body">
-                        <form method="POST" action="{{url_for('mesaages.create_wyspa')}}">
+                        <form method="POST" action="{{url_for('messages.create_wyspa')}}">
                             <div class="speech-bubble comment-box">
                                 <div class="input-field message-field col s12">
-                                    <textarea id="wyspaContent" class="materialize-textarea"></textarea>
+                                    <textarea id="wyspaContent" name="wyspaContent"
+                                        class="materialize-textarea"></textarea>
                                     <label for="wyspaContent">Your Wyspa</label>
                                 </div>
                                 <div class="col 12 submit-col">
