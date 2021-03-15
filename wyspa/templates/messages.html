@@ -68,18 +68,20 @@
                                 {# Find out how long the comments section is to determine which way to place "add comment" Speech bubble #}
                                 {% if (message_entry.comments|length%2) == 0 %}
                                 <div class="col s8">
-                                    <form>
+                                    <form method="POST"
+                                        action="{{url_for('messages.add_comment', message_id=message_entry._id)}}">
                                         <div class="speech-bubble comment-box left-arrow">
 
                                             {% else %}
                                             <div class="col s8 push-s4">
-                                                <form>
+                                                <form method="POST"
+                                                    action="{{url_for('messages.add_comment', message_id=message_entry._id)}}">
                                                     <div class="speech-bubble comment-box right-arrow">
 
                                                         {% endif %}
 
                                                         <div class="input-field message-field col s12">
-                                                            <textarea id="commentReply"
+                                                            <textarea id="commentReply" name="commentReply"
                                                                 class="materialize-textarea"></textarea>
                                                             <label for="commentReply">Comment:</label>
                                                         </div>
