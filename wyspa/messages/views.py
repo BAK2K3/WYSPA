@@ -1,4 +1,4 @@
-from flask import render_template, Blueprint, request, redirect, url_for
+from flask import render_template, Blueprint, request, redirect, url_for, flash
 from flask_login import current_user, login_required
 from .classes import Wyspa
 
@@ -48,3 +48,25 @@ def add_comment(message_id):
 
         return redirect(url_for("messages.view_message",
                                 message_id=retrieved_wyspa._id))
+
+
+@ messages.route('/remove_wyspa/<message_id>', methods=["GET", "POST"])
+def remove_wyspa(message_id):
+
+    if request.method == "POST":
+        Wyspa.delete_wyspa(message_id)
+        return redirect(url_for("messages.my_voice"))
+
+
+@ messages.route('/message_control/<message_id>', methods=["GET", "POST"])
+def message_control(message_id):
+    if request.method == "POST":
+        if "delete" in request.form:
+            Wyspa.delete_wyspa(message_id)
+            return redirect(url_for("messages.my_voice"))
+        elif "goto" in request.form:
+            return redirect(url_for("messages.view_message",
+                                    message_id=message_id))
+        else:
+            flash("Something went wrong!")
+            return redirect(url_for("core.index"))
