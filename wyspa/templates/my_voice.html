@@ -18,7 +18,6 @@
 
                             {% for entry in users_messages %}
                             <form method="POST" action="{{url_for('messages.message_control', message_id=entry._id)}}">
-
                                 <li class="collection-item">
                                     <div col s12>
                                         <em>"{{ entry.message }}"</em>
@@ -30,18 +29,9 @@
                                         <button name="goto" value="goto" class="wyspa-button tooltipped"
                                             data-position="right" data-tooltip="Go To Wyspa"><i
                                                 class="material-icons">send</i></button></div>
-
                                 </li>
-
-                                <div class="col s12">
-
-                                </div>
-
-
                             </form>
                             {%endfor%}
-
-
                         </ul>
 
                         {% else %}
