@@ -74,7 +74,7 @@ def login():
             existing_user = User(username=login_check['username'])
             login_user(existing_user)
             flash(f"Welcome, {current_user.username}")
-            return redirect(url_for("core.index"))
+            return redirect(url_for("messages.my_voice"))
 
         else:
             #  Inform user that credentials are incorrect
