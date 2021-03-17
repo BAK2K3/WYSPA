@@ -27,8 +27,9 @@ class Wyspa():
         self.comments.append({self.author: new_comment})
         mongo.db.messages.update({"_id": ObjectId(self._id)}, self.get_info())
 
-    def delete_wyspa(self):
-        mongo.db.messages.remove({"_id": ObjectId(self._id)})
+    @staticmethod
+    def delete_wyspa(_id):
+        mongo.db.messages.remove({"_id": ObjectId(_id)})
 
     def write_wyspa(self):
         mongo.db.messages.insert_one(self.get_info())
