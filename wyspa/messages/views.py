@@ -1,6 +1,5 @@
 from flask import render_template, Blueprint, request, redirect, url_for
 from flask_login import current_user, login_required
-from wyspa.factory.initialisation import mongo
 from .classes import Wyspa
 
 
@@ -14,12 +13,8 @@ def view_message(message_id):
 
     if message_id:
         message_entry = Wyspa.get_by_id(message_id)
-        print(message_entry)
-
     else:
-        message_entry = list(mongo.db.messages.aggregate(
-            [{"$sample": {"size": 1}}]))[0]
-        print(message_entry)
+        message_entry = Wyspa.get_random_wyspa()
 
     return render_template('messages.html', message_entry=message_entry)
 
