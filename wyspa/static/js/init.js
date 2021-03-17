@@ -18,3 +18,13 @@ document.addEventListener('DOMContentLoaded', function () {
         endingTop: '30%'
     });
 });
+
+// Tooltip init
+
+document.addEventListener('DOMContentLoaded', function () {
+    var elems = document.querySelectorAll('.tooltipped');
+    var instances = M.Tooltip.init(elems, option = {
+        enterDelay: 100,
+        outDuration: 50
+    });
+});
