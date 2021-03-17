@@ -33,13 +33,13 @@ class Wyspa():
     def write_wyspa(self):
         mongo.db.messages.insert_one(self.get_info())
 
-    @ classmethod
+    @classmethod
     def get_by_id(cls, _id):
         data = mongo.db.messages.find_one({"_id": ObjectId(_id)})
         if data is not None:
             return cls(**data)
 
-    @ classmethod
+    @classmethod
     def get_by_user(cls, username):
         data = list(mongo.db.messages.find({"author": username}))
         if data is not None:
@@ -47,3 +47,10 @@ class Wyspa():
             for message in data:
                 return_data.append(cls(**message))
             return return_data
+
+    @classmethod
+    def get_random_wyspa(cls):
+        data = list(mongo.db.messages.aggregate(
+            [{"$sample": {"size": 1}}]))[0]
+        if data is not None:
+            return cls(**data)
