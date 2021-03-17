@@ -17,11 +17,31 @@
                         <ul class="collection">
 
                             {% for entry in users_messages %}
-                            <li class="collection-item">
-                                <div><em>"{{ entry.message }}"</em><a href="#!" class="secondary-content"><i
-                                            class="material-icons">send</i></a></div>
-                            </li>
+                            <form method="POST" action="{{url_for('messages.message_control', message_id=entry._id)}}">
+
+                                <li class="collection-item">
+                                    <div col s12>
+                                        <em>"{{ entry.message }}"</em>
+                                    </div>
+                                    <div col s12>
+                                        <button name="delete" value="delete" class="wyspa-button tooltipped"
+                                            data-position="left" data-tooltip="Delete Wyspa"><i
+                                                class="material-icons">delete_forever</i></button>
+                                        <button name="goto" value="goto" class="wyspa-button tooltipped"
+                                            data-position="right" data-tooltip="Go To Wyspa"><i
+                                                class="material-icons">send</i></button></div>
+
+                                </li>
+
+                                <div class="col s12">
+
+                                </div>
+
+
+                            </form>
                             {%endfor%}
+
+
                         </ul>
 
                         {% else %}
