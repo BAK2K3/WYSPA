@@ -142,6 +142,14 @@ nav .button-collapse i {
     }
 }
 
+/********** Tooltip **********/
+
+.material-tooltip {
+    background-color: transparent;
+    color: white;
+    text-decoration: underline;
+}
+
 /********** Log in Modal **********/
 
 .modal {
@@ -294,10 +302,20 @@ nav .button-collapse i {
     border-bottom: 1px solid white; ;
 }
 
+.wyspa-button {
+    background-color: rgba(0,0,0,0);
+    border: none;
+    cursor:pointer;
+}
+
 /********** Messages **********/
 .message {  
     margin: auto;
     width: 100%;
+}
+
+.row.no-margin{
+    margin: 0;
 }
 
 /* https://codingislove.com/css-speech-bubbles/ */
@@ -356,8 +374,7 @@ nav .button-collapse i {
 
 .comment-box {
     display: table;
-    width: 100%;
-    
+    width: 100%;   
 }
 
 textarea.materialize-textarea {
