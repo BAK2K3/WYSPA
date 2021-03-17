@@ -2,6 +2,7 @@ from flask import render_template, Blueprint, request, redirect, flash, url_for
 from flask_login import LoginManager, login_user, logout_user, current_user
 from werkzeug.security import generate_password_hash, check_password_hash
 from wyspa.factory.initialisation import mongo
+from .classes import User
 
 
 # Configure Blueprint for user route
@@ -10,28 +11,6 @@ users = Blueprint('users', __name__)
 
 # Instantiate login_manager
 login_manager = LoginManager()
-
-
-# https://stackoverflow.com/questions/54992412/flask-login-usermixin-class-with-a-mongodb
-# Create the required User class for Flask-Login
-class User():
-    def __init__(self, username):
-        self.username = username
-
-    @staticmethod
-    def is_authenticated():
-        return True
-
-    @staticmethod
-    def is_active():
-        return True
-
-    @staticmethod
-    def is_anonymous():
-        return False
-
-    def get_id(self):
-        return self.username
 
 
 # Define the user_loader callback for Flask-Login
