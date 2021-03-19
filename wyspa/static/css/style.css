@@ -120,6 +120,7 @@ nav .button-collapse i {
     right: 50%;
     transform: translateX(50%);
     max-width: 86%;
+    height: 10%;
 }
 
 .styled-toast {
