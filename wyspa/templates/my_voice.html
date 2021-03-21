@@ -59,10 +59,18 @@
                             <div class="speech-bubble comment-box">
                                 <div class="input-field message-field col s12">
                                     <textarea id="wyspaContent" name="wyspaContent"
-                                        class="materialize-textarea"></textarea>
+                                        class="materialize-textarea validate"></textarea>
                                     <label for="wyspaContent">Your Wyspa</label>
                                 </div>
-                                <div class="col 12 submit-col">
+                                <div class="input-field message-field col s12 m6">
+                                    <input id="location" name="location" type="text" class="validate">
+                                    <label for="location">Location</label>
+                                </div>
+                                <div class="input-field message-field col s12 m6">
+                                    <input id="mood" name="mood" type="text" class="validate">
+                                    <label for="mood">Mood</label>
+                                </div>
+                                <div class="col s12 submit-col">
                                     <button class="btn add-comment waves-effect" type="submit" name="action">Wyspa
                                         <i class="material-icons right">comment</i>
                                     </button>
