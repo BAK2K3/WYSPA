@@ -1,6 +1,7 @@
 from flask import render_template, Blueprint, request, redirect, url_for, flash
 from flask_login import current_user, login_required
 from .classes import Wyspa
+from wyspa.maps.locations import location_to_latlong
 
 
 # Configure Blueprint for core route
@@ -31,9 +32,18 @@ def my_voice():
 @ login_required
 def create_wyspa():
 
+    try:
+        location_to_latlong(request.form.get("postcode"))
+    except Exception as e:
+        print(e)
+        flash("Unable to locate address!")
+        return redirect(url_for("messages.my_voice"))
+
     if request.method == "POST":
         new_wyspa = Wyspa(current_user.username,
-                          request.form.get("wyspaContent"), "happy", "NN5")
+                          request.form.get("wyspaContent"),
+                          "happy",
+                          location_to_latlong(request.form.get("location")))
         new_wyspa.write_wyspa()
         return redirect(url_for("messages.my_voice"))
 
