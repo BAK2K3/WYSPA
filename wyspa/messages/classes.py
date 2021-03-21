@@ -55,3 +55,20 @@ class Wyspa():
             [{"$sample": {"size": 1}}]))[0]
         if data is not None:
             return cls(**data)
+
+    @classmethod
+    def get_all_wyspas(cls):
+        data = list(mongo.db.messages.find())
+        if data is not None:
+            return_data = []
+            for message in data:
+                return_data.append(cls(**message))
+            return return_data
+
+    @staticmethod
+    def wyspa_to_map(wyspas):
+        prepared_data = []
+        for wyspa in wyspas:
+            prepared_data.append(
+                {"_id": str(wyspa._id), "location": wyspa.location})
+        return prepared_data
