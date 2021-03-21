@@ -392,6 +392,8 @@ textarea.materialize-textarea {
 /* Inactive/Active Default input field color */
 .message-field.input-field input[type]:not([readonly]),
 .message-field.input-field input[type]:focus:not([readonly]),
+.message-field.input-field input:not([readonly]),
+.message-field.input-field input:focus:not([readonly]),
 .message-field.input-field textarea:not([readonly]),
 .message-field.input-field textarea:focus:not([readonly]) {
     border-bottom: 1px solid white;
@@ -400,6 +402,7 @@ textarea.materialize-textarea {
 
 /* Inactive/Active Default input label color */
 .message-field.input-field input[type]:focus:not([readonly])+label,
+.message-field.input-field input:focus:not([readonly])+label,
 .message-field.input-field textarea:focus:not([readonly])+label {
     color: white;
 }
@@ -407,6 +410,8 @@ textarea.materialize-textarea {
 /* Active/Inactive Invalid input field colors */
 .message-field.input-field input[type].invalid,
 .message-field.input-field input[type].invalid:focus,
+.message-field.input-field input.invalid,
+.message-field.input-field input.invalid:focus,
 .message-field.input-field textarea.invalid,
 .message-field.input-field textarea.invalid:focus {
     border-bottom: 1px solid white;
@@ -417,6 +422,9 @@ textarea.materialize-textarea {
 .message-field.input-field input[type].invalid:focus+label,
 .message-field.input-field input[type].invalid~.helper-text::after,
 .message-field.input-field input[type].invalid:focus~.helper-text::after, 
+.message-field.input-field input.invalid:focus+label,
+.message-field.input-field input.invalid~.helper-text::after,
+.message-field.input-field input.invalid:focus~.helper-text::after,
 .message-field.input-field textarea.invalid:focus+label,
 .message-field.input-field textarea.invalid~.helper-text::after,
 .message-field.input-field textarea.invalid:focus~.helper-text::after {
@@ -426,6 +434,8 @@ textarea.materialize-textarea {
 /* Active/Inactive Valid input field color */
 .message-field.input-field input[type].valid,
 .message-field.input-field input[type].valid:focus,
+.message-field.input-field input.valid,
+.message-field.input-field input.valid:focus, 
 .message-field.input-field textarea.valid,
 .message-field.input-field textarea.valid:focus {
     border-bottom: 1px solid white;
@@ -436,9 +446,16 @@ textarea.materialize-textarea {
 .message-field.input-field input[type].valid:focus+label,
 .message-field.input-field input[type].valid~.helper-text::after,
 .message-field.input-field input[type].valid:focus~.helper-text::after,
+.message-field.input-field input.valid:focus+label,
+.message-field.input-field input.valid~.helper-text::after,
+.message-field.input-field input.valid:focus~.helper-text::after,
 .message-field.input-field textarea.valid:focus+label,
 .message-field.input-field textarea.valid~.helper-text::after,
 .message-field.input-field textarea.valid:focus~.helper-text::after {
+    color: white;
+}
+
+.message-field.input-field input {
     color: white;
 }
 /*  */
