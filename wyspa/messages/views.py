@@ -48,7 +48,7 @@ def create_wyspa():
     if request.method == "POST":
         new_wyspa = Wyspa(current_user.username,
                           request.form.get("wyspaContent"),
-                          "happy",
+                          int(request.form.get("mood")),
                           converted_location)
         new_wyspa.write_wyspa()
         return redirect(url_for("messages.my_voice"))
