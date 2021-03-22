@@ -1,3 +1,13 @@
+// Dictionary for color coded moods
+const moodMap = {
+    1: "#FF0000",
+    2: "#FF8000",
+    3: "#FFE747",
+    4: "#9EFAFA",
+    5: "#0FE000"
+};
+
+// Main function for initialising Google Maps
 function initMap(map_data) {
 
     // Starting point
@@ -6,6 +16,7 @@ function initMap(map_data) {
         lng: -26.847590
     };
 
+    // Creation of the map
     const map = new google.maps.Map(document.getElementById("map"), {
         zoom: 3,
         minZoom: 3,
@@ -20,20 +31,23 @@ function initMap(map_data) {
         restriction: { latLngBounds: { north: 83.8, south: -57, west: -180, east: 180 } }
     });
 
+    // Circle Generation
     for (const message in map_data) {
+
+        // Define colour of Circle
+        let wyspaColor = moodMap[map_data[message]["mood"]];
 
         // Add a cirlce for each wyspa
         const wyspaCircle = new google.maps.Circle({
-            strokeColor: "#FF0000",
+            strokeColor: wyspaColor,
             strokeOpacity: 0.8,
             strokeWeight: 2,
-            fillColor: "#FF0000",
+            fillColor: wyspaColor,
             fillOpacity: 0.35,
             map,
             radius: 50000,
             center: map_data[message]["location"],
             message_id: map_data[message]["_id"],
-
         });
 
         // Onclick event to redirect to the message clicked on
