@@ -38,7 +38,7 @@ def create_wyspa():
 
     # Try and convert the address to latlong
     try:
-        location_to_latlong(request.form.get("postcode"))
+        converted_location = location_to_latlong(request.form.get("location"))
     except Exception as e:
         print(e)
         flash("Unable to locate address!")
@@ -49,7 +49,7 @@ def create_wyspa():
         new_wyspa = Wyspa(current_user.username,
                           request.form.get("wyspaContent"),
                           "happy",
-                          location_to_latlong(request.form.get("location")))
+                          converted_location)
         new_wyspa.write_wyspa()
         return redirect(url_for("messages.my_voice"))
 
