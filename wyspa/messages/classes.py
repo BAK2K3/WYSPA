@@ -70,5 +70,6 @@ class Wyspa():
         prepared_data = []
         for wyspa in wyspas:
             prepared_data.append(
-                {"_id": str(wyspa._id), "location": wyspa.location})
+                {"_id": str(wyspa._id), "location": wyspa.location,
+                 "mood": wyspa.mood})
         return prepared_data
