@@ -30,7 +30,7 @@ function initMap(map_data) {
             fillColor: "#FF0000",
             fillOpacity: 0.35,
             map,
-            radius: 100000,
+            radius: 50000,
             center: map_data[message]["location"],
             message_id: map_data[message]["_id"],
 
