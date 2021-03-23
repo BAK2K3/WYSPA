@@ -19,20 +19,20 @@ class Wyspa():
                 'comments': self.comments}
         return info
 
+    def write_wyspa(self):
+        mongo.db.messages.insert_one(self.get_info())
+
     def remove_comment(self, index):
         self.comments.pop(index)
         mongo.db.messages.update({"_id": ObjectId(self._id)}, self.get_info())
 
-    def add_comment(self, new_comment):
-        self.comments.append({self.author: new_comment})
+    def add_comment(self, new_comment, comment_author="anonymous"):
+        self.comments.append({comment_author: new_comment})
         mongo.db.messages.update({"_id": ObjectId(self._id)}, self.get_info())
 
     @staticmethod
     def delete_wyspa(_id):
         mongo.db.messages.remove({"_id": ObjectId(_id)})
-
-    def write_wyspa(self):
-        mongo.db.messages.insert_one(self.get_info())
 
     @classmethod
     def get_by_id(cls, _id):
