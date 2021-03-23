@@ -521,6 +521,24 @@ textarea.materialize-textarea {
     z-index:-1;
   }
 
+/* https://stackoverflow.com/questions/2553904/removing-the-google-maps-api-premier-terms-of-use-logo-etc-links */
+/* Styling has been applied inline via js package - Exception applied for applying !important tag */
+ /* Terms of Use/Maps Data */
+.gmnoprint div {
+    bottom:33px;
+}
+
+/* Zoom Control */
+.gmnoprint.gm-bundled-control.gm-bundled-control-on-bottom {
+    bottom:130px !important;
+    right:32px !important;
+}
+
+/* Google Image */
+#map div div a div img{
+    bottom: 33px;
+    top: -33px !important;
+}
 
 /********** Footer **********/
 .page-footer {
