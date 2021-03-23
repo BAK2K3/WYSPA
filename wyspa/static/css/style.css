@@ -313,6 +313,10 @@ nav .button-collapse i {
 background-color: rgba(0,0,0,0);
 }
 
+.wyspa-button.comment-delete {
+    color: white;
+}
+
 input#mood{
     margin-bottom: 0;
     margin-top: 22px;
@@ -365,6 +369,7 @@ input[type=range] {
   position:relative;
   border-radius: 25px;
   margin-bottom: 15px;
+  word-wrap: break-word;
 }
 
 .left-arrow:before {
