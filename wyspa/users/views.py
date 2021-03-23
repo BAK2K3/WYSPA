@@ -52,7 +52,7 @@ def register():
 
         # Flash and redirect
         flash("Registration Successful")
-        return redirect(url_for("core.index"))
+        return redirect(url_for("messages.my_voice"))
 
 
 @users.route('/login', methods=['GET', 'POST'])
