@@ -35,11 +35,14 @@
                         {# For each comment in the message #}
                         {% for entry in message_entry.comments %}
 
+                        {# https://stackoverflow.com/questions/1567291/get-loop-index-of-outer-loop #}
+                        {% set outer_loop = loop %}
+
                         {# Check the index for speech bubble positioning #}
                         {% if loop.index%2 == 0 %}
 
                         <!-- Right Comment -->
-                        <div class="col s8 push-s4">
+                        <div class="col s8 offset-s4">
                             <div class="speech-bubble right-arrow">
 
                                 {% else %}
@@ -51,9 +54,20 @@
                                         {% endif %}
 
                                         {# Grab the author and comment for the comment #}
-                                        {% for author, comment in entry.items() %}
+                                        {% for comment_author, comment in entry.items() %}
 
                                         {{comment}}
+
+                                        {# Check to see whether current user is author for comment deletion#}
+                                        {% if current_user.username == comment_author %}
+
+                                        <div>
+                                            <a href="{{url_for('messages.remove_comment', message_id=message_entry._id, comment_id=outer_loop.index)}}"
+                                                class="wyspa-button comment-delete tooltipped" data-position="right"
+                                                data-tooltip="Delete Comment"><i
+                                                    class="material-icons">delete_forever</i></a>
+                                        </div>
+                                        {%endif%}
                                     </div>
                                 </div>
 
