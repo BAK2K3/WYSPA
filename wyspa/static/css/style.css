@@ -317,6 +317,18 @@ background-color: rgba(0,0,0,0);
     color: white;
 }
 
+.user-message {
+    padding-bottom: 10px;
+}
+
+.message-control span {
+    vertical-align: top;
+}
+
+.message-control i {
+    cursor: default;
+}
+
 input#mood{
     margin-bottom: 0;
     margin-top: 22px;
@@ -357,6 +369,10 @@ input[type=range] {
 
 .row.no-margin{
     margin: 0;
+}
+
+.card-panel.main-wyspa-panel {
+    padding-bottom: 10px;
 }
 
 /* https://codingislove.com/css-speech-bubbles/ */
@@ -425,6 +441,10 @@ textarea.materialize-textarea {
 
 .submit-col {
     width:100%;
+}
+
+.delete-comment-panel {
+    padding-top: 10px;
 }
 
 /* Overriding Textinput CSS without using Important */
@@ -499,6 +519,15 @@ textarea.materialize-textarea {
 .message-field.input-field input {
     color: white;
 }
+
+.row .col.wyspa-count { 
+    padding-top:10px;
+}
+
+.row .col.wyspa-count span {
+    vertical-align: top;
+}
+
 /*  */
 
 
