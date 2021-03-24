@@ -14,6 +14,12 @@
                         <div class="col s12 center wyspa-container">
                             <em>"{{ message_entry.message }}"</em>
                         </div>
+                        <div>
+                            {{message_entry.listens|length - 1}}
+                            <a href="{{url_for('messages.add_listen', message_id=message_entry._id, listener=current_user.username)}}"
+                                class="wyspa-button comment-delete tooltipped" data-position="right"
+                                data-tooltip="Acknowledge you've listened"><i class="material-icons">hearing</i></a>
+                        </div>
                     </div>
                 </div>
             </div>
