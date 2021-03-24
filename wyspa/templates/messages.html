@@ -4,21 +4,23 @@
 {% block content %}
 <!-- Message -->
 <section class="message">
-    <div class="container row">
+    <div class="container row outer-wyspa-panel">
         <div class="col s12">
             <!-- Card Panel -->
-            <div class="card-panel z-depth-5 main-wyspa-panel">
+            <div class="card-panel z-depth-5 inner-wyspa-panel">
                 <!-- Card Content -->
                 <div class="card-content white-text">
                     <div class="row no-margin">
+                        <!-- Message Body -->
                         <div class="col s12 center wyspa-container">
                             <em>"{{ message_entry.message }}"</em>
                         </div>
+                        <!-- Wyspa Count -->
                         <div class="col s12 center wyspa-count">
-                            <span> {{message_entry.listens|length - 1}} </span>
+                            <span> {{ message_entry.listens|length }} </span>
                             <a href="{{url_for('messages.add_listen', message_id=message_entry._id, listener=current_user.username)}}"
-                                class="wyspa-button comment-delete tooltipped" data-position="right"
-                                data-tooltip="Acknowledge you've listened"><i class="material-icons">hearing</i></a>
+                                class="wyspa-button comment-delete"><i class="material-icons tooltipped"
+                                    data-position="right" data-tooltip="Acknowledge you've listened">hearing</i></a>
                         </div>
                     </div>
                 </div>
@@ -59,19 +61,24 @@
 
                                         {% endif %}
 
-                                        {# Grab the author and comment for the comment #}
-                                        {% for comment_author, comment in entry.items() %}
+                                        <div class="comment-text">
 
-                                        {{comment}}
+                                            {# Grab the author and comment for the comment #}
+                                            {% for comment_author, comment in entry.items() %}
+
+                                            {{comment}}
+
+                                        </div>
 
                                         {# Check to see whether current user is author for comment deletion#}
                                         {% if current_user.username == comment_author %}
 
+                                        <!-- Comment Deletion -->
                                         <div class="delete-comment-panel">
                                             <a href="{{url_for('messages.remove_comment', message_id=message_entry._id, comment_id=outer_loop.index)}}"
-                                                class="wyspa-button comment-delete tooltipped" data-position="right"
-                                                data-tooltip="Delete Comment"><i
-                                                    class="material-icons">delete_forever</i></a>
+                                                class="wyspa-button comment-delete"><i class="material-icons tooltipped"
+                                                    data-position="right"
+                                                    data-tooltip="Delete Comment">delete_forever</i></a>
                                         </div>
                                         {%endif%}
                                     </div>
@@ -86,33 +93,33 @@
                                 {# Find out how long the comments section is to determine which way to place "add comment" Speech bubble #}
                                 {% if (message_entry.comments|length%2) == 0 %}
                                 <div class="col s8">
-                                    <form method="POST"
-                                        action="{{url_for('messages.add_comment', message_id=message_entry._id)}}">
-                                        <div class="speech-bubble comment-box left-arrow">
+                                    <div class="speech-bubble comment-box left-arrow">
 
-                                            {% else %}
-                                            <div class="col s8 push-s4">
+                                        {% else %}
+                                        <div class="col s8 push-s4">
+                                            <div class="speech-bubble comment-box right-arrow">
+
+                                                {% endif %}
+                                                <!-- Comment Form -->
                                                 <form method="POST"
                                                     action="{{url_for('messages.add_comment', message_id=message_entry._id)}}">
-                                                    <div class="speech-bubble comment-box right-arrow">
-
-                                                        {% endif %}
-
-                                                        <div class="input-field message-field col s12">
-                                                            <textarea id="commentReply" name="commentReply"
-                                                                class="materialize-textarea"></textarea>
-                                                            <label for="commentReply">Comment:</label>
-                                                        </div>
-                                                        <div class="col 12 submit-col">
-                                                            <button class="btn add-comment waves-effect" type="submit"
-                                                                name="action">Add
-                                                                <i class="material-icons right">comment</i>
-                                                            </button>
-                                                        </div>
+                                                    <!-- Textfield -->
+                                                    <div class="input-field message-field col s12">
+                                                        <textarea id="commentReply" name="commentReply"
+                                                            class="materialize-textarea"></textarea>
+                                                        <label for="commentReply">Comment:</label>
+                                                    </div>
+                                                    <!-- Submit Button -->
+                                                    <div class="col 12 submit-col">
+                                                        <button class="btn add-comment waves-effect" type="submit"
+                                                            name="action">Add
+                                                            <i class="material-icons right">comment</i>
+                                                        </button>
                                                     </div>
                                                 </form>
                                             </div>
                                         </div>
+                                    </div>
                 </li>
             </ul>
         </div>
