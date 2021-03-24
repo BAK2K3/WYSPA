@@ -4,19 +4,21 @@ from wyspa.factory.initialisation import mongo
 
 # Create a class for WYSPAs
 class Wyspa():
-    def __init__(self, author, message, mood, location, comments=[], _id=None):
+    def __init__(self, author, message, mood, location,
+                 comments=[], listens=[], _id=None):
         self._id = _id
         self.author = author
         self.message = message
         self.mood = mood
         self.location = location
         self.comments = comments if comments else []
+        self.listens = listens if listens else []
 
     def get_info(self):
         # Return Dictionary for DB
         info = {'author': self.author, 'message': self.message,
                 'mood': self.mood, 'location': self.location,
-                'comments': self.comments}
+                'comments': self.comments, "listens": self.listens}
         return info
 
     def write_wyspa(self):
@@ -28,6 +30,10 @@ class Wyspa():
 
     def add_comment(self, new_comment, comment_author="anonymous"):
         self.comments.append({comment_author: new_comment})
+        mongo.db.messages.update({"_id": ObjectId(self._id)}, self.get_info())
+
+    def add_listen(self, listener):
+        self.listens.append(listener)
         mongo.db.messages.update({"_id": ObjectId(self._id)}, self.get_info())
 
     @staticmethod
@@ -71,5 +77,5 @@ class Wyspa():
         for wyspa in wyspas:
             prepared_data.append(
                 {"_id": str(wyspa._id), "location": wyspa.location,
-                 "mood": wyspa.mood})
+                 "mood": wyspa.mood, "listens": len(wyspa.listens)})
         return prepared_data
