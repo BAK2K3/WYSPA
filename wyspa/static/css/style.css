@@ -24,6 +24,10 @@ main {
     z-index: 5;
 }
 
+/* .row {
+    margin-bottom: 0px;
+} */
+
 /********** Headings **********/
 
 .heading-font {
@@ -164,6 +168,7 @@ nav .button-collapse i {
 
 .footer-modal {
     margin-bottom: 0;
+    padding-left: 10px;
 }
 
 /* Inactive/Active Default input field color */
@@ -306,6 +311,9 @@ nav .button-collapse i {
 .wyspa-button {
     background-color: rgba(0,0,0,0);
     border: none;
+}
+
+.wyspa-button i {
     cursor:pointer;
 }
 
@@ -315,6 +323,7 @@ background-color: rgba(0,0,0,0);
 
 .wyspa-button.comment-delete {
     color: white;
+    height: 100%;
 }
 
 .user-message {
@@ -323,10 +332,6 @@ background-color: rgba(0,0,0,0);
 
 .message-control span {
     vertical-align: top;
-}
-
-.message-control i {
-    cursor: default;
 }
 
 input#mood{
@@ -371,14 +376,18 @@ input[type=range] {
     margin: 0;
 }
 
-.card-panel.main-wyspa-panel {
+.row.outer-wyspa-panel {
+    margin-bottom: 0px;
+}
+
+.card-panel.inner-wyspa-panel {
     padding-bottom: 10px;
 }
 
 /* https://codingislove.com/css-speech-bubbles/ */
 .speech-bubble {
   background: rgba(0, 0, 0, 0.7);
-  padding: 20px;
+  padding: 10px 20px 0 20px;
   text-align: center;
   font-weight: 900;
   color: #fff;
@@ -435,16 +444,16 @@ input[type=range] {
     width: 100%;   
 }
 
+.comment-text {
+    padding-bottom: 10px;
+}
+
 textarea.materialize-textarea {
     color: white; 
 }
 
 .submit-col {
     width:100%;
-}
-
-.delete-comment-panel {
-    padding-top: 10px;
 }
 
 /* Overriding Textinput CSS without using Important */
@@ -536,6 +545,7 @@ textarea.materialize-textarea {
     border: 1px solid white;
     color: white;
     border-radius: 25px;
+    margin-bottom: 15px;
 }
 
 .btn.add-comment:hover {
