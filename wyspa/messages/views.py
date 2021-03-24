@@ -88,7 +88,34 @@ def remove_comment(message_id, comment_id):
                             message_id=retrieved_wyspa._id))
 
 
-# Remove Wyspa
+# Add "Listen" to existing Wyspa
+@ messages.route('/add_listen/<message_id>/', defaults={'listener': None})
+@ messages.route('/add_listen/<message_id>/<listener>')
+def add_listen(message_id, listener):
+
+    # Retrieve the wyspa
+    retrieved_wyspa = Wyspa.get_by_id(message_id)
+
+    # Check if user is logged in
+    if current_user.is_authenticated:
+
+        # Inform the user if they've already listened
+        if current_user.username in retrieved_wyspa.get_info()["listens"]:
+            flash("You've already listened to this Wyspa!")
+
+        # Store Listen
+        else:
+            retrieved_wyspa.add_listen(listener)
+
+    # Inform the user they need to be logged in
+    else:
+        flash("Sorry - you need to be logged in to listen to a Wyspa!")
+
+    return redirect(url_for("messages.view_message",
+                            message_id=retrieved_wyspa._id))
+
+
+# Delete WYSPA
 @ messages.route('/remove_wyspa/<message_id>', methods=["GET", "POST"])
 @ login_required
 def remove_wyspa(message_id):
