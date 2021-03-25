@@ -279,7 +279,7 @@ nav .button-collapse i {
     text-decoration: underline;
 }
 
-.welcome {  
+.welcome, .error {  
     margin: auto;
 }
 
