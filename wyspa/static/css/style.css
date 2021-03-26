@@ -171,6 +171,12 @@ nav .button-collapse i {
     padding-left: 10px;
 }
 
+.error-message{
+    padding-bottom: 10px;
+    color: red;
+    font-weight: 500;
+}
+
 /* Inactive/Active Default input field color */
 .login-field input[type]:not([readonly]),
 .login-field input[type]:focus:not([readonly]),
@@ -191,8 +197,8 @@ nav .button-collapse i {
 .input-field.login-field input[type].invalid:focus,
 .input-field.login-field input.invalid,
 .input-field.login-field input.invalid:focus {
-    border-bottom: 1px solid black;
-    box-shadow: 0 1px 0 0 black;
+    border-bottom: 1px solid red;
+    box-shadow: 0 1px 0 0 red;
 }
 
 /* Active/Inactive Invalid input label color */
@@ -202,7 +208,7 @@ nav .button-collapse i {
 .input-field.login-field input.invalid:focus+label,
 .input-field.login-field input.invalid~.helper-text::after,
 .input-field.login-field input.invalid:focus~.helper-text::after {
-    color: black;
+    color: red;
 }
 
 /* Active/Inactive Valid input field color */
@@ -608,7 +614,7 @@ textarea.materialize-textarea {
     }
 
     .valign-wrapper-extension {
-    position: relative;
+        position: relative;
     }
 
     .modal {
@@ -618,6 +624,11 @@ textarea.materialize-textarea {
     .modal .modal-content {
         padding-left: 0px;
         padding-right: 10px;
+    }
+
+    .error-message{
+        padding-bottom: 5px;
+        padding-left: 10px;
     }
 
 }
