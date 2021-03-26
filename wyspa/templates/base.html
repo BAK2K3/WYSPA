@@ -129,12 +129,13 @@
                         <div class="row">
                             <div class="input-field login-field col s12">
                                 <i class="material-icons prefix">group</i>
-                                <input id="usernameLogin" name="usernameLogin" type="text" class="validate">
+                                <input id="usernameLogin" name="usernameLogin" type="text" class="validate" required>
                                 <label for="usernameLogin">Username</label>
                             </div>
                             <div class="input-field login-field col s12">
                                 <i class="material-icons prefix">lock</i>
-                                <input id="passwordLogin" name="passwordLogin" type="password" class="validate">
+                                <input id="passwordLogin" name="passwordLogin" type="password" class="validate"
+                                    required>
                                 <label for="passwordLogin">Password</label>
                             </div>
                         </div>
@@ -154,23 +155,30 @@
         <div id="registerModal" class="modal">
             <div class="modal-content center">
                 <h4>Register</h4>
-
                 <div class="row">
-                    <form class="col s12" method="POST" action="{{url_for('users.register')}}">
-                        <div class="row">
+                    <!-- Error Container -->
+                    <div class="error-message"></div>
+                    <!-- Reguster Form -->
+                    <form class="col s12 user-registration" method="POST" action="{{url_for('users.register')}}">
+                        <div class="row no-margin">
+                            <!-- Username -->
                             <div class="input-field login-field col s12">
                                 <i class="material-icons prefix">group</i>
-                                <input id="usernameRegister" name="usernameRegister" type="text" class="validate">
+                                <input id="usernameRegister" name="usernameRegister" type="text" class="validate"
+                                    required>
                                 <label for="usernameRegister">Username</label>
                             </div>
+                            <!-- Password -->
                             <div class="input-field login-field col s12">
                                 <i class="material-icons prefix">lock</i>
-                                <input id="passwordRegister" name="passwordRegister" type="password" class="validate">
+                                <input id="passwordRegister" name="passwordRegister" type="password" class="validate"
+                                    pattern="^(?=.*[^a-zA-Z]).{6,20}$" required>
                                 <label for="passwordRegister">Password</label>
                             </div>
+                            <!-- Confirm Password -->
                             <div class="input-field login-field col s12">
                                 <i class="material-icons prefix">lock_open</i>
-                                <input id="passwordConfirm" name="passwordConfirm" type="password" class="validate">
+                                <input id="passwordConfirm" name="passwordConfirm" type="password" required>
                                 <label for="passwordConfirm">Confirm Password</label>
                             </div>
                         </div>
@@ -195,6 +203,9 @@
 
         <!-- Javascript custom Toast Script Import -->
         <script src="{{ url_for('static', filename='js/toasts.js', _scheme='https', _external=True) }}"> </script>
+
+        <!-- Javascript custom Validation Script Import -->
+        <script src="{{ url_for('static', filename='js/validate.js', _scheme='https', _external=True) }}"> </script>
 
         <!-- https://stackoverflow.com/questions/15321431/how-to-pass-a-list-from-python-by-jinja2-to-javascript -->
         <!-- Flash Messages -->
