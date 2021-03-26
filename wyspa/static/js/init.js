@@ -14,8 +14,8 @@ document.addEventListener('DOMContentLoaded', function () {
 document.addEventListener('DOMContentLoaded', function () {
     var elems = document.querySelectorAll('.modal');
     var instances = M.Modal.init(elems, options = {
-        startingTop: '30%',
-        endingTop: '30%'
+        startingTop: '20%',
+        endingTop: '20%'
     });
 });
 
