@@ -24,6 +24,11 @@ main {
     z-index: 5;
 }
 
+h2 {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
 /********** Headings **********/
 
 .heading-font {
@@ -354,7 +359,6 @@ input[type=range]::-ms-thumb {
     background-color: white;
 }
 
-/***** These are to edit the thumb and the text inside the thumb *****/
 input[type=range] + .thumb {
     background-color: white;
 }
@@ -373,12 +377,11 @@ input[type=range] {
     background-color: black;
 }
 
-.modal.datepicker-modal { 
+.modal.datepicker-modal, .modal.timepicker-modal { 
     border: 2px solid white;
 }
 
 .datepicker-day-button {
-    /* color: black; */
     font-weight: 400;
 }
 
@@ -418,12 +421,45 @@ button.month-next:focus, button.month-prev:focus {
     background-color: white;
 }
 
-.datepicker-cancel, .datepicker-done {
+.datepicker-cancel, .datepicker-done, .timepicker-close {
     color: black;
 }
 
 .dropdown-content li>a, .dropdown-content li>span {
     color: black;
+}
+
+.timepicker-digital-display { 
+    background-color: black;
+}
+
+.modal.timerpicker-container { 
+    border: 2px solid white;
+}
+
+.timepicker-canvas line {
+    stroke: white;
+}
+
+.timepicker-canvas-bg {
+    fill: white;
+}
+
+.timepicker-canvas-bearing {
+    fill: white;
+}
+
+.timepicker-plate {
+    background-color: rgba(4,23,37,0.4);
+}
+
+.timepicker-tick:hover {
+    background-color: rgba(0,0,0,0.3);
+}
+
+/* https://stackoverflow.com/questions/42101723/unable-to-preventdefault-inside-passive-event-listener */
+.timepicker-dial {
+touch-action: none;
 }
 
 /********** Messages **********/
@@ -443,6 +479,14 @@ button.month-next:focus, button.month-prev:focus {
 .card-panel.inner-wyspa-panel {
     padding-bottom: 10px;
 }
+
+.empty-messages {
+    padding-bottom: 24px;
+}
+.empty-messages h3 {
+    margin-top: 10px;
+}
+
 
 /* https://codingislove.com/css-speech-bubbles/ */
 .speech-bubble {
@@ -660,6 +704,10 @@ textarea.materialize-textarea {
         margin-bottom: 0.5em;
     }
 
+    .welcome .card-panel {
+        margin-top: 2em;
+    }
+
     .collapsible-header.card-panel {
         margin-bottom: 17px;
     }
@@ -682,8 +730,12 @@ textarea.materialize-textarea {
         padding-left: 10px;
     }
 
-    .modal-content.datepicker-container{
+    .modal-content.datepicker-container, .modal-content.timepicker-container{
     padding-right:0;
-}
+
+    }
+
+
+
 
 }
