@@ -13,6 +13,10 @@
                     <div class="row no-margin">
                         <!-- Message Body -->
                         <div class="col s12 center wyspa-container">
+
+                            {% if message_entry %}
+
+
                             <em>"{{ message_entry.message }}"</em>
                         </div>
                         <!-- Wyspa Count -->
@@ -124,6 +128,21 @@
             </ul>
         </div>
     </div>
+
+    {% else %}
+
+    <div class="empty-messages">
+        <h2>We can't find any WYSPAs!</h2>
+        <em>Consider logging in and getting things started!</em>
+    </div>
+
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    {% endif %}
 
 </section>
 
