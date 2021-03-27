@@ -20,11 +20,18 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 // Tooltip init
-
 document.addEventListener('DOMContentLoaded', function () {
     var elems = document.querySelectorAll('.tooltipped');
     var instances = M.Tooltip.init(elems, option = {
         enterDelay: 100,
         outDuration: 50
+    });
+});
+
+// Date picker init
+document.addEventListener('DOMContentLoaded', function () {
+    var elems = document.querySelectorAll('.datepicker');
+    var instances = M.Datepicker.init(elems, options = {
+        minDate: new Date()
     });
 });
