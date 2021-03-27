@@ -65,25 +65,35 @@
                     <div class="collapsible-header card-panel center white-text">
                         Create a WYSPA<i class="material-icons right">chat_bubble_outline</i>
                     </div>
-                    <!-- Comments  -->
+                    <!-- WYSPA Creation  -->
                     <div class="collapsible-body">
                         <form method="POST" action="{{url_for('messages.create_wyspa')}}">
                             <div class="speech-bubble comment-box">
+                                <!-- Text -->
                                 <div class="input-field message-field col s12">
                                     <textarea id="wyspaContent" name="wyspaContent"
-                                        class="materialize-textarea validate"></textarea>
+                                        class="materialize-textarea validate" required></textarea>
                                     <label for="wyspaContent">Your Wyspa</label>
                                 </div>
-                                <div class="input-field message-field col s12 m6">
-                                    <input id="location" name="location" type="text" class="validate">
+                                <!-- Location -->
+                                <div class="input-field message-field col s12 m4">
+                                    <input id="location" name="location" type="text" class="validate" required>
                                     <label for="location">Location</label>
                                 </div>
-                                <div class="slider-field col s12 m6">
+                                <!-- Mood -->
+                                <div class="slider-field col s12 m4">
                                     <label for="mood">Mood</label>
                                     <p class="range-field">
-                                        <input type="range" id="mood" name="mood" min="1" max="5" />
+                                        <input type="range" id="mood" name="mood" min="1" max="5" value="3" />
                                     </p>
                                 </div>
+                                <!-- Date Picker -->
+                                <div class="input-field message-field date-field col s12 m4">
+                                    <input id="expiryDate" name="expiryDate" type="text" class="datepicker validate"
+                                        required>
+                                    <label for="expiryDate">Expiry Date</label>
+                                </div>
+                                <!-- Submit -->
                                 <div class="col s12 submit-col">
                                     <button class="btn add-comment waves-effect" type="submit" name="action">Wyspa
                                         <i class="material-icons right">comment</i>
