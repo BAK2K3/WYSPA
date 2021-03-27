@@ -367,6 +367,64 @@ input[type=range] {
     border: none;
 }
 
+/* Datepicker */
+
+.datepicker-date-display { 
+    background-color: black;
+}
+
+.modal.datepicker-modal { 
+    border: 2px solid white;
+}
+
+.datepicker-day-button {
+    /* color: black; */
+    font-weight: 400;
+}
+
+.input-field.message-field.date-field input {
+    color:white;
+} 
+
+.datepicker-table {
+    color: black;
+}
+
+.datepicker-table .is-today .datepicker-day-button {
+    color: black;
+    font-weight: 700;
+}
+
+.datepicker-table .is-selected .datepicker-day-button {
+    color: white;
+    font-weight: 500;
+
+}
+
+.datepicker-table .datepicker-day-button:focus{
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+}
+
+.datepicker-table td.is-selected{
+    background-color: #000;
+}
+
+.datepicker-controls, .input-field.message-field.date-field input.select-dropdown {
+    color: black;
+}
+
+button.month-next:focus, button.month-prev:focus {
+    background-color: white;
+}
+
+.datepicker-cancel, .datepicker-done {
+    color: black;
+}
+
+.dropdown-content li>a, .dropdown-content li>span {
+    color: black;
+}
 
 /********** Messages **********/
 .message {  
@@ -539,9 +597,6 @@ textarea.materialize-textarea {
     vertical-align: top;
 }
 
-/*  */
-
-
 .btn.add-comment {
     background-color: transparent;
     border: 1px solid white;
@@ -626,5 +681,9 @@ textarea.materialize-textarea {
         padding-bottom: 5px;
         padding-left: 10px;
     }
+
+    .modal-content.datepicker-container{
+    padding-right:0;
+}
 
 }
