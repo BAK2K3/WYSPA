@@ -1,26 +1,25 @@
 from bson.objectid import ObjectId
 from wyspa.factory.initialisation import mongo
-from datetime import datetime
 
 
 # Create a class for WYSPAs
 class Wyspa():
-    def __init__(self, author, message, mood, location, created=datetime.now(),
-                 comments=[], listens=[], _id=None):
+    def __init__(self, author, message, mood, location,
+                 expiry=None, comments=[], listens=[], _id=None):
         self._id = _id
         self.author = author
         self.message = message
         self.mood = mood
         self.location = location
-        self.created = created if created else datetime.now()
         self.comments = comments if comments else []
         self.listens = listens if listens else []
+        self.expiry = expiry if expiry else None
 
     def get_info(self):
         # Return Dictionary for DB
         info = {'author': self.author, 'message': self.message,
                 'mood': self.mood, 'location': self.location,
-                'created': self.created, 'comments': self.comments,
+                'expiry': self.expiry, 'comments': self.comments,
                 'listens': self.listens}
         return info
 
@@ -39,14 +38,10 @@ class Wyspa():
         self.listens.append(listener)
         mongo.db.messages.update({"_id": ObjectId(self._id)}, self.get_info())
 
-    @staticmethod
-    def delete_wyspa(_id):
-        mongo.db.messages.remove({"_id": ObjectId(_id)})
-
     @classmethod
     def get_by_id(cls, _id):
         data = mongo.db.messages.find_one({"_id": ObjectId(_id)})
-        if data is not None:
+        if data != []:
             return cls(**data)
 
     @classmethod
@@ -61,18 +56,27 @@ class Wyspa():
     @classmethod
     def get_random_wyspa(cls):
         data = list(mongo.db.messages.aggregate(
-            [{"$sample": {"size": 1}}]))[0]
-        if data is not None:
-            return cls(**data)
+            [{"$sample": {"size": 1}}]))
+        if data != []:
+            return cls(**data[0])
 
     @classmethod
     def get_all_wyspas(cls):
         data = list(mongo.db.messages.find())
-        if data is not None:
+        if data != []:
             return_data = []
             for message in data:
                 return_data.append(cls(**message))
             return return_data
+
+    @staticmethod
+    def delete_wyspa(_id):
+        mongo.db.messages.remove({"_id": ObjectId(_id)})
+
+    @staticmethod
+    def set_expiry():
+        mongo.db.messages.create_index(
+            {"expiry": 1}, {"expireAfterSeconds": 0})
 
     @staticmethod
     def wyspa_to_map(wyspas):
