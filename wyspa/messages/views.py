@@ -2,6 +2,7 @@ from flask import render_template, Blueprint, request, redirect, url_for, flash
 from flask_login import current_user, login_required
 from .classes import Wyspa
 from wyspa.maps.locations import location_to_latlong
+from datetime import datetime
 
 
 # Configure Blueprint for core route
@@ -36,6 +37,18 @@ def my_voice():
 @ login_required
 def create_wyspa():
 
+    # Extract Date from form
+    expiry_date = request.form.get("expiryDate")
+    expiry_time = request.form.get("expiryTime")
+    date_string = expiry_date + " " + expiry_time
+    date_format = "%d-%m-%Y %H:%M"
+    formatted_expiry = datetime.strptime(date_string, date_format)
+
+    # Ensure expiry date is in the future
+    if formatted_expiry < datetime.now():
+        flash("Expiry must be in the future!")
+        return redirect(url_for("messages.my_voice"))
+
     # Try and convert the address to latlong
     try:
         converted_location = location_to_latlong(request.form.get("location"))
@@ -46,10 +59,11 @@ def create_wyspa():
 
     # Create a new wyspa, and write to DB
     if request.method == "POST":
-        new_wyspa = Wyspa(current_user.username,
-                          request.form.get("wyspaContent"),
-                          int(request.form.get("mood")),
-                          converted_location)
+        new_wyspa = Wyspa(author=current_user.username,
+                          message=request.form.get("wyspaContent"),
+                          mood=int(request.form.get("mood")),
+                          location=converted_location,
+                          expiry=formatted_expiry)
         new_wyspa.write_wyspa()
         return redirect(url_for("messages.my_voice"))
 
