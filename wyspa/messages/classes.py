@@ -1,16 +1,18 @@
 from bson.objectid import ObjectId
 from wyspa.factory.initialisation import mongo
+from datetime import datetime
 
 
 # Create a class for WYSPAs
 class Wyspa():
-    def __init__(self, author, message, mood, location,
+    def __init__(self, author, message, mood, location, created=datetime.now(),
                  comments=[], listens=[], _id=None):
         self._id = _id
         self.author = author
         self.message = message
         self.mood = mood
         self.location = location
+        self.created = created if created else datetime.now()
         self.comments = comments if comments else []
         self.listens = listens if listens else []
 
@@ -18,7 +20,8 @@ class Wyspa():
         # Return Dictionary for DB
         info = {'author': self.author, 'message': self.message,
                 'mood': self.mood, 'location': self.location,
-                'comments': self.comments, "listens": self.listens}
+                'created': self.created, 'comments': self.comments,
+                'listens': self.listens}
         return info
 
     def write_wyspa(self):
