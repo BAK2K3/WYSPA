@@ -5,7 +5,7 @@ from wyspa.factory.initialisation import mongo
 # Create a class for WYSPAs
 class Wyspa():
     def __init__(self, author, message, mood, location,
-                 expiry=None, comments=[], listens=[], _id=None):
+                 expiry=None, comments=[], listens=[], listenCount=0, _id=None):
         self._id = _id
         self.author = author
         self.message = message
@@ -13,6 +13,7 @@ class Wyspa():
         self.location = location
         self.comments = comments if comments else []
         self.listens = listens if listens else []
+        self.listenCount = listenCount if listenCount else 0
         self.expiry = expiry if expiry else None
 
     def get_info(self):
@@ -20,7 +21,7 @@ class Wyspa():
         info = {'author': self.author, 'message': self.message,
                 'mood': self.mood, 'location': self.location,
                 'expiry': self.expiry, 'comments': self.comments,
-                'listens': self.listens}
+                'listens': self.listens, 'listenCount': self.listenCount}
         return info
 
     def write_wyspa(self):
@@ -36,6 +37,7 @@ class Wyspa():
 
     def add_listen(self, listener):
         self.listens.append(listener)
+        self.listenCount += 1
         mongo.db.messages.update({"_id": ObjectId(self._id)}, self.get_info())
 
     @classmethod
@@ -62,7 +64,9 @@ class Wyspa():
 
     @classmethod
     def get_all_wyspas(cls):
-        data = list(mongo.db.messages.find())
+        data = list(mongo.db.messages.aggregate(
+            [{"$sort": {"listenCount": -1}}]))
+
         if data != []:
             return_data = []
             for message in data:
@@ -74,15 +78,12 @@ class Wyspa():
         mongo.db.messages.remove({"_id": ObjectId(_id)})
 
     @staticmethod
-    def set_expiry():
-        mongo.db.messages.create_index(
-            {"expiry": 1}, {"expireAfterSeconds": 0})
-
-    @staticmethod
     def wyspa_to_map(wyspas):
-        prepared_data = []
-        for wyspa in wyspas:
-            prepared_data.append(
-                {"_id": str(wyspa._id), "location": wyspa.location,
-                 "mood": wyspa.mood, "listens": len(wyspa.listens)})
-        return prepared_data
+        print(wyspas)
+        if wyspas is not None:
+            prepared_data = []
+            for wyspa in wyspas:
+                prepared_data.append(
+                    {"_id": str(wyspa._id), "location": wyspa.location,
+                     "mood": wyspa.mood, "listens": (wyspa.listenCount)})
+            return prepared_data
