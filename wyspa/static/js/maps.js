@@ -43,7 +43,7 @@ function initMap(map_data) {
             fillColor: wyspaColor,
             fillOpacity: 0.35,
             map,
-            radius: 10000 + (map_data[message]["listens"] * 10000),
+            radius: 10000 + (map_data[message]["listens"] * 5000),
             center: map_data[message]["location"],
             message_id: map_data[message]["_id"],
         });
