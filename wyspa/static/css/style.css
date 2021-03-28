@@ -56,22 +56,6 @@ h2 {
     margin-bottom: 20px;
 }
 
-.input-field input:-webkit-autofill,
-
-.input-field input:-internal-autofill-selected,
-.input-field textarea:-webkit-autofill,
-
-.input-field textarea:-internal-autofill-selected,
-.input-field select:-webkit-autofill,
-
-.input-field select:-internal-autofill-selected {
-    color: white;
-    background-color: transparent;
-
-  border: none;
-  -webkit-text-fill-color: transparent;
-}
-
 /********** Headings **********/
 
 .heading-font {
@@ -219,7 +203,6 @@ nav .button-collapse i {
 
 .modal {
     border-radius:25px;
-    width: 40%;
 }
 
 .modal .modal-content {
@@ -293,7 +276,6 @@ nav .button-collapse i {
  .login-field.input-field .prefix.active {
      color: #000;
    }
-/*  */
 
 .btn.login-button {
     background-color: white;
@@ -789,10 +771,6 @@ textarea.materialize-textarea {
 
     .valign-wrapper-extension {
         position: relative;
-    }
-
-    .modal {
-        width: 80%;
     }
 
     .modal .modal-content {
