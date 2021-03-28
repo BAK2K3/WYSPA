@@ -35,7 +35,7 @@
         <header>
             <nav class="transparent-banner">
                 <div class="nav-wrapper">
-                    <a href="{{ url_for('core.index') }}" class="brand-logo center heading-font">WYSPA</a>
+
                     <a href="#" data-target="mobile-sidenav" class="sidenav-trigger"><i
                             class="material-icons">gps_fixed</i></a>
                     <ul id="nav-mobile" class="left hide-on-med-and-down">
@@ -65,8 +65,12 @@
                         {% endif %}
 
                     </ul>
-                    <span class=" right hide-on-med-and-down sub-heading"><em>Whisper Your Secrets, Publicly and
-                            Anonymously</em></span>
+
+                    <a href="{{ url_for('core.index') }}" class="brand-logo center heading-font">WYSPA</a>
+
+                    <a class="github-icon grey-text text-lighten-4 right" href=" https://github.com/BAK2K3/WYSPA"
+                        rel="noreferrer noopener" target="_blank"><img class="github-logo"
+                            src="{{ url_for('static', filename='img/github-logo.png', _scheme='https', _external=True) }}"></a>
                 </div>
             </nav>
         </header>
@@ -74,30 +78,28 @@
         <!-- Sidenav Header -->
         <section>
             <ul class="sidenav" id="mobile-sidenav">
-                <span class="right hide-on-med-and-down sub-heading"><em>Whisper Your Secrets, Publicly and
-                        Anonymously</em></span>
-                <li {% if active_page == "index" %} class="active" {% endif %}><a
+                <li {% if active_page == "index" %} class="active" {% endif %}><a tabindex="-1"
                         href="{{ url_for('core.index') }}">Home</a></li>
 
                 {%if current_user.is_authenticated %}
-                <li {% if active_page == "my_voice" %} class="active" {% endif %}><a
+                <li {% if active_page == "my_voice" %} class="active" {% endif %}><a tabindex="-1"
                         href="{{ url_for('messages.my_voice') }}">My Voice</a></li>
                 {% endif %}
 
 
-                <li {% if active_page == "view_message" %} class="active" {% endif %}><a
+                <li {% if active_page == "view_message" %} class="active" {% endif %}><a tabindex="-1"
                         href="{{ url_for('messages.view_message') }}">Messages</a></li>
-                <li {% if active_page == "map_overview" %} class="active" {% endif %}><a
+                <li {% if active_page == "map_overview" %} class="active" {% endif %}><a tabindex="-1"
                         href="{{ url_for('maps.map_overview') }}">Map</a></li>
 
                 {%if current_user.is_authenticated %}
 
-                <li><a href="{{ url_for('users.logout') }}">Logout</a></li>
+                <li><a tabindex="-1" href="{{ url_for('users.logout') }}">Logout</a></li>
 
                 {% else %}
 
-                <li><a href="#loginModal" class="modal-trigger sidenav-close">Login</a></li>
-                <li><a href="#registerModal" class="modal-trigger sidenav-close">Register</a></li>
+                <li><a tabindex="-1" href="#loginModal" class="modal-trigger sidenav-close">Login</a></li>
+                <li><a tabindex="-1" href="#registerModal" class="modal-trigger sidenav-close">Register</a></li>
 
                 {% endif %}
             </ul>
@@ -112,9 +114,8 @@
 
         <!-- Footer -->
         <footer class="page-footer transparent-banner">
-            <div class="container">
+            <div class="container footer-content">
                 © 2021 BAK2K3
-                <a class="grey-text text-lighten-4 right" href="#!">GitHub</a>
             </div>
         </footer>
 
