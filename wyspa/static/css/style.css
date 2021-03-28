@@ -321,7 +321,6 @@ nav .button-collapse i {
 #staticMap { 
   background: url(../img/map-backdrop.jpg) no-repeat center center fixed;
   background-size: cover;
-  overflow: hidden;
 }
 
 /* https://stackoverflow.com/questions/28870932/how-to-remove-white-border-from-blur-background-image */
