@@ -1,10 +1,8 @@
 // Dictionary for color coded moods
 const moodMap = {
     1: "#FF0000",
-    2: "#FF8000",
-    3: "#FFE747",
-    4: "#9EFAFA",
-    5: "#0FE000"
+    2: "#FFFFFF",
+    3: "#0FE000",
 };
 
 // Main function for initialising Google Maps
