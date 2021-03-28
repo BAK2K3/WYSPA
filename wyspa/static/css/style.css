@@ -29,6 +29,22 @@ h2 {
     margin-bottom: 20px;
 }
 
+.input-field input:-webkit-autofill,
+
+.input-field input:-internal-autofill-selected,
+.input-field textarea:-webkit-autofill,
+
+.input-field textarea:-internal-autofill-selected,
+.input-field select:-webkit-autofill,
+
+.input-field select:-internal-autofill-selected {
+    color: white;
+    background-color: transparent;
+
+  border: none;
+  -webkit-text-fill-color: transparent;
+}
+
 /********** Headings **********/
 
 .heading-font {
@@ -332,6 +348,11 @@ background-color: rgba(0,0,0,0);
     color: white;
     height: 100%;
 }
+
+.keyboard-focused .collapsible-header:focus {
+    background-color: rgba(0, 0, 0, 0.7);
+    outline: -webkit-focus-ring-color auto 1px;
+ }     
 
 .user-message {
     padding-bottom: 10px;
@@ -649,7 +670,7 @@ textarea.materialize-textarea {
     margin-bottom: 15px;
 }
 
-.btn.add-comment:hover {
+.btn.add-comment:hover, .btn.add-comment:focus {
     background-color: white;
     color: black;
 }
