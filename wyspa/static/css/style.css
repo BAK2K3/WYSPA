@@ -805,6 +805,10 @@ textarea.materialize-textarea {
         padding-right: 10px;
     }
 
+    #helpModal.modal .modal-content{
+        padding: 20px;
+    } 
+
     .error-message{
         padding-bottom: 5px;
         padding-left: 10px;
