@@ -68,9 +68,11 @@
 
                     <a href="{{ url_for('core.index') }}" class="brand-logo center heading-font">WYSPA</a>
 
-                    <a class="github-icon grey-text text-lighten-4 right" href=" https://github.com/BAK2K3/WYSPA"
-                        rel="noreferrer noopener" target="_blank"><img class="github-logo"
-                            src="{{ url_for('static', filename='img/github-logo.png', _scheme='https', _external=True) }}"></a>
+
+                    <a href="#helpModal" class="modal-trigger">
+                        <i class="medium material-icons help-trigger button-glow white-text right tooltipped"
+                            data-position="left" data-tooltip="Need help?">help_outline</i>
+                    </a>
                 </div>
             </nav>
         </header>
@@ -115,7 +117,7 @@
         <!-- Footer -->
         <footer class="page-footer transparent-banner">
             <div class="container footer-content center">
-                BAK2K3 2021 ©
+                <a href=" https://github.com/BAK2K3/WYSPA" rel="noreferrer noopener" target="_blank">BAK2K3</a> 2021 ©
             </div>
         </footer>
 
@@ -195,6 +197,9 @@
                 </div>
             </div>
         </div>
+
+        {% block helpmodal %}
+        {% endblock %}
 
         <!-- Materialize JS Import -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
