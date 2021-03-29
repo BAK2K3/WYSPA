@@ -43,7 +43,8 @@ function initMap(map_data) {
             fillColor: wyspaColor,
             fillOpacity: 0.35,
             map,
-            radius: 10000 + (map_data[message]["listens"] * 5000),
+            // https://stackoverflow.com/questions/5842747/how-can-i-use-javascript-to-limit-a-number-between-a-min-max-value
+            radius: Math.min(1000000, Math.max(10000, 10000 + map_data[message]["listens"] * 5000)),
             center: map_data[message]["location"],
             message_id: map_data[message]["_id"],
         });
