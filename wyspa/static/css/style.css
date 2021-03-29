@@ -407,18 +407,39 @@ input[type=range]::-moz-range-thumb {
 
 input[type=range]::-ms-thumb {
     background-color: white;
-}
+} 
 
 input[type=range] + .thumb {
-    background-color: white;
+    display:none;
 }
 
 input[type=range] + .thumb.active .value {
-    color: black;
+    display: none;
+}
+
+input[type=range]+.thumb .value {
+    display: none;
+}
+
+/* https://github.com/Dogfalo/materialize/blob/824e78248b3de81e383445e76ffb04cc3264fe7d/sass/components/forms/_range.scss#L97 */
+.keyboard-focused input[type=range]:focus:not(.active)::-webkit-slider-thumb {
+  box-shadow: 0 0 0 10px rgba(255,255,255, 0.26);
 }
 
 input[type=range] {
     border: none;
+}
+
+.negativeLabel{
+    color: #FF0000;
+}
+
+.neutralLabel {
+    color: #FFFFFF;
+}
+
+.positiveLabel{
+    color: #0FE000;
 }
 
 /* Datepicker */
