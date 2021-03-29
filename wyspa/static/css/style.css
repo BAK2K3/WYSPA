@@ -139,7 +139,7 @@ nav .button-collapse i {
 }
 
 .sidenav li.active {
-    background-color: #02070B;
+    background: linear-gradient(153deg, rgba(2,7,11,1) 0%, rgba(2,7,11,1) 20%, rgba(2,7,11,1) 50%, rgba(2,7,11,0) 85%, rgba(2,7,11,0) 100%);
 }
 
 .sidenav a, .sidenav li a {
