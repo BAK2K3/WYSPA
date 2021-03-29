@@ -105,9 +105,10 @@ nav .button-collapse i {
     line-height: 75px;
 }
 
-.github-logo {
+nav i.material-icons.help-trigger {
     vertical-align: middle;
     margin-right: 20px;
+    font-size:30px;
 }
 
 @media only screen and (min-width: 601px){
@@ -768,6 +769,11 @@ textarea.materialize-textarea {
 .page-footer {
     padding-top:5px;
     padding-bottom:5px;
+}
+
+.footer-content a, .footer-content a:hover {
+    color: white;
+    text-decoration: underline;
 }
 
 /********** Media Queries **********/
