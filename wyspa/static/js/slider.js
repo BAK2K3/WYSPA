@@ -1,8 +1,8 @@
 const rangeToMood =
 {
-    "1": ["Negative", "negativeLabel"],
-    "2": ["Neutral", "neuralLabel"],
-    "3": ["Positive", "positiveLabel"]
+    "1": ["Sad", "negativeLabel"],
+    "2": ["Neutral", "neutralLabel"],
+    "3": ["Happy", "positiveLabel"]
 };
 
 const rangeSlider = document.querySelector(".range-field");
