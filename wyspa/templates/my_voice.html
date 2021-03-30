@@ -118,6 +118,77 @@
 
 {% endblock %}
 
+
+{% block helpmodal %}
+<!-- Help Modal for Homepage -->
+<div id="helpModal" class="modal">
+    <div class="row">
+        <div class="modal-content my-voice-help">
+            <h4 class="center">Need some help?</h4>
+
+            <p><strong>This is your voice.</strong></p>
+
+            <p>On this screen you can manage your existing Wyspas, or create new ones.</p>
+
+            <p><strong>Your Wyspas</strong></p>
+
+            <p>For each of your existing Wyspas, you can: </p>
+
+            <ul class="browser-default">
+                <li><i class="material-icons wyspa-button">hearing</i> See how many people have listened to your Wyspa.
+                </li>
+                <li><i class="material-icons">send</i> Visit your Wyspa, to see if anyone has left any comments.</li>
+                <li><i class="material-icons">delete_forever</i> Delete your Wyspa.</li>
+            </ul>
+
+            <p><strong>Create New Wyspa</strong></p>
+
+            <p>To create a new Wyspa, click <strong>Create New Wyspa</strong>, and fill out the following fields:</p>
+
+            <ul class="browser-default">
+                <li><strong>Message</strong>: This is the body of your message; take this opportunity to express
+                    yourself.
+                    <ul class="browser-default">
+                        <li>Please be cautious of the language you use. Wyspa does not implement any censorship as it
+                            beleives in entitlement to self expression, but please
+                            be respectful of others
+                        </li>
+                    </ul>
+                </li>
+                <li><strong>Location</strong>: Enter where abouts you are in the world. </li>
+                <ul class="browser-default">
+                    <li>This information is used to place your Wyspa on the Map; however the geolocation is scrambled
+                        before being saved to the database, so the information stored is random and would not allow
+                        anyone to pinpoint your exact location.
+
+                    </li>
+                    <li>Be as exact or vague as you want with the address, be it full address, city, country, or
+                        postcode. If we're unable to pinpoint the location, try again with a more generic location
+                        (<em>eg. "Leeds, UK"</em>)
+                    </li>
+                </ul>
+                <li><strong>Mood</strong>: Choose the tone of your Wyspa.</li>
+                <ul class="browser-default">
+                    <li>Drag the slider to chose an emotion which represents the tone of your Wyspa: <span
+                            class="negativeLabel">Sad</span>, Neutral, or <span class="positiveLabel">Happy</span>.
+                    </li>
+                    <li>Your selection will impact the colour of the Wyspa's marker on the map.</li>
+                </ul>
+                <li><strong>Expiry Date</strong>: Input the date you would like your Wyspa to expire.</li>
+                <li><strong>Expiry Time</strong>: Input the time you would like your Wyspa to expire.</li>
+            </ul>
+        </div>
+
+        <div class="row footer-modal center">
+            <button class="btn login-button modal-close waves-effect waves-light" type="button">Close<i
+                    class="material-icons right">cancel</i></button>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+
+
 {% block scripts %}
 <script src="{{ url_for('static', filename='js/slider.js') }}"> </script>
 {% endblock %}
