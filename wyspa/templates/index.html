@@ -18,10 +18,13 @@
                         <div class="row">
                             <!-- Express Yourself -->
                             <div class="col s12 m4 center">
-                                <p class="lead white-text text-underline"><strong>Express Yourself</strong></p>
+                                <a href="{{ url_for('messages.my_voice') }}">
+                                    <p class="lead white-text text-underline"><strong>Express Yourself</strong></p>
+                                </a>
                                 <div class="row valign-wrapper flex-nowrap">
                                     <div class="col s6 m12 center">
-                                        <i class="material-icons large white-text">record_voice_over</i>
+                                        <a href="{{ url_for('messages.my_voice') }}"><i
+                                                class="material-icons large white-text">record_voice_over</i></a>
                                     </div>
                                     <div class="col s6 m12 center">
                                         <p class="white-text">Speak your mind, flag your location,
@@ -33,11 +36,14 @@
                             </div>
                             <!-- Support Others -->
                             <div class="col s12 m4 center">
-                                <p class="s6 m12 lead white-text text-underline"><strong>Support Others</strong>
-                                </p>
+                                <a href="{{ url_for('messages.view_message') }}">
+                                    <p class="s6 m12 lead white-text text-underline"><strong>Support Others</strong>
+                                    </p>
+                                </a>
                                 <div class="row valign-wrapper flex-nowrap">
                                     <div class="col s6 push-s6 m12 center">
-                                        <i class="material-icons large white-text">connect_without_contact</i>
+                                        <a href="{{ url_for('messages.view_message') }}"><i
+                                                class="material-icons large white-text">connect_without_contact</i></a>
                                     </div>
                                     <div class="col s6 pull-s6 m12 center card-content-left">
                                         <p class="white-text">Anonymously engage with wyspas, whether that's giving
@@ -48,10 +54,13 @@
                             <div class="row">
                                 <!-- Listen Globally -->
                                 <div class="col s12 m4 center">
-                                    <p class="lead white-text text-underline"><strong>Listen Globally</strong></p>
+                                    <a href="{{ url_for('maps.map_overview') }}">
+                                        <p class="lead white-text text-underline"><strong>Listen Globally</strong></p>
+                                    </a>
                                     <div class="row valign-wrapper flex-nowrap">
                                         <div class="col s6 m12 center">
-                                            <i class="material-icons large white-text">travel_explore</i>
+                                            <a href="{{ url_for('maps.map_overview') }}"><i
+                                                    class="material-icons large white-text">travel_explore</i></a>
                                         </div>
                                         <div class="col s6 m12 center">
                                             <p class="white-text">See a live map of the wyspas heard
