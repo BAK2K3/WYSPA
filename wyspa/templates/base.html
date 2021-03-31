@@ -198,31 +198,44 @@
             </div>
         </div>
 
-        {% block helpmodal %}
-        {% endblock %}
+        <!-- Help Modal  -->
 
-        <!-- Materialize JS Import -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+        <div id="helpModal" class="modal">
+            <div class="row">
+                <div class="modal-content my-voice-help">
 
-        <!-- Javascript Initialisation Import -->
-        <script src="{{ url_for('static', filename='js/init.js', _scheme='https', _external=True) }}"> </script>
+                    {% block helpmodal %}
+                    {% endblock %}
+                </div>
+                <div class="row footer-modal center">
+                    <button class="btn login-button modal-close waves-effect waves-light" type="button">Close<i
+                            class="material-icons right">cancel</i></button>
 
-        <!-- Javascript custom Toast Script Import -->
-        <script src="{{ url_for('static', filename='js/toasts.js', _scheme='https', _external=True) }}"> </script>
+                </div>
+            </div>
 
-        <!-- Javascript custom Validation Script Import -->
-        <script src="{{ url_for('static', filename='js/validate.js', _scheme='https', _external=True) }}"> </script>
+            <!-- Materialize JS Import -->
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
-        <!-- https://stackoverflow.com/questions/15321431/how-to-pass-a-list-from-python-by-jinja2-to-javascript -->
-        <!-- Flash Messages -->
-        {% with messages = get_flashed_messages() %}
-        {% if messages %}
-        <script>displayToast({{ messages| tojson | safe}})</script>
-        {%endif%}
-        {%endwith%}
+            <!-- Javascript Initialisation Import -->
+            <script src="{{ url_for('static', filename='js/init.js', _scheme='https', _external=True) }}"> </script>
 
-        {% block scripts %}
-        {% endblock %}
+            <!-- Javascript custom Toast Script Import -->
+            <script src="{{ url_for('static', filename='js/toasts.js', _scheme='https', _external=True) }}"> </script>
+
+            <!-- Javascript custom Validation Script Import -->
+            <script src="{{ url_for('static', filename='js/validate.js', _scheme='https', _external=True) }}"> </script>
+
+            <!-- https://stackoverflow.com/questions/15321431/how-to-pass-a-list-from-python-by-jinja2-to-javascript -->
+            <!-- Flash Messages -->
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+            <script>displayToast({{ messages| tojson | safe}})</script>
+            {%endif%}
+            {%endwith%}
+
+            {% block scripts %}
+            {% endblock %}
 
     </body>
 
