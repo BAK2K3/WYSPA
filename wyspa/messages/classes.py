@@ -43,9 +43,15 @@ class Wyspa():
 
     @classmethod
     def get_by_id(cls, _id):
-        data = mongo.db.messages.find_one({"_id": ObjectId(_id)})
-        if data != []:
-            return cls(**data)
+
+        if ObjectId.is_valid(_id):
+            data = mongo.db.messages.find_one({"_id": ObjectId(_id)})
+            if data is not None:
+                return cls(**data)
+            else:
+                return False
+        else:
+            return False
 
     @classmethod
     def get_by_user(cls, username):
