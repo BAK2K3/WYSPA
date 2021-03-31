@@ -1,4 +1,5 @@
 import os
+
 from wyspa import app
 if os.path.exists("env.py"):
     import env
