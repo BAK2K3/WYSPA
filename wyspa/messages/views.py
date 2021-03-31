@@ -72,6 +72,7 @@ def create_wyspa():
 
 # Add comment to existing Wyspa
 @ messages.route('/add_comment/<message_id>', methods=["GET", "POST"])
+@ login_required
 def add_comment(message_id):
 
     if request.method == "POST":
@@ -95,6 +96,7 @@ def add_comment(message_id):
 # Remove comment from existing Wyspa
 @ messages.route('/remove_comment/<message_id>/<comment_id>',
                  methods=["GET", "POST"])
+@ login_required
 def remove_comment(message_id, comment_id):
 
     retrieved_wyspa = Wyspa.get_by_id(message_id)
@@ -143,6 +145,7 @@ def remove_wyspa(message_id):
 
 # Control center for My Voice hub
 @ messages.route('/message_control/<message_id>', methods=["GET", "POST"])
+@ login_required
 def message_control(message_id):
     if request.method == "POST":
         # Navigation for deletion
