@@ -1,4 +1,5 @@
 from bson.objectid import ObjectId
+
 from wyspa.factory.initialisation import mongo
 
 
