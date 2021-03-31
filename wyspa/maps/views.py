@@ -1,6 +1,9 @@
-from flask import render_template, Blueprint
-from wyspa.messages.classes import Wyspa
 import os
+
+from flask import render_template, Blueprint
+
+from wyspa.messages.classes import Wyspa
+
 
 GMAPS_API = os.environ.get("GMAPS_API")
 
