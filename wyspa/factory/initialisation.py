@@ -22,6 +22,8 @@ def create_app():
     app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
     app.config["PREFERRED_URL_SCHEME"] = "https"
     app.config["TESTING"] = False
+    app.jinja_env.trim_blocks = True
+    app.jinja_env.lstrip_blocks = True
     app.secret_key = os.environ.get("SECRET_KEY")
     app.static_folder = os.path.abspath("wyspa/static")
 
