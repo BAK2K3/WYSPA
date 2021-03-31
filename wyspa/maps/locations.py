@@ -1,5 +1,6 @@
-from geopy.geocoders import Nominatim
 from random import uniform
+
+from geopy.geocoders import Nominatim
 
 
 def location_to_latlong(user_location):
