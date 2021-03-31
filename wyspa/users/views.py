@@ -1,8 +1,9 @@
 from flask import render_template, Blueprint, request, redirect, flash, url_for
 from flask_login import LoginManager, login_user, logout_user, current_user
 from werkzeug.security import generate_password_hash, check_password_hash
+
 from wyspa.factory.initialisation import mongo
-from .classes import User
+from wyspa.users.classes import User
 
 
 # Configure Blueprint for user route
