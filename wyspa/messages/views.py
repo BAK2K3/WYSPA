@@ -1,8 +1,10 @@
+from datetime import datetime
+
 from flask import render_template, Blueprint, request, redirect, url_for, flash
 from flask_login import current_user, login_required
-from .classes import Wyspa
+
+from wyspa.messages.classes import Wyspa
 from wyspa.maps.locations import location_to_latlong
-from datetime import datetime
 
 
 # Configure Blueprint for core route
