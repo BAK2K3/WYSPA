@@ -19,9 +19,11 @@ def view_message(message_id):
     # Return random message unless specified
     if message_id:
         message_entry = Wyspa.get_by_id(message_id)
+        if not message_entry:
+            flash("Oops! We couldn't find the requested Wyspa!")
+            return redirect(url_for("messages.view_message"))
     else:
         message_entry = Wyspa.get_random_wyspa()
-
     return render_template('messages.html', message_entry=message_entry)
 
 
