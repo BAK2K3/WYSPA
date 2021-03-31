@@ -1,5 +1,8 @@
+import re
+
 from flask import render_template, Blueprint, request, redirect, flash, url_for
-from flask_login import LoginManager, login_user, logout_user, current_user
+from flask_login import (LoginManager, login_user,
+                         logout_user, current_user, login_required)
 from werkzeug.security import generate_password_hash, check_password_hash
 
 from wyspa.factory.initialisation import mongo
@@ -28,6 +31,17 @@ def load_user(username):
 def register():
     if request.method == "POST":
 
+        # Verify user password
+        user_password = request.form.get("passwordRegister")
+        password_confirmation = request.form.get("passwordConfirm")
+        if not re.search("^(?=.*[^a-zA-Z]).{6,20}$", user_password):
+            flash("Password format incorrect!")
+            return render_template("index.html")
+
+        if user_password != password_confirmation:
+            flash("Passwords do not match!")
+            return render_template("index.html")
+
         # check if username already exists in DB
         username_check = mongo.db.users.find_one(
             {"username": request.form.get("usernameRegister").lower()})
@@ -40,8 +54,7 @@ def register():
         # Create a registration dictionary
         registration = {
             "username": request.form.get("usernameRegister").lower(),
-            "password": generate_password_hash(
-                request.form.get("passwordRegister"))
+            "password": generate_password_hash(user_password)
         }
 
         # Update DB with registration dictionary
@@ -56,7 +69,7 @@ def register():
         return redirect(url_for("messages.my_voice"))
 
 
-@users.route('/login', methods=['GET', 'POST'])
+@ users.route('/login', methods=['GET', 'POST'])
 def login():
     if current_user.is_authenticated:
         return redirect(url_for('core.index'))
@@ -85,7 +98,8 @@ def login():
     return render_template("index.html")
 
 
-@users.route('/logout')
+@ users.route('/logout')
+@ login_required
 def logout():
     logout_user()
     return redirect(url_for('users.login'))
