@@ -39,7 +39,7 @@
             <ul class="collapsible">
                 <li>
                     <div class="collapsible-header card-panel center white-text">
-                        Comments<i class="material-icons right">chat_bubble_outline</i>
+                        Comments <i class="material-icons">chat_bubble_outline</i>
                     </div>
                     <!-- Comments  -->
                     <div class="collapsible-body">
@@ -70,7 +70,7 @@
                                             {# Grab the author and comment for the comment #}
                                             {% for comment_author, comment in entry.items() %}
 
-                                            {{comment}}
+                                            {{ comment }}
 
                                         </div>
 
@@ -92,10 +92,14 @@
 
                                 {% endfor %}
 
-                                <!-- Comment Box -->
+
+                                {# Only add comment box if user is logged in #}
+                                {% if current_user.is_authenticated %}
 
                                 {# Find out how long the comments section is to determine which way to place "add comment" Speech bubble #}
                                 {% if (message_entry.comments|length%2) == 0 %}
+
+                                <!-- Comment Box -->
                                 <div class="col s8">
                                     <div class="speech-bubble comment-box left-arrow">
 
@@ -123,7 +127,10 @@
                                                 </form>
                                             </div>
                                         </div>
+                                        {% endif %}
+
                                     </div>
+
                 </li>
             </ul>
         </div>
