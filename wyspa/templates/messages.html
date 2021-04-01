@@ -69,7 +69,7 @@
                                             {{ comment -}}
                                         </div>
                                         {# Check to see whether current user is author for comment deletion#}
-                                        {% if current_user.username == comment_author %}
+                                        {% if current_user.username == comment_author or current_user.username == message_entry.author %}
                                         <!-- Comment Deletion -->
                                         <div class="delete-comment-panel">
                                             <a href="{{url_for('messages.remove_comment', message_id=message_entry._id, comment_id=outer_loop.index)}}"
@@ -145,15 +145,15 @@
 
 <p><strong>Listen to or comment on a random Wyspa</strong></p>
 
-<p>Each time you visit this page, a random Wyspa will be presented. Refresh the page, click the Wyspas link
-    again, to be shown a new random Wyspa.</p>
+<p>Each time you visit this page, a random Wyspa will be presented. Refresh the page, or click the Wyspas link
+    again, to be shown a new random Wyspa. If this is your Wyspa, you can also edit it from this page.</p>
 
 <p>To acknowledge you've listened to a Wyspa, interact with the <strong>listen</strong> icon: <i
         class="material-icons">hearing</i>. However, you must be logged in to do this.
     You can listen to your own Wyspa, because if you can't listen to yourself, who can you listen to?
 </p>
 
-<p>Each Wyspa can only be listened to once per user. For every listen a Wyspa receives, it's marker grows on
+<p>Each Wyspa can only be listened to once per user. For every listen a Wyspa receives, its marker grows on
     the map. So the more listens a Wyspa receives,
     the more it is heard.</p>
 
@@ -161,8 +161,8 @@
     other
     with as little context as possible.</p>
 
-<p>Anyone can comment on Wyspas. For logged in users, you may delete your own comments. Owners of
-    the Wyspa also have the ability to delete comments. Remember that WYSPA doesn't believe in censorship,
+<p> Logged in users may comment on a Wyspa. Commenters can delete their own comments, along with the owners of the
+    Wyspa. Remember that WYSPA doesn't believe in censorship,
     so it's down to you to respect yourself and each
     other.</p>
 
