@@ -5,7 +5,7 @@ const rangeToMood =
     "3": ["Happy", "positiveLabel"]
 };
 
-const rangeSlider = document.querySelector(".range-field");
+const rangeSlider = document.querySelector("input#mood");
 const thumbValue = document.querySelector(".range-field span.thumb span.value");
 const rangeLabel = document.querySelector("label[for='mood'] span");
 
@@ -15,3 +15,8 @@ rangeSlider.addEventListener("change", function () {
     rangeLabel.innerHTML = rangeToMood[thumbValue.innerText][0];
 
 });
+
+window.onload = function () {
+    thumbValue.innerHTML = rangeSlider.value;
+    rangeSlider.dispatchEvent(new Event("change"));
+};
