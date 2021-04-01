@@ -9,21 +9,32 @@ from flask_pymongo import PyMongo
 if os.path.exists("env.py"):
     import env
 
-# https://stackoverflow.com/questions/48653120/flask-pymongo-with-application-factory-and-blueprints
 
+# Instantiate Mongo Database
 mongo = PyMongo()
 
 
+# https://github.com/yymm/flask-vuejs
+class CustomFlask(Flask):
+
+    jinja_options = Flask.jinja_options.copy()
+    jinja_options.update(dict(
+        trim_blocks=True,
+        lstrip_blocks=True
+    ))
+
+
+# https://stackoverflow.com/questions/48653120/flask-pymongo-with-application-factory-and-blueprints
 def create_app():
-    app = Flask(__name__, instance_relative_config=False,
-                template_folder=os.path.abspath("wyspa/templates"))
+
+    app = CustomFlask(__name__)
 
     app.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME")
     app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
     app.config["PREFERRED_URL_SCHEME"] = "https"
     app.config["TESTING"] = False
-    app.jinja_env.trim_blocks = True
-    app.jinja_env.lstrip_blocks = True
+
+    app.template_folder = os.path.abspath("wyspa/templates")
     app.secret_key = os.environ.get("SECRET_KEY")
     app.static_folder = os.path.abspath("wyspa/static")
 
