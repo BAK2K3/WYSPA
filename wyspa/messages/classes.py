@@ -6,7 +6,8 @@ from wyspa.factory.initialisation import mongo
 # Create a class for WYSPAs
 class Wyspa():
     def __init__(self, author, message, mood, location,
-                 expiry=None, comments=[], listens=[], listenCount=0, _id=None):
+                 expiry=None, comments=[], listens=[],
+                 listenCount=0, _id=None):
         self._id = _id
         self.author = author
         self.message = message
@@ -26,7 +27,16 @@ class Wyspa():
         return info
 
     def write_wyspa(self):
+        print(self.get_info())
         mongo.db.messages.insert_one(self.get_info())
+
+    def edit_wyspa(self, message, mood, location, expiry):
+        print(self.get_info())
+        self.message = message
+        self.mood = mood
+        self.location = location
+        self.expiry = expiry
+        mongo.db.messages.update({"_id": ObjectId(self._id)}, self.get_info())
 
     def remove_comment(self, index):
         self.comments.pop(index)
