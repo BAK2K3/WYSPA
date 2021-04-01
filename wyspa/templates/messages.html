@@ -17,7 +17,12 @@
                         </div>
                         <!-- Wyspa Count -->
                         <div class="col s12 center wyspa-count">
-                            <span> {{ message_entry.listens|length }} </span>
+                            {%if current_user.username == message_entry.author%}
+                            <a href="{{url_for('messages.edit_wyspa', message_id=message_entry._id)}}"
+                                class="wyspa-button comment-delete"><i class="material-icons tooltipped"
+                                    data-position="left" data-tooltip="Edit your Wyspa">edit</i></a>
+                            {%endif%}
+                            <span class="listener-count"> {{ message_entry.listens|length }} </span>
                             <a href="{{url_for('messages.add_listen', message_id=message_entry._id, listener=current_user.username)}}"
                                 class="wyspa-button comment-delete"><i class="material-icons tooltipped"
                                     data-position="right" data-tooltip="Acknowledge you've listened">hearing</i></a>
@@ -38,16 +43,12 @@
                     </div>
                     <!-- Comments  -->
                     <div class="collapsible-body">
-
                         {% if (message_entry.comments | length == 0) and (not current_user.is_authenticated) %}
                         <div class="col s10 offset-s1 speech-bubble empty-comments">There are no comments on this Wyspa
                             yet! Why
                             not long in
                             and leave your own?</div>
                         {% else %}
-
-
-
                         {# For each comment in the message #}
                         {% for entry in message_entry.comments %}
                         {# https://stackoverflow.com/questions/1567291/get-loop-index-of-outer-loop #}
