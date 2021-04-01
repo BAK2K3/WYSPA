@@ -633,13 +633,14 @@ textarea.materialize-textarea {
 /* Overriding Textinput CSS without using Important */
 /* https://stackoverflow.com/questions/37127123/change-color-of-underline-input-and-label-in-materialize-css-framework */
 
+
 /* Inactive/Active Default input field color */
-.message-field.input-field input[type]:not([readonly]),
-.message-field.input-field input[type]:focus:not([readonly]),
-.message-field.input-field input:not([readonly]),
-.message-field.input-field input:focus:not([readonly]),
-.message-field.input-field textarea:not([readonly]),
-.message-field.input-field textarea:focus:not([readonly]) {
+.message-field.input-field input[type],
+.message-field.input-field input[type]:focus,
+.message-field.input-field input,
+.message-field.input-field input:focus,
+.message-field.input-field textarea,
+.message-field.input-field textarea:focus {
     border-bottom: 1px solid white;
     -webkit-box-shadow: 0 1px 0 0 white;
             box-shadow: 0 1px 0 0 white;
