@@ -1,6 +1,5 @@
 {% extends "base.html" %}
 {% set active_page = "view_message" %}
-
 {% block content %}
 <!-- Message -->
 <section class="message">
@@ -13,10 +12,7 @@
                     <div class="row no-margin">
                         <!-- Message Body -->
                         <div class="col s12 center wyspa-container">
-
                             {% if message_entry %}
-
-
                             <em>"{{ message_entry.message }}"</em>
                         </div>
                         <!-- Wyspa Count -->
@@ -31,7 +27,6 @@
             </div>
         </div>
     </div>
-
     <!-- Comments  -->
     <div class="container row center">
         <div class="col s12">
@@ -43,40 +38,27 @@
                     </div>
                     <!-- Comments  -->
                     <div class="collapsible-body">
-
                         {# For each comment in the message #}
                         {% for entry in message_entry.comments %}
-
                         {# https://stackoverflow.com/questions/1567291/get-loop-index-of-outer-loop #}
                         {% set outer_loop = loop %}
-
                         {# Check the index for speech bubble positioning #}
                         {% if loop.index%2 == 0 %}
-
                         <!-- Right Comment -->
                         <div class="col s8 offset-s4">
                             <div class="speech-bubble right-arrow">
-
                                 {% else %}
-
                                 <!-- left Comment -->
                                 <div class="col s8">
                                     <div class="speech-bubble left-arrow">
-
                                         {% endif %}
-
                                         <div class="comment-text">
-
                                             {# Grab the author and comment for the comment #}
                                             {% for comment_author, comment in entry.items() %}
-
-                                            {{ comment }}
-
+                                            {{ comment -}}
                                         </div>
-
                                         {# Check to see whether current user is author for comment deletion#}
                                         {% if current_user.username == comment_author %}
-
                                         <!-- Comment Deletion -->
                                         <div class="delete-comment-panel">
                                             <a href="{{url_for('messages.remove_comment', message_id=message_entry._id, comment_id=outer_loop.index)}}"
@@ -87,26 +69,18 @@
                                         {%endif%}
                                     </div>
                                 </div>
-
                                 {% endfor %}
-
                                 {% endfor %}
-
-
                                 {# Only add comment box if user is logged in #}
                                 {% if current_user.is_authenticated %}
-
                                 {# Find out how long the comments section is to determine which way to place "add comment" Speech bubble #}
                                 {% if (message_entry.comments|length%2) == 0 %}
-
                                 <!-- Comment Box -->
                                 <div class="col s8">
                                     <div class="speech-bubble comment-box left-arrow">
-
                                         {% else %}
                                         <div class="col s8 push-s4">
                                             <div class="speech-bubble comment-box right-arrow">
-
                                                 {% endif %}
                                                 <!-- Comment Form -->
                                                 <form method="POST"
@@ -128,9 +102,7 @@
                                             </div>
                                         </div>
                                         {% endif %}
-
                                     </div>
-
                 </li>
             </ul>
         </div>
