@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+{% set active_page = "my_voice" %}
+
+{% block content %}
+
+<section class="my-voice">
+    <div class="container row">
+        <div class="col s12">
+            <!-- Card Panel -->
+            <div class="card-panel z-depth-5 white-text center">
+                <h2>Edit Wyspa</h2>
+            </div>
+        </div>
+    </div>
+
+    <div class="row container">
+        <div class="col s12 container">
+            <!-- Edit Form -->
+            <form method="POST" action="{{url_for('messages.edit_wyspa', message_id=retrieved_wyspa._id)}}"
+                autocomplete="off">
+                <div class="speech-bubble comment-box">
+                    <!-- Text -->
+                    <div class="input-field message-field col s12">
+                        <textarea id="wyspaContent" name="wyspaContent" class="materialize-textarea validate"
+                            required>{{retrieved_wyspa.message}}</textarea>
+                        <label class="active" for="wyspaContent">Your Wyspa</label>
+                    </div>
+                    <!-- Location -->
+                    <div class="input-field message-field col s12 m4">
+                        <input id="location" name="location" type="text" class="validate" required>
+                        <label for="location">Location</label>
+                    </div>
+                    <!-- Mood -->
+                    <div class="slider-field col s12 m4">
+                        <label for="mood">Mood: <span class="neutralLabel">Neutral</span></label>
+                        <p class="range-field">
+                            <input type="range" id="mood" name="mood" min="1" max="3"
+                                value="{{retrieved_wyspa.mood}}" />
+                        </p>
+                    </div>
+                    <!-- Date Picker -->
+                    <div class="input-field message-field date-field col s6 m2">
+                        <input id="expiryDate" name="expiryDate" type="text" class="datepicker validate" readonly
+                            required>
+                        <label for="expiryDate">Expiry Date</label>
+                    </div>
+                    <!-- Time Picker -->
+                    <div class="input-field message-field date-field col s6 m2">
+                        <input id="expiryTime" name="expiryTime" type="text" class="timepicker validate" readonly
+                            required>
+                        <label for="expiryTime">Expiry Time</label>
+                    </div>
+                    <!-- Submit -->
+                    <div class="col s12 submit-col">
+                        <button class="btn add-comment waves-effect" type="submit" name="action">Confirm
+                            <i class="material-icons right">comment</i>
+                        </button>
+                        <a class="btn add-comment waves-effect"
+                            href="{{url_for('messages.view_message', message_id=retrieved_wyspa._id)}}">Cancel
+                            <i class="material-icons right">do_not_disturb_alt</i></a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+
+{% block helpmodal %}
+<!-- Help Modal for Edit Message -->
+<h4 class="center">Edit</h4>
+<p>Made a typo? Want to change the expiry of your Wyspa? Then don't fret.</p>
+<p>While your message is retained, due to how your location is stored and scrambled you have to re-set it if you want to
+    edit your Wyspa.</p>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/slider.js') }}"> </script>
+{% endblock %}
