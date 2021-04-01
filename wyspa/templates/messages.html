@@ -33,11 +33,21 @@
             <!-- Collapsable Header -->
             <ul class="collapsible">
                 <li>
-                    <div class="collapsible-header card-panel center white-text">
-                        Comments <i class="material-icons">chat_bubble_outline</i>
+                    <div class="collapsible-header card-panel center white-text">Comments <i
+                            class="material-icons">chat_bubble_outline</i>
                     </div>
                     <!-- Comments  -->
                     <div class="collapsible-body">
+
+                        {% if (message_entry.comments | length == 0) and (not current_user.is_authenticated) %}
+                        <div class="col s10 offset-s1 speech-bubble empty-comments">There are no comments on this Wyspa
+                            yet! Why
+                            not long in
+                            and leave your own?</div>
+                        {% else %}
+
+
+
                         {# For each comment in the message #}
                         {% for entry in message_entry.comments %}
                         {# https://stackoverflow.com/questions/1567291/get-loop-index-of-outer-loop #}
@@ -101,6 +111,7 @@
                                                 </form>
                                             </div>
                                         </div>
+                                        {% endif %}
                                         {% endif %}
                                     </div>
                 </li>
