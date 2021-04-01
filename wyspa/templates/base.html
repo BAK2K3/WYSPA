@@ -213,29 +213,30 @@
 
                 </div>
             </div>
+        </div>
 
-            <!-- Materialize JS Import -->
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+        <!-- Materialize JS Import -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
-            <!-- Javascript Initialisation Import -->
-            <script src="{{ url_for('static', filename='js/init.js', _scheme='https', _external=True) }}"> </script>
+        <!-- Javascript Initialisation Import -->
+        <script src="{{ url_for('static', filename='js/init.js', _scheme='https', _external=True) }}"> </script>
 
-            <!-- Javascript custom Toast Script Import -->
-            <script src="{{ url_for('static', filename='js/toasts.js', _scheme='https', _external=True) }}"> </script>
+        <!-- Javascript custom Toast Script Import -->
+        <script src="{{ url_for('static', filename='js/toasts.js', _scheme='https', _external=True) }}"> </script>
 
-            <!-- Javascript custom Validation Script Import -->
-            <script src="{{ url_for('static', filename='js/validate.js', _scheme='https', _external=True) }}"> </script>
+        <!-- Javascript custom Validation Script Import -->
+        <script src="{{ url_for('static', filename='js/validate.js', _scheme='https', _external=True) }}"> </script>
 
-            <!-- https://stackoverflow.com/questions/15321431/how-to-pass-a-list-from-python-by-jinja2-to-javascript -->
-            <!-- Flash Messages -->
-            {% with messages = get_flashed_messages() %}
-            {% if messages %}
-            <script>displayToast({{ messages| tojson | safe}})</script>
-            {%endif%}
-            {%endwith%}
+        <!-- https://stackoverflow.com/questions/15321431/how-to-pass-a-list-from-python-by-jinja2-to-javascript -->
+        <!-- Flash Messages -->
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <script>displayToast({{ messages| tojson | safe}})</script>
+        {%endif%}
+        {%endwith%}
 
-            {% block scripts %}
-            {% endblock %}
+        {% block scripts %}
+        {% endblock %}
 
     </body>
 
