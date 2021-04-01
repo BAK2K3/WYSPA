@@ -145,6 +145,61 @@ def remove_wyspa(message_id):
         return redirect(url_for("messages.my_voice"))
 
 
+# Edit WYSPA
+@ messages.route('/edit_wyspa/<message_id>', methods=["GET", "POST"])
+@ login_required
+def edit_wyspa(message_id):
+
+    # Retreive WYSPA
+    retrieved_wyspa = Wyspa.get_by_id(message_id)
+    if not retrieved_wyspa:
+        flash("We couldn't find that Wyspa!")
+        return redirect(url_for("messages.my_voice"))
+
+    # Verify the owner of wyspa is trying to edit it
+    if retrieved_wyspa.author != current_user.username:
+        flash("You can't edit someone elses Wyspa!")
+        return redirect(url_for("messages.my_voice"))
+
+        # Post View
+    if request.method == "POST":
+
+        # Extract Date from form
+        expiry_date = request.form.get("expiryDate")
+        expiry_time = request.form.get("expiryTime")
+        date_string = expiry_date + " " + expiry_time
+        date_format = "%d-%m-%Y %H:%M"
+        formatted_expiry = datetime.strptime(date_string, date_format)
+
+        # Ensure expiry date is in the future
+        if formatted_expiry < datetime.now():
+            flash("Expiry must be in the future!")
+            return render_template("edit_wyspa.html",
+                                   retrieved_wyspa=retrieved_wyspa)
+
+        # Try and convert the address to latlong
+        try:
+            converted_location = location_to_latlong(
+                request.form.get("location"))
+        except Exception as e:
+            print(e)
+            flash("Unable to locate address!")
+            return render_template("edit_wyspa.html",
+                                   retrieved_wyspa=retrieved_wyspa)
+
+        # Call edit function
+        retrieved_wyspa.edit_wyspa(message=request.form.get("wyspaContent"),
+                                   mood=int(request.form.get("mood")),
+                                   location=converted_location,
+                                   expiry=formatted_expiry)
+
+        flash("Wyspa Updated!")
+        return redirect(url_for("messages.my_voice"))
+
+    # Get view
+    return render_template('edit_wyspa.html', retrieved_wyspa=retrieved_wyspa)
+
+
 # Control center for My Voice hub
 @ messages.route('/message_control/<message_id>', methods=["GET", "POST"])
 @ login_required
