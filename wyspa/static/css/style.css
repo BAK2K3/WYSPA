@@ -554,6 +554,11 @@ button.month-next:focus, button.month-prev:focus {
     font-weight: 400;
 }
 
+.listener-count {
+    padding-left:5px;
+    padding-right:5px;
+}
+
 /* https://codingislove.com/css-speech-bubbles/ */
 .speech-bubble {
   background: rgba(0, 0, 0, 0.7);
