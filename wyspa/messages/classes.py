@@ -27,11 +27,9 @@ class Wyspa():
         return info
 
     def write_wyspa(self):
-        print(self.get_info())
         mongo.db.messages.insert_one(self.get_info())
 
     def edit_wyspa(self, message, mood, location, expiry):
-        print(self.get_info())
         self.message = message
         self.mood = mood
         self.location = location
