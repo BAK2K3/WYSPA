@@ -1,4 +1,7 @@
+from random import uniform
 from bson.objectid import ObjectId
+
+from geopy.geocoders import Nominatim
 
 from wyspa.factory.initialisation import mongo
 
@@ -51,7 +54,6 @@ class Wyspa():
 
     @classmethod
     def get_by_id(cls, _id):
-
         if ObjectId.is_valid(_id):
             data = mongo.db.messages.find_one({"_id": ObjectId(_id)})
             if data is not None:
@@ -91,6 +93,14 @@ class Wyspa():
     @staticmethod
     def delete_wyspa(_id):
         mongo.db.messages.remove({"_id": ObjectId(_id)})
+
+    @staticmethod
+    def location_to_latlong(user_location):
+        geolocator = Nominatim(user_agent="WYSPA")
+        location = geolocator.geocode(user_location)
+        latlong = {"lat": location.latitude + (round(uniform(0.1, -0.1), 10)),
+                   "lng": location.longitude + (round(uniform(0.1, -0.1), 10))}
+        return latlong
 
     @staticmethod
     def wyspa_to_map(wyspas):
