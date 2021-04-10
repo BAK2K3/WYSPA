@@ -1,5 +1,6 @@
 from random import uniform
 from bson.objectid import ObjectId
+from datetime import datetime
 
 from geopy.geocoders import Nominatim
 
@@ -101,6 +102,19 @@ class Wyspa():
         latlong = {"lat": location.latitude + (round(uniform(0.1, -0.1), 10)),
                    "lng": location.longitude + (round(uniform(0.1, -0.1), 10))}
         return latlong
+
+    @staticmethod
+    def string_to_datetime(expiry_date, expiry_time):
+        # Format date-time
+        date_string = expiry_date + " " + expiry_time
+        date_format = "%d-%m-%Y %H:%M"
+        formatted_expiry = datetime.strptime(date_string, date_format)
+
+        # Ensure expiry date is in the future
+        if formatted_expiry < datetime.now():
+            return False
+        else:
+            return formatted_expiry
 
     @staticmethod
     def wyspa_to_map(wyspas):
