@@ -4,7 +4,6 @@ from flask import render_template, Blueprint, request, redirect, url_for, flash
 from flask_login import current_user, login_required
 
 from wyspa.messages.classes import Wyspa
-from wyspa.maps.locations import location_to_latlong
 
 
 # Configure Blueprint for core route
@@ -55,7 +54,8 @@ def create_wyspa():
 
     # Try and convert the address to latlong
     try:
-        converted_location = location_to_latlong(request.form.get("location"))
+        converted_location = Wyspa.location_to_latlong(
+            request.form.get("location"))
     except Exception as e:
         print(e)
         flash("Unable to locate address!")
@@ -96,8 +96,8 @@ def add_comment(message_id):
 
 
 # Remove comment from existing Wyspa
-@ messages.route('/remove_comment/<message_id>/<comment_id>',
-                 methods=["GET", "POST"])
+@messages.route('/remove_comment/<message_id>/<comment_id>',
+                methods=["GET", "POST"])
 @ login_required
 def remove_comment(message_id, comment_id):
 
@@ -179,7 +179,7 @@ def edit_wyspa(message_id):
 
         # Try and convert the address to latlong
         try:
-            converted_location = location_to_latlong(
+            converted_location = Wyspa.location_to_latlong(
                 request.form.get("location"))
         except Exception as e:
             print(e)
