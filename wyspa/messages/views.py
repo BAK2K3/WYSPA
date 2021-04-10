@@ -1,5 +1,3 @@
-from datetime import datetime
-
 from flask import render_template, Blueprint, request, redirect, url_for, flash
 from flask_login import current_user, login_required
 
@@ -40,15 +38,13 @@ def my_voice():
 @ login_required
 def create_wyspa():
 
-    # Extract Date from form
-    expiry_date = request.form.get("expiryDate")
-    expiry_time = request.form.get("expiryTime")
-    date_string = expiry_date + " " + expiry_time
-    date_format = "%d-%m-%Y %H:%M"
-    formatted_expiry = datetime.strptime(date_string, date_format)
+    # Convert datetime
+    formatted_expiry = Wyspa.string_to_datetime(
+            expiry_date=request.form.get("expiryDate"),
+            expiry_time=request.form.get("expiryTime"))
 
-    # Ensure expiry date is in the future
-    if formatted_expiry < datetime.now():
+    # If the formatted_expiry fails
+    if not formatted_expiry:
         flash("Expiry must be in the future!")
         return redirect(url_for("messages.my_voice"))
 
@@ -164,15 +160,13 @@ def edit_wyspa(message_id):
         # Post View
     if request.method == "POST":
 
-        # Extract Date from form
-        expiry_date = request.form.get("expiryDate")
-        expiry_time = request.form.get("expiryTime")
-        date_string = expiry_date + " " + expiry_time
-        date_format = "%d-%m-%Y %H:%M"
-        formatted_expiry = datetime.strptime(date_string, date_format)
+        # Convert datetime
+        formatted_expiry = Wyspa.string_to_datetime(
+            expiry_date=request.form.get("expiryDate"),
+            expiry_time=request.form.get("expiryTime"))
 
-        # Ensure expiry date is in the future
-        if formatted_expiry < datetime.now():
+        # If the formatted_expiry fails
+        if not formatted_expiry:
             flash("Expiry must be in the future!")
             return render_template("edit_wyspa.html",
                                    retrieved_wyspa=retrieved_wyspa)
