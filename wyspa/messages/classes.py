@@ -104,7 +104,6 @@ class Wyspa():
 
     @staticmethod
     def wyspa_to_map(wyspas):
-        print(wyspas)
         if wyspas is not None:
             prepared_data = []
             for wyspa in wyspas:
