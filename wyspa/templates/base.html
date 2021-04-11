@@ -12,6 +12,10 @@
     <!-- Materialize CSS Import -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
+    <!-- Alertify css -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/alertify.css', _scheme='https', _external=True) }}"
+    type="text/css">
+
     <!-- local css -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css', _scheme='https', _external=True) }}"
         type="text/css">
@@ -227,11 +231,19 @@
         <!-- Javascript custom Validation Script Import -->
         <script src="{{ url_for('static', filename='js/validate.js', _scheme='https', _external=True) }}"> </script>
 
+        <!-- Alertify JS Import -->
+        <script src="{{ url_for('static', filename='js/alertify.min.js', _scheme='https', _external=True) }}"> </script>
+
+        <!-- Custom Alert Import -->
+        <script src="{{ url_for('static', filename='js/alerts.js', _scheme='https', _external=True) }}"> </script>
+
         <!-- https://stackoverflow.com/questions/15321431/how-to-pass-a-list-from-python-by-jinja2-to-javascript -->
         <!-- Flash Messages -->
         {% with messages = get_flashed_messages() %}
         {% if messages %}
-        <script>displayToast({{ messages| tojson | safe}})</script>
+        <script>
+            displayToast({{ messages | tojson | safe }})
+        </script>
         {%endif%}
         {%endwith%}
 
