@@ -3,15 +3,17 @@
 function confirm(event) {
   var evt = event;
   event.preventDefault();
-  alertify.confirm("Are you sure you want to delete?", function (e) {
-    if (e) {
-      console.log(evt);
-      evt.target.submit();
-      return true;
-    } else {
-      return false;
-    }
-  });
+  alertify
+    .confirm("Are you sure you want to delete this?", function (e) {
+      if (e) {
+        evt.target.submit();
+        return true;
+      } else {
+        return false;
+      }
+    })
+    .set({ title: "Warning!" })
+    .set({ labels: { ok: "Confirm", cancel: "Back" } });
 }
 
 // https://stackoverflow.com/questions/19655189/javascript-click-event-listener-on-class
