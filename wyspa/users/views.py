@@ -2,7 +2,7 @@ import re
 
 from flask import render_template, Blueprint, request, redirect, flash, url_for
 from flask_login import (LoginManager, login_user,
-                         logout_user, current_user, login_required)
+                         logout_user, current_user)
 from werkzeug.security import generate_password_hash, check_password_hash
 
 from wyspa.factory.initialisation import mongo
@@ -29,6 +29,12 @@ def load_user(username):
 # Register Route
 @ users.route("/register", methods=["GET", "POST"])
 def register():
+
+    # Check if user is already logged in
+    if current_user.is_authenticated:
+        flash("You are already logged in!")
+        return redirect(url_for("core.index"))
+
     if request.method == "POST":
 
         # Verify user password
@@ -67,6 +73,9 @@ def register():
         # Flash and redirect
         flash("Registration Successful")
         return redirect(url_for("messages.my_voice"))
+
+    # Routing for Get Requests
+    return redirect(url_for("core.index"))
 
 
 @ users.route('/login', methods=['GET', 'POST'])
@@ -110,5 +119,6 @@ def login():
 # Log out user and redirect to Index
 @ users.route('/logout')
 def logout():
-    logout_user()
+    if current_user.is_authenticated:
+        logout_user()
     return redirect(url_for('core.index'))
