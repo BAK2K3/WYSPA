@@ -17,12 +17,6 @@
                         </div>
                         <!-- Action Bar -->
                         <div class="col s12 center wyspa-action-bar">
-                            <!-- Edit Wyspa -->
-                            {%if current_user.username == message_entry.author%}
-                            <a href="{{url_for('messages.edit_wyspa', message_id=message_entry._id)}}"
-                                class="wyspa-action"><i class="material-icons tooltipped wyspa-action-icon"
-                                    data-position="bottom" data-tooltip="Edit">edit</i></a>
-                            {%endif%}
                             <!-- Listen to Wyspa -->
                             <span class="listener-count wyspa-action"> {{ message_entry.listens|length }} </span>
                             <a href="{{url_for('messages.add_listen', message_id=message_entry._id, listener=current_user.username)}}"
@@ -30,6 +24,12 @@
                                     data-position="bottom" data-tooltip="Listen">hearing</i></a>
                             <!-- Random Wyspa -->
                             <a href="{{ url_for('messages.view_message') }}" class="wyspa-action"><i class="material-icons tooltipped wyspa-action-icon" data-position="bottom" data-margin="1" data-tooltip="Random Wyspa">cached</i></a>
+                            <!-- Edit Wyspa -->
+                            {%if current_user.username == message_entry.author%}
+                            <a href="{{url_for('messages.edit_wyspa', message_id=message_entry._id)}}"
+                                class="wyspa-action"><i class="material-icons tooltipped wyspa-action-icon"
+                                    data-position="bottom" data-tooltip="Edit">edit</i></a>
+                            {%endif%}
                         </div>
 
                     </div>
