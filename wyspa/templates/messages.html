@@ -77,10 +77,11 @@
                                         {% if current_user.username == comment_author or current_user.username == message_entry.author %}
                                         <!-- Comment Deletion -->
                                         <div class="delete-comment-panel">
-                                            <a href="{{url_for('messages.remove_comment', message_id=message_entry._id, comment_id=outer_loop.index)}}"
-                                                class="wyspa-button comment-delete"><i class="material-icons tooltipped"
+                                            <form method="POST"
+                                            action="{{url_for('messages.remove_comment', message_id=message_entry._id, comment_id=outer_loop.index)}}" class="confirm-deletion">
+                                            <button class="wyspa-button wyspa-action"> <i class="material-icons wyspa-button comment-delete tooltipped"
                                                     data-position="right"
-                                                    data-tooltip="Delete Comment">delete_forever</i></a>
+                                                    data-tooltip="Delete Comment">delete_forever</i></button></form>
                                         </div>
                                         {%endif%}
                                     </div>
