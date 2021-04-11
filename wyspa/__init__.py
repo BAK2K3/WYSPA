@@ -29,4 +29,4 @@ app.register_blueprint(error_pages)
 # Set up log in manager
 login_manager.init_app(app)
 login_manager.session_protection = "strong"
-login_manager.login_view = 'core.index'
+login_manager.login_view = "core.index"
