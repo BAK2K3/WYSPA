@@ -111,7 +111,8 @@ def login():
         else:
             #  Inform user that credentials are incorrect
             flash("Incorrect Username and/or Password")
-            return redirect(url_for("users.login"))
+            # return redirect(url_for("users.login"))
+            return redirect(request.referrer)
 
     return redirect(url_for('core.index'))
 
