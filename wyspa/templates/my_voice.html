@@ -1,181 +1,255 @@
-{% extends "base.html" %}
-{% set active_page = "my_voice" %}
-
-{% block content %}
+{% extends "base.html" %} {% set active_page = "my_voice" %} {% block content %}
 
 <section class="my-voice">
-    <div class="container row">
-        <div class="col s12">
-            <!-- Card Panel -->
-            <div class="card-panel z-depth-5 white-text center">
-                <h2>Your Wyspas</h2>
-                <!-- Card Content -->
-                <div class="card-content white-text">
-                    <div class="row no-margin">
+  <div class="container row">
+    <div class="col s12">
+      <!-- Card Panel -->
+      <div class="card-panel z-depth-5 white-text center">
+        <h2>Your Wyspas</h2>
+        <!-- Card Content -->
+        <div class="card-content white-text">
+          <div class="row no-margin">
+            {% if users_messages %}
+            <ul class="collection">
+              {% for entry in users_messages %}
 
-                        {% if users_messages %}
-                        <ul class="collection">
-
-                            {% for entry in users_messages %}
-                            <form method="POST" action="{{url_for('messages.message_control', message_id=entry._id)}}">
-                                <li class="collection-item">
-
-                                    <!-- Wyspa content -->
-                                    <div class="user-message">
-                                        <em>"{{ entry.message }}"</em>
-                                    </div>
-
-                                    <!-- Wyspa control -->
-                                    <div class="message-control">
-
-                                        <!-- Action for deleting Wyspa -->
-                                        <button name="delete" value="delete" class="wyspa-button tooltipped"
-                                            data-position="left" data-tooltip="Delete Wyspa"><i
-                                                class="material-icons">delete_forever</i></button>
-
-                                        <!-- Listener Count -->
-                                        <span> {{ entry.listens|length }} </span>
-                                        <i class="material-icons wyspa-button">hearing</i>
-
-                                        <!-- Go to Wyspa -->
-                                        <button name="goto" value="goto" class="wyspa-button tooltipped"
-                                            data-position="right" data-tooltip="Go To Wyspa"><i
-                                                class="material-icons">send</i></button></div>
-                                </li>
-                            </form>
-                            {%endfor%}
-                        </ul>
-
-                        {% else %}
-
-                        <div><em>It doesn't look like you've left any WYSPAs yet!</em>
-                        </div>
-
-                        {% endif %}
-
-                    </div>
+              <li class="collection-item">
+                <!-- Wyspa content -->
+                <div class="user-message">
+                  <em>"{{ entry.message }}"</em>
                 </div>
-            </div>
-        </div>
 
-        <div class="col s12">
-            <!-- Collapsable WYSPA -->
-            <ul class="collapsible">
-                <li>
-                    <div class="collapsible-header card-panel center white-text">
-                        Create a WYSPA<i class="material-icons right">chat_bubble_outline</i>
-                    </div>
-                    <!-- WYSPA Creation  -->
-                    <div class="collapsible-body">
-                        <form method="POST" action="{{url_for('messages.create_wyspa')}}" autocomplete="off">
-                            <div class="speech-bubble comment-box">
-                                <!-- Text -->
-                                <div class="input-field message-field col s12">
-                                    <textarea id="wyspaContent" name="wyspaContent"
-                                        class="materialize-textarea validate" required></textarea>
-                                    <label for="wyspaContent">Your Wyspa</label>
-                                </div>
-                                <!-- Location -->
-                                <div class="input-field message-field col s12 m4">
-                                    <input id="location" name="location" type="text" class="validate" required>
-                                    <label for="location">Location</label>
-                                </div>
-                                <!-- Mood -->
-                                <div class="slider-field col s12 m4">
-                                    <label for="mood">Mood: <span class="neutralLabel">Neutral</span></label>
-                                    <p class="range-field">
-                                        <input type="range" id="mood" name="mood" min="1" max="3" value="2" />
-                                    </p>
-                                </div>
-                                <!-- Date Picker -->
-                                <div class="input-field message-field date-field col s6 m2">
-                                    <input id="expiryDate" name="expiryDate" type="text" class="datepicker validate"
-                                        readonly required>
-                                    <label for="expiryDate">Expiry Date</label>
-                                </div>
+                <!-- Wyspa control -->
+                <div class="message-control">
+                  <form
+                    method="POST"
+                    action="{{url_for('messages.delete_wyspa', message_id=entry._id)}}"
+                    class="confirm-deletion"
+                  >
+                    <!-- Action for deleting Wyspa -->
+                    <button class="wyspa-button wyspa-action">
+                      <i
+                        class="material-icons tooltipped"
+                        data-position="left"
+                        data-tooltip="Delete Wyspa"
+                        >delete_forever</i
+                      >
+                    </button>
+                    <!-- Listener Count -->
+                    <span class="wyspa-action">
+                      {{ entry.listens|length }}
+                    </span>
+                    <i class="material-icons wyspa-action">hearing</i>
 
-                                <!-- Time Picker -->
-                                <div class="input-field message-field date-field col s6 m2">
-                                    <input id="expiryTime" name="expiryTime" type="text" class="timepicker validate"
-                                        readonly required>
-                                    <label for="expiryTime">Expiry Time</label>
-                                </div>
+                    <!-- Go to Wyspa -->
+                    <button
+                      type="button"
+                      class="wyspa-button wyspa-action tooltipped"
+                      data-position="right"
+                      data-tooltip="Go To Wyspa"
+                    >
+                      <a
+                        href="{{url_for('messages.view_message', message_id=entry._id)}}"
+                        ><i class="material-icons">send</i></a
+                      >
+                    </button>
+                  </form>
+                </div>
+              </li>
 
-                                <!-- Submit -->
-                                <div class="col s12 submit-col">
-                                    <button class="btn add-comment waves-effect" type="submit" name="action">Wyspa
-                                        <i class="material-icons right">comment</i>
-                                    </button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </li>
+              {%endfor%}
             </ul>
+
+            {% else %}
+
+            <div><em>It doesn't look like you've left any WYSPAs yet!</em></div>
+
+            {% endif %}
+          </div>
         </div>
+      </div>
     </div>
+
+    <div class="col s12">
+      <!-- Collapsable WYSPA -->
+      <ul class="collapsible">
+        <li>
+          <div class="collapsible-header card-panel center white-text">
+            Create a WYSPA<i class="material-icons right"
+              >chat_bubble_outline</i
+            >
+          </div>
+          <!-- WYSPA Creation  -->
+          <div class="collapsible-body">
+            <form
+              method="POST"
+              action="{{url_for('messages.create_wyspa')}}"
+              autocomplete="off"
+            >
+              <div class="speech-bubble comment-box">
+                <!-- Text -->
+                <div class="input-field message-field col s12">
+                  <textarea
+                    id="wyspaContent"
+                    name="wyspaContent"
+                    class="materialize-textarea validate"
+                    required
+                  ></textarea>
+                  <label for="wyspaContent">Your Wyspa</label>
+                </div>
+                <!-- Location -->
+                <div class="input-field message-field col s12 m4">
+                  <input
+                    id="location"
+                    name="location"
+                    type="text"
+                    class="validate"
+                    required
+                  />
+                  <label for="location">Location</label>
+                </div>
+                <!-- Mood -->
+                <div class="slider-field col s12 m4">
+                  <label for="mood"
+                    >Mood: <span class="neutralLabel">Neutral</span></label
+                  >
+                  <p class="range-field">
+                    <input
+                      type="range"
+                      id="mood"
+                      name="mood"
+                      min="1"
+                      max="3"
+                      value="2"
+                    />
+                  </p>
+                </div>
+                <!-- Date Picker -->
+                <div class="input-field message-field date-field col s6 m2">
+                  <input
+                    id="expiryDate"
+                    name="expiryDate"
+                    type="text"
+                    class="datepicker validate"
+                    readonly
+                    required
+                  />
+                  <label for="expiryDate">Expiry Date</label>
+                </div>
+
+                <!-- Time Picker -->
+                <div class="input-field message-field date-field col s6 m2">
+                  <input
+                    id="expiryTime"
+                    name="expiryTime"
+                    type="text"
+                    class="timepicker validate"
+                    readonly
+                    required
+                  />
+                  <label for="expiryTime">Expiry Time</label>
+                </div>
+
+                <!-- Submit -->
+                <div class="col s12 submit-col">
+                  <button
+                    class="btn add-comment waves-effect"
+                    type="submit"
+                    name="action"
+                  >
+                    Wyspa
+                    <i class="material-icons right">comment</i>
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
 </section>
 
-{% endblock %}
-
-
-{% block helpmodal %}
+{% endblock %} {% block helpmodal %}
 <!-- Help Modal for My Voice -->
 <h4 class="center">Your Voice</h4>
 
-<p><strong>This is your voice; Manage your existing Wyspas, or create new ones</strong></p>
+<p>
+  <strong
+    >This is your voice; Manage your existing Wyspas, or create new ones</strong
+  >
+</p>
 
-<p>For each of your existing Wyspas, you can: </p>
-
-<ul class="browser-default">
-    <li><i class="material-icons wyspa-button">hearing</i> See how many people have listened to your Wyspa.
-    </li>
-    <li><i class="material-icons">send</i> Visit your Wyspa, to see comments or to edit your Wyspa.</li>
-    <li><i class="material-icons">delete_forever</i> Delete your Wyspa.</li>
-</ul>
-
-<p>To create a new Wyspa, click <strong>Create New Wyspa</strong>, and fill out the following fields:</p>
+<p>For each of your existing Wyspas, you can:</p>
 
 <ul class="browser-default">
-    <li><strong>Message</strong>: This is the body of your message; take this opportunity to express
-        yourself.
-        <ul class="browser-default">
-            <li>Please be cautious of the language you use. Wyspa does not implement any censorship as it
-                beleives in entitlement to self expression, but please
-                be respectful of others
-            </li>
-        </ul>
-    </li>
-    <li><strong>Location</strong>: Enter where abouts you are in the world.
-        <ul class="browser-default">
-            <li>This information is used to place your Wyspa on the Map; however the geolocation is scrambled
-                before being saved to the database, so the information stored is random and would not allow
-                anyone to pinpoint your exact location.
-
-            </li>
-            <li>Be as exact or vague as you want with the address, be it full address, city, country, or
-                postcode. If we're unable to pinpoint the location, try again with a more generic location
-                (<em>eg. "Leeds, UK"</em>)
-            </li>
-
-        </ul>
-    </li>
-    <li><strong>Mood</strong>: Choose the tone of your Wyspa.
-        <ul class="browser-default">
-            <li>Drag the slider to chose an emotion which represents the tone of your Wyspa: <span
-                    class="negativeLabel">Sad</span>, Neutral, or <span class="positiveLabel">Happy</span>.
-            </li>
-            <li>Your selection will impact the colour of the Wyspa's marker on the map.</li>
-        </ul>
-    </li>
-    <li><strong>Expiry Date</strong>: Input the date you would like your Wyspa to expire.</li>
-    <li><strong>Expiry Time</strong>: Input the time you would like your Wyspa to expire.</li>
+  <li>
+    <i class="material-icons wyspa-button">hearing</i> See how many people have
+    listened to your Wyspa.
+  </li>
+  <li>
+    <i class="material-icons">send</i> Visit your Wyspa, to see comments or to
+    edit your Wyspa.
+  </li>
+  <li><i class="material-icons">delete_forever</i> Delete your Wyspa.</li>
 </ul>
 
-{% endblock %}
+<p>
+  To create a new Wyspa, click <strong>Create New Wyspa</strong>, and fill out
+  the following fields:
+</p>
 
+<ul class="browser-default">
+  <li>
+    <strong>Message</strong>: This is the body of your message; take this
+    opportunity to express yourself.
+    <ul class="browser-default">
+      <li>
+        Please be cautious of the language you use. Wyspa does not implement any
+        censorship as it beleives in entitlement to self expression, but please
+        be respectful of others
+      </li>
+    </ul>
+  </li>
+  <li>
+    <strong>Location</strong>: Enter where abouts you are in the world.
+    <ul class="browser-default">
+      <li>
+        This information is used to place your Wyspa on the Map; however the
+        geolocation is scrambled before being saved to the database, so the
+        information stored is random and would not allow anyone to pinpoint your
+        exact location.
+      </li>
+      <li>
+        Be as exact or vague as you want with the address, be it full address,
+        city, country, or postcode. If we're unable to pinpoint the location,
+        try again with a more generic location (<em>eg. "Leeds, UK"</em>)
+      </li>
+    </ul>
+  </li>
+  <li>
+    <strong>Mood</strong>: Choose the tone of your Wyspa.
+    <ul class="browser-default">
+      <li>
+        Drag the slider to chose an emotion which represents the tone of your
+        Wyspa: <span class="negativeLabel">Sad</span>, Neutral, or
+        <span class="positiveLabel">Happy</span>.
+      </li>
+      <li>
+        Your selection will impact the colour of the Wyspa's marker on the map.
+      </li>
+    </ul>
+  </li>
+  <li>
+    <strong>Expiry Date</strong>: Input the date you would like your Wyspa to
+    expire.
+  </li>
+  <li>
+    <strong>Expiry Time</strong>: Input the time you would like your Wyspa to
+    expire.
+  </li>
+</ul>
 
-
-{% block scripts %}
-<script src="{{ url_for('static', filename='js/slider.js') }}"> </script>
+{% endblock %} {% block scripts %}
+<script src="{{ url_for('static', filename='js/slider.js') }}"></script>
 {% endblock %}
