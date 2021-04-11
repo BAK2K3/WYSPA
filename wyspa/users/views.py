@@ -72,7 +72,11 @@ def register():
 @ users.route('/login', methods=['GET', 'POST'])
 def login():
     if current_user.is_authenticated:
-        return redirect(url_for('core.index'))
+        # Checks if next parameter is in the referal URL
+        if "?next=%2F" in request.referrer:
+            return redirect(request.referrer.split("?next=%2F")[1])
+        else:
+            return redirect(request.referrer)
 
     if request.method == "POST":
         # Query DB for username
@@ -88,18 +92,23 @@ def login():
             existing_user = User(username=login_check['username'])
             login_user(existing_user)
             flash(f"Welcome, {current_user.username}")
-            return redirect(url_for("messages.my_voice"))
+
+            # Checks if next parameter is in the referal URL
+            if "?next=%2F" in request.referrer:
+                return redirect(request.referrer.split("?next=%2F")[1])
+            else:
+                return redirect(request.referrer)
 
         else:
             #  Inform user that credentials are incorrect
             flash("Incorrect Username and/or Password")
             return redirect(url_for("users.login"))
 
-    return render_template("index.html")
+    return redirect(url_for('core.index'))
 
 
+# Log out user and redirect to Index
 @ users.route('/logout')
-@ login_required
 def logout():
     logout_user()
-    return redirect(url_for('users.login'))
+    return redirect(url_for('core.index'))
