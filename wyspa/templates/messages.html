@@ -15,18 +15,23 @@
                             {% if message_entry %}
                             <em>"{{ message_entry.message }}"</em>
                         </div>
-                        <!-- Wyspa Count -->
-                        <div class="col s12 center wyspa-count">
+                        <!-- Action Bar -->
+                        <div class="col s12 center wyspa-action-bar">
+                            <!-- Edit Wyspa -->
                             {%if current_user.username == message_entry.author%}
                             <a href="{{url_for('messages.edit_wyspa', message_id=message_entry._id)}}"
-                                class="wyspa-button comment-delete"><i class="material-icons tooltipped"
-                                    data-position="left" data-tooltip="Edit your Wyspa">edit</i></a>
+                                class="wyspa-action"><i class="material-icons tooltipped wyspa-action-icon"
+                                    data-position="bottom" data-tooltip="Edit">edit</i></a>
                             {%endif%}
-                            <span class="listener-count"> {{ message_entry.listens|length }} </span>
+                            <!-- Listen to Wyspa -->
+                            <span class="listener-count wyspa-action"> {{ message_entry.listens|length }} </span>
                             <a href="{{url_for('messages.add_listen', message_id=message_entry._id, listener=current_user.username)}}"
-                                class="wyspa-button comment-delete"><i class="material-icons tooltipped"
-                                    data-position="right" data-tooltip="Acknowledge you've listened">hearing</i></a>
+                                class="wyspa-action"><i class="material-icons tooltipped wyspa-action-icon"
+                                    data-position="bottom" data-tooltip="Listen">hearing</i></a>
+                            <!-- Random Wyspa -->
+                            <a href="{{ url_for('messages.view_message') }}" class="wyspa-action"><i class="material-icons tooltipped wyspa-action-icon" data-position="bottom" data-margin="1" data-tooltip="Random Wyspa">cached</i></a>
                         </div>
+
                     </div>
                 </div>
             </div>
