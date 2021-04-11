@@ -194,20 +194,22 @@ def edit_wyspa(message_id):
     return render_template('edit_wyspa.html', retrieved_wyspa=retrieved_wyspa)
 
 
-# Control center for My Voice hub
-@ messages.route('/message_control/<message_id>', methods=["GET", "POST"])
+# Wyspa Deletion
+@ messages.route('/delete_wyspa/<message_id>', methods=["GET", "POST"])
 @ login_required
-def message_control(message_id):
+def delete_wyspa(message_id):
+
     if request.method == "POST":
-        # Navigation for deletion
-        if "delete" in request.form:
+        # Obtain Wyspa details
+        retrieved_wyspa = Wyspa.get_by_id(message_id)
+        # Verify User
+        if not retrieved_wyspa.author == current_user.username:
+            flash("You do not have access to this Wyspa!")
+            return redirect(url_for("messages.my_voice"))
+        # Delete Wyspa
+        else:
             Wyspa.delete_wyspa(message_id)
             return redirect(url_for("messages.my_voice"))
 
-        # Navigation for viewing message
-        elif "goto" in request.form:
-            return redirect(url_for("messages.view_message",
-                                    message_id=message_id))
-        else:
-            flash("Something went wrong!")
-            return redirect(url_for("core.index"))
+    # Route for GET
+    return redirect(url_for("messages.my_voice"))
