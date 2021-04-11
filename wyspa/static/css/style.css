@@ -224,6 +224,50 @@ nav i.material-icons.help-trigger {
   transform: translateY(0px) translateX(0px) !important;
 }
 
+/********** Alertify **********/
+
+.alertify .ajs-dialog {
+  text-align: center;
+  border-radius: 25px;
+  border: 2px solid black;
+  background-color: white;
+}
+
+.alertify .ajs-header {
+  font-weight: 600;
+  font-size: 20px;
+  background-color: transparent;
+}
+
+.alertify .ajs-button.ajs-ok,
+.alertify .ajs-button.ajs-cancel {
+  background-color: white;
+  border: 1px solid black;
+  color: black;
+  border-radius: 25px;
+}
+
+.alertify .ajs-button.ajs-ok:hover,
+.alertify .ajs-button.ajs-cancel:hover {
+  background-color: black;
+  border: 1px solid white;
+  color: white;
+  -webkit-box-shadow: 0 3px 3px 0 rgba(255, 255, 255, 0.14),
+    0 1px 7px 0 rgba(255, 255, 255, 0.12),
+    0 3px 1px -1px rgba(255, 255, 255, 0.2);
+  box-shadow: 0 3px 3px 0 rgba(255, 255, 255, 0.14),
+    0 1px 7px 0 rgba(255, 255, 255, 0.12),
+    0 3px 1px -1px rgba(255, 255, 255, 0.2);
+}
+
+.alertify .ajs-footer {
+  background-color: transparent;
+}
+
+.alertify .ajs-footer .ajs-primary.ajs-buttons {
+  text-align: center;
+}
+
 /********** Log in Modal **********/
 
 .modal {
