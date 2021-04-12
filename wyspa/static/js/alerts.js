@@ -12,6 +12,7 @@ function confirm(event) {
         return false;
       }
     })
+    // https://stackoverflow.com/questions/51233320/setting-title-and-labels-in-alertifyjs/51233364
     .set({ title: "Warning!" })
     .set({ labels: { ok: "Confirm", cancel: "Back" } });
 }
