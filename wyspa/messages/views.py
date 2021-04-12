@@ -41,7 +41,8 @@ def create_wyspa():
     # Convert datetime
     formatted_expiry = Wyspa.string_to_datetime(
             expiry_date=request.form.get("expiryDate"),
-            expiry_time=request.form.get("expiryTime"))
+            expiry_time=request.form.get("expiryTime"),
+            timezone=request.form.get("timezone"))
 
     # If the formatted_expiry fails
     if not formatted_expiry:
@@ -163,7 +164,8 @@ def edit_wyspa(message_id):
         # Convert datetime
         formatted_expiry = Wyspa.string_to_datetime(
             expiry_date=request.form.get("expiryDate"),
-            expiry_time=request.form.get("expiryTime"))
+            expiry_time=request.form.get("expiryTime"),
+            timezone=request.form.get("timezone"))
 
         # If the formatted_expiry fails
         if not formatted_expiry:
@@ -191,7 +193,13 @@ def edit_wyspa(message_id):
         return redirect(url_for("messages.my_voice"))
 
     # Get view
-    return render_template('edit_wyspa.html', retrieved_wyspa=retrieved_wyspa)
+
+    expiry_date = Wyspa.datetime_to_string(
+        retrieved_wyspa.expiry)
+
+    return render_template('edit_wyspa.html',
+                           retrieved_wyspa=retrieved_wyspa,
+                           expiry_date=expiry_date)
 
 
 # Wyspa Deletion
