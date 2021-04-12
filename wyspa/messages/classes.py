@@ -118,7 +118,7 @@ class Wyspa():
 
         # Set up tz aware datetime object for comparrison
         server_timezone = tz.gettz('UTC')
-        server_time = datetime.now().replace(tzinfo=server_timezone)
+        server_time = datetime.utcnow().replace(tzinfo=server_timezone)
 
         # Ensure expiry date is in the future
         if formatted_expiry < server_time:
