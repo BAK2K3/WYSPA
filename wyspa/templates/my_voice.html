@@ -54,6 +54,11 @@
                       >
                     </button>
                   </form>
+                  <span
+                    ><em
+                      >Expires: {{entry.expiry.strftime("%d-%m-%Y %H:%M")}}</em
+                    ></span
+                  >
                 </div>
               </li>
 
@@ -148,6 +153,17 @@
                     required
                   />
                   <label for="expiryTime">Expiry Time</label>
+                </div>
+
+                <!-- Hidden Timezone -->
+                <div class="hidden-form">
+                  <input
+                    id="timezone"
+                    name="timezone"
+                    type="text"
+                    readonly
+                    required
+                  />
                 </div>
 
                 <!-- Submit -->
@@ -252,4 +268,5 @@
 
 {% endblock %} {% block scripts %}
 <script src="{{ url_for('static', filename='js/slider.js') }}"></script>
+<script src="{{ url_for('static', filename='js/timezone.js') }}"></script>
 {% endblock %}
