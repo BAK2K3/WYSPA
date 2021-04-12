@@ -237,6 +237,9 @@
         <!-- Custom Alert Import -->
         <script src="{{ url_for('static', filename='js/alerts.js', _scheme='https', _external=True) }}"> </script>
 
+        <!-- Custom Form submission import -->
+        <script src="{{ url_for('static', filename='js/form-submission.js', _scheme='https', _external=True) }}"> </script>
+
         <!-- https://stackoverflow.com/questions/15321431/how-to-pass-a-list-from-python-by-jinja2-to-javascript -->
         <!-- Flash Messages -->
         {% with messages = get_flashed_messages() %}
