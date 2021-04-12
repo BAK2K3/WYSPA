@@ -170,8 +170,11 @@ def edit_wyspa(message_id):
         # If the formatted_expiry fails
         if not formatted_expiry:
             flash("Expiry must be in the future!")
+            expiry_date = Wyspa.datetime_to_string(
+                retrieved_wyspa.expiry)
             return render_template("edit_wyspa.html",
-                                   retrieved_wyspa=retrieved_wyspa)
+                                   retrieved_wyspa=retrieved_wyspa,
+                                   expiry_date=expiry_date)
 
         # Try and convert the address to latlong
         try:
@@ -180,8 +183,11 @@ def edit_wyspa(message_id):
         except Exception as e:
             print(e)
             flash("Unable to locate address!")
+            expiry_date = Wyspa.datetime_to_string(
+                retrieved_wyspa.expiry)
             return render_template("edit_wyspa.html",
-                                   retrieved_wyspa=retrieved_wyspa)
+                                   retrieved_wyspa=retrieved_wyspa,
+                                   expiry_date=expiry_date)
 
         # Call edit function
         retrieved_wyspa.edit_wyspa(message=request.form.get("wyspaContent"),
