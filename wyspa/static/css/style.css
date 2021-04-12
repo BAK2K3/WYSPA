@@ -597,6 +597,10 @@ button.month-prev:focus {
   touch-action: none;
 }
 
+.hidden-form {
+  display: none;
+}
+
 /********** Messages **********/
 .message {
   margin: auto;
