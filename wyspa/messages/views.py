@@ -41,8 +41,7 @@ def create_wyspa():
     # Convert datetime
     formatted_expiry = Wyspa.string_to_datetime(
             expiry_date=request.form.get("expiryDate"),
-            expiry_time=request.form.get("expiryTime"),
-            timezone=request.form.get("timezone"))
+            expiry_time=request.form.get("expiryTime"))
 
     # If the formatted_expiry fails
     if not formatted_expiry:
@@ -164,8 +163,7 @@ def edit_wyspa(message_id):
         # Convert datetime
         formatted_expiry = Wyspa.string_to_datetime(
             expiry_date=request.form.get("expiryDate"),
-            expiry_time=request.form.get("expiryTime"),
-            timezone=request.form.get("timezone"))
+            expiry_time=request.form.get("expiryTime"))
 
         # If the formatted_expiry fails
         if not formatted_expiry:

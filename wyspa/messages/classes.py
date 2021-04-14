@@ -3,6 +3,7 @@ from bson.objectid import ObjectId
 from datetime import datetime
 from dateutil import tz
 
+from flask import session
 from geopy.geocoders import Nominatim
 
 from wyspa.factory.initialisation import mongo
@@ -68,6 +69,11 @@ class Wyspa():
     @classmethod
     def get_by_user(cls, username):
         data = list(mongo.db.messages.find({"author": username}))
+        # Update Timezone of each Wyspa
+        user_timezone = tz.gettz(session["timezone"])
+        for wyspa in data:
+            wyspa['expiry'] = wyspa['expiry'].astimezone(user_timezone)
+
         if data is not None:
             return_data = []
             for message in data:
@@ -105,7 +111,7 @@ class Wyspa():
         return latlong
 
     @staticmethod
-    def string_to_datetime(expiry_date, expiry_time, timezone):
+    def string_to_datetime(expiry_date, expiry_time):
 
         # Format date-time
         date_string = expiry_date + " " + expiry_time
@@ -113,12 +119,12 @@ class Wyspa():
         formatted_expiry = datetime.strptime(date_string, date_format)
 
         # Set users timezone
-        user_timezone = tz.gettz(timezone)
+        user_timezone = tz.gettz(session["timezone"])
         formatted_expiry = formatted_expiry.replace(tzinfo=user_timezone)
 
         # Set up tz aware datetime object for comparrison
-        server_timezone = tz.gettz('UTC')
-        server_time = datetime.utcnow().replace(tzinfo=server_timezone)
+        server_timezone = tz.tzlocal()
+        server_time = datetime.now().replace(tzinfo=server_timezone)
 
         # Ensure expiry date is in the future
         if formatted_expiry < server_time:
@@ -129,9 +135,15 @@ class Wyspa():
 
     @staticmethod
     def datetime_to_string(formatted_expiry):
+
+        # Set expiry date timezone
+        user_timezone = tz.gettz(session["timezone"])
+        formatted_expiry = formatted_expiry.astimezone(user_timezone)
+
         # Extract date and time from datetime object
         date_format = "%d-%m-%Y %H:%M"
         string_date = formatted_expiry.strftime(date_format)
+
         # Seperate date and time
         formatted_date = string_date[:10]
         formatted_time = string_date[11:]

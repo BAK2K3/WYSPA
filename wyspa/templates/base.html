@@ -72,7 +72,6 @@
 
                     <a href="{{ url_for('core.index') }}" class="brand-logo center heading-font">WYSPA</a>
 
-
                     <a href="#helpModal" class="modal-trigger">
                         <i class="medium material-icons help-trigger button-glow white-text right tooltipped"
                             data-position="left" data-tooltip="Need help?">help_outline</i>
@@ -134,16 +133,28 @@
                 <div class="row">
                     <form class="col s12" method="POST" action="{{url_for('users.login')}}">
                         <div class="row">
+                            <!-- Username -->
                             <div class="input-field login-field col s12">
                                 <i class="material-icons prefix">group</i>
                                 <input id="usernameLogin" name="usernameLogin" type="text" class="validate" required>
                                 <label for="usernameLogin">Username</label>
                             </div>
+                            <!-- Password -->
                             <div class="input-field login-field col s12">
                                 <i class="material-icons prefix">lock</i>
                                 <input id="passwordLogin" name="passwordLogin" type="password" class="validate"
                                     required>
                                 <label for="passwordLogin">Password</label>
+                            </div>
+                            <!-- Hidden Timezone -->
+                            <div class="hidden-form">
+                                <input
+                                id="timezoneLogin"
+                                name="timezoneLogin"
+                                type="text"
+                                readonly
+                                required
+                                />
                             </div>
                         </div>
                         <div class="row footer-modal">
@@ -188,6 +199,16 @@
                                 <input id="passwordConfirm" name="passwordConfirm" type="password" required>
                                 <label for="passwordConfirm">Confirm Password</label>
                             </div>
+                            <!-- Hidden Timezone -->
+                            <div class="hidden-form">
+                            <input
+                            id="timezoneRegister"
+                            name="timezoneRegister"
+                            type="text"
+                            readonly
+                            required
+                            />
+                        </div>
                         </div>
                         <div class="row footer-modal">
                             <button class="btn login-button waves-effect waves-light" type="submit"
@@ -239,6 +260,9 @@
 
         <!-- Custom Form submission import -->
         <script src="{{ url_for('static', filename='js/form-submission.js', _scheme='https', _external=True) }}"> </script>
+
+        <!-- Custom Time Zone js import -->
+        <script src="{{ url_for('static', filename='js/timezone.js', _scheme='https', _external=True) }}"> </script>
 
         <!-- https://stackoverflow.com/questions/15321431/how-to-pass-a-list-from-python-by-jinja2-to-javascript -->
         <!-- Flash Messages -->
