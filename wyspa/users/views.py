@@ -1,6 +1,7 @@
 import re
 
-from flask import render_template, Blueprint, request, redirect, flash, url_for
+from flask import (render_template, Blueprint, request,
+                   redirect, flash, url_for, session)
 from flask_login import (LoginManager, login_user,
                          logout_user, current_user)
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -70,6 +71,9 @@ def register():
         new_user = User(username=registration['username'])
         login_user(new_user)
 
+        # Save user's timezone in session
+        session['timezone'] = request.form.get("timezoneRegister")
+
         # Flash and redirect
         flash("Registration Successful")
         return redirect(url_for("messages.my_voice"))
@@ -97,9 +101,12 @@ def login():
                 login_check["password"],
                 request.form.get("passwordLogin")):
 
-            # Create an instance of User class, log them in, and redirect
+            # Create an instance of User class
             existing_user = User(username=login_check['username'])
+            # Log in User
             login_user(existing_user)
+            # Save user's timezone in session
+            session['timezone'] = request.form.get("timezoneLogin")
             flash(f"Welcome, {current_user.username}")
 
             # Checks if next parameter is in the referal URL
