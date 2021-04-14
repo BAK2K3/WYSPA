@@ -1,3 +1,5 @@
 // Pushes timezone to hidden form on edit and creation pages
-const hiddenForm = document.querySelector(".hidden-form input");
-hiddenForm.value = Intl.DateTimeFormat().resolvedOptions().timeZone;
+const hiddenFormLogin = document.querySelector("#timezoneLogin");
+const hiddenFormRegister = document.querySelector("#timezoneRegister");
+hiddenFormLogin.value = Intl.DateTimeFormat().resolvedOptions().timeZone;
+hiddenFormRegister.value = Intl.DateTimeFormat().resolvedOptions().timeZone;
