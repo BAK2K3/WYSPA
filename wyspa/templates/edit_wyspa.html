@@ -85,17 +85,6 @@
             <label for="expiryTime">Expiry Time</label>
           </div>
 
-          <!-- Hidden Timezone -->
-          <div class="hidden-form">
-            <input
-              id="timezone"
-              name="timezone"
-              type="text"
-              readonly
-              required
-            />
-          </div>
-
           <!-- Submit -->
           <div class="col s12 submit-col">
             <button
@@ -127,5 +116,4 @@
 </p>
 {% endblock %} {% block scripts %}
 <script src="{{ url_for('static', filename='js/slider.js') }}"></script>
-<script src="{{ url_for('static', filename='js/timezone.js') }}"></script>
 {% endblock %}
