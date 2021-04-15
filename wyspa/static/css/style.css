@@ -705,6 +705,7 @@ button.month-prev:focus {
 .collapsible-header i {
   margin-right: 0;
   padding-left: 1px;
+  pointer-events: none;
 }
 
 .collapsible {
