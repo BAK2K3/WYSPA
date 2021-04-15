@@ -11,3 +11,32 @@ document.querySelectorAll("form").forEach((form) => {
     form.classList.add("is-submitting");
   });
 });
+
+// https://stackoverflow.com/questions/12777751/html-required-readonly-input-in-form
+// Prevent user from typing in Expiry Date/Time, with it still be required input
+
+const disableInput = function (event) {
+  // ignore tab
+  if (event.keyCode != 9) {
+    event.preventDefault();
+  }
+};
+
+document.querySelectorAll(".date-field").forEach((field) => {
+  field.addEventListener("keydown", disableInput, false);
+  field.addEventListener("paste", disableInput, false);
+});
+
+// Script for changing the header text of the "create a wyspa" Collapsable
+const createHeader = document.querySelector(".create-header");
+
+createHeader.addEventListener("click", () => {
+  if (createHeader.classList.contains("activated")) {
+    createHeader.classList.remove("activated");
+    createHeader.innerHTML =
+      "Create a WYSPA <i class='material-icons right'>chat_bubble_outline</i>";
+  } else {
+    createHeader.classList.add("activated");
+    createHeader.innerHTML = "The world is listening...";
+  }
+});
