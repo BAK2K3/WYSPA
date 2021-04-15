@@ -223,6 +223,7 @@ nav i.material-icons.help-trigger {
   background-color: transparent;
   color: white;
   text-decoration: underline;
+  z-index: 20;
   transform: translateY(0px) translateX(0px) !important;
 }
 
