@@ -1,3 +1,4 @@
+// Change the slider label to corresponding mood based on value, and add respective class
 const rangeToMood = {
   1: ["Sad", "negativeLabel"],
   2: ["Neutral", "neutralLabel"],
@@ -40,9 +41,10 @@ createHeader.addEventListener("click", () => {
   if (createHeader.classList.contains("activated")) {
     createHeader.classList.remove("activated");
     createHeader.innerHTML =
-      "Create a WYSPA <i class='material-icons right'>chat_bubble_outline</i>";
+      "Create a WYSPA<i class='material-icons right'>chat_bubble_outline</i>";
   } else {
     createHeader.classList.add("activated");
-    createHeader.innerHTML = "The world is listening...";
+    createHeader.innerHTML =
+      "The world is listening...<i class='material-icons right'>language</i>";
   }
 });
