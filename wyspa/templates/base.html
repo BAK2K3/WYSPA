@@ -10,7 +10,8 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     <!-- Materialize CSS Import -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/materialize.min.css', _scheme='https', _external=True) }}"
+    type="text/css">
 
     <!-- Alertify css -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/alertify.css', _scheme='https', _external=True) }}"
@@ -241,7 +242,7 @@
         </div>
 
         <!-- Materialize JS Import -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+        <script src="{{ url_for('static', filename='js/materialize.min.js', _scheme='https', _external=True) }}"> </script>
 
         <!-- Javascript Initialisation Import -->
         <script src="{{ url_for('static', filename='js/init.js', _scheme='https', _external=True) }}"> </script>
