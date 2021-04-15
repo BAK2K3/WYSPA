@@ -1,3 +1,4 @@
+// Change the slider label to corresponding mood based on value, and add respective class
 const rangeToMood = {
   1: ["Sad", "negativeLabel"],
   2: ["Neutral", "neutralLabel"],
