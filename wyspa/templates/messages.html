@@ -43,13 +43,13 @@
             <!-- Collapsable Header -->
             <ul class="collapsible">
                 <li>
-                    <div class="collapsible-header card-panel center white-text">Comments <i
+                    <div class="collapsible-header card-panel center white-text z-depth-5">Comments <i
                             class="material-icons">chat_bubble_outline</i>
                     </div>
                     <!-- Comments  -->
                     <div class="collapsible-body">
                         {% if (message_entry.comments | length == 0) and (not current_user.is_authenticated) %}
-                        <div class="col s10 offset-s1 speech-bubble empty-comments">There are no comments on this Wyspa
+                        <div class="col s10 offset-s1 speech-bubble empty-comments z-depth-5">There are no comments on this Wyspa
                             yet! Why
                             not long in
                             and leave your own?</div>
@@ -62,11 +62,11 @@
                         {% if loop.index%2 == 0 %}
                         <!-- Right Comment -->
                         <div class="col s8 offset-s4">
-                            <div class="speech-bubble right-arrow">
+                            <div class="speech-bubble right-arrow z-depth-5">
                                 {% else %}
                                 <!-- left Comment -->
                                 <div class="col s8">
-                                    <div class="speech-bubble left-arrow">
+                                    <div class="speech-bubble left-arrow z-depth-5">
                                         {% endif %}
                                         <div class="comment-text">
                                             {# Grab the author and comment for the comment #}
@@ -94,10 +94,10 @@
                                 {% if (message_entry.comments|length%2) == 0 %}
                                 <!-- Comment Box -->
                                 <div class="col s8">
-                                    <div class="speech-bubble comment-box left-arrow">
+                                    <div class="speech-bubble comment-box left-arrow z-depth-5">
                                         {% else %}
                                         <div class="col s8 push-s4">
-                                            <div class="speech-bubble comment-box right-arrow">
+                                            <div class="speech-bubble comment-box right-arrow z-depth-5">
                                                 {% endif %}
                                                 <!-- Comment Form -->
                                                 <form method="POST"
