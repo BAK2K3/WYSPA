@@ -284,6 +284,12 @@ nav i.material-icons.help-trigger {
   border-top-right-radius: 25px;
 }
 
+@media only screen and (min-width: 993px) {
+  .modal.bottom-sheet {
+    width: 50%;
+  }
+}
+
 .modal .modal-content {
   padding-bottom: 0;
 }
