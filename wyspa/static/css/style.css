@@ -382,7 +382,8 @@ nav i.material-icons.help-trigger {
 
 /* https://css-tricks.com/perfect-full-page-background-image/ */
 #staticMap {
-  background: url(../img/map-backdrop.jpg) no-repeat center center fixed;
+  background: url(../img/map-backdrop.jpg) no-repeat center center fixed,
+    #041019;
   background-size: cover;
 }
 
