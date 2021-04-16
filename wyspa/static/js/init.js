@@ -52,6 +52,8 @@ document.addEventListener("DOMContentLoaded", function () {
       minDate: new Date(),
       format: "dd-mm-yyyy",
       showClearBtn: true,
+      autoClose: true,
+      container: "body",
     })
   );
 });
@@ -64,6 +66,8 @@ document.addEventListener("DOMContentLoaded", function () {
     (options = {
       twelveHour: false,
       showClearBtn: true,
+      container: "body",
+      autoClose: true,
     })
   );
 });
