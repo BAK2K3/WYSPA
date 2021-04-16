@@ -74,5 +74,9 @@ registrationForm.addEventListener("submit", function (event) {
     passwordValidateField.classList.contains("invalid")
   ) {
     event.preventDefault();
+  } else if (registrationForm.classList.contains("is-submitting")) {
+    event.preventDefault();
+  } else {
+    registrationForm.classList.add("is-submitting");
   }
 });
