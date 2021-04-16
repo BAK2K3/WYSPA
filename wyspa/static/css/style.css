@@ -277,6 +277,13 @@ nav i.material-icons.help-trigger {
   border-radius: 25px;
 }
 
+.modal.bottom-sheet {
+  width: 75%;
+  margin: auto;
+  border-top-left-radius: 25px;
+  border-top-right-radius: 25px;
+}
+
 .modal .modal-content {
   padding-bottom: 0;
 }
@@ -931,9 +938,14 @@ textarea.materialize-textarea {
   .row .col.submit-col {
     padding: 0;
   }
-}
 
-@media only screen and (max-width: 601px) {
+  .modal.bottom-sheet {
+    max-height: 100%;
+    width: 100%;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+  }
+
   .material-tooltip {
     display: none;
   }
