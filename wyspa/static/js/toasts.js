@@ -1,6 +1,10 @@
 function displayToast(text) {
   var toastHTML = `${text} <button class="btn-flat toast-action" onclick="dismissToast()">Dismiss</button>`;
-  M.toast({ unsafeHTML: toastHTML, classes: "styled-toast center" });
+  M.toast({
+    unsafeHTML: toastHTML,
+    classes: "styled-toast center",
+    displayLength: 2000,
+  });
 }
 
 function dismissToast() {
