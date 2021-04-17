@@ -7,5 +7,4 @@ sub-module for Flask Routing.
 
 Sub-Module:
     - Handlers (Flask Routes for Error Pages)
-
 """
