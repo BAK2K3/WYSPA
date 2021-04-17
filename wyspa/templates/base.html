@@ -82,7 +82,7 @@
         </header>
 
         <!-- Sidenav Header -->
-        <section>
+        <div>
             <ul class="sidenav" id="mobile-sidenav">
                 <li {% if active_page == "index" %} class="active" {% endif %}><a tabindex="-1"
                         href="{{ url_for('core.index') }}">Home</a></li>
@@ -109,8 +109,7 @@
 
                 {% endif %}
             </ul>
-
-        </section>
+        </div>
 
         <!-- Main Block Content -->
         <main>
@@ -155,7 +154,7 @@
                                 type="text"
                                 readonly
                                 required
-                                />
+                                >
                             </div>
                         </div>
                         <div class="row footer-modal">
@@ -208,7 +207,7 @@
                             type="text"
                             readonly
                             required
-                            />
+                            >
                         </div>
                         </div>
                         <div class="row footer-modal">
