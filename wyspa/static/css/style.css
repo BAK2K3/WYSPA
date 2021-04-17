@@ -158,6 +158,13 @@ nav i.material-icons.help-trigger {
 }
 
 .sidenav li.active {
+  background: -o-radial-gradient(
+    21%,
+    circle,
+    rgba(2, 7, 11, 1) 0%,
+    rgba(2, 7, 11, 1) 21%,
+    rgba(2, 7, 11, 0) 100%
+  );
   background: radial-gradient(
     circle at 21%,
     rgba(2, 7, 11, 1) 0%,
@@ -224,6 +231,8 @@ nav i.material-icons.help-trigger {
   color: white;
   text-decoration: underline;
   z-index: 20;
+  -webkit-transform: translateY(0px) translateX(0px) !important;
+  -ms-transform: translateY(0px) translateX(0px) !important;
   transform: translateY(0px) translateX(0px) !important;
 }
 
@@ -498,6 +507,7 @@ input[type="range"] + .thumb .value {
 
 /* https://github.com/Dogfalo/materialize/blob/824e78248b3de81e383445e76ffb04cc3264fe7d/sass/components/forms/_range.scss#L97 */
 .keyboard-focused input[type="range"]:focus:not(.active)::-webkit-slider-thumb {
+  -webkit-box-shadow: 0 0 0 10px rgba(255, 255, 255, 0.26);
   box-shadow: 0 0 0 10px rgba(255, 255, 255, 0.26);
 }
 
