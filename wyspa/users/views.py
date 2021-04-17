@@ -1,10 +1,7 @@
-import re
-
 from flask import (render_template, Blueprint, request,
                    redirect, flash, url_for, session)
-from flask_login import (LoginManager, login_user,
+from flask_login import (LoginManager, login_required,
                          logout_user, current_user)
-from werkzeug.security import generate_password_hash, check_password_hash
 
 from wyspa.factory.initialisation import mongo
 from wyspa.users.classes import User
@@ -38,38 +35,31 @@ def register():
 
     if request.method == "POST":
 
-        # Verify user password
+        # Obtain password
         user_password = request.form.get("passwordRegister")
         password_confirmation = request.form.get("passwordConfirm")
-        if not re.search("^(?=.*[^a-zA-Z]).{6,20}$", user_password):
+
+        # Check the correct format of password
+        if not User.verify_password_format(user_password):
             flash("Password format incorrect!")
             return render_template("index.html")
 
-        if user_password != password_confirmation:
+        # Check the passwords match
+        if not User.verify_password_match(user_password,
+                                          password_confirmation):
             flash("Passwords do not match!")
             return render_template("index.html")
 
-        # check if username already exists in DB
-        username_check = mongo.db.users.find_one(
-            {"username": request.form.get("usernameRegister").lower()})
+        # Search for username
+        username = request.form.get("usernameRegister").lower()
 
-        # Username Validation
-        if username_check:
+        # Check to see if username exists in DB
+        if User.obtain_user(username):
             flash("Username already exists!")
             return redirect(url_for("core.index"))
 
-        # Create a registration dictionary
-        registration = {
-            "username": request.form.get("usernameRegister").lower(),
-            "password": generate_password_hash(user_password)
-        }
-
-        # Update DB with registration dictionary
-        mongo.db.users.insert_one(registration)
-
-        # Create an instance of User with new user, and log in
-        new_user = User(username=registration['username'])
-        login_user(new_user)
+        # Register and log in user
+        User.register_user(username, user_password)
 
         # Save user's timezone in session
         session['timezone'] = request.form.get("timezoneRegister")
@@ -92,20 +82,14 @@ def login():
             return redirect(request.referrer)
 
     if request.method == "POST":
-        # Query DB for username
-        login_check = mongo.db.users.find_one(
-            {"username": request.form.get("usernameLogin").lower()})
 
-        # Check username exists and password matches
-        if login_check and check_password_hash(
-                login_check["password"],
-                request.form.get("passwordLogin")):
+        # Obtain username and password from form
+        username = request.form.get("usernameLogin").lower()
+        user_password = request.form.get("passwordLogin")
 
-            # Create an instance of User class
-            existing_user = User(username=login_check['username'])
-            # Log in User
-            login_user(existing_user)
-            # Save user's timezone in session
+        # Verify username/password and log in
+        if User.verify_login(username, user_password):
+
             session['timezone'] = request.form.get("timezoneLogin")
             flash(f"Welcome, {current_user.username}")
 
@@ -115,8 +99,8 @@ def login():
             else:
                 return redirect(request.referrer)
 
+        #  Inform user that credentials are incorrect
         else:
-            #  Inform user that credentials are incorrect
             flash("Incorrect Username and/or Password")
             return redirect(request.referrer)
 
@@ -129,3 +113,21 @@ def logout():
     if current_user.is_authenticated:
         logout_user()
     return redirect(url_for('core.index'))
+
+
+@users.route('/delete_user', methods=["GET", "POST"])
+@ login_required
+def delete_user():
+
+    if request.method == "POST":
+        try:
+            User.delete_user(current_user.username)
+            flash("Account and Wyspas deleted Successfully!")
+            return redirect(url_for('users.logout'))
+        except Exception as e:
+            print(e)
+            flash("Oops! Looks like something went wrong!")
+            return redirect(url_for("messages.my_voice"))
+
+    # Route for GET
+    return redirect(url_for("messages.my_voice"))
