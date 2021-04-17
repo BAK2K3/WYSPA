@@ -1,10 +1,11 @@
 """
-Initialise Flask Application Factory with MongoDB.
+Initialise Flask Application Factory with MongoDB and Prettify.
 """
 import os
 
 from flask import Flask
 from flask_pymongo import PyMongo
+from flask_pretty import Prettify
 
 if os.path.exists("env.py"):
     import env
@@ -12,6 +13,9 @@ if os.path.exists("env.py"):
 
 # Instantiate Mongo Database
 mongo = PyMongo()
+
+# Instantiate Prettify
+prettify = Prettify()
 
 
 # https://github.com/yymm/flask-vuejs
@@ -33,11 +37,13 @@ def create_app():
     app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
     app.config["PREFERRED_URL_SCHEME"] = "https"
     app.config["TESTING"] = False
+    app.config["PRETTIFY"] = True
 
     app.template_folder = os.path.abspath("wyspa/templates")
     app.secret_key = os.environ.get("SECRET_KEY")
     app.static_folder = os.path.abspath("wyspa/static")
 
     mongo.init_app(app)
+    prettify.init_app(app)
 
     return app
