@@ -1,7 +1,7 @@
 """
-Views - Core Submodule
+Views - Core Sub-module
 =============
-This submodule is for core Flask routes.
+This sub-module is for core Flask routes.
 
 Functions:
     - Index()
