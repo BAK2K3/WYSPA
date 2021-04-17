@@ -2,8 +2,7 @@
 Core Module
 =============
 
-This module contains any sub-modules which
-do not relate to Wyspas or Users.
+This module contains the core Views submodules.
 
 Sub-Module:
     - Views (Flask Routes for core functionality)
