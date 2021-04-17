@@ -1,14 +1,12 @@
 """
-WYSPA - A Full Stack Anonymous Social Media Network
-===================================================
+Wyspa Module
+============
 
-WYSPA is a Full Stack Project utilising Python, NoSQL,
-JavaScript, HTML, and CSS. It aims to give voices
-to those who want to speak their mind, anonymously.
-
-See https://github.com/BAK2K3/WYSPA/blob/master/README.md
-for complete documentation.
+This module creates an instance of the Flask application
+via the Factory, registers all blueprints, then sets up
+the Login Manager.
 """
+
 
 from wyspa.core.views import core
 from wyspa.maps.views import maps
