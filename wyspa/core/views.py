@@ -1,8 +1,7 @@
 """
 Views - Core Submodule
 =============
-This submodule is for any Flask routes which do
-not relate to either Wyspas (messages) or Users.
+This submodule is for core Flask routes.
 
 Functions:
     - Index()
