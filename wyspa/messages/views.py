@@ -70,6 +70,7 @@ def create_wyspa():
                           location=converted_location,
                           expiry=formatted_expiry)
         new_wyspa.write_wyspa()
+        flash("Wyspa successful!")
         return redirect(url_for("messages.my_voice"))
 
 
@@ -230,3 +231,4 @@ def delete_wyspa(message_id):
 
     # Route for GET
     return redirect(url_for("messages.my_voice"))
+
