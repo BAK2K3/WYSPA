@@ -6,7 +6,6 @@ not relate to either Wyspas (messages) or Users.
 
 Functions:
     - Index()
-
 """
 
 from flask import render_template, Blueprint
