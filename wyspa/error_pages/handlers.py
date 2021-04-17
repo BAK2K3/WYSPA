@@ -1,11 +1,11 @@
 """
-Handlers - Error_Pages Submodule
+Handlers - Error_Pages Sub-module
 =============
-This submodule is for handling error pages.
+
+This sub-module is for handling error pages.
 
 Functions:
     - Error_404(error)
-
 """
 
 from flask import render_template, Blueprint
