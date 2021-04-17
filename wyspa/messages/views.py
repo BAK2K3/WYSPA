@@ -38,10 +38,15 @@ def my_voice():
 @ login_required
 def create_wyspa():
 
-    # Convert datetime
-    formatted_expiry = Wyspa.string_to_datetime(
-            expiry_date=request.form.get("expiryDate"),
-            expiry_time=request.form.get("expiryTime"))
+    try:
+        # Convert datetime
+        formatted_expiry = Wyspa.string_to_datetime(
+                expiry_date=request.form.get("expiryDate"),
+                expiry_time=request.form.get("expiryTime"))
+    except TypeError as e:
+        print(e)
+        flash("Oops! Something went wrong! Please try again!")
+        return redirect(url_for("messages.my_voice"))
 
     # If the formatted_expiry fails
     if not formatted_expiry:
