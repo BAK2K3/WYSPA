@@ -8,7 +8,6 @@ to those who want to speak their mind, anonymously.
 
 See https://github.com/BAK2K3/WYSPA/blob/master/README.md
 for complete documentation.
-
 """
 
 from wyspa.core.views import core
