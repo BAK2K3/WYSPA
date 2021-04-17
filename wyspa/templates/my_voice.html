@@ -42,17 +42,16 @@
                     <i class="material-icons wyspa-action">hearing</i>
 
                     <!-- Go to Wyspa -->
-                    <button
-                      type="button"
-                      class="wyspa-button wyspa-action tooltipped"
-                      data-position="right"
-                      data-tooltip="Go To Wyspa"
+                    <a
+                      class="wyspa-button wyspa-action"
+                      href="{{url_for('messages.view_message', message_id=entry._id)}}"
+                      ><i
+                        class="material-icons tooltipped"
+                        data-position="right"
+                        data-tooltip="Go To Wyspa"
+                        >send</i
+                      ></a
                     >
-                      <a
-                        href="{{url_for('messages.view_message', message_id=entry._id)}}"
-                        ><i class="material-icons">send</i></a
-                      >
-                    </button>
                   </form>
                   <span
                     ><em
