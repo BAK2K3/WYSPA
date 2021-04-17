@@ -1,5 +1,5 @@
 """
-Initialisation - Factory Submodule
+Initialisation - Factory Sub-module
 ==================================
 
 Initialise Flask Application Factory with MongoDB and Prettify.
