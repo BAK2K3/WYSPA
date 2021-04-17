@@ -159,13 +159,44 @@
 
                 <!-- Submit -->
                 <div class="col s12 submit-col">
-                  <button
-                    class="btn add-comment waves-effect"
-                    type="submit"
-                    name="action"
-                  >
+                  <button class="btn add-comment waves-effect" type="submit">
                     Wyspa
                     <i class="material-icons right">comment</i>
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="col s12">
+      <!-- Collapsable Delete -->
+      <ul class="collapsible">
+        <li>
+          <div class="collapsible-header card-panel center white-text">
+            Delete Account<i class="material-icons right">error_outline</i>
+          </div>
+          <!-- WYSPA Creation  -->
+          <div class="collapsible-body">
+            <form
+              method="POST"
+              action="{{url_for('messages.delete_user')}}"
+              class="confirm-deletion"
+            >
+              <div class="speech-bubble comment-box center">
+                <div class="row">
+                  <div class="col s12">
+                    <h4 class="delete-header">Warning</h4>
+                    Deleting your account is permanent, and all Wyspa's linked
+                    to your account will be deleted in the process. Are you sure
+                    you want to continue with account deletion?
+                  </div>
+                </div>
+                <div class="col s12 submit-col">
+                  <button class="btn add-comment waves-effect">
+                    Permanently Delete
                   </button>
                 </div>
               </div>
