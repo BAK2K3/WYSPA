@@ -18,8 +18,10 @@ from wyspa.error_pages.handlers import error_pages
 from wyspa.factory.initialisation import create_app
 from wyspa.users.views import login_manager, users
 
-
+# Initialise Flask Application via Factory
 app = create_app()
+
+# Register Blueprints to Flask
 app.register_blueprint(core)
 app.register_blueprint(maps)
 app.register_blueprint(messages)
