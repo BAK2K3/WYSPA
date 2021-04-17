@@ -231,4 +231,3 @@ def delete_wyspa(message_id):
 
     # Route for GET
     return redirect(url_for("messages.my_voice"))
-
