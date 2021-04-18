@@ -88,10 +88,6 @@ def add_comment(message_id):
         if current_user.is_authenticated:
             retrieved_wyspa.add_comment(request.form.get(
                 "commentReply"), current_user.username)
-        # Otherwise resort to default entry
-        else:
-            retrieved_wyspa.add_comment(request.form.get(
-                "commentReply"))
 
         return redirect(url_for("messages.view_message",
                                 message_id=retrieved_wyspa._id))
