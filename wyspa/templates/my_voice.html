@@ -99,6 +99,7 @@
                     id="wyspaContent"
                     name="wyspaContent"
                     class="materialize-textarea validate"
+                    pattern="^(\w| )*[0-9A-Za-z](\w| )*$"
                     required
                   ></textarea>
                   <label for="wyspaContent">Your Wyspa</label>
@@ -290,4 +291,5 @@
 {% endblock %} {% block scripts %}
 <script src="{{ url_for('static', filename='js/wyspa-form.js') }}"></script>
 <script src="{{ url_for('static', filename='js/my-voice.js') }}"></script>
+<script src="{{ url_for('static', filename='js/textarea-validate.js') }}"></script>
 {% endblock %}
