@@ -62,7 +62,7 @@ class Wyspa():
         A unique list of users usernames who have
         listened to a Wyspa.
 
-    listenCount :int
+    listen_count : int
         An integer representation of the length of the
         listen list.
 
@@ -158,7 +158,7 @@ class Wyspa():
             A unique list of users usernames who have
             listened to a Wyspa.
 
-        listenCount :int
+        listen_count :int
             An integer representation of the length of the
             listen list.
 
@@ -342,9 +342,9 @@ class Wyspa():
 
         Returns
         -------
-        Constructed Wyspa Object
-            or
-        False : bool
+        Constructed Wyspa Object (On Success)
+
+        False : bool (On Failure)
         """
 
         # Checks ID passed in is valid ObjectID
@@ -372,8 +372,11 @@ class Wyspa():
 
         Returns
         -------
-        return_data : list
+        return_data : list (On Success)
             A list of constructed Wyspa objects.
+
+        data : None (On Failure)
+            An empty variable
         """
 
         data = list(mongo.db.messages.find({"author": username}))
@@ -406,7 +409,10 @@ class Wyspa():
 
         Returns
         -------
-        Constructed Wyspa Object
+        Constructed Wyspa Object (On Success)
+
+        data : None
+            An empty variable (On Failure)
         """
 
         data = list(mongo.db.messages.aggregate(
@@ -420,7 +426,7 @@ class Wyspa():
         """Retreives all Wyspas from the Database.
 
         Queries the database for all Wyspas, sorted by
-        listenCount in descending order, and returns
+        listen_count in descending order, and returns
         a list of constructed Wyspa objects.
 
         Parameters
@@ -429,8 +435,11 @@ class Wyspa():
 
         Returns
         -------
-        return_data : list
+        return_data : list (On Success)
             A list of constructed Wyspa objects.
+
+        data : None (On Failure)
+            An empty variable
         """
         data = list(mongo.db.messages.aggregate(
             [{"$sort": {"listen_count": -1}}]))
@@ -512,10 +521,10 @@ class Wyspa():
 
         Returns
         -------
-        formatted_expiry: datetime
+        formatted_expiry: datetime (On Success)
             A timezone aware datetime object.
-        or
-        False : bool
+
+        False : bool (On Failure)
         """
 
         # Convert date and time strings to Datetime object.
@@ -583,8 +592,11 @@ class Wyspa():
 
         Returns
         -------
-        prepared_data : list
+        prepared_data : list (On Success)
             A list of dictionaries containing condensed Wyspa parameters.
+
+        wyspas : None (On Failure)
+            An empty variable.
         """
         # Checks the list contains Wyspas
         if wyspas is not None:
