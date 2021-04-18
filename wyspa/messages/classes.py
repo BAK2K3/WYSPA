@@ -9,10 +9,14 @@ to the Wyspa Database.
 Classes: Wyspa
 """
 
+# https://stackoverflow.com/questions/24434510/how-to-deal-with-pylints-too-many-instance-attributes-message
+# pylint: disable=too-many-arguments, too-many-instance-attributes
+# Considered attributes for Class and beleive it is reasonable in this scenario
+
 from random import uniform
-from bson.objectid import ObjectId
 from datetime import datetime
 from dateutil import tz
+from bson.objectid import ObjectId
 
 from flask import session
 from geopy.geocoders import Nominatim
@@ -22,7 +26,7 @@ from wyspa.factory.initialisation import mongo
 
 # Create a class for WYSPAs
 class Wyspa():
-       """
+    """
     A class to represent the Wyspa Message.
     Contains all required methods to store,
     retrieve, edit, and prepare data appropriately,
@@ -70,6 +74,9 @@ class Wyspa():
     Methods
     -------
 
+    wyspa_id():
+        Returns the protected _id property of the Wyspa.
+
     get_info()
         Formats and returns the current Wyspa's attributes as a dict.
 
@@ -116,10 +123,8 @@ class Wyspa():
         Isolates and prepares the required data for Map routing.
     """
 
-
-    def __init__(self, author, message, mood, location,
-                 expiry=None, comments=[], listens=[],
-                 listenCount=0, _id=None):
+    def __init__(self, author, message, mood, location, expiry=None,
+                 comments=None, listens=None, listen_count=None, _id=None):
         """
         Constructs all the necessary attributes for the Wyspa object.
 
@@ -170,8 +175,22 @@ class Wyspa():
         self.location = location
         self.comments = comments if comments else []
         self.listens = listens if listens else []
-        self.listenCount = listenCount if listenCount else 0
+        self.listen_count = listen_count if listen_count else 0
         self.expiry = expiry if expiry else None
+
+    @property
+    def wyspa_id(self):
+        """Returns the protected _id property of the Wyspa.
+
+        Parameters
+        ----------
+        None
+
+        Returns
+        -------
+        _id : str
+        """
+        return self._id
 
     def get_info(self):
         """Formats and returns the current Wyspa's attributes as a dict.
@@ -191,7 +210,7 @@ class Wyspa():
         info = {'author': self.author, 'message': self.message,
                 'mood': self.mood, 'location': self.location,
                 'expiry': self.expiry, 'comments': self.comments,
-                'listens': self.listens, 'listenCount': self.listenCount}
+                'listens': self.listens, 'listen_count': self.listen_count}
         return info
 
     def write_wyspa(self):
@@ -305,7 +324,7 @@ class Wyspa():
         """
 
         self.listens.append(listener)
-        self.listenCount += 1
+        self.listen_count += 1
         mongo.db.messages.update({"_id": ObjectId(self._id)}, self.get_info())
 
     @classmethod
@@ -334,11 +353,9 @@ class Wyspa():
             if data is not None:
                 return cls(**data)
             # Return False if no message in DB with that ID
-            else:
-                return False
-        # Return False if ID is not valid ObjectID
-        else:
             return False
+        # Return False if ID is not valid ObjectID
+        return False
 
     @classmethod
     def get_by_user(cls, username):
@@ -373,6 +390,7 @@ class Wyspa():
                 # Append the Wyspa to the return_data list
                 return_data.append(cls(**wyspa))
             return return_data
+        return data
 
     @classmethod
     def get_random_wyspa(cls):
@@ -395,6 +413,7 @@ class Wyspa():
             [{"$sample": {"size": 1}}]))
         if data != []:
             return cls(**data[0])
+        return data
 
     @classmethod
     def get_all_wyspas(cls):
@@ -414,7 +433,7 @@ class Wyspa():
             A list of constructed Wyspa objects.
         """
         data = list(mongo.db.messages.aggregate(
-            [{"$sort": {"listenCount": -1}}]))
+            [{"$sort": {"listen_count": -1}}]))
 
         # Checks to see if any documents have been retrieved
         if data != []:
@@ -423,6 +442,7 @@ class Wyspa():
             for wyspa in data:
                 return_data.append(cls(**wyspa))
             return return_data
+        return data
 
     @staticmethod
     def delete_wyspa(_id):
@@ -514,8 +534,7 @@ class Wyspa():
         # Ensure expiry date is in the future
         if formatted_expiry < server_time:
             return False
-        else:
-            return formatted_expiry
+        return formatted_expiry
 
     @staticmethod
     def datetime_to_string(formatted_expiry):
@@ -573,7 +592,8 @@ class Wyspa():
             # Isolates the data the map routing requires
             for wyspa in wyspas:
                 prepared_data.append(
-                    {"_id": str(wyspa._id), "location": wyspa.location,
-                     "mood": wyspa.mood, "listens": (wyspa.listenCount)})
+                    {"_id": str(wyspa.wyspa_id), "location": wyspa.location,
+                     "mood": wyspa.mood, "listens": (wyspa.listen_count)})
             # Returns list of dicts containing consensed Wyspa parameters
             return prepared_data
+        return wyspas
