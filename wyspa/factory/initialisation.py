@@ -7,7 +7,7 @@ Initialise Flask Application Factory with MongoDB and Prettify.
 Class:
     CustomFlask(Flask)
 
-Functions:
+Function:
     create_app()
 """
 
