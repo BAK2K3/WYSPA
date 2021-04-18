@@ -25,11 +25,20 @@ maps = Blueprint('maps', __name__)
 
 @maps.route('/map_overview')
 def map_overview():
-    """Map Route
+    """Map Overview
 
-    This route queries the DB for all Wyspas,
-    prepares the data, and sends both the Gmaps API and map_data
-    to the rendered HTML page.
+    Login: Not Required
+
+    This route queries the DB for all Wyspas, prepares the data,
+    and sends both the Gmaps API and map_data to the rendered HTML page.
+
+    Parameters
+    ----------
+    None
+
+    Returns
+    -------
+    maps.html
     """
 
     # Retrieve all messages
