@@ -17,5 +17,15 @@ core = Blueprint('core', __name__)
 # Route for home page
 @core.route('/')
 def index():
-    """Basic routing for the home page."""
+    """Basic routing for the home page.
+
+    Parameters
+    ----------
+    None
+
+    Returns
+    -------
+    index.html
+    """
+
     return render_template('index.html')
