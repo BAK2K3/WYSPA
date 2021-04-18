@@ -19,7 +19,7 @@
                         <div class="col s12 center wyspa-action-bar">
                             <!-- Listen to Wyspa -->
                             <span class="listener-count wyspa-action"> {{ message_entry.listens|length }} </span>
-                            <a href="{{url_for('messages.add_listen', message_id=message_entry._id, listener=current_user.username)}}"
+                            <a href="{{url_for('messages.add_listen', message_id=message_entry._id)}}"
                                 class="wyspa-action"><i class="material-icons tooltipped wyspa-action-icon"
                                     data-position="bottom" data-tooltip="Listen">hearing</i></a>
                             <!-- Random Wyspa -->
