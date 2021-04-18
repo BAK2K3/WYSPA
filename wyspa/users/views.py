@@ -1,3 +1,18 @@
+"""
+Views - Users Sub-module
+==================================
+
+This module contains the User Views sub-module which
+handles all routes and data handling relating to Users.
+
+Functions:
+    load_user(username)
+    register()
+    login()
+    logout()
+    delete_user()
+"""
+
 from flask import (render_template, Blueprint, request,
                    redirect, flash, url_for, session)
 from flask_login import (LoginManager, login_required,
@@ -18,6 +33,23 @@ login_manager = LoginManager()
 # Define the user_loader callback for Flask-Login
 @login_manager.user_loader
 def load_user(username):
+    """Login Manager Load User
+
+    Login: Not Required
+
+    This route is a required by Flask-Login. It queries
+    the database for a given user, and returns a User object with
+    the logged in user's username.
+
+    Parameters
+    ----------
+    username : str
+        Username of user attempting to log in.
+
+    Returns
+    -------
+    User object
+    """
     login_attempt = mongo.db.users.find_one({"username": username.lower()})
     if not login_attempt:
         return None
@@ -27,6 +59,27 @@ def load_user(username):
 # Register Route
 @ users.route("/register", methods=["GET", "POST"])
 def register():
+    """Register Route [Get/Post]
+
+    Login: Not Required
+
+    This route validates a user's username, password,
+    and confirmation password, before adding a user
+    entry to the Users Database, and logging them in.
+
+    This is a POST route; if accessed via GET, user
+    is redirected to Index route with no further action.
+
+    Parameters
+    ----------
+    None
+
+    Returns
+    -------
+    Redirect (index) [Get/Unsuccessful]
+
+    Redirect (my_voice) [Post/Successful]
+    """
 
     # Check if user is already logged in
     if current_user.is_authenticated:
@@ -74,12 +127,38 @@ def register():
 
 @ users.route('/login', methods=['GET', 'POST'])
 def login():
+    """Login Route [Get/Post]
+
+    Login: Not Required
+
+    This route queries the database for a username,
+    and validates their password if a user is found.
+
+    If a user has been referred to log in, the "Next"
+    parameter (if applicable) is stored for redirect after
+    successful login.
+
+    This is a POST route; if accessed via GET, user
+    is redirected to Index route with no further action.
+
+    Parameters
+    ----------
+    None
+
+    Returns
+    -------
+    Redirect (index) [Get/Unsuccessful]
+
+    Redirect (my_voice) [Post/Successful]
+
+    Redirect (referrer) [Post/Successful with referrer]
+    """
+
     if current_user.is_authenticated:
         # Checks if next parameter is in the referal URL
         if "?next=%2F" in request.referrer:
             return redirect(request.referrer.split("?next=%2F")[1])
-        else:
-            return redirect(request.referrer)
+        return redirect(request.referrer)
 
     if request.method == "POST":
 
@@ -96,13 +175,11 @@ def login():
             # Checks if next parameter is in the referal URL
             if "?next=%2F" in request.referrer:
                 return redirect(request.referrer.split("?next=%2F")[1])
-            else:
-                return redirect(request.referrer)
+            return redirect(request.referrer)
 
         #  Inform user that credentials are incorrect
-        else:
-            flash("Incorrect Username and/or Password")
-            return redirect(request.referrer)
+        flash("Incorrect Username and/or Password")
+        return redirect(request.referrer)
 
     return redirect(url_for('core.index'))
 
@@ -110,6 +187,22 @@ def login():
 # Log out user and redirect to Index
 @ users.route('/logout')
 def logout():
+    """Logout Route [Get]
+
+    Login: Required
+
+    This route logs a user out of the session.
+    Login_required decorator has not been used to
+    avoid storing referral information.
+
+    Parameters
+    ----------
+    None
+
+    Returns
+    -------
+    Redirect (Index)
+    """
     if current_user.is_authenticated:
         logout_user()
     return redirect(url_for('core.index'))
@@ -118,16 +211,30 @@ def logout():
 @users.route('/delete_user', methods=["GET", "POST"])
 @ login_required
 def delete_user():
+    """Delete User Route [Get]
+
+    Login: Required
+
+    This route deletes a user document from the Users
+    database, and removes all of the Wyspas in the
+    Messages database where the user is the author.
+
+    This is a POST route; if accessed via GET, user
+    is redirected to My Voice route with no further action.
+
+    Parameters
+    ----------
+    None
+
+    Returns
+    -------
+    Redirect (My Voice) [Get]
+    Redirect (Logout) [Post]
+    """
 
     if request.method == "POST":
-        try:
-            User.delete_user(current_user.username)
-            flash("Account and Wyspas deleted Successfully!")
-            return redirect(url_for('users.logout'))
-        except Exception as e:
-            print(e)
-            flash("Oops! Looks like something went wrong!")
-            return redirect(url_for("messages.my_voice"))
-
+        User.delete_user(current_user.username)
+        flash("Account and Wyspas deleted Successfully!")
+        return redirect(url_for('users.logout'))
     # Route for GET
     return redirect(url_for("messages.my_voice"))
