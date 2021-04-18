@@ -1,28 +1,17 @@
 import re
 from werkzeug.security import generate_password_hash, check_password_hash
-from flask_login import login_user
+from flask_login import login_user, UserMixin
 
 from wyspa.factory.initialisation import mongo
 
 
 # https://stackoverflow.com/questions/54992412/flask-login-usermixin-class-with-a-mongodb
 # Create the required User class for Flask-Login
-class User():
+class User(UserMixin):
     def __init__(self, username):
         self.username = username
 
-    @staticmethod
-    def is_authenticated():
-        return True
-
-    @staticmethod
-    def is_active():
-        return True
-
-    @staticmethod
-    def is_anonymous():
-        return False
-
+    # Over-ride UserMixin "get_id" method
     def get_id(self):
         return self.username
 
@@ -66,5 +55,4 @@ class User():
                 login_check["password"], user_password):
             login_user(User(username))
             return True
-        else:
-            return False
+        return False
