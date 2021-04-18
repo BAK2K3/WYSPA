@@ -125,8 +125,7 @@ class Wyspa():
 
     def __init__(self, author, message, mood, location, expiry=None,
                  comments=None, listens=None, listen_count=None, _id=None):
-        """
-        Constructs all the necessary attributes for the Wyspa object.
+        """Constructs all the necessary attributes for the Wyspa object.
 
         Attributes
         -----------
