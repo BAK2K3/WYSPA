@@ -115,15 +115,10 @@ def create_wyspa():
     """
 
     if request.method == "POST":
-        # Try and conver the date and time provided in the form
-        try:
-            formatted_expiry = Wyspa.string_to_datetime(
+        # Convert datetime
+        formatted_expiry = Wyspa.string_to_datetime(
                     expiry_date=request.form.get("expiryDate"),
                     expiry_time=request.form.get("expiryTime"))
-        # Catch TypeError and redirect user back to My Voice
-        except TypeError:
-            flash("Oops! Something went wrong! Please try again!")
-            return redirect(url_for("messages.my_voice"))
 
         # If Formatted_Expiry returns False, expiry is in the past
         if not formatted_expiry:
@@ -342,18 +337,9 @@ def edit_wyspa(message_id):
     if request.method == "POST":
 
         # Convert datetime
-        try:
-            formatted_expiry = Wyspa.string_to_datetime(
+        formatted_expiry = Wyspa.string_to_datetime(
                 expiry_date=request.form.get("expiryDate"),
                 expiry_time=request.form.get("expiryTime"))
-
-        # Catch TypeError and redirect user back to edit
-        except TypeError:
-            flash("Oops! Something went wrong! Please try again!")
-            expiry_date = Wyspa.datetime_to_string(retrieved_wyspa.expiry)
-            return render_template("edit_wyspa.html",
-                                   retrieved_wyspa=retrieved_wyspa,
-                                   expiry_date=expiry_date)
 
         # If Formatted_Expiry returns False, expiry is in the past
         if not formatted_expiry:
