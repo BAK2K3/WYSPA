@@ -12,6 +12,7 @@ Classes: Wyspa
 # https://stackoverflow.com/questions/24434510/how-to-deal-with-pylints-too-many-instance-attributes-message
 # pylint: disable=too-many-arguments, too-many-instance-attributes
 # Considered attributes for Class and beleive it is reasonable in this scenario
+
 import re
 from random import uniform
 from datetime import datetime
