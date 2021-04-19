@@ -95,7 +95,8 @@ usernameField.addEventListener("change", usernameValidate);
 registrationForm.addEventListener("submit", function (event) {
   if (
     passwordRegisterField.classList.contains("invalid") ||
-    passwordValidateField.classList.contains("invalid")
+    passwordValidateField.classList.contains("invalid") ||
+    usernameField.classList.contains("invalid")
   ) {
     event.preventDefault();
   } else if (registrationForm.classList.contains("is-submitting")) {
