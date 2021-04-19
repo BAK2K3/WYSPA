@@ -193,6 +193,7 @@ class Wyspa():
         -------
         _id : str
         """
+        # https://stackoverflow.com/questions/24833362/pylint-warning-w0212-with-properties-accessing-a-protected-member-how-to-avoi
         return self._id
 
     def get_info(self):
