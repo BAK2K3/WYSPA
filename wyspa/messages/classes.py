@@ -12,7 +12,7 @@ Classes: Wyspa
 # https://stackoverflow.com/questions/24434510/how-to-deal-with-pylints-too-many-instance-attributes-message
 # pylint: disable=too-many-arguments, too-many-instance-attributes
 # Considered attributes for Class and beleive it is reasonable in this scenario
-
+import re
 from random import uniform
 from datetime import datetime
 from dateutil import tz
@@ -121,6 +121,9 @@ class Wyspa():
 
     wyspa_to_map(wyspas)
         Isolates and prepares the required data for Map routing.
+
+    def whitespace_check(message):
+        Checks given string for non-whitespace characters.
     """
 
     def __init__(self, author, message, mood, location, expiry=None,
@@ -378,6 +381,7 @@ class Wyspa():
             An empty variable
         """
 
+        # Query the database for all user's Wyspas
         data = list(mongo.db.messages.find({"author": username}))
 
         # Obtain user's time zone from session
@@ -608,3 +612,24 @@ class Wyspa():
             # Returns list of dicts containing consensed Wyspa parameters
             return prepared_data
         return wyspas
+
+    @staticmethod
+    def whitespace_check(message):
+        """Checks given string for non-whitespace characters.
+
+        Parameters
+        ----------
+        message : str
+            String to check for non-whitespace characters
+
+        Returns
+        -------
+        whitspace_check : re.match Object
+        """
+
+        # Set regex pattern for not empty and not whitespace
+        # https://stackoverflow.com/questions/7967075/regex-for-not-empty-and-not-whitespace
+        whitespace_pattern = re.compile(r"(.|\s)*\S(.|\s)*")
+        whitespace_check = re.match(whitespace_pattern, message)
+        # Check the message and return the re.match object
+        return whitespace_check
