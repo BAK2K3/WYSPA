@@ -4,9 +4,6 @@ Initialisation - Factory Sub-module
 
 Initialise Flask Application Factory with MongoDB and Prettify.
 
-Class:
-    CustomFlask(Flask)
-
 Function:
     create_app()
 """
@@ -28,27 +25,23 @@ mongo = PyMongo()
 prettify = Prettify()
 
 
-# https://github.com/yymm/flask-vuejs
-class CustomFlask(Flask):
-    """Custom Flask Class set up to over-ride
-    default Jinja whitespace options."""
-    jinja_options = Flask.jinja_options.copy()
-    jinja_options.update(dict(
-        trim_blocks=True,
-        lstrip_blocks=True
-    ))
-
-
 # https://stackoverflow.com/questions/48653120/flask-pymongo-with-application-factory-and-blueprints
 def create_app():
     """Flask Application Factory
 
-    Initialises the Flask Application using the CustomFlask class,
-    configures the Flask Application, and then initialises both
-    MongoDB and Prettify.
+    Initialises the Flask Application, configures it,
+    and then initialises both MongoDB and Prettify.
 
-    Returns prepared Flask application (app)"""
-    app = CustomFlask(__name__)
+    Parameters
+    ----------
+    None
+
+    Returns
+    -------
+    app : Flask Application
+    """
+
+    app = Flask(__name__)
 
     # Configuration
     app.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME")
