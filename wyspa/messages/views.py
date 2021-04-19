@@ -115,6 +115,12 @@ def create_wyspa():
     """
 
     if request.method == "POST":
+
+        # Check comment for pure whitespace
+        if not Wyspa.whitespace_check(request.form.get("wyspaContent")):
+            flash("Oops! Looks like your message was empty!")
+            return redirect(url_for("messages.my_voice"))
+
         # Convert datetime
         formatted_expiry = Wyspa.string_to_datetime(
                     expiry_date=request.form.get("expiryDate"),
@@ -179,8 +185,16 @@ def add_comment(message_id):
 
     # If comment posted
     if request.method == "POST":
-        retrieved_wyspa.add_comment(new_comment=request.form.get(
-            "commentReply"), comment_author=current_user.username)
+
+        # Obtain comment from form
+        new_comment = request.form.get("commentReply")
+
+        # Check comment for pure whitespace
+        if not Wyspa.whitespace_check(new_comment):
+            flash("Oops! Looks like your message was empty!")
+        else:
+            retrieved_wyspa.add_comment(new_comment=new_comment,
+                                        comment_author=current_user.username)
 
     # Both GET and POST routes
     return redirect(url_for("messages.view_message",
@@ -306,7 +320,7 @@ def edit_wyspa(message_id):
     The Get request passes the existing Wyspa to the edit_wyspa.html
     template to prepopulate the Wyspa form.
 
-    The Post request verifies the data (datetime and location),
+    The Post request verifies the data (message, datetime and location),
     processes it, and updates the Wyspa in the database, before
     redirecting the user to the my_voice route.
 
@@ -335,6 +349,14 @@ def edit_wyspa(message_id):
 
     # Post Route
     if request.method == "POST":
+
+        # Check comment for pure whitespace
+        if not Wyspa.whitespace_check(request.form.get("wyspaContent")):
+            flash("Oops! Looks like your message was empty!")
+            expiry_date = Wyspa.datetime_to_string(retrieved_wyspa.expiry)
+            return render_template("edit_wyspa.html",
+                                   retrieved_wyspa=retrieved_wyspa,
+                                   expiry_date=expiry_date)
 
         # Convert datetime
         formatted_expiry = Wyspa.string_to_datetime(
