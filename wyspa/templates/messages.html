@@ -105,7 +105,7 @@
                                                     <!-- Textfield -->
                                                     <div class="input-field message-field col s12">
                                                         <textarea id="commentReply" name="commentReply"
-                                                            class="materialize-textarea validate" pattern="^(\w| )*[0-9A-Za-z](\w| )*$" required></textarea>
+                                                            class="materialize-textarea validate" required></textarea>
                                                         <label for="commentReply">Comment:</label>
                                                     </div>
                                                     <!-- Submit Button -->
@@ -172,8 +172,4 @@
     so it's down to you to respect yourself and each
     other.</p>
 
-{% endblock %}
-
-{% block scripts %}
-<script src="{{ url_for('static', filename='js/textarea-validate.js') }}"></script>
 {% endblock %}
