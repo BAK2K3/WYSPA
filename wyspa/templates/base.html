@@ -175,15 +175,15 @@
                 <h4>Register</h4>
                 <div class="row">
                     <!-- Error Container -->
-                    <div class="error-message"></div>
+                    <div class="error-message" id="errorMessageContainer"></div>
                     <!-- Register Form -->
-                    <form class="col s12 user-registration" method="POST" action="{{url_for('users.register')}}">
+                    <form class="col s12 user-registration" id="userRegistrationForm" method="POST" action="{{url_for('users.register')}}">
                         <div class="row no-margin">
                             <!-- Username -->
                             <div class="input-field login-field col s12">
                                 <i class="material-icons prefix">group</i>
                                 <input id="usernameRegister" name="usernameRegister" type="text" class="validate"
-                                    required>
+                                    pattern="^\S*$" required>
                                 <label for="usernameRegister">Username</label>
                             </div>
                             <!-- Password -->
