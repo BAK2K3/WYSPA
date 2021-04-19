@@ -132,11 +132,10 @@ def create_wyspa():
             return redirect(url_for("messages.my_voice"))
 
         # Try and convert the address to latlong
-        try:
-            converted_location = Wyspa.location_to_latlong(
-                request.form.get("location"))
-        # Catch AttributeError and confirm unsuccessful
-        except AttributeError:
+        converted_location = Wyspa.location_to_latlong(
+            request.form.get("location"))
+        # If converted location is None, location was not found
+        if not converted_location:
             flash("Unable to locate address!")
             return redirect(url_for("messages.my_voice"))
 
@@ -372,11 +371,10 @@ def edit_wyspa(message_id):
                                    expiry_date=expiry_date)
 
         # Try and convert the address to latlong
-        try:
-            converted_location = Wyspa.location_to_latlong(
-                request.form.get("location"))
-        # Catch AttributeError and confirm unsuccessful
-        except AttributeError:
+        converted_location = Wyspa.location_to_latlong(
+            request.form.get("location"))
+        # If converted location is None, location was not found
+        if not converted_location:
             flash("Unable to locate address!")
             expiry_date = Wyspa.datetime_to_string(
                 retrieved_wyspa.expiry)
