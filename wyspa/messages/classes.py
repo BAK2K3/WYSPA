@@ -344,9 +344,9 @@ class Wyspa():
 
         Returns
         -------
-        Constructed Wyspa Object (On Success)
-
-        False : bool (On Failure)
+        data:  Wyspa Object or bool
+            Constructed Wyspa object returned if successful.
+            False bool returned if unsuccessful.
         """
 
         # Checks ID passed in is valid ObjectID
@@ -354,10 +354,9 @@ class Wyspa():
             data = mongo.db.messages.find_one({"_id": ObjectId(_id)})
             if data is not None:
                 return cls(**data)
-            # Return False if no message in DB with that ID
-            return False
-        # Return False if ID is not valid ObjectID
-        return False
+        # Return False if message not in DB or if ID is not valid ObjectID
+        data = False
+        return data
 
     @classmethod
     def get_by_user(cls, username):
@@ -374,29 +373,30 @@ class Wyspa():
 
         Returns
         -------
-        return_data : list (On Success)
+        return_data : list
             A list of constructed Wyspa objects.
-
-        data : None (On Failure)
-            An empty variable
         """
 
         # Query the database for all user's Wyspas
         data = list(mongo.db.messages.find({"author": username}))
 
-        # Obtain user's time zone from session
-        user_timezone = tz.gettz(session["timezone"])
+        # Initialise return_data list
+        return_data = []
 
         # Checks to see if any documents have been retrieved
         if data is not None:
-            return_data = []
+
+            # Obtain user's time zone from session
+            user_timezone = tz.gettz(session["timezone"])
+
+            # For each Wyspa obtained
             for wyspa in data:
                 # Set the time zone of each Wyspa's expiry.
                 wyspa['expiry'] = wyspa['expiry'].astimezone(user_timezone)
-                # Append the Wyspa to the return_data list
+                # Create a Wyspa with the data, and append to return_data list
                 return_data.append(cls(**wyspa))
-            return return_data
-        return data
+
+        return return_data
 
     @classmethod
     def get_random_wyspa(cls):
@@ -412,16 +412,17 @@ class Wyspa():
 
         Returns
         -------
-        Constructed Wyspa Object (On Success)
-
-        data : None
-            An empty variable (On Failure)
+        data : object or list
+            object : Constructed Wyspa Object (if successful).
+            list : empty list (if unsuccessful).
         """
 
+        # Obtain a random sample from the messages database
         data = list(mongo.db.messages.aggregate(
             [{"$sample": {"size": 1}}]))
         if data != []:
-            return cls(**data[0])
+            # Pass the database object into the Wyspa class
+            data = cls(**data[0])
         return data
 
     @classmethod
@@ -438,23 +439,20 @@ class Wyspa():
 
         Returns
         -------
-        return_data : list (On Success)
-            A list of constructed Wyspa objects.
-
-        data : None (On Failure)
-            An empty variable
+        return_data : list
+            A list of all available constructed Wyspa objects.
         """
         data = list(mongo.db.messages.aggregate(
             [{"$sort": {"listen_count": -1}}]))
 
+        # Initialise return_data list
+        return_data = []
         # Checks to see if any documents have been retrieved
         if data != []:
             # Returns a list of constructed Wyspas from documents
-            return_data = []
             for wyspa in data:
                 return_data.append(cls(**wyspa))
-            return return_data
-        return data
+        return return_data
 
     @staticmethod
     def delete_wyspa(_id):
@@ -493,17 +491,22 @@ class Wyspa():
 
         Returns
         -------
-        latlong : dict
-            A dictionary containing scrambled "lat" and "lng" values.
+        latlong : dict or bool
+            A dictionary containing scrambled "lat" and "lng" values,
+            False bool if unsuccessful conversion.
         """
 
         # Instantiate Geopy Geolocator
         geolocator = Nominatim(user_agent="WYSPA")
         # Convert Location to Lat/Long Co-ordinates
         location = geolocator.geocode(user_location)
-        # Scramble Lat/Long by +-0.1 (float), and save as dict
-        latlong = {"lat": location.latitude + (round(uniform(0.1, -0.1), 10)),
-                   "lng": location.longitude + (round(uniform(0.1, -0.1), 10))}
+        if location is None:
+            latlong = False
+        else:
+            lat = location.latitude + (round(uniform(0.1, -0.1), 10))
+            long = location.longitude + (round(uniform(0.1, -0.1), 10))
+            # Scramble Lat/Long by +-0.1 (float), and save as dict
+            latlong = {"lat": lat, "lng": long}
         return latlong
 
     @staticmethod
@@ -524,10 +527,9 @@ class Wyspa():
 
         Returns
         -------
-        formatted_expiry: datetime (On Success)
-            A timezone aware datetime object.
-
-        False : bool (On Failure)
+        formatted_expiry: datetime or bool
+            A timezone aware datetime object (if successful).
+            False bool (if unsuccessful).
         """
 
         # Convert date and time strings to Datetime object.
@@ -545,7 +547,7 @@ class Wyspa():
 
         # Ensure expiry date is in the future
         if formatted_expiry < server_time:
-            return False
+            formatted_expiry = False
         return formatted_expiry
 
     @staticmethod
@@ -595,12 +597,12 @@ class Wyspa():
 
         Returns
         -------
-        prepared_data : list (On Success)
+        prepared_data : list
             A list of dictionaries containing condensed Wyspa parameters.
-
-        wyspas : None (On Failure)
-            An empty variable.
         """
+
+        # Initialise prepared data list
+        prepared_data = []
         # Checks the list contains Wyspas
         if wyspas is not None:
             prepared_data = []
@@ -609,9 +611,7 @@ class Wyspa():
                 prepared_data.append(
                     {"_id": str(wyspa.wyspa_id), "location": wyspa.location,
                      "mood": wyspa.mood, "listens": (wyspa.listen_count)})
-            # Returns list of dicts containing consensed Wyspa parameters
-            return prepared_data
-        return wyspas
+        return prepared_data
 
     @staticmethod
     def whitespace_check(message):
