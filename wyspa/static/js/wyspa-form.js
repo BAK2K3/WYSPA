@@ -9,11 +9,13 @@ const rangeSlider = document.querySelector("input#mood");
 const thumbValue = document.querySelector(".range-field span.thumb span.value");
 const rangeLabel = document.querySelector("label[for='mood'] span");
 
+// Add event listener on change to set class and HTML of label span
 rangeSlider.addEventListener("change", function () {
   rangeLabel.className = rangeToMood[thumbValue.innerText][1];
   rangeLabel.innerHTML = rangeToMood[thumbValue.innerText][0];
 });
 
+// Initialise the slider on page load.
 window.onload = function () {
   thumbValue.innerHTML = rangeSlider.value;
   rangeSlider.dispatchEvent(new Event("change"));
