@@ -6,82 +6,10 @@ Whisper Your Secrets Publicly and Anonymously
 
 See the work in progress [here](http://w-y-s-p-a.herokuapp.com/)
 
-# Table of contents
+# Important
 
->1. [Overview](#overview)
->2. [UX](#ux)
->    1. [Strategy](#strategy)
->    2. [Scope](#scope)
->    3. [Structure](#structure)
->    4. [Skeleton](#skeleton)
->    5. [Surface](#surface)
->3. [Features](#features)
->    1. [Existing Features](#existing-features)
->    2. [Future Feature Considerations](#future-feature-considerations)
->4. [Technologies Used](#technologies-used) 
->5. [Testing](#testing)
->6. [Deployment](#deployment)
->7. [Credits](#credits)
->    1. [Content](#content)
->    2. [Media](#media)
->    3. [Code](#code)
->8. [Acknowledgements](#acknowledgements)
->9. [Disclaimer](#disclaimer)
+The nightly-css branch is now deprecated, and was last updated on 20/04/2021.
 
-# Overview
+The nightly-css branch was created to implement and test the community driven [Materialize CSS](https://github.com/materializecss/materialize) build due to the original [no longer being supported](https://github.com/Dogfalo/materialize/issues/6615).
 
----
-
-# UX
-
----
-
-## Strategy
-
-## Scope
-
-## Structure
-
-## Skeleton
-
-## Surface
-
----
-
-# Features
-
-## Existing Features
-
-## Future Feature Considerations
-
----
-
-# Technologies Used
-
----
-
-# Testing
-
----
-
-# Deployment
-
----
-
-# Credits
-
-## Content
-
-## Media
-
-## Code
-
----
-
-# Acknowledgements
-
----
-
-# Disclaimer
-
----
+Please refer to the [dev](http://w-y-s-p-a.herokuapp.com/) branch for the up-to-date development branch, or the [master](http://w-y-s-p-a.herokuapp.com/) branch for the up-to-date deployed branch.
