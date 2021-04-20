@@ -1,3 +1,4 @@
+// Retreives the toast message (Flash) to be displayed in Toast element
 function displayToast(text) {
   var toastHTML = `${text} <button class="btn-flat toast-action" onclick="dismissToast()">Dismiss</button>`;
   M.toast({
@@ -7,6 +8,7 @@ function displayToast(text) {
   });
 }
 
+// Function for dismissing toast embedded in toast
 function dismissToast() {
   var toastElement = document.querySelector(".toast");
   var toastInstance = M.Toast.getInstance(toastElement);
