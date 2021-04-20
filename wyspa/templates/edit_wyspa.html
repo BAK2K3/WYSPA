@@ -115,5 +115,5 @@
   scrambled you have to re-set it if you want to edit your Wyspa.
 </p>
 {% endblock %} {% block scripts %}
-<script src="{{ url_for('static', filename='js/wyspa-form.js') }}"></script>
+<script src="{{ url_for('static', filename='js/wyspa-form.js', _scheme='https', _external=True) }}"></script>
 {% endblock %}
