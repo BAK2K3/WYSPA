@@ -10,7 +10,7 @@
 
 /********** Main CSS Tags **********/
 
-/* https://chanind.github.io/javascript/2019/09/28/avoid-100vh-on-mobile-web.html */
+/* https://allthingssmitty.com/2020/05/11/css-fix-for-100vh-in-mobile-webkit/ */
 
 html {
   height: 100%;
