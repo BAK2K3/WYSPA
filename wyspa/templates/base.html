@@ -4,8 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-
+    
     <!-- Google Icon Font Import -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
@@ -24,7 +23,25 @@
     <!-- Add Favicon -->
     <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico', _scheme='https', _external=True) }}">
 
-    <title>WYSPA</title>
+    <!-- Primary Meta Tags -->
+    <title>Wyspa - The Anonymous Social Media Network</title>
+    <meta name="title" content="Wyspa - The Anonymous Social Media Network">
+    <meta name="description" content="Wyspa Your Secrets, Publicly and Anonymously. ">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://w-y-s-p-a.herokuapp.com/">
+    <meta property="og:title" content="Wyspa - The Anonymous Social Media Network">
+    <meta property="og:description" content="Wyspa Your Secrets, Publicly and Anonymously. ">
+    <meta property="og:image" content="https://res.cloudinary.com/bak2k3/image/upload/v1618938956/WYSPA/social_acavr2.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://w-y-s-p-a.herokuapp.com/">
+    <meta property="twitter:title" content="Wyspa - The Anonymous Social Media Network">
+    <meta property="twitter:description" content="Wyspa Your Secrets, Publicly and Anonymously. ">
+    <meta property="twitter:image" content="https://res.cloudinary.com/bak2k3/image/upload/v1618938956/WYSPA/social_acavr2.png">
+
 </head>
 
 {% if GMAPS_API %}
