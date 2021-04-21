@@ -37,6 +37,7 @@ function initMap(map_data) {
       // Define colour of Circle
       let wyspaColor = moodMap[map_data[message].mood];
 
+      // https://developers.google.com/maps/documentation/javascript/examples/circle-simple
       // Add a cirlce for each wyspa
       const wyspaCircle = new google.maps.Circle({
         strokeColor: wyspaColor,
