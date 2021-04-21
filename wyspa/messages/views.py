@@ -17,7 +17,7 @@ Functions:
 """
 
 # pylint: disable=too-many-return-statements
-# Considered edit_wyspa return statements, and beleive it is neccessary.
+# Considered edit_wyspa return statements, and believe it is necessary.
 
 from flask import render_template, Blueprint, request, redirect, url_for, flash
 from flask_login import current_user, login_required
