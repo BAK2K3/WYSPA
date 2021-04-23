@@ -121,6 +121,8 @@ def register():
         flash("Registration Successful")
         return redirect(url_for("messages.my_voice"))
 
+    # Instructions for over-ride entry
+    flash("Please click the Register button to Register!")
     # Routing for Get Requests
     return redirect(url_for("core.index"))
 
@@ -134,7 +136,7 @@ def login():
     This route queries the database for a username,
     and validates their password if a user is found.
 
-    If a user has been referred to log in, the "Next"
+    If a user has been referred to log in, Referral and/or "Next"
     parameter (if applicable) is stored for redirect after
     successful login.
 
@@ -153,13 +155,7 @@ def login():
 
     Redirect (referrer) [Post/Successful with referrer]
     """
-
-    if current_user.is_authenticated:
-        # Checks if next parameter is in the referal URL
-        if "?next=%2F" in request.referrer:
-            return redirect(request.referrer.split("?next=%2F")[1])
-        return redirect(request.referrer)
-
+    # Post Method
     if request.method == "POST":
 
         # Obtain username and password from form
@@ -170,7 +166,9 @@ def login():
         if User.verify_login(username, user_password):
 
             session['timezone'] = request.form.get("timezoneLogin")
-            flash(f"Welcome, {current_user.username}")
+            # Check the user is not being referred
+            if not request.referrer:
+                flash(f"Welcome, {current_user.username}")
 
             # Checks if next parameter is in the referal URL
             if "?next=%2F" in request.referrer:
@@ -181,6 +179,21 @@ def login():
         flash("Incorrect Username and/or Password")
         return redirect(request.referrer)
 
+    # Check to see if user is logged in
+    if current_user.is_authenticated:
+        # Checks if there is a referral URL
+        if request.referrer:
+            # Checks if there is a next param in referral URL
+            if "?next=%2F" in request.referrer:
+                return redirect(request.referrer.split("?next=%2F")[1])
+            return redirect(request.referrer)
+        # If no referrer, inform user they are logged in
+        flash("You are already logged in!")
+    else:
+        # Otherwise instruct them how to log in
+        flash("Please click the Login link!")
+
+    # Redirect to index page
     return redirect(url_for('core.index'))
 
 
@@ -205,6 +218,10 @@ def logout():
     """
     if current_user.is_authenticated:
         logout_user()
+        if '_flashes' not in session.keys():
+            flash("Logged out successfully!")
+    else:
+        flash("You are not logged in!")
     return redirect(url_for('core.index'))
 
 
@@ -237,4 +254,5 @@ def delete_user():
         flash("Account and Wyspas deleted Successfully!")
         return redirect(url_for('users.logout'))
     # Route for GET
+    flash("Please select 'Delete Account' below to proceed")
     return redirect(url_for("messages.my_voice"))
