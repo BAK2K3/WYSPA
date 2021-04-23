@@ -166,9 +166,7 @@ def login():
         if User.verify_login(username, user_password):
 
             session['timezone'] = request.form.get("timezoneLogin")
-            # Check the user is not being referred
-            if not request.referrer:
-                flash(f"Welcome, {current_user.username}")
+            flash(f"Welcome, {current_user.username}")
 
             # Checks if next parameter is in the referal URL
             if "?next=%2F" in request.referrer:
