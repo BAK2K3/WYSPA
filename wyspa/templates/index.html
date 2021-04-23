@@ -1,108 +1,131 @@
-{% extends "base.html" %}
-{% set active_page = "index" %}
-
-{% block content %}
+{% extends "base.html" %} {% set active_page = "index" %} {% block content %}
 <!-- Welcome Splash -->
 <section class="welcome">
-    <div class="container">
-        <div class="row">
-            <div class="col s12">
-                <!-- Card Panel -->
-                <div class="card-panel z-depth-5">
-                    <!-- Card Header -->
-                    <h2 class="center white-text">Penny for your thoughts?</h2>
-                    <!-- Card Content -->
-                    <div class="card-content">
-                        <div class="row">
-                            <!-- Express Yourself -->
-                            <div class="col s12 m4 center">
-                                <a href="{{ url_for('messages.my_voice') }}">
-                                    <p class="lead white-text text-underline"><strong>Express Yourself</strong></p>
-                                </a>
-                                <div class="row valign-wrapper flex-nowrap">
-                                    <div class="col s6 m12 center">
-                                        <a href="{{ url_for('messages.my_voice') }}"><i
-                                                class="material-icons large white-text">record_voice_over</i></a>
-                                    </div>
-                                    <div class="col s6 m12 center">
-                                        <p class="white-text">Speak your mind, flag your location,
-                                            set your mood, and
-                                            let the
-                                            world hear your wyspa.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Support Others -->
-                            <div class="col s12 m4 center">
-                                <a href="{{ url_for('messages.view_message') }}">
-                                    <p class="s6 m12 lead white-text text-underline"><strong>Support Others</strong>
-                                    </p>
-                                </a>
-                                <div class="row valign-wrapper flex-nowrap">
-                                    <div class="col s6 push-s6 m12 center">
-                                        <a href="{{ url_for('messages.view_message') }}"><i
-                                                class="material-icons large white-text">connect_without_contact</i></a>
-                                    </div>
-                                    <div class="col s6 pull-s6 m12 center card-content-left">
-                                        <p class="white-text">Anonymously engage with wyspas, whether that's giving
-                                            support or just ackowledging you've listened.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <!-- Listen Globally -->
-                                <div class="col s12 m4 center">
-                                    <a href="{{ url_for('maps.map_overview') }}">
-                                        <p class="lead white-text text-underline"><strong>Listen Globally</strong>
-                                        </p>
-                                    </a>
-                                    <div class="row valign-wrapper flex-nowrap">
-                                        <div class="col s6 m12 center">
-                                            <a href="{{ url_for('maps.map_overview') }}"><i
-                                                    class="material-icons large white-text">travel_explore</i></a>
-                                        </div>
-                                        <div class="col s6 m12 center">
-                                            <p class="white-text">See a live map of the wyspas heard
-                                                across the world, and
-                                                interact
-                                                with each of them individually.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+  <div class="container">
+    <div class="row">
+      <div class="col s12">
+        <!-- Card Panel -->
+        <div class="card-panel z-depth-5">
+          <!-- Card Header -->
+          <h2 class="center white-text">Penny for your thoughts?</h2>
+          <!-- Card Content -->
+          <div class="card-content">
+            <div class="row">
+              <!-- Express Yourself -->
+              <div class="col s12 m4 center">
+                <a href="{{ url_for('messages.my_voice') }}">
+                  <p class="lead white-text text-underline">
+                    <strong>Express Yourself</strong>
+                  </p>
+                </a>
+                <div class="row valign-wrapper flex-nowrap">
+                  <div class="col s6 m12 center">
+                    <a href="{{ url_for('messages.my_voice') }}"
+                      ><i class="material-icons large white-text"
+                        >record_voice_over</i
+                      ></a
+                    >
+                  </div>
+                  <div class="col s6 m12 center">
+                    <p class="white-text">
+                      Speak your mind, flag your location, set your mood, and
+                      let the world hear your Wyspa.
+                    </p>
+                  </div>
                 </div>
+              </div>
+              <!-- Support Others -->
+              <div class="col s12 m4 center">
+                <a href="{{ url_for('messages.view_message') }}">
+                  <p class="s6 m12 lead white-text text-underline">
+                    <strong>Support Others</strong>
+                  </p>
+                </a>
+                <div class="row valign-wrapper flex-nowrap">
+                  <div class="col s6 push-s6 m12 center">
+                    <a href="{{ url_for('messages.view_message') }}"
+                      ><i class="material-icons large white-text"
+                        >connect_without_contact</i
+                      ></a
+                    >
+                  </div>
+                  <div class="col s6 pull-s6 m12 center card-content-left">
+                    <p class="white-text">
+                      Anonymously engage with Wyspas, whether that's giving
+                      support or just ackowledging you've listened.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <!-- Listen Globally -->
+                <div class="col s12 m4 center">
+                  <a href="{{ url_for('maps.map_overview') }}">
+                    <p class="lead white-text text-underline">
+                      <strong>Listen Globally</strong>
+                    </p>
+                  </a>
+                  <div class="row valign-wrapper flex-nowrap">
+                    <div class="col s6 m12 center">
+                      <a href="{{ url_for('maps.map_overview') }}"
+                        ><i class="material-icons large white-text"
+                          >travel_explore</i
+                        ></a
+                      >
+                    </div>
+                    <div class="col s6 m12 center">
+                      <p class="white-text">
+                        See a live map of the Wyspas heard across the world, and
+                        interact with each of them individually.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
+          </div>
         </div>
+      </div>
     </div>
+  </div>
 </section>
-{% endblock %}
-
-
-{% block helpmodal %}
+{% endblock %} {% block helpmodal %}
 <!-- Help Modal for Homepage -->
 <h4 class="center">WYSPA</h4>
 
 <p><strong>Wyspa Your Secrets, Publicly and Anonymously</strong></p>
 
-<p>WYSPA has been designed to make every voice count. At a time when the world has been confined to their
-    homes, it's important we continue to express ourselves and for everyone to be heard equally.</p>
+<p>
+  WYSPA has been designed to make every voice count. At a time when the world
+  has been confined to their homes, it's important we continue to express
+  ourselves and for everyone to be heard equally.
+</p>
 
-<p>WYSPA allows you to <strong>Wyspa</strong> a message out into the world, completely anonymously.
-    Feeling down? Want to get something off your chest? Or do you feel particularly happy, or proud of
-    yourself at the minute? Then <strong>express yourself</strong>.</p>
+<p>
+  WYSPA allows you to <strong>Wyspa</strong> a message out into the world,
+  completely anonymously. Feeling down? Want to get something off your chest? Or
+  do you feel particularly happy, or proud of yourself at the minute? Then
+  <strong>express yourself</strong>.
+</p>
 
-<p>Want to listen to other people's Wyspas? Visit the <strong>messages</strong> tab to select a random Wyspa. This
-    platform works best when we acknowledge we've listened to each other. When you visit a WYSPA, you can
-    click the <strong>listen</strong> icon to aknowledge you've listened; this in turn makes the Wyspa more visible on
-    the map.
-    Fancy picking someone up? Supporting someone? Or just want to engage with a random stranger in the
-    world? Then feel free to add a comment to a Wyspa.</p>
+<p>
+  Want to listen to other people's Wyspas? Visit the
+  <strong>messages</strong> tab to select a random Wyspa. This platform works
+  best when we acknowledge we've listened to each other. When you visit a WYSPA,
+  you can click the <strong>listen</strong> icon to aknowledge you've listened;
+  this in turn makes the Wyspa more visible on the map. Fancy picking someone
+  up? Supporting someone? Or just want to engage with a random stranger in the
+  world? Then feel free to add a comment to a Wyspa.
+</p>
 
-<p>While you can view Wyspas without making an account, you have to log in to
-    <strong>listen</strong> to, <strong>comment</strong> on, and to <strong>create</strong> your own Wyspa.</p>
+<p>
+  While you can view Wyspas without making an account, you have to log in to
+  <strong>listen</strong> to, <strong>comment</strong> on, and to
+  <strong>create</strong> your own Wyspa.
+</p>
 
-<p>Each page has its own help section. If you ever need any more information, just click the help icon
-    again!</p>
+<p>
+  Each page has its own help section. If you ever need any more information,
+  just click the help icon again!
+</p>
 {% endblock %}
