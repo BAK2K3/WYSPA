@@ -906,6 +906,7 @@ textarea.materialize-textarea {
 .footer-content a:hover {
   color: white;
   text-decoration: underline;
+  display: inline-block;
 }
 
 /********** Media Queries **********/
