@@ -624,7 +624,8 @@ button.month-prev:focus {
   touch-action: none;
 }
 
-.hidden-form {
+.hidden-form,
+.hidden-error {
   display: none;
 }
 
