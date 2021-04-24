@@ -62,3 +62,15 @@ function initMap(map_data) {
     }
   }
 }
+
+// Catch any Gmaps Auth Fails
+function gm_authFailure() {
+  // Replace Gmaps with Static Map
+  document.getElementById("map").children[0].id = "staticMap";
+  // Remove the alert
+  document.getElementById("map").children[0].children[0].remove();
+  // Unhide the error container
+  document
+    .getElementsByClassName("hidden-error")[0]
+    .classList.remove("hidden-error");
+}
