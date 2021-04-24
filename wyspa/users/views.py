@@ -122,7 +122,7 @@ def register():
         return redirect(url_for("messages.my_voice"))
 
     # Instructions for over-ride entry
-    flash("Please click the Register button to Register!")
+    flash("Please click the Register link to Register!")
     # Routing for Get Requests
     return redirect(url_for("core.index"))
 
@@ -189,7 +189,7 @@ def login():
         flash("You are already logged in!")
     else:
         # Otherwise instruct them how to log in
-        flash("Please click the Login link!")
+        flash("Please click the Login link to Log in!")
 
     # Redirect to index page
     return redirect(url_for('core.index'))
