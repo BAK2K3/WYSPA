@@ -2,6 +2,34 @@
 content %}
 <!-- Interactive Map -->
 <div id="map"></div>
+
+<!-- 404 Splash -->
+<section class="container hidden-error">
+  <div class="container">
+    <div class="row">
+      <div class="col s12">
+        <!-- Card Panel -->
+        <div class="card-panel z-depth-5">
+          <!-- Card Header -->
+          <h2 class="white-text center">Oops!</h2>
+          <!-- Card Content -->
+          <div class="card-content">
+            <div class="row">
+              <div class="col s12 center white-text">
+                <p>Google Maps isn't feeling very well at the minute!</p>
+                <p>Try refreshing the page or hard refreshing your cache!</p>
+                <p>
+                  if the error persists, please contact the developer using the
+                  link in the footer!
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 {% endblock %} {% block scripts %}
 <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
 <script src="https://maps.googleapis.com/maps/api/js?key={{GMAPS_API}}&map_ids=65f95462d95daa3&&libraries=&v=weekly"></script>
