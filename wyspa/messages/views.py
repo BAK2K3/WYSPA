@@ -444,5 +444,6 @@ def delete_wyspa(message_id):
         flash("Wyspa deleted successfully!")
         return redirect(url_for("messages.my_voice"))
 
+    flash("Please use the delete icon to delete a Wyspa!")
     # Route for GET
     return redirect(url_for("messages.my_voice"))
