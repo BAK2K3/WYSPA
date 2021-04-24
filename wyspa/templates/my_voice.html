@@ -79,7 +79,7 @@
       <ul class="collapsible">
         <li>
           <div
-            class="create-header collapsible-header card-panel center white-text"
+            class="create-header collapsible-header card-panel z-depth-5 center white-text"
           >
             Create a WYSPA<i class="material-icons right"
               >chat_bubble_outline</i
@@ -92,7 +92,7 @@
               action="{{url_for('messages.create_wyspa')}}"
               autocomplete="off"
             >
-              <div class="speech-bubble comment-box">
+              <div class="speech-bubble z-depth-5 comment-box">
                 <!-- Text -->
                 <div class="input-field message-field col s12">
                   <textarea
@@ -174,17 +174,19 @@
       <!-- Collapsable Delete -->
       <ul class="collapsible">
         <li>
-          <div class="collapsible-header card-panel center white-text">
+          <div
+            class="collapsible-header card-panel z-depth-5 center white-text"
+          >
             Delete Account<i class="material-icons right">error_outline</i>
           </div>
-          <!-- WYSPA Creation  -->
+          <!-- Delete container body  -->
           <div class="collapsible-body">
             <form
               method="POST"
               action="{{url_for('users.delete_user')}}"
               class="confirm-deletion"
             >
-              <div class="speech-bubble comment-box center">
+              <div class="speech-bubble comment-box z-depth-5 center">
                 <div class="row">
                   <div class="col s12">
                     <h4 class="delete-header">Warning</h4>
