@@ -35,7 +35,7 @@ content %}
 <script src="https://maps.googleapis.com/maps/api/js?key={{GMAPS_API}}&map_ids=65f95462d95daa3&&libraries=&v=weekly"></script>
 <script src="{{ url_for('static', filename='js/maps.js', _scheme='https', _external=True) }}"></script>
 <script>
-  initMap({{ map_data| tojson | safe}})
+  initMap({{ map_data| tojson | safe}}, {{GMAPS_ID | tojson | safe}})
 </script>
 
 {% endblock %} {% block helpmodal %}
