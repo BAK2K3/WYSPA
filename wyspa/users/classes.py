@@ -101,8 +101,8 @@ class User(UserMixin):
         None
         """
 
-        mongo.db.users.remove({"username": username})
-        mongo.db.messages.remove({"author": username})
+        mongo.db.users.delete_one({"username": username})
+        mongo.db.messages.delete_many({"author": username})
 
     @staticmethod
     def verify_password_format(user_password):
