@@ -18,7 +18,6 @@ html {
 }
 
 body {
-  font-display: swap;
   font-family: "Roboto", sans-serif;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -62,7 +61,6 @@ h2 {
 /********** Headings **********/
 
 .heading-font {
-  font-display: swap;
   font-family: "Cinzel Decorative", cursive;
 }
 
