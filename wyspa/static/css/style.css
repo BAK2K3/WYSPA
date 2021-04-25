@@ -627,7 +627,8 @@ button.month-prev:focus {
 }
 
 .hidden-form,
-.hidden-error {
+.hidden-error,
+.hidden-header {
   display: none;
 }
 
