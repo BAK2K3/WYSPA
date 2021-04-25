@@ -168,10 +168,12 @@ def login():
             session['timezone'] = request.form.get("timezoneLogin")
             flash(f"Welcome, {current_user.username}")
 
-            # Checks if next parameter is in the referal URL
-            if "?next=%2F" in request.referrer:
-                return redirect(request.referrer.split("?next=%2F")[1])
-            return redirect(request.referrer)
+            if request.referrer:
+                # Checks if next parameter is in the referal URL
+                if "?next=%2F" in request.referrer:
+                    return redirect(request.referrer.split("?next=%2F")[1])
+                return redirect(request.referrer)
+            return redirect(url_for("core.index"))
 
         #  Inform user that credentials are incorrect
         flash("Incorrect Username and/or Password")
