@@ -8,6 +8,9 @@ Function:
     create_app()
 """
 
+# pylint: disable=unused-import
+# env.py import is being incorrectly picked up as unused
+
 import os
 
 from flask import Flask
