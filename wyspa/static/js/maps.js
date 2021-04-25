@@ -6,7 +6,7 @@ const moodMap = {
 };
 
 // Main function for initialising Google Maps
-function initMap(map_data) {
+function initMap(map_data, map_id) {
   // Starting point
   const myLatLng = {
     lat: 56.218923,
@@ -23,7 +23,7 @@ function initMap(map_data) {
     mapTypeControl: false,
     streetViewControl: false,
     // Custom Map ID
-    mapId: "65f95462d95daa3",
+    mapId: map_id,
     // https://stackoverflow.com/questions/9099345/google-maps-api-3-limit-pan-map-bounds
     restriction: {
       latLngBounds: { north: 83.8, south: -57, west: -180, east: 180 },
