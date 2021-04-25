@@ -183,10 +183,11 @@ def login():
     if current_user.is_authenticated:
         # Checks if there is a referral URL
         if request.referrer:
+            next_url = request.referrer
             # Checks if there is a next param in referral URL
             if "?next=%2F" in request.referrer:
-                return redirect(request.referrer.split("?next=%2F")[1])
-            return redirect(request.referrer)
+                next_url = request.referrer.split("?next=%2F")[1]
+            return redirect(next_url)
         # If no referrer, inform user they are logged in
         flash("You are already logged in!")
     else:
