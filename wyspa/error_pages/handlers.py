@@ -31,7 +31,6 @@ def error_404(error):
     404.html
     """
 
-    """"""
     # Delete the error variable as unused
     del error
     # Render 404 page
