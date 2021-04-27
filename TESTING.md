@@ -5,11 +5,11 @@ The Main README documentation can be found under [README.md](README.md)
 # Table of contents
 
 > 1.  [User Story Testing](#user-story-testing)
-> 2.  [Feature Testing](#feature-testing)
-> 3.  [Browser Testing](#browser-testing)
-> 4.  [Automated Testing](#automated-testing)
-> 5.  [Significant Bugs](#significant-bugs)
-> 6.  [Other Technical Difficulties](#other-technical-difficulties)
+> 2.  [Manual Feature Testing](#manual-feature-testing)
+> 3.  [Automated Feature Testing](#automated-feature-testing)
+> 4.  [Browser Testing](#browser-testing)
+> 5.  [Code Validation](#code-validation)
+> 6.  [Significant Bugs](#significant-bugs)
 
 # User Story Testing
 
@@ -860,7 +860,7 @@ When using Chrome Development Tools, when switching between a Responsive Layout 
 
 I have been unable to pinpoint the reason why this happens, and it doesn't appear to happen every time, however I am aware this is a development bug only, and would never have an impact on user experience. The website has been tested extensively on physical devices, and while using browsers (without inspector/development tools open) and this bug cannot be recreated in these instances.
 
-## Korea Uses Default **Map** Style
+## Korea Uses Default Map Style
 
 **Fixed: N/A**
 
