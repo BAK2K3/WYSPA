@@ -353,6 +353,8 @@ As a result of this, the Header and Footer can always be interacted with when in
 
 # Features
 
+## Existing Features
+
 ### User Management
 
 Whilst **WYSPA** is heavily dependent on user anonymity, **User Management** is required in order to grant users control over **Wyspa Management**, as outlined below. As such, the following functionality was implemented, allowing users to create accounts, log in, log out, and delete their account.
@@ -597,6 +599,18 @@ Using Materialize CSS, **WYSPA** has been designed to be fully responsive on all
 All other responsive features have been implemented through Materialize’s native Grid, Container, and Row systems.
 
 ## Future Feature Considerations
+
+### Profanity Filter
+
+One of the major ethical considerations when making **WYSPA** was the implementation of moderation and censorship. To what extend should the platform be moderated? Should free speech be allowed? Should profanity be filtered? Several python packages were explored to automate this process, such as [profanity-filter](https://github.com/rominf/profanity-filter), [profanity-check](https://github.com/vzhou842/profanity-check), and [WebPurify](https://www.webpurify.com/documentation/), along with exploring implementing this functionality [manually.](https://stackoverflow.com/questions/3531746/what-s-a-good-python-profanity-filter-library/3533322#3533322) However, these solutions were either too explicit (removing words when not being used in a profane or offensive manner), or overly complex using [scikit-learn](https://scikit-learn.org/stable/) and NLP, ultimately increasing the physical memory size of the project by over 1000%. Given the scope of the project, the decision was made to give **Wyspa** authors self-moderating capabilities (allowing owners of **Wyspas** to remove any comment, along with the relevant comment owner). With more time and resources, further consideration would be given to implement an appropriate form of moderation that continues to preserve the platform’s free speech, but limits the potentially harmful or abusive content that such a platform empowers.
+
+### Marker Clustering
+
+In its current form, and with a small userbase, the current methodology for drawing markers on the **Maps** feature is efficient and responsive. However, if the userbase were to increase to the extent that over 10,000 markers would need to be drawn on the **Map** every time a user visited it, an alternative method would likely need to be implemented. One solution to this would be to cluster the markers on the **Map**, however I’ve currently been unable to find a solution to combine [MarkerClustererPlus](https://github.com/googlemaps/js-markerclustererplus) and Circles, as MarkerClustererPlus appears to solely relate to [Markers](https://developers.google.com/maps/documentation/javascript/markers?hl=en). As such, a workaround would be to implement [a canvas tile overlay](https://groups.google.com/g/google-maps-js-api-v3/c/WaUq7OyGDnU/discussion?pli=1), which would be more lightweight on the browser, and would respond much quicker than the current implementation. This would remove the need for clustering, and would also perform quicker than clustering.
+
+### Wyspa Quick View
+
+In order to expand on the **Map** functionality, consideration was given to implementing a **Quick View** to the markers on the **Map** feature. The concept would be to present users with a snippet of the **Wyspa** message when interacting with the markers on the **Map**, showing both the **Listens** and amount of **comments**, and grant the user the ability to **listen** or go directly to the **Wyspa** from this view. This would allow a more streamlined usage of the **Map** feature, and would prevent the user from constantly being re-directed away from the **Map** feature every time they wanted to interact with a **Wyspa.** Implementing this feature would also exacerbate the concerns raised above with regard to slow-down, and optimisation would need to be implemented first prior to attempting to integrate this functionality.
 
 ---
 
