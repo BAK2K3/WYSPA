@@ -655,6 +655,16 @@ All tests were successful and performed as expected. Please note that `Flask-tes
 
 # Browser Testing
 
+Cross-Browser compatibility was tested via applying the methodology described above within each browser detailed below.
+
+## Chrome/Firefox/Edge/Safari (iOS)
+
+All functionality worked as intended.
+
+## Internet Explorer 11
+
+As WYSPA uses JavaScript ES6, support for Internet Explorer 11 has not been considered or tested.
+
 # Code Validation
 
 # Significant Bugs
