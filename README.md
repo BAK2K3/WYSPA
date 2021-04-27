@@ -856,9 +856,58 @@ The project will automatically locate this file, and read the required environme
 
 ## Content
 
+- All instructional text throughout the site was self-written.
+- The content which drives the site is designed to be user driven. The more users interact with the site, the more dynamic and interactive it becomes.
+
 ## Media
 
+- The background Map image was designed in [SnazzMaps](https://snazzymaps.com/), then subsequently edited in [GIMP](https://www.gimp.org/).
+- Both the Social Media image and the Header image in the Readme were designed in [GIMP](https://www.gimp.org/).
+- I designed the Favicon icon in [GIMP](https://www.gimp.org/) myself, and converted it to appropriate format using [favicon.io](https://favicon.io/).
+
 ## Code
+
+- CSS: Code extract obtained from [All This Smitty](https://allthingssmitty.com/2020/05/11/css-fix-for-100vh-in-mobile-webkit/) and modified to allow sticky footers to compensate for mobile URL bar.
+- CSS: Code extract obtained from [Coding Is Love](https://codingislove.com/css-speech-bubbles/) and edited to create a speech bubble effect with CSS
+- CSS: Code extract obtained from [CSS Tricks](https://css-tricks.com/perfect-full-page-background-image/) and modified to allow for dynamic background images.
+- CSS: Code extract obtained from [StackOverflow](https://stackoverflow.com/questions/35552708/is-materialize-navbar-height-adjustment-possible) and modified to adjust the height of Materialize NavBar and respective elements.
+- CSS: Code extract obtained from [StackOverflow](https://stackoverflow.com/questions/40534973/changing-the-color-of-the-range-slider-in-materializecss) and modified to update the style of Materialize sliders.
+- CSS: Code extract obtained from [StackOverflow](https://stackoverflow.com/questions/42101723/unable-to-preventdefault-inside-passive-event-listener) for preventing touchscreen users from targeting two events on single element.
+- CSS: Code extract obtained from [StackOverflow](https://stackoverflow.com/questions/10209704/set-google-maps-container-div-width-and-height-100) to set Google Maps as a full screen background.
+- CSS: General guidance on how to use Materialize CSS was obtained from their [documentation](https://materializecss.github.io/materialize/about.html).
+- CSS: Guidance obtained on how to re-position Google Maps logo and interactive elements, given they are applied inline to the Map element, obtained from [StackOverflow](https://stackoverflow.com/questions/2553904/removing-the-google-maps-api-premier-terms-of-use-logo-etc-links).
+- CSS: Guidance obtained on overriding Materialize CSS’s Inactive/Active form input colours without using !Important obtained from [StackOverflow](https://stackoverflow.com/questions/37127123/change-color-of-underline-input-and-label-in-materialize-css-framework).
+- CSS: Source code of Materialize CSS’s [Range Slider](https://github.com/Dogfalo/materialize/blob/824e78248b3de81e383445e76ffb04cc3264fe7d/sass/components/forms/_range.scss#L97) was copied for targeting keyboard focused styling.
+- CSS: Style rule generation for CSS Gradients obtained from [CSSGradient.io.](https://cssgradient.io/)
+- HTML/CSS: Code extract obtained from [StackOverflow](https://stackoverflow.com/questions/826782/how-to-disable-text-selection-highlighting) to prevent icons/text being highlightable.
+- HTML/CSS: Guidance on how to fix Materialize CSS’s SideNav overlay covering the whole screen obtained from [StackOverflow](https://stackoverflow.com/questions/40927744/materialize-css-sidenav-overlay-covers-all-the-page).
+- HTML/Python: Code extract obtained from [StackOverflow](https://stackoverflow.com/questions/23404336/php-simple-regex-for-username-password-and-email) for Password Regex and amended to suit purpose.
+- HTML: Concept for index page was inspired by Materialize CSS’s [Example Promotion Table](https://materializecss.github.io/materialize/grid.html).
+- JavaScript/HTML: Code extract obtained from [Bram.us](https://www.bram.us/2020/11/04/preventing-double-form-submissions/) and modified to multiple submissions on the same HTML form element.
+- JavaScript/HTML: Code extract obtained from [StackOverflow](https://stackoverflow.com/questions/18341598/jquery-form-submits-before-alertify-receives-confirm-box-value-with-html5) and modified to prevent a form submitting prior to user interacting with Alertify.
+- JavaScript/HTML: Code extract obtained from [StackOverflow](https://stackoverflow.com/questions/19655189/javascript-click-event-listener-on-class) and modified to add events listeners to all elements with a given class.
+- JavaScript/HTML: Code extract obtained from [StackOverflow](https://stackoverflow.com/questions/12777751/html-required-readonly-input-in-form) and modified to prevent users typing in a required field, without disabling the field.
+- JavaScript/HTML: Guidance on how to update title and label of Alertify Modal obtained from [StackOverflow](https://stackoverflow.com/questions/51233320/setting-title-and-labels-in-alertifyjs/51233364).
+- JavaScript: Code extract obtained from [StackOverflow](https://stackoverflow.com/questions/1091372/getting-the-clients-time-zone-and-offset-in-javascript) for obtaining a user’s time zone.
+- JavaScript: Code extract obtained from Google Maps [documentation](https://developers.google.com/maps/documentation/javascript/examples/circle-simple) and modified to add circle markers to Google Maps.
+- JavaScript: Code extract obtained from [StackOverflow](https://stackoverflow.com/questions/5842747/how-can-i-use-javascript-to-limit-a-number-between-a-min-max-value) and modified for setting min and max limits on a variable.
+- JavaScript: Code extract obtained from [StackOverflow](https://stackoverflow.com/questions/9099345/google-maps-api-3-limit-pan-map-bounds) to implement Map bounds for Google Maps.
+- JavaScript: Guidance on creating dynamic Map Markers and OnClick events obtained from StackOverflow posts: [[1](https://stackoverflow.com/questions/16985867/adding-an-onclick-event-to-google-map-marker)] [[2](https://stackoverflow.com/questions/40568684/how-to-insert-a-javascript-variable-into-flask-url-for-function)]
+- JavaScript: Guidance on implementing hasOwnProperty in “for in” statement in JavaScript, following Jshint error, was obtained from [StackOverflow](https://stackoverflow.com/questions/4166551/javascript-jslint-error-the-body-of-a-for-in-should-be-wrapped-in-an-if-statem).
+- MongoDB: General guidance on MongoDB commands taken from their [documentation](https://docs.mongodb.com/).
+- Python/HTML/JavaScript: Guidance on how to pass data from Python to JavaScript obtained from [StackOverflow](https://stackoverflow.com/questions/15321431/how-to-pass-a-list-from-python-by-jinja2-to-javascript).
+- Python: Code extract obtained from [StackOverflow](https://stackoverflow.com/questions/24833362/pylint-warning-w0212-with-properties-accessing-a-protected-member-how-to-avoi) and modified to allow access to restricted attributes of classes.
+- Python: Code extract obtained from [StackOverflow](https://stackoverflow.com/questions/48653120/flask-pymongo-with-application-factory-and-blueprints) and modified to integrate Flask-MongoDb and Flask’s Application Factory.
+- Python: Code extract obtained from [StackOverflow](https://stackoverflow.com/questions/7967075/regex-for-not-empty-and-not-whitespace) for whitespace Regex pattern.
+- Python: General guidance on docstring best practices was obtained from [Programiz](https://www.programiz.com/python-programming/docstrings), [Napoleon documentation](https://sphinxcontrib-napoleon.readthedocs.io/en/latest/example_numpy.html), and [THAT-A-SCIENCE](https://thatascience.com/learn-python/comments-and-docstrings/).
+- Python: General guidance on how to use Flask (specifically Application Factories) was obtained from their [documentation](https://flask.palletsprojects.com/en/1.1.x/).
+- Python: General guidance on how to use Flask-login was obtained from their [documentation](https://flask-login.readthedocs.io/en/latest/).
+- Python: General guidance on how to use Flask-pretty was obtained from their [documentation](https://flask-pretty.readthedocs.io/en/latest/).
+- Python: General guidance on using flask-pymongo was obtained from their [documentation](https://flask-pymongo.readthedocs.io/en/latest/).
+- Python: Guidance on how to interpret and disable pylint warnings was obtained from [StackOverflow](https://stackoverflow.com/questions/24434510/how-to-deal-with-pylints-too-many-instance-attributes-message).
+- Python: Guidance on how to use tz and datetime for time zone conversion obtained from [StackOverflow](https://stackoverflow.com/questions/4770297/convert-utc-datetime-string-to-local-datetime).
+- Python: Guidance on how to utilise GeoPy was obtained from their [documentation](https://geopy.readthedocs.io/en/stable/).
+- Python: Guidance on Python Unit test was obtained from the [unittesting documentation](https://docs.python.org/3/library/unittest.html) and the [Flask-Testing documentation](https://pythonhosted.org/Flask-Testing/).
 
 ---
 
