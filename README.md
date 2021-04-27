@@ -511,8 +511,8 @@ A unique feature of **WYSPA** is the ability to set expiry timers on **Wyspas.**
 
 This feature was implemented using MongoDB’s Time To Life [TTL](https://docs.mongodb.com/manual/core/index-ttl/) Indexing functionality. The index has been created on the **expiry** field of documents contained within the **messages** collection, using the following code directly within the MongoDB interface:
 
-```
-db.messages.createIndex( { “expiry”: 1 }, { expireAfterSeconds: 0 } )
+```python
+db.messages.createIndex( { "expiry": 1 }, {expireAfterSeconds: 0 } )
 ```
 
 ![MongoDB search index](https://res.cloudinary.com/bak2k3/image/upload/v1619531108/WYSPA/search_index_ykfooq.jpg)
@@ -537,8 +537,8 @@ When this request is received by the server, the logged in user’s **username**
 
 An alternative way for a user to engage and interact with a **Wyspa** is by selecting a **Random Wyspa**. This route on the website is labelled as **Wyspa**, and it selects a random **Wyspa** to be presented to the user, allowing them to read its message, read or add **comments**, edit the **Wyspa** (if applicable), or add a **listen** to the **Wyspa.**
 
-```
-list(mongo.db.messages.aggregate("sample”: {“size”: 1}}]))
+```python
+list(mongo.db.messages.aggregate("sample": {"size": 1}}]))
 ```
 
 This feature grants users a similar feature to the “endless scroll” of modern social media platforms, but through unbiased selection, and unaffected by a user’s network of following. A random **Wyspa** is presented to the user when the page is visited, or through interacting with the **Random Wyspa** icon in the action bar of the currently displayed **Wyspa.**
@@ -569,7 +569,7 @@ As discussed in **Wyspa: Mood**, the mood of the **Wyspa**, set by the user duri
 
 As discussed in **Wyspa: Listens**, the size of the marker is depicted by the amount of **Listens** a **Wyspa** has. When the pre-processed data is sent to JavaScript to place the markers on the **Map**, the radius of each marker is calculated using the following formula:
 
-```
+```javascript
 radius: Math.min(1000000, Math.max(10000, 10000 +  map_data[message][“Listens”] * 5000))
 ```
 
@@ -583,8 +583,8 @@ When the **Wyspas** are obtained from the database, they are sorted by **listen_
 
 When implementing this functionality, multiple solutions were explored as to the most efficient and effective way of sorting the entries in the database. While a [\$size aggregation](https://docs.mongodb.com/manual/reference/operator/aggregation/size/) query on the MongoDB would have produced similar effects, this would take significantly longer to obtain the data when handling a larger set of data, and as such, the trade off was made between memory and computational speed. The implemented solution to this is simple, requires a small amount of additional storage space per **Wyspa**, and ultimately functions as intended.
 
-```
-list(mongo.db.messages.aggregate("sort”: {“listen_count”: -1}}]))
+```python
+list(mongo.db.messages.aggregate("sort": {"listen_count": -1}}]))
 ```
 
 ### Responsive Layout and Design
@@ -694,6 +694,161 @@ Testing documentation, processes, and outcomes can be found under [TESTING.md](T
 ---
 
 # Deployment
+
+This project has three branches:
+
+- `Master` (Live Environment)
+- `Dev` (Dev Environment)
+- `Nightly-CSS` (Nightly CSS integration environment)
+
+All development takes place in the `Dev` branch. As the project uses a nightly build of a community enhanced Materialize CSS, any nightly releases are integrated into the project via the `Nightly-CSS` branch and tested, before being merged with the `Dev` branch prior to merging with the `Master` branch for deployment.
+
+## How this project was Deployed
+
+This project was deployed to Heroku via the following steps:
+
+### Initial Deployment
+
+- Navigate to [Heroku](https://www.heroku.com/).
+- [Log in](https://id.heroku.com/login) or [Sign Up](https://signup.heroku.com/) for an account.
+  - If Creating an account, select **Python** as the Primary development language.
+  - Activate the account via the confirmation email.
+  - Accept the Terms of Service.
+- Click on **Create new app**.
+- Enter a suitable **App Name** and **Region**.
+- Click **Create App**.
+- Under the **Deploy** tab, under the heading **Deployment Method**, click the **GitHub** icon, and proceed to click the button which states **Connect to GitHub**.
+- Enter your credentials for **GitHub.**
+- Search for the repository required (in this instance, **WYSPA**), and click **Connect.**
+
+### Automatic Deployment
+
+This project was set up to automatically re-deploy with any changes made to the Master Branch. The following steps were taken to enable this.
+
+- Navigate to the **Automatic deploys** section within the **Deploy** tab.
+- Select the **branch** you would like to link to automatic deployment.
+  - As stated above, the `master` branch was chosen for automatic deployment.
+- Click **Enable Automatic Deploys**.
+
+### Environment Variables
+
+The following environment variables must be set within your Heroku Server for the site to deploy and function correctly. Navigate to the **Settings** tab, and under the heading **Config Vars**, select **Reveal Config Vars,** and add the following variables:
+
+- **IP** : 0.0.0.0
+- **PORT** : 5000
+- **MONGO_URI**
+  - This variable can be obtained from **MongoDB** through the following steps:
+  - Log in to [MongoDB](https://www.mongodb.com/2).
+  - Under **Data Storage** click on **Clusters**.
+  - For the Cluster that you would like to connect to, click the **Connect** button.
+  - Click on **Connect your Application.**
+  - Select **Python**, and Version **3.6 or Later.**
+  - Copy the connection string, replacing `<password></password>` with your MongoDB password, and `myFirstDatabase` with the name of the **MongoDB Collection** (Database) you would like to connect to.
+- **MONGO_DBNAME**
+  - The name of the Database you are connecting to (in the above example, the default would be `myFirstDatabase`.
+- **SECRET_KEY**
+  - A random sequence of characters, required for maintaining session security in Flask. One method of obtaining a Secret Key is through [RandomKeygen](https://randomkeygen.com/).
+- **GMAPS_API**
+  - An API Key for Google Maps.
+  - Make an account with [Google](https://accounts.google.com/signup/v2/), and navigate to [Google Developers Console.](https://developers.google.com/apis/)
+  - Navigate to **APIs & Services.**
+  - Select **Credentials**.
+  - Click **Create Credentials.**
+  - Click **Create API Key**.
+  - Copy the provided **API Key** into the `VALUE` variable of the Heroku Config Vars.
+- **GMAPS_ID**
+  - An ID for a custom Map Style.
+    - If no custom style is required, do not set a value to the key (although you must still insert the key).
+    - If using env.py, set the variable to an empty string: `”“`.
+  - If a custom Map is required, navigate to the Google Maps [Map Manager](https://console.cloud.google.com/google/maps-apis/client-maps), whilst logged into your Google Account.
+  - **Click** Create New Map ID.
+    - Enter a **Name**.
+    - Set **Type** as **JavaScript**.
+    - Set **Options** as **Raster**.
+    - Click Next.
+  - Copy and paste the provided **Map ID** into the **Variable** field within Heroku.
+  - Return to Google Maps and click [Map Styles](https://console.cloud.google.com/google/maps-apis/client-styles)from the navigation pane.
+  - Click **Create New Map Style**.
+    - Either use the tool provided to create a Map, or;
+    - Use [snazzyMaps](https://snazzymaps.com/) to choose a pre-made style, and copy the provided JSON code into the **Import JSON** option in Google Maps Style Editor.
+  - Once the Map has been designed, return to [Map Manager](https://console.cloud.google.com/google/maps-apis/client-maps).
+  - Select your new **Map ID**.
+  - Select your new **Map Style** from the dropdown box.
+  - Press **Save**.
+
+## Running this project from your Browser/Locally
+
+- **Important** : The `CSS-Nightly` branch is purely for integrating new nightly builds of Materialize CSS, and as such it is not recommended this branch is used for cloning or running in your browser/locally. Please use the `Master` branch for the most stable release, and the `Dev` branch for work in progress.
+- **Important** : The `Master` branch is in production mode, which means debugging is disabled in the [app.py](https://github.com/BAK2K3/WYSPA/blob/dev/app.py#L19). The `Dev` branch is in development mode, which means debugging is enabled. Depending on which branch you run, please be aware of this and change this setting accordingly. It’s important that Flask application are not run in development mode when deployed in a production environment.
+
+### Environment Variables
+
+- When running this project locally, the **Environment Variables** must be set in order for it to function as intended.
+- Once you have completed any of the upcoming steps to run/deploy the project in your browser or locally, please create a new python file in your root directory called [**envy.py**](https://pypi.org/project/env.py/).
+- Within this file, declare the environment variables described above, in the following format, replacing the `<variable>` with the required variables:
+
+```python
+import os
+
+os.environ.setdefault("IP", “<variable>”)
+os.environ.setdefault("PORT", “<variable>”)
+os.environ.setdefault("SECRET_KEY", “<variable>”)
+os.environ.setdefault("MONGO_URI", “<variable>”)
+os.environ.setdefault("MONGO_DBNAME", “<variable>”)
+os.environ.setdefault("GMAPS_API", “<variable>”)
+os.environ.setdefault("GMAPS_ID", “<variable> “)
+```
+
+The project will automatically locate this file, and read the required environment variables as and when necessary. This file has not been included within the repo due to the security implications.
+
+### Running this project in your Browser
+
+1. Install [Google Chrome](https://www.google.co.uk/chrome/) or [Firefox](https://www.mozilla.org/en-GB/exp/firefox/new/) .
+2. Install the applicable [GitPod](https://www.gitpod.io/docs/browser-extension/) Browser Extensions for your chosen browser.
+3. Create a [GitHub](https://github.com/join) account.
+4. Log in to [Gitpod](https://gitpod.io/login/) using your GitHub account.
+5. Visit **WYSPA's** [GitHub Repository](https://github.com/BAK2K3/WYSPA).
+6. To run the `Master` branch, ensure the `Master` branch is selected next to the **branches** and **tags** subheadings. To run the `dev` branch, please select `dev` branch.
+7. Please note that any features that exist purely in the dev branch are in testing and may not be fully functional.
+8. Open the repository in Gitpod:
+9. Click the green “Gitpod” icon at the top of the Repository, or
+10. Open the [master branch](https://gitpod.io/#https://github.com/BAK2K3/WYSPA/tree/master) or [dev branch](https://gitpod.io/#https://github.com/BAK2K3/WYSPA/tree/dev) directly in Gitpod via these links.
+11. A new workspace will open with the current state of the requested branch. Any changes made to the requested branch after this point will not be automatically updated in your Gitpod Workspace.
+12. Create the aforementioned env.py file in your root directory and declare the environment variables.
+13. Type `pip install requirements.txt` into the GitPod terminal to install all the required Python packages.
+14. To host the project from Gitpod, type `python app.py` in the terminal.
+
+### Running this project locally
+
+#### Cloning the Repository
+
+1. Visit **WYSPA’s** [GitHub Repository](https://github.com/BAK2K3/WYSPA).
+2. Click the “Code” dropdown box above the repository’s file explorer.
+3. Under the “Clone” heading, click the “HTTPS” sub-heading.
+4. Click the clipboard icon, or manually copy the text presented: `https://github.com/BAK2K3/WYSPA.git`
+5. Open your preferred IDE (VSCode, Atom, PyCharm, etc).
+6. Ensure your IDE has support for Git, or has the relevant Git extension.
+7. Open the terminal, and create a directory where you would like the Repository to be stored.
+8. Type git clone and paste the previously copied text (`https://github.com/BAK2K3/WYSPA.git`) and press enter.
+   - If you would like to clone only the dev branch, please type git clone -b dev before the previously copied link to the repository.
+9. The Repository will then be cloned to your selected directory.
+
+#### Manually Downloading the Repository
+
+1. Visit **WYSPA's** [GitHub Repository](https://github.com/BAK2K3/WYSPA).
+   - Ensure you have selected the appropriate branch, as previously discussed.
+2. Click the “Code” dropdown box above the repository’s file explorer.
+3. Click the “Download ZIP” option; this will download a copy of the selected branch’s repository as a zip file.
+4. Locate the ZIP file downloaded to your computer, and extract the ZIP to a designated folder which you would like the repository to be stored.
+
+#### Opening the Repository
+
+1. Open your preferred IDE (VSCode, Atom, PyCharm, etc).
+2. Navigate to the chosen directory where the Repository was Cloned/Extracted.
+3. **Optional:** Create a new Python [Virtual Environment](https://docs.python.org/3/tutorial/venv.html)
+4. Type `pip install requirements.txt` to install all the required packages.
+5. Type `python app.py` in the terminal, whilst in the project’s root directory.
+6. You will now be hosting the repository from your IDE.
 
 ---
 
