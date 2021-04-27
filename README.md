@@ -616,6 +616,75 @@ In order to expand on the **Map** functionality, consideration was given to impl
 
 # Technologies Used
 
+## Development
+
+- The project was written and tested in the [Gitpod](https://gitpod.io/) IDE.
+- The project was debugged using [Google Chrome](https://www.google.com/intl/en_uk/chrome/) [Dev Tools](https://developers.google.com/web/tools/chrome-devtools).
+- The project uses [GitHub](https://github.com/) for hosting source code and utilising git version control.
+- The project’s template was generated from [Code Institute’s Gitpod Template](https://github.com/Code-Institute-Org/gitpod-full-template).
+
+## Design
+
+- The project’s background was designed using [GIMP](https://www.gimp.org/).
+- The Google Maps custom Map was designed with [SnazzyMaps](https://snazzymaps.com/).
+- This project utilised [metatags.io](https://metatags.io/) for generating Social Media previews.
+- The project’s wireframes were designed in [Balsamiq](https://balsamiq.com/wireframes/).
+- The project’s Database Schema was designed with [dbdiagram.io](https://dbdiagram.io/), and edited with [GIMP](https://www.gimp.org/).
+- The project utilised [favicon.io](https://favicon.io/favicon-converter/) to convert the Favicon to the appropriate format.
+
+## HTML/CSS
+
+HTML5 and CSS3 are used throughout this project.
+
+- This project uses a nightly build of the community improved [Materialize CSS](https://github.com/materializecss/materialize) framework due to the original (also called [Materialize CSS](https://github.com/Dogfalo/materialize)) [no longer being supported](https://github.com/Dogfalo/materialize/issues/6615).
+- The project uses [Google Material Icons](https://fonts.google.com/icons?selected=Material+Icons) for icons.
+- The project uses [Google Fonts](https://fonts.google.com/) for typography.
+- The project’s cross-browser compatibility was enhanced using [Autoprefixer.io](https://autoprefixer.github.io/).
+
+## Python
+
+This project uses Python version 3.8.8 for back-end infrastructure and data pre-processing.
+
+- **Packages**
+  - [**Flask**](https://flask.palletsprojects.com/en/1.1.x/) – WSGI Web Application Microframework
+  - [**Flask-Login**](https://flask-login.readthedocs.io/en/latest/) – User Session Management Flask Extension
+  - [**Flask-Pretty**](https://flask-pretty.readthedocs.io/en/latest/) – HTML Prettifying Flask Extension
+  - [**Flask-Pymongo**](https://flask-pymongo.readthedocs.io/en/latest/) – A PyMongo bridging Flask Extension
+  - [**Geopy**](https://github.com/geopy/geopy) – A geocoding web services client.
+  - [**Pymongo**](https://pymongo.readthedocs.io/en/stable/index.html) - A distribution for interacting with MongoDB through Python.
+- For a full list of these packages’ dependencies, please see the requirements.txt.
+- This project uses [Jinja](https://jinja.palletsprojects.com/en/2.11.x/) templating language for HTML generation via Python.
+
+## JavaScript
+
+This project uses JavaScript ES6.
+
+- **Packages**
+  - [**Materialize CSS**](https://github.com/materializecss/materialize) – In-built JavaScript package for interactive and responsive web-design.
+  - [**Alertify**](https://alertifyjs.com/)– A framework for improved dialogs and notifications.
+  - [**Google Maps API**](https://developers.google.com/maps/documentation/javascript/overview) – A JavaScript API for implementing Google Maps.
+  - [**Polyfill.io**](https://polyfill.io/v3/) – A browser polyfill package required by Google Maps.
+
+## Testing
+
+- The project’s HTML was validated using [W3C HTML Markup Validator](https://validator.w3.org/).
+- The project’s CSS was validated using [W3C Jigsaw CSS Validator](https://jigsaw.w3.org/css-validator/).
+- The project’s JS was validated using [JSHint](https://jshint.com/).
+- The project’s Python was validated using [Pylint](https://pylint.org/).
+- The project’s accessibility was assessed via WebAim’s [W.A.V.E](https://wave.webaim.org/) and [Contrast Checker](https://webaim.org/resources/contrastchecker/) and Google Chrome’s [Lighthouse](https://developers.google.com/web/tools/lighthouse).
+- The project used Toptal’s [Colorfilter](https://www.toptal.com/designers/colorfilter/) to assess how colour-blind-friendly the site was.
+- The project was Unit Tested using Python’s [unittest](https://docs.python.org/3/library/unittest.html) package, and third party package [Flask-Testing](https://pythonhosted.org/Flask-Testing/).
+  - **Note** : this package is not included in the requirements.txt
+
+## Hosting
+
+- The images used in the project’s README and TESTING documentation were hosted and served through [Cloudinary](https://cloudinary.com/console).
+- This website is hosted through [Heroku](https://www.heroku.com/what).
+
+## Database
+
+The project uses [MongoDB](https://www.mongodb.com/), a document-based NoSQL Database, for data storage.
+
 ---
 
 # Testing
