@@ -6,9 +6,9 @@ _**Wyspa**_: ˈwɪspə
 
 NOUN
 
-1: **WYSPA** (Acronym): Whisper Your Secrets Publicly and Anonymously – The Anonymous Social Media Network. _”Are you on **WYSPA** ?”_
+1: **WYSPA** (Acronym): Whisper Your Secrets Publicly and Anonymously – The Anonymous Social Media Network. _”Are you on WYSPA?”_
 
-2: **Wyspa** : An anonymous message. _”Have you listened to any **Wyspas** today?”_
+2: **Wyspa** : An anonymous message. _”Have you listened to any Wyspas today?”_
 
 This project is an anonymous social media network, allowing users to post, comment on, and listen to messages anonymously.
 
