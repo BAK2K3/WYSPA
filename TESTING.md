@@ -173,7 +173,407 @@ The Main README documentation can be found under [README.md](README.md)
 
 **Outcome: Pass**
 
-# Feature Testing
+# Manual Feature Testing
+
+The following features were tested manually, as described below.
+
+## User Management
+
+This aspect of the testing focuses on **User Management**:
+
+- Front End and User Experience for Registering, Logging In, Logging Out, and Deleting an account.
+- Server data handling and processing, focusing on the respective **User** class and views.
+- **Creating, Reading**, and **Deleting** documents from the **Users** Collection in **MongoDB**.
+
+### User: Registration
+
+- Ensure that when a user is not logged in, they are able to access the **Register** link within the **NavBar/SideNav** from any location in the site.
+- Ensure that when a user interacts with the **Register** link in the **NavBar/SideNav**, the **Register** modal appears as a slide-up **modal** from the bottom of the screen.
+- Ensure that the following validation occurs appropriately, and that the form cannot be submitted if any of the validation is unsuccessful:
+  - **Username Validation:**
+    - Requirements: _Required/No Spaces_
+    - On first interaction, if a user provides a **valid username**, when their focus navigates away from the field, the appearance of the field does not change.
+    - If a user does not provide a **username**, the field should turn red when their focus navigates away from the field. When attempting to submit the form a standard browser validation message should confirm the field is required.
+    - If a user provides a **username** containing whitespace, when their focus navigates away from the field or they attempt to submit the form, the following custom validation message appears: `Username cannot contain spaces!`, and the field turns red.
+    - If the field is in an invalid state, and the user provides a valid **username**, when their focus navigates away from the field or they attempt to submit the form, the field reverts to its valid state.
+  - **Password Validation**
+    - Requirements: _Required/Between 6 and 20 characters, with one number or special character._
+    - On first interaction, if a user provides a valid **password**, when their focus navigates away from the field, the appearance of the field does not change.
+    - If a user does not provide a **password**, the field should turn red when their focus navigates away from the field. When attempting to submit the form a standard browser validation message should confirm the field is required.
+    - If a user provides a **password** that does not comply with the validation requirements, when their focus navigates away from the field or they attempt to submit the form, the following custom validation message appears: `Password must contain 6-20 characters, and one number or special character`, and the field turns red.
+    - If the field is in an invalid state, and the user provides a valid **password**, when their focus navigates away from the field or they attempt to submit the form, the field reverts to its valid state.
+  - **Password Confirmation**
+    - Requirements: _Required/Must match Password_
+    - On first interaction, if a user provides a valid confirmation **password**, when their focus navigates away from the field, the appearance of the field does not change.
+    - If a user does not provide a confirmation **password**, the field should turn red when their focus navigates away from the field. When attempting to submit the form, a standard browser validation message should confirm the field is required.
+    - If a user provides a **password** that does not comply with the validation requirements, when their focus navigates away from the field or they attempt to submit the form, the following custom validation message appears: `Passwords do not match!`, and the field turns red.
+    - If the field is in an invalid state, and the user provides a valid confirmation **password**, when their focus navigates away from the field or they attempt to submit the form, the field reverts to its valid state.
+  - If the user is able to bypass the front-end verification, ensure the user is informed via **Toast** what aspect of the verification was unsuccessful, following server-side verification.
+- Ensure that if a user attempts to submit the form without the fields being valid, a subsequent valid submission attempt is allowed.
+- Ensure that when a user successfully registers, they are presented with a welcome **Toast**, and are automatically logged into their account.
+- If a user has attempted to register an account with a username that already exists in the database, regardless of casing, ensure registration is unsuccessful, and the user is informed via **Toast** that the username already exists.
+- Ensure that when the user clicks the **Cancel** button within the registration form, or clicks off the **modal**, the **modal** is dismissed.
+- **Database Test:** Ensure that when a user successfully registers, a document is written to the **Users Database**, in the following format:
+  - **\_id:** Unique object ID generated by MongoDB
+  - **Username:** A lowercase version of the username provided by the user.
+  - **Password:** A hashed version of the password provided by the user.
+- **Stress Test:** Ensure that when a user that is not logged in types `/register` in the URL, they are redirected to the Home page, and instructed to use the **Register** link to register via **Toast**.
+- **Stress Test:** Ensure that when a logged in user in types `/register` in the URL, they are redirected to the Home page, and informed they are already logged in via **Toast**.
+- **Stress Test:** Ensure that if a user attempts to submit the form multiple times (clicking **Register** rapidly, for example), only a single **Post** request is made.
+- **Database Test:** Ensure that, following rapid form submission testing, only a single document is written to the **Users** database.
+
+### User: Login
+
+- Ensure that when a user is not logged in, they are able to access the **Log In** link within the **NavBar/SideNav** from any location in the site.
+- Ensure that when a user interacts with the **Login** link in the **NavBar/SideNav**, the **Login** modal appears as a slide-up modal from the bottom of the screen.
+- Ensure that the following validation occurs appropriately, and that the form cannot be submitted if any of the validation is unsuccessful:
+  - **Username Validation:**
+    - Requirement: _Required_
+    - On first interaction, if a user provides a **username**, when their focus navigates away from the field, the appearance of the field does not change.
+    - If a user does not provide a **username**, the field should turn red when their focus navigates away from the field. When attempting to submit the form a standard browser validation message should confirm the field is required.
+    - If the field is in an invalid state, and the user provides a **username**, when their focus navigates away from the field or they attempt to submit the form, the field reverts to its valid state.
+  - **Password Validation:**
+    - Requirement: _Required_
+    - On first interaction, if a user provides a **password**, when their focus navigates away from the field, the appearance of the field does not change.
+    - If a user does not provide a **password**, the field should turn red when their focus navigates away from the field. When attempting to submit the form a standard browser validation message should confirm the field is required.
+    - If the field is in an invalid state, and the user provides a **password**, when their focus navigates away from the field or they attempt to submit the form, the field reverts to its valid state.
+  - If the **username** cannot be found in the database, or the **password** provided does not match the **hashed password** stored in the database, the user must be redirected to the page they were on, and informed via **Toast** that either the **username** or **password** was incorrect; this message should be presented regardless of which of the two authentication errors occurred.
+  - If **Log In** is successful, the user's **username** and **Time Zone** is stored in the session, and they are logged in.
+  - If a user has attempted to access a **login restricted** page (such as **My Voice**), and immediately logs into the site successfully, they should be redirected to the page they initially requested.
+  - If a user has **not** attempted to access a **login restricted** page (such as **My Voice)**, they must be redirected to the page they were on when logging in.
+  - The above successful **log in** events must also apply to when users **register** for an account, due to the automatic **log in**.
+  - When a user is **logged in**, they must be able to access the **My Voice** link in the **NavBar/SideNav**.
+  - When a user is **logged in**, they must no longer be able to see or access the **Log In** or **Register** links.
+  - When a user is **logged in**, they must be able to access the **Logout** link in the **NavBar/SideNav**.
+- **Stress Test:** Ensure that when a user that is not logged in types `/login` in the URL, they are redirected to the Home page, and instructed to use the **Log In** link via **Toast**.
+- **Stress Test:** Ensure that when a logged in user types `/login` in the URL, they are redirected to the Home page, and informed they are already logged in via **Toast**.
+- **Stress Test:** Ensure that if a user attempts to submit the form multiple times (clicking **Login** rapidly, for example), only a single **Post** request is made.
+
+### User: Logout
+
+- Ensure that when a user is logged in, they are able to access the **Log Out** link within the **NavBar/SideNav** from any location in the site.
+- Ensure that when a user selects the **Log Out** link, they are **logged out** of the website. This includes:
+  - Removing the **Username** from the session.
+  - Removing the **Time Zone** from the session.
+- Ensure that when a user has **logged out**, they are presented with the **Log In** and **Register** links in the **NavBar** / **SideNav**
+- Ensure that when a user has **logged out**, they are only have viewing access to the site's contents (as per User Story 3).
+- Ensure that when a user **Logs out**, they are redirected to the **Home** page.
+- Ensure that when a user **Logs out**, they are presented with a confirmation **Toast**.
+- **Stress Test:** Ensure that when a user that is not logged in types `/logout` in the URL, they are redirected to the Home page, and instructed they are not logged in via **Toast**.
+- **Stress Test:** Ensure that when a logged in user types `/logout` in the URL, they are logged out, redirected to the Home page, and informed log out has been successful via **Toast**.
+
+### User: Deletion
+
+- Ensure that a user must do the following to **delete** their account:
+  - **Log In**
+  - Navigate to **My Voice**
+  - Open the collapsible labelled **Delete Account**
+  - Click the button stating **Permanently Delete**
+  - Press **Confirm** in the confirmation box that appears.
+- A user must not be able to **delete** their account without following these steps.
+- A user must be **logged out** of their account during the **deletion** process.
+- A user must not be able to **log in** with their previous credentials once the account **deletion** has occurred.
+- Ensure a user's **Wyspas** arealso be deleted, after successful account **deletion**.
+- **Database Test:** On successful account deletion, ensure the user's entry within the **Users** collection has been removed, and no **Wyspas** exist in the **Messages** collection with the deleted accounts **username** as the **author**.
+- **Stress Test:** Ensure that when a user that is not logged in types `/delete_user` in the URL, they are redirected to the **Home** page, and instructed to log in to access this page via **Toast**.
+- **Stress Test:** Ensure that when a logged in user in types `/delete_user` in the URL, they are redirected to the **My Voice** page, and informed they must interact with the deletion process, via **Toast**.
+- **Stress Test:** Ensure that if a user attempts to submit the form multiple times (clicking **Login** rapidly, for example), only a single **Post** request is made.
+
+## Wyspa Management
+
+This aspect of the testing focuses on **Wyspa Management**:
+
+- Front End and User Experience for **Creating**, **Editing**, **Deleting**, and **Interacting** with **Wyspas**.
+- Server data handling and processing, focusing on the respective **Wyspa** class and views.
+- **Creating, Reading, Updating**, and **Deleting** documentsfrom the **messages** collection in **MongoDB**.
+
+### Wyspa: Creation
+
+- Ensure that only a logged in user can access the **Wyspa Creation** form in **My Voice**.
+- Ensure that when the **Create a Wyspa** form is collapsed, when a user interacts with the heading, the title text changes to "The world is listening…" and the **Wyspa Creation** form appears underneath.
+- Ensure that when the **Create a Wyspa** form is revealed, when a user interacts with the **The world is listening…** heading, the title text reverts back to **Create a Wypa**, and the form collapses.
+- Within the **Wyspa Creation** form, ensure that the following validation occurs appropriately:
+  - **Your Wyspa**
+    - Requirement: _Required/Must not only contain Whitespace_
+    - If a user attempts to submit the form without an entry in this field, form submission should be prevented, and a standard browser validation message should confirm the field is required.
+    - If the user submits the form with this field containing only whitespace, submission should be successful, but the **Wyspa** should not be written to the **Messages** collection; instead, a **Toast** should inform the user that a **Wyspa** cannot contain only whitespace.
+  - **Location**
+    - Requirement: _Required/Valid Location_
+    - If a user attempts to submit the form without an entry in this field, form submission should be prevented, and a standard browser validation message should confirm the field is required.
+    - If the user submits the form with this field containing an unknown address or location, submission should be successful, but the **Wyspa** should not be written to the **Messages** collection; instead, a **Toast** should inform the user that the address was not located.
+  - **Mood**
+    - Default Value: _Neutral_
+    - This field will always contain a value; therefore, a default value of **Neutral** is set, depicted by the **sub-label** with a corresponding **white** colour, and this will be the value submitted within the document if the value is not adjusted by the user. If the **Wyspa** is submitted without the user interacting with this aspect of the form, the value **1** should be stored in the **mood** field of the document written to the database.
+    - Dragging the slider to the left should change the field's **sub-label** to **Sad**, with the **sub-label** being coloured **red**. The value **0** should be stored in the **mood** field of the document written to the database.
+    - Dragging the slider to the right should change the field's **sub-label** to **Happy**, with the **sub-label** being coloured **green**. The value **2** should be stored in the **mood** field of the document written to the database
+    - Dragging the slider back to the central position should revert the field's **sub-label** to **Neutral**, with the **sub-label** being coloured **white**. The value **1** should be stored in the **mood** field of the document written to the database.
+  - **Expiry Date**
+    - Requirement: _Required/Current or future date_
+    - If a user attempts to submit the form without an entry in this field, form submission should be prevented, and a standard browser validation message should confirm the field is required.
+    - Ensure that a user cannot type in this field.
+    - Ensure that a user cannot copy and paste text into this field.
+    - Ensure that when a user interacts with this field, a **date picker** modal appears.
+      - Ensure that a user can click off the modal to dismiss it.
+      - Ensure that a user can click **cancel** to dismiss the modal.
+      - Ensure that a user can navigate through the **date picker**.
+      - Ensure that a user can interact with the **year** and **month** dropdowns within the **date picker**.
+      - Ensure that a user can select a date, and that when selected, the date populates the field without the user having to click **OK**.
+      - Ensure that if a value is in this field, and the user clicks **clear** within the **date picker**, the field is emptied.
+    - Ensure that when a date is selected, it appears in the format: `%dd-%mm-%yy`
+    - Combined with the **Expiry Time**, if a date and time is selected that is not in the future, form submission will be successful, but the **Wyspa** should not be written to the **Messages** collection; instead, a **Toast** should inform the user that the expiry date must be in the future.
+  - **Expiry Time**
+    - Requirement: _Required/A time in the future_
+    - If a user attempts to submit the form without an entry in this field, form submission should be prevented, and a standard browser validation message should confirm the field is required.
+    - Ensure that a user cannot type in this field.
+    - Ensure that a user cannot copy and paste text into this field.
+    - Ensure that when a user interacts with this field, a **time picker** modal appears.
+      - Ensure that a user can click off the modal to dismiss it.
+      - Ensure that a user can click **cancel** to dismiss the modal.
+      - Ensure the user can first select an **hour**, then select **minutes**.
+      - Ensure that when the **minutes** has been chosen, the full **time** populates the field without the user having to click **OK**.
+      - Ensure that if a value is in this field, and the user clicks **clear** within the **date picker**, the field is emptied.
+    - Ensure that when a time is selected, it appears in the format: `%hh:%mm` in 24hr formatting.
+    - Combined with the **Expiry Date**, if a date and time is selected that is not in the future, form submission will be successful, but the **Wyspa** should not be written to the **Messages** collection; instead, a **Toast** should inform the user that the expiry date must be in the future.
+- Ensure that on successful **Wyspa** submission, the user is presented with a **toast** confirming it was successful.
+- Ensure that on successful **Wyspa** submission, **My Voice** is updated to include the new **Wyspa** (all of a user's active **Wyspas** should be displayed here).
+- **Database Test:** Ensure that when a user successfully submits a **Wyspa**, a document is written to the **Messages Database**, in the following format:
+  - **\_id:** Unique object ID generated by MongoDB.
+  - **author:** The username of the user who submitted the Wyspa.
+  - **message:** The text entered into "Your Wyspa".
+  - **mood:** A numerical value between 0-2 depicted by slider position.
+  - **location:** ALat/Long dictionary, calculated as per **Wyspa: Location**.
+  - **expiry:** A UTC date time stamp, converted as per **Wyspa: Expiry**.
+  - **comments:** An empty list.
+  - **listens:** An empty list.
+  - **listen_count:** An integer representing the length of the listens list (initialised at 0).
+- **Stress Test:** Ensure that if a user attempts to submit the form multiple times (clicking **Wyspa** rapidly, for example), only a single **Post** request is made.
+- **Database Test:** Ensure that, following rapid form submission testing, only a single document is written to the **Messages** database.
+
+### Wyspa: Edit
+
+- Ensure that if a **logged in** user is viewing a **Wyspa** on the **Wyspa page**, in which they are the **author**, they are presented with an interactive **Edit** icon (next to the **listen** and **random** icons).
+  - A user should be able to directly access one of their own **Wyspas** by navigating to it via the **My Voice** page. Alternatively, when randomly viewing **Wyspas** through the **Wyspa: Random Generation** feature, they may be presented with a **Wyspa** they submitted.
+- Ensure that if a user clicks on the interactive **Edit** icon, they are taken to the **Edit** page.
+- Ensure that when a user is presented with the **Edit** page for a specific **Wyspa**, the respective form input fields are pre-populated with the contents of the **Wyspa**, other than **Location**.
+- Ensure that all form validation is identical to that discussed in **Wyspa: Creation**.
+- Ensure that on successful **edit**, the user is redirected to **My Voice**, and is informed via **Toast** that the edit was successful.
+- **Stress Test:** Ensure that if a user hard codes a URL to force edit a **Wyspa** that is not theirs, they are redirected to their own **My Voice** page, and informed via **Toast** that they are unable to edit a **Wyspa** that does not belong to them.
+- **Database Test:** Ensure that on successful **edit**, the correct document in the **messages** collection in MongoDB has been updated, and that the updated information is correct.
+- **Stress Test:** Ensure that if a user attempts to submit the form multiple times (clicking **Edit** rapidly, for example), only a single **Post** request is made.
+- **Database Test:** Ensure that, following rapid form submission testing, only a single document is updating in the **Messages** database.
+
+### Wyspa: Location
+
+It must be noted that as the **Location** feature heavily relies on the external package **GeoPy**, most of the pure **Lat** and **Long** conversion testing has been completed on the basis of what the expected outcome would be.
+
+- Ensure that each degree of location specificity is translated into the appropriate location:
+  - **Europe**: Places a marker in Germany.
+  - **Pacific Ocean**: Places a marker in the Pacific Ocean.
+  - **UK**:Places a marker in the north of the England.
+  - **London**: Places a marker in London.
+  - **Buckingham Palace, London**: Places a marker near Buckingham Palace in London.
+  - **SW1A 1AA:** Places a marker near Buckingham Palace in London.
+  - **Warsaw, Poland**: Places a marker in Warsaw, Poland.
+  - **1 Main Street, Leicester**: Places a Marker near Main Street, Leicester.
+  - **LE5 1AE**: Places a marker near Main Street, Leicester.
+  - **KS, United States**: Places a marker in Kansas, United States.
+- Ensure that the geolocation scrambling works as intended.
+  - Ensure that when two **Wyspas** are created with the same **Location** specified, they are positioned close to each other on the **Map**, but not in the same position.
+  - Ensure that when a user updates their **Wyspa** and provides the same location as the original **Wyspa**, it is in a different position than when first created, but in the same general area.
+- **Database Test:** Ensure that on successful **Wyspa Creation** or **Edit**, the relevant document in the **messages** collection in MongoDB contains a **lat**/**long** dictionary in the **Location** field.
+- **Stress Test:** Ensure that when a user provides an incorrect location (tested by providing a random string of letters and numbers), the submission is unsuccessful and the user is informed via **Toast** that the location could not be found.
+
+### Wyspa: Mood
+
+The testing for **Wyspa: Mood** was largely completed within the **Wyspa: Creation** section above. As such, the following testing has been condensed.
+
+- Ensure three **Moods** are available for the user to choose when **creating** or **updating** a **Wyspa**:
+  - **Neutral**
+    - Ensure this is the default value of the slider within the **Wyspa Creation** form when creating a **Wyspa**.
+    - Ensure a user can revert to this value when **editing** a Wyspa where the value was previously not `Neutral`.
+    - Ensure the value **1** is stored within the **Mood** field of the relevant document within the **messages** collection when writing to or updating the database, when the **mood** has been set to `Neutral`.
+    - When completing the **Wyspa** form (for either **creation** or **edit**), ensure the **sub-label** reads `Neutral`, and is **white**.
+    - Ensure a Wyspa's corresponding **Marker** on the **Map** is **white**, when the **mood** is set to `Neutral`.
+  - **Sad**
+    - Ensure the user can select this value on the slider (by dragging the slider left) within the **Wyspa Creation** form when creating a **Wyspa**, or during **editing**.
+    - Ensure the value **0** is stored within the **Mood** field of the relevant document within the **messages** collection when writing to or updating the database, when the **mood** has been set to `Sad`.
+    - When completing the **Wyspa** form (for either **creation** or **edit**), ensure the **sub-label** reads `Sad`, and is **red**.
+    - Ensure a Wyspa's corresponding **Marker** on the **Map** is **red**, when the **mood** is set to `Sad `.
+  - **Happy**
+    - Ensure the user can select this value on the slider (by dragging the slider right) within the **Wyspa Creation** form when creating a **Wyspa**, or during **editing**.
+    - Ensure the value **2** is stored within the **Mood** field of the relevant document within the **messages** collection when writing to or updating the database, when the **mood** has been set to `Happy`.
+    - When completing the **Wyspa** form (for either **creation** or **edit**), ensure the **sub-label** reads `Happy`, and is **green**.
+    - Ensure a Wyspa's corresponding **Marker** on the **Map** is **green**, when the **mood** is set to `Happy `.
+
+### Wyspa: Listens
+
+- Ensure new **Wyspas** are initialised with an empty list in the **listens** field of the document stored in the database.
+- Ensure new **Wyspas** are initialised with **0** in the **listen_count** field of the document stored in the database.
+- Ensure users who are not logged in are unable to add **listens** to a **Wyspa**.
+  - Although capable of interacting with the **listen icon** in the **Wyspa** page, a logged-out user should be redirected to the same message, with a **toast** confirming they need to log in to add a **listen**.
+  - Ensure, when this happens, the **listen** and **listen_field** fields within the relevant **Wyspa's** document in the database have not been modified.
+  - Ensure the **listen** count on the **Wyspa** page does not change when this happens.
+- Ensure users who are logged in are able to add **listens** to a **Wyspa**.
+  - Logged in users who interact with the **listen** icon should be redirected to the same **Wyspa** page, with a **toast** thanking the user for listening.
+  - Ensure, following a successful **listen**, that the **listen** field has been updated with the username of the listener being appended to the list within the field.
+  - Ensure, following a successful **listen**, that the **listen_count** field has been incremented. The value of the listen count should be the same length as the list within the **listen** field.
+- Ensure logged in users can only listen to a single **Wyspa** once.
+  - If a user has already **listened** to a **Wyspa**, and attempts to listen to the same **Wyspa** for a second time, they should be redirected to the same message, with a **toast** confirming they can only listen to each **Wyspa** once.
+  - Ensure, when this happens, the **listen** and **listen_field** fields within the relevant **Wyspa's** document in the database have not been modified.
+  - Ensure the **listen** count on the **Wyspa** page does not change when this happens.
+- Ensure that the size of a **Wyspa's Map Marke** increases with the size of the **listen_count** variable.
+- **Stress Test:** Ensure that if a user attempts to perform their first **listen** to a single **Wyspa** in quick succession (clicking the **Listen** icon rapidly, for example), only a single valid **listen** is recorded, and any subsequent requests through the route are handled appropriately.
+- **Stress Test:** Ensure that if a user hard codes a URL to force **Listen** to a **Wyspa**, the request is handled the same as if the user interacts with the **Listen** icon.
+
+### Wyspa: Comments
+
+- Ensure that when any user visits a **Wyspa**, the comments are collapsed under the **Comments** header.
+- Ensure that when a user clicks the **Comments** header, when the commentsare collapsed, the **Wyspa's** comments are revealed.
+- Ensure that when a user clicks the **Comments** header, when the comments are revealed, the **Wyspa's** comments are collapsed.
+- Ensure that **Comments** are displayed sequentially, alternating between left and right speech bubble styling and layout.
+- Ensure that **Logged in** users are presented with a **Comment** form at the end of the **comment** trail, contained within the collapsible element.
+  - Ensure this element follows the sequential left and right sequencing as existing **comments**.
+- Ensure that an empty **comment** cannot be submitted.
+  - Ensure a browser standard validation box appears when submitting an empty comment confirming that the text field is required.
+- Ensure that a **comment** containing explicitly whitespace cannot be submitted.
+  - While the submission will be processed, ensure a **Toast** appears stating that a message must not contain purely whitespace, and ensure the **comment** is not added to the **Wyspa**.
+- Ensure that on successful **comment** submission, the user is redirected the same **Wyspa** page, and the **comment** appears appended to the list of existing **comments**.
+- Ensure that logged in users with the appropriate access (see below) have the ability to delete a comment. When applicable, a **delete** icon appears underneath the body of the comment.
+  - Ensure that **Comment** authors are capable of deleting their comments on a given **Wyspa**.
+  - Ensure that **Wyspa** authors are capable of deleting any comment on their own **Wyspa**.
+  - Ensure that when a user attempts to **delete** a **Comment**, they are presented with the appropriate confirmation dialogue confirming their request to delete.
+  - Ensure that when a user successfully **deletes** a **Comment**, the correct comment is removed from the **Wyspa**, and the order of all other comments remains intact.
+- Ensure that when a user is not logged in, and a **Wyspa** has no **Comments**, the **Comment** section contains a text box advising the user that there are no comments on the **Wyspa**, and that they can log in to add a comment.
+  - Logged in users should not be presented with this box; instead, the **comment form** replaces this text box.
+- **Database Test:** Ensure that when a comment containing pure whitespace is submitted, that the **comments** field within the existing **Wyspa's** document in MongoDB is unchanged.
+- **Database Test:** Ensure that when a comment is successfully submitted, that the **comments** field within the existing **Wyspa's** document in MongoDB has the following formatted dictionary appended to the list: `{<Author>; : <Comment>}`
+- **Database Test:** Ensure that when a comment is successfully **deleted**, that the **comments** field within the existing **Wyspa's** document in MongoDB no longer holds the deleted comment's dictionary, and that all other elements in the list remain in order.
+- **Stress Test:** Ensure that if a user hard codes a URL to force delete a **Comment**, they are redirected to the relevant **Wyspa** page, and instructed to use the icons provided, via **Toast**.
+- **Stress Test:** Ensure the confirmation dialogue prevents multiple rapid attempts to delete a comment.
+- **Stress Test:** Ensure that if a user attempts to submit a **comment** multiple times (clicking **Add** rapidly, for example), only a single **Post** request is made.
+- **Database Test:** Ensure that, following rapid form submission testing, only a single entry is added to the **comment** field of the appropriate document in the **Messages** database.
+
+### Wyspa: Expiry
+
+- Ensure the **Expiry Date and Time** provided by a user during either **Wyspa Creation** or **Edit** is correctly converted to UTC, before being saved to the database.
+- Ensure the **Expiry Date and Time** is appropriately converted back to a user's local **Time Zone** when **Wyspas** are displayed to a user in the **My Voice** page.
+- Though extensively tested through various means, this is ultimately best described through the following test:
+  - Creating a Wyspa while in the UK (British Summer Time: GMT+1)
+    - Time of Expiry set, and displayed in **My Voice**: `30th April – 10AM`
+  - Passing the account credentials to a user who lives in Spain (Central European Summer Time: GMT+2), and ensuring the **Expiry** was presented to the user as 1 hour ahead of the time initially set.
+    - Time of Expiry displayed to Spanish user in **My Voice**: `30th April – 11AM`
+  - Checking the **Wyspa** document within the **messages** collection in MongoDB to ensure the time displayed as UTC (GMT).
+    - Time of Expiry saved to DB: `30th April – 9AM`
+  - This confirms that the **expiry** is being correctly converted from a user's **Time Zone** to UTC for storing in the database, and is correctly being converted from UTC to the user's **Time Zone** when retrieving the **Wyspa** from the database.
+- Given the above testing proved the conversion was functioning correctly; when **creating** or **editing** a **Wyspa**, ensure that when a user provides an **Expiry** in the past (after conversion), the submission is not successful, and a **toast** appears confirming the **Expiry** date must be in the future.
+- **Database Test:** Ensure that a **Wyspa** document is removed from the **messages** collection in MongoDB when the respective **Expiry Date and Time** is met.
+- **Database Test:** Ensure that when a user successfully **edits** a **Wyspa**, the relevant **Wyspa's Expiry** field is updated accordingly with a UTC datetime.
+
+### Wyspa: Deletion
+
+- Ensure a logged in user can interact with the **delete** icon for each individual **Wyspa** in **My Voice**.
+- Ensure when a user interacts with the **delete** icon, a confirmation dialogue appears, requesting a user to confirm their decision to delete the respective **Wyspa**.
+- Ensure a user can click off the dialogue, or click **back**, to dismiss the dialogue, cancelling the request.
+- Ensure that when a user clicks **confirm** within the dialogue, the correct **Wyspa** deleted.
+- Ensure that following successful **Wyspa deletion**, the user is redirected to **My Voice**, a deletion confirmation message is presented as a **Toast**, and the deleted **Wyspa** is no longer listed in the user's active **Wyspas**.
+- Ensure that when a user has **deleted** all of their **Wyspas** (or have yet to create one), their **My Voice** page states the user has no active **Wyspas**.
+- **Database Test:** Ensure that when a Wyspa is successfully deleted, it is removed from the **messages** collection in MongoDB.
+- **Stress Test:** Ensure that if a user hard codes a URL to force **delete** a **Wyspa**, the user is redirected to the **My Voice** page and informed via **Toast** to use the **delete** icon to perform this action.
+
+### Wyspa: Random Generation
+
+Considering the nature of pseudo-random generation, capabilities were limited for testing the random **Wyspa** generation. I believe the following is sufficient to deem the feature functions as intended.
+
+- Ensure that a user can be presented with a **random** Wyspa via two methods:
+  - Via interacting with the **Wyspa** link in the **NavBar/SideNav**.
+  - Via interacting with the **Random** icon on the **Wyspa** page.
+- Ensure that interacting with either of these two features presents the user with a perceived **random Wyspa** from the database.
+- If no **Wyspas** are available in the Database, the user should be presented with a message (in place of where the **Wyspa message** usually is) stating there are currently no **Wyspas**, and encouraging the user to **Log In** to submit their own.
+- **Stress Test:** Ensure that if a user hard codes a URL to force **Random Wyspa generation**, the request is handled the same as if the user initiates this feature via either of the two methods above.
+
+## Map
+
+- Ensure that all users are able to access and interact with the **Map** feature.
+- Ensure users can navigate the **Map**, and can zoom in and out.
+- Ensure all **Wyspas** in the database are shown on the **Map**.
+- Ensure each **Map Marker**'s location correlates with the **Lat/Long** co-ordinates stored in the relevant document's **Location** field within the database.
+- Ensure each **Map Marker**'s colour correlates with the following colour **Map**, from the value stored in the relevant document's **Mood** field within the database:
+  - 0 : `Red`
+  - 1 : `White`
+  - 2 : `Green`
+- Ensure each **Map Marker**'s radius correlates with the size of the **listen_count** value of the relevant document within the database.
+- Ensure each **Map Marker** can be interacted with, regardless of size, location, or overlap.
+- Ensure interacting with a **Map Marker** directs the user to the correct **Wyspa Page**.
+- Ensure **Map Markers** are placed in order of their radius, so smaller radius **markers** sit on top of the larger radius **markers**.
+  - Ensure interacting with a smaller **marker**, which overlaps a larger **marker**, takes the user to the correct **Wyspa Page**.
+- **Stress Test**: Ensure that when a user interacts with a **Marker** which relates to a **Wyspa** that no longer exists in the database, the user is redirected to a random **Wyspa** page and the user is informed via **Toast** that the **Wyspa** they are looking for does not exist. _Stress tested by deleting an entry in the database before interacting with the relevant Marker._
+- **Stress Test:** Ensure that if the Google Maps API throws an authentication error, the **Map** is replaced with the standard static background, and an error message is presented informing the user to try again. _Stress tested by removing the API key from the script._
+- **Stress Test:** Ensure no errors appear when there are no **Wyspas** in the **messages** collection in MongoDB, and the **Map** functions as intended.
+- **Stress Test:** Over-ride the **listen_count** value of two documents in the database to 100 and 150 respectively, and ensure they both appear the same size on the **Map** (due to the 100 listen_count value reaching the imposed radius limit within the script).
+
+## Responsive Layout and Design
+
+The features detailed above were re-tested for use on all viewports, including the user interface for responsive layout and design.
+
+### Browser Based Testing
+
+Using Chrome Development tools, either via the pre-set mobile device resolutions or via the manual responsive tool (using `Toggle Device Toolbar`), the following was completed:
+
+- Manual responsive testing via Chrome Development Tools, selecting `Toggle Device Toolbar`.
+- Cycling through each available device, and performing the tests as detailed above:
+  - Moto G4
+  - Galaxy S5
+  - Pixel 2
+  - Pixel 2XL
+  - iPhone 5/SE
+  - iPhone 6/7/8 (and plus)
+  - iPhone X
+  - iPad
+  - iPad Pro
+  - Surface Duo
+  - Galaxy Fold
+- Ensure all Features function and appear correctly from at least 320px wide.
+- Ensure Modals are presented appropriately on all viewports:
+  - Interaction is enabled.
+  - The Modal fits on device's screen.
+  - The content is legible.
+  - The user can dismiss the modal.
+- Ensure all **Toasts** appear, are visible and legible, and can be dismissed.
+
+### Mobile and Tablet Testing
+
+The website was physically tested on a Samsung Tab S4, and a Samsung Note 10+ 5G. The following tests were completing:
+
+- Ensure all interactive **icons** are distinguishable, identifiable, and are correctly sized and placed to allow users to interact with each of them via touchscreen individually.
+- Ensure all inputs within the **Wyspa Creation** formrespond appropriately to touchscreen devices.
+- Ensure all text input fields respond appropriately to on-screen keyboards.
+- Ensure on-screen keyboards do not obfuscate the users view of the site or the corresponding inputs.
+- Ensure the **SideNav** can be swiped to collapse or reveal.
+- Ensure the **Map** feature responds appropriately to touchscreen devices (swipe, pinch, touch, etc), and that all **Wyspas** can be interacted with regardless of location or size.
+
+## Additional Testing
+
+### Error Handling
+
+- Ensure that 404 HTTP errors are appropriately routed to 404.html.
+  - **Stress Test:** Input an unfamiliar route in the URL
+- Ensure **that** 500 HTTP errors are appropriately routed to 500.html.
+  - **Stress Test:** Set debug to disabled, and intentionally break a route before attempting to access it.
+
+### Links
+
+- Ensure the link in the footer is visible across all pages, and that a user can interact with it via touch or via mouse click.
+- Ensure the link opens up in a new tab.
+
+### Help
+
+- Ensure the **Help** icon is visible and accessible from all pages.
+- Ensure that interacting with the **Help** icon brings up a **modal**, with page specific content.
+- Ensure the modal's content is legible, and can be scrolled where applicable.
+- Ensure the **modal** can be dismissed by interacting with the area outside of the modal, or via clicking the **close** button.
+- Ensure each page (including error pages) include page specific content.
+
+# Automated Testing
 
 # Browser Testing
 
