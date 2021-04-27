@@ -667,6 +667,95 @@ As WYSPA uses JavaScript ES6, support for Internet Explorer 11 has not been cons
 
 # Code Validation
 
+## HTML
+
+- The project's HTML was validated using the automated [W3 Markup Validator](https://validator.w3.org/) at intervals throughout the development process.
+- At no point were errors or warnings presented, and all HTML files were assessed:
+  - Index.html
+  - My_voice.html
+  - Messages.html
+  - Maps.html
+  - Edit_wyspa.html
+  - 404.html
+  - 500.html
+
+## CSS
+
+- The project's CSS was validated using the automated [W3 Jigsaw Validator](https://jigsaw.w3.org/css-validator/) at intervals throughout the development process.
+- At no point were errors presented.
+- At time of deployment, there are 40 warnings:
+  - 1: ` Imported style sheets are not checked in direct input and file upload modes`.
+    - Satisfied this is informational to confirm imported style sheet is not being validated.
+  - 39: `<extension> is an unknown vendor extension`.
+    - Satisfied these can be dismissed.
+
+## JavaScript
+
+- The project's JavaScript was validated using the open source automated service, [JSHint](https://jshint.com/), at intervals throughout the development process.
+- Warnings are currently present, however these are regarding ES6 Compatibility; I'm aware of these and am satisfied these can be dismissed.
+- One error was presented, in **maps.js** , when using a `for (const x in y)` statement:
+  - `The body of a for in should be wrapped in an if statement to filter unwanted properties from the prototype.`
+  - This was easily fixed after reviewing a similar error on [StackOverflow.](https://stackoverflow.com/questions/4166551/javascript-jslint-error-the-body-of-a-for-in-should-be-wrapped-in-an-if-statem)
+- At the time of deployment, no errors are present.
+
+## Python
+
+- The project's Python was validated for PEP8 compliance using [Pylint](https://pypi.org/project/pylint/), via the terminal, at intervals throughout the development process.
+- The following warnings were presented:
+  - [app.py:15:4](https://github.com/BAK2K3/WYSPA/blob/86dec8a923916d6afebb6d12a7ed1ab462443b77/app.py#L14): `W0611: Unused import env (unused-import)`
+  - [wyspa/factory/initialisation.py:18:4](https://github.com/BAK2K3/WYSPA/blob/86dec8a923916d6afebb6d12a7ed1ab462443b77/wyspa/factory/initialisation.py#L18): `W0611: Unused import env (unused-import)`
+    - These warnings has been considered, however they appear to be incorrectly reporting `env.py` as being unused, due to how env.py works. Once deployed, this will not be imported anyway, and therefore this has been added to the ignore rule within these particular python modules.
+    - `# pylint: disable=unused-import`
+  - [wyspa/messages/classes.py:26:0](https://github.com/BAK2K3/WYSPA/blob/86dec8a923916d6afebb6d12a7ed1ab462443b77/wyspa/messages/classes.py#L29): `R0902: Too many instance attributes (9/7) (too-many-instance-attributes)`
+  - [wyspa/messages/classes.py:127:4](https://github.com/BAK2K3/WYSPA/blob/86dec8a923916d6afebb6d12a7ed1ab462443b77/wyspa/messages/classes.py#L130): `R0913: Too many arguments (10/5) (too-many-arguments)`
+    - The root cause of both of these warnings are related; as the Wyspa class has 9 attributes, with the `__init__` method using 10 arguments (including self), PyLint is warning that the class may be overly complicated and hard to read.
+    - I have considered the warnings, and ways in which the Class could be refactored further, but believe that the current functioning Class appropriately encapsulates the Wyspa object, and whilst it contains a large amount of attributes, believe this is necessary in this instance and is not overly complicated.
+    - As such, ignore rules have been added to the top of messages/classes.py.
+    - `# pylint: disable=too-many-arguments, too-many-instance-attributes`
+  - [wyspa/messages/views.py:315:0](https://github.com/BAK2K3/WYSPA/blob/86dec8a923916d6afebb6d12a7ed1ab462443b77/wyspa/messages/views.py#L317): `R0911: Too many return statements (7/6) (too-many-return-statements)`
+    - This warning relates to the `edit_wyspa` route, as it has 7 return statements within the logic of both the Get/Post routes combined.
+    - I have considered this warning, and looked at possibly refactoring the logic within this route. One possibility was to create an additional method within the Wyspa class that verifies each field of a Wyspa (create or edit) following user submission, returning specific error message to present to the user. However, I believe the logic for this validation belongs within this particular route. I also don't believe this warning was designed for analysing Flask routes. Regardless, I do not believe this particular route is overly complicated or difficult to navigate. As such, an ignore rule has been added to the top of messages/views.py.
+    - `# pylint: disable=too-many-return-statements`
+- Having individually reviewed each python file, and considered the warnings above, there are currently no other PEP8 warnings.
+
+![pylint](https://res.cloudinary.com/bak2k3/image/upload/v1619531108/WYSPA/pylint_xk5fid.jpg)
+
+## Accessibility, Performance, and Best Practice
+
+- The project's Accessibility, Performance, and Best Practices audit was undertaken with [Google Lighthouse](https://developers.google.com/web/tools/lighthouse).
+- Please note any **Login Required** routes, such as **My Voice**, were not capable of being audited due to how the audit is completed. However, the results of the successful tests provide a good indication as to how these particular routes might have performed given they share a base template.
+
+### Desktop
+
+#### Home
+
+![lighthouse home desktop](https://res.cloudinary.com/bak2k3/image/upload/v1619531107/WYSPA/lighthouse_home_desktop_vwu65f.jpg)
+
+#### Map
+
+![lighthouse Map desktop](https://res.cloudinary.com/bak2k3/image/upload/v1619531107/WYSPA/lighthouse_map_desktop_tsuagi.jpg)
+
+#### Message
+
+![lighthouse message desktop](https://res.cloudinary.com/bak2k3/image/upload/v1619531107/WYSPA/lighthouse_wyspa_desktop_yplzam.jpg)
+
+### Mobile
+
+#### Home
+
+![lighthouse home mobile](https://res.cloudinary.com/bak2k3/image/upload/v1619531107/WYSPA/lighthouse_home_mobile_jkg8zg.jpg)
+
+#### Map
+
+![lighthouse Map mobile](https://res.cloudinary.com/bak2k3/image/upload/v1619531107/WYSPA/lighthouse_maps_mobile_dkkvzn.jpg)
+
+#### Mobile
+
+![lighthouse message mobile](https://res.cloudinary.com/bak2k3/image/upload/v1619531107/WYSPA/lighthouse_wyspa_mobile_owsy9o.jpg)
+
+- It appears the Mobile Performance was reduced due to the throttling imposed on the mobile testing for the Lighthouse assessment.
+- The static background image could have been compressed for slightly better performance under throttling, however this was tested and resulted in a substantial difference in quality; the distinct outline was missing from the **Map**, which reduced the impact the image had.
+
 # Significant Bugs
 
 # Other Technical Difficulties
