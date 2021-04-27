@@ -285,13 +285,13 @@ Text against a dark body is pure white, while text against a white body is pure 
 
 ![White Text on Black Background](https://res.cloudinary.com/bak2k3/image/upload/v1619532900/WYSPA/White_Text_uwmv3j.jpg)
 
-![White on Black accessability](https://res.cloudinary.com/bak2k3/image/upload/v1619531061/WYSPA/white_on_black_dqlzuc.jpg)
+![White on Black accessability](https://res.cloudinary.com/bak2k3/image/upload/v1619531061/WYSPA/black_on_white_uix0ff.jpg)
 
-**Blck Text on White Background**
+**Black Text on White Background**
 
 ![Black Text On White Background](https://res.cloudinary.com/bak2k3/image/upload/v1619532900/WYSPA/Black_Textr_agnfyk.jpg)
 
-![Black on White accessability](https://res.cloudinary.com/bak2k3/image/upload/v1619531061/WYSPA/black_on_white_uix0ff.jpg)
+![Black on White accessability](https://res.cloudinary.com/bak2k3/image/upload/v1619531061/WYSPA/white_on_black_dqlzuc.jpg)
 
 ### Typography
 
