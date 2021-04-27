@@ -49,15 +49,15 @@ The project was developed using **HTML**, **CSS**, **JavaScript**, and **Python*
 
 **What would your ideal social media network look like?**
 
-"_I don’t want to need to have a large following/network in order to get the most out of the platform._"
+_"I don’t want to need to have a large following/network in order to get the most out of the platform."_
 
-"_I don’t want to be judged by my friends and family for how I’m feeling."_
+_"I don’t want to be judged by my friends and family for how I’m feeling."_
 
-"_I want to be able to support those who need it."_
+_"I want to be able to support those who need it."_
 
-"_I want to feel like my contribution makes a difference."_
+_"I want to feel like my contribution makes a difference."_
 
-"_I want a more creative interface, and various degrees of interaction, in comparison to modern social media networks."_
+_"I want a more creative interface, and various degrees of interaction, in comparison to modern social media networks."_
 
 ### Similar Project Review
 
@@ -570,7 +570,10 @@ As discussed in **Wyspa: Mood**, the mood of the **Wyspa**, set by the user duri
 As discussed in **Wyspa: Listens**, the size of the marker is depicted by the amount of **Listens** a **Wyspa** has. When the pre-processed data is sent to JavaScript to place the markers on the **Map**, the radius of each marker is calculated using the following formula:
 
 ```javascript
-radius: Math.min(1000000, Math.max(10000, 10000 +  map_data[message]["Listens"] * 5000))
+radius: Math.min(
+  1000000,
+  Math.max(10000, 10000 + map_data[message]["Listens"] * 5000)
+);
 ```
 
 This function multiplies the amount of **Listens** a **Wyspa** has by 5,000, and sets a minimum (15,000) and maximum (10,000,000) value, before setting the outcome of this calculation to the radius of the circle. This ensures that **Wyspas** with no **Listens** are still visible on the **Map**, **Wyspas** scale appropriately and effectively for each **Listen**, and caps the maximum radius of each **Wyspa**.
