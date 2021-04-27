@@ -830,15 +830,15 @@ In order to rectify this, the registration form was excluded from the global for
 
 When implementing the Login and Register Modals, I was keen to ensure that a user was never redirected away from any content in order to perform these actions. However, due to the size of the on-screen keyboard on physical mobile devices, and due to the implementation of modals in Materialize CSS, I identified that when attempting to log in or register on physical devices, the on screen keyboard would cause the respective modal to shrink, causing a user to have to scroll through the respective interface to log in or register. As you can see from the examples below, this resulted in validation errors or buttons being hidden from the user.
 
-![Old login mobile](https://res.cloudinary.com/bak2k3/image/upload/v1619531061/WYSPA/LoginMobile2_lx9gdj.jpg)
+![Old login mobile](https://res.cloudinary.com/bak2k3/image/upload/c_scale,h_765/v1619531061/WYSPA/LoginMobile2_lx9gdj.jpg)
 
-![Old Register](https://res.cloudinary.com/bak2k3/image/upload/v1619531062/WYSPA/RegisterMobile2_qjdq6p.jpg)
+![Old Register](https://res.cloudinary.com/bak2k3/image/upload/c_scale,h_765/v1619531062/WYSPA/RegisterMobile2_qjdq6p.jpg)
 
 The solution to this was to replace these modals with **slide-up** modals. I found that these inherently utilised space on the device more efficiently and effectively, and obfuscated less of the user's view when initially interacted with. The **help** modal still uses normal modals, as the variation of interfaces produces a much more dynamic website as a whole.
 
-![New Mobile Login](https://res.cloudinary.com/bak2k3/image/upload/v1619531061/WYSPA/loginnewmobile_pkd5vh.jpg)
+![New Mobile Login](https://res.cloudinary.com/bak2k3/image/upload/c_scale,h_765/v1619531061/WYSPA/loginnewmobile_pkd5vh.jpg)
 
-![New Mobile Register](https://res.cloudinary.com/bak2k3/image/upload/v1619531061/WYSPA/registernewmobile_tzetti.jpg)
+![New Mobile Register](https://res.cloudinary.com/bak2k3/image/upload/c_scale,h_765/v1619531061/WYSPA/registernewmobile_tzetti.jpg)
 
 ## Unexpected Date Picker Behaviour
 
