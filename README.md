@@ -151,6 +151,96 @@ Facebook is currently the most popular social media network, with approximately 
 
 ## Structure
 
+### Informational Architecture
+
+**Wyspa** has been designed to combine persistent elements, which a user may want to access at any given location, with unique elements, which a user may want to visit with a specific intention. This allows the content to be condensed and minimalistic, yet intuitive and user friendly.
+
+#### Persistent
+
+##### Header
+
+The header of the page contains the **NavBar** , the **Logo** , and the **Help** function. It is a static element, and is affixed to the top of the page at all times. Where the page body content exceeds the viewport of the screen, the **NavBar** has been designed **not** be a “sticky” element, so as to utilise the full viewport when required.
+
+##### Navigation
+
+On larger viewports, the navigational elements are separated into separate links within the **NavBar**. On medium viewports and lower, the navigational elements are collapsed into a **SideNav,** which can be activated with a toggler in the upper-left corner.
+
+##### Logo
+
+The **Logo** is centrally placed within the Header element, regardless of viewport.
+
+##### Help
+
+The **Help** functionality is embedded into every page, with the interactive icon placed in the top right of the header, regardless of viewport.
+
+##### Login / Register / Logout
+
+The **Login** / **Register** functionality is embedded into every page; this allows a user to **log in** or **register** , via a slide-up **Modal** , or **log out** , regardless of their location on the site.
+
+##### Footer
+
+The footer is statically positioned at the bottom of the page. Similar to the header, this is not a sticky element, and when content exceeds the viewport of the device, the footer is pushed out of the viewport. The footer contains a link to the project’s GitHub repository; however, its primary intention is to enclose the webpage to produce a letterbox style aesthetic.
+
+#### Unique
+
+##### Index
+
+The Index page contains an overview of the website, describing and linking the main three features, along with a call to action.
+
+##### My Voice
+
+The **My Voice** page offers a profile section, where users can view and manage their existing **Wyspas** , create new **Wyspas** , or delete their account.
+
+##### Wyspa
+
+The **Wyspa** page provides users with a randomly selected **Wyspa**. From here, users can read, listen to, comment on, and edit **Wyspas**.
+
+##### Map
+
+The **Map** page provides a **Map** of the world, with the existing **Wyspa’s** markers placed depending on their geolocation, their size depending on how many **Listens** they have, and their colour depending on the mood of the **Wyspa**.
+
+### Interaction Design
+
+##### NavBar
+
+The **NavBar** contains the four unique page locations, along with the log in, register, and log out functionality, where applicable. When a user is located on one of the four unique locations, the active position is represented with alternative shading and styling on the relevant link within the **NavBar**. This allows a user to know where they are at any given time. This feature is applied to all viewports, with the styling varying slightly depending on whether a full **NavBar** or **SideNav** is in use.
+
+##### Login/Register/Logout
+
+If a user is not logged in, the **NavBar/SideNav** provides the relevant **Log In/Register** links. When a user interacts with the **Log In/Register** link within the **NavBar** , a **slide-up Modal** appears which presents them with the required functionality. When a user is logged in, the **Logout** link replaces the **Log In/Register** links.
+
+##### Help
+
+Interacting with the **Help** icon initialises a **centrally positioned Modal** which presents the user with additional information relevant to the page they’re currently engaged with. While the functionality of the help feature is baked into the persistent HTML across the site, the content is dynamically generated depending on a user’s location. While the interface for each aspect of the site is designed to be intuitive and self-explanatory, this feature provides additional information if a user requires it.
+
+##### Wyspa
+
+Each time the user visits the **Wyspa** page, a **Wyspa** from the database is selected at random and presented to the user.
+
+The content of the **Wyspa** is the primary aspect of this page, and is therefore placed in central view of the user and cannot be hidden. Underneath the content of the **Wyspa** is “Listen” counter, displaying how many users have “Listened” to the **Wyspa** , along with an interactive icon which allows a user to “Listen” to the **Wyspa**. Next to this icon lies a **Random Wyspa** icon, which randomly selects a new **Wyspa** from the database. If the author of the **Wyspa** is currently logged in, an **edit** icon is also provided here, navigating the user to a dedicated edit page.
+
+The comments for the selected **Wyspa** are hidden in a collapsible interactive element. This gives the user interactive control over how different aspects of the content are displayed. When this element is shown, the comments are displayed vertically, alternating left and right to produce a **conversational** aesthetic. For each comment, an interactive **delete** icon is presented to both the owner of the **Wyspa** , and the owner of the **comment.** This icon is displayed directly underneath the relevant comment, within its container.
+
+##### My Voice
+
+**My Voice** shows a list of all active **Wyspas** the user has within the database. Each **Wyspa’s** message is displayed, along with a counter displaying how many **Listens** the **Wyspa** has, an interactive icon allowing the user to directly access the **Wyspa,** and an interactive **delete** icon. Consideration was given to add the **edit** icon within this contextual menu, however this resulted in a cluttered screen space, and prevented the tooltips from displaying as intended due content overflowing.
+
+Underneath the existing **Wyspas** is a collapsible element in which contains a **Wyspa Creation** form. The form contained within this element is self-descriptive with a user-friendly design, and is easy to complete and navigate. When the user interacts with the collapsible element, the heading text changes from “Create a **Wyspa**” to “The world is listening…”. This is reverted when this element is collapsed.
+
+Underneath the **Wyspa Creation** form is a **Delete Account** container. A user must interact with this element to reveal a button which states **Permanently Delete.** This button will also produce a confirmation modal.
+
+##### Map
+
+The **Map** feature takes the user directly to an interactive **World Map** , whereby all currently active **Wyspas** are displayed. A user can interact with a **Wyspa** by clicking on it, taking them directly to its **Wyspa page**. A **Wyspa’s** colour, size, and placement are all influenced by how users interact with and contribute to it. The **Map** itself is easy to navigate on all viewports, with intuitive zoom and drag functionality.
+
+##### Tooltips
+
+All interactive icons throughout **Wyspa** contain **tooltips** ; on Desktop, these appear when the user highlights the icon with a cursor. While the icons are self-descriptive, the tooltips provide an extra depth of engagement and interactivity. However, in its current state, a Mobile friendly tooltip has yet to be implemented, due to the nature in which they are interacted with and displayed. As such, Tooltips are disabled for Mobile users; however, the help functionality contains all additional and relevant information for each page and each interaction if required.
+
+##### Toasts
+
+**Toasts** are used across **Wyspa** to communicate short snippets of important information without obfuscating the viewport, and without overloading the user with information. These can be dismissed via a “Dismiss” button within the **Toast** , or can be swiped away on mobile. These have been implemented to re-affirm a user’s action, or to draw a user’s attention to an error, providing an effective means of feedback to the user.
+
 ## Skeleton
 
 ## Surface
