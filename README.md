@@ -37,7 +37,7 @@ View deployed site on [Heroku](https://w-y-s-p-a.herokuapp.com/).
 
 **Wyspa** is an anonymous social media network, designed to inspire self-expression; it encourages the acknowledgement of, and engagement with, other posts to increase their visibility. All posts have user-determined expiry dates, and can be viewed on a global map, based on their scrambled geolocation.
 
-The project was developed using **HTML** , **CSS** , **JavaScript** , and **Python** , and utilises a NoSQL document-based database via **MongoDB**.
+The project was developed using **HTML**, **CSS**, **JavaScript**, and **Python**, and utilises a NoSQL document-based database via **MongoDB**.
 
 ---
 
@@ -119,7 +119,7 @@ Facebook is currently the most popular social media network, with approximately 
 
 - Allow a user to create **Wyspas** anonymously.
 - Allow a user to edit and delete their own **Wyspa**.
-- Allow a user to comment on any **Wyspa** , and delete any comments they have made.
+- Allow a user to comment on any **Wyspa**, and delete any comments they have made.
 - Allow a user to remove any comments left on their own **Wyspa**.
 - Allow a user to engage with other **Wyspas** through “**Listens**”.
 
@@ -139,7 +139,7 @@ Facebook is currently the most popular social media network, with approximately 
 #### User created Wyspas
 
 - The website’s primary content is entirely user generated; the creation and editing of **Wyspas** within in the database.
-- When creating a **Wyspa** , the following information will be recorded, and for the following purposes:
+- When creating a **Wyspa**, the following information will be recorded, and for the following purposes:
   - **Author:** This will be pre-populated by the server, allowing backend verification of **Wyspa** ownership.
   - **Message:** This will be provided by the user, in free-text form. This will be the message the user would like to communicate, and therefore the message other users are able to read.
   - **Location:** This will be provided in a verbose manner by the user (i.e London), converted to Lat-Long (51.500153° N, -0.1262362° E), and scrambled (N/E +-0.1). This will be used to position the **Wyspa** on the **Map**.
@@ -147,7 +147,7 @@ Facebook is currently the most popular social media network, with approximately 
   - **Expiry Date:** This will be set by the user. This will depict when the document removed from the database.
   - **Comments:** This is an entry which all logged in users will be able to contribute to; these comments will be displayed on the individual **Wyspa** page.
   - **Listens :** This is an entry which will log the users who have listened to a **Wyspa** ; this will be used to prevent any single user listening to a **Wyspa** more than once.
-  - **Listen_Count:** This is an entry which counts the total amount of **Listens** contained within a whisper. This will be used for both sorting the database entries for the **Map** , depicting the size of the **Map** marker, and for displaying the amount of **Listens** a **Wyspa** has on the individual **Wyspa** page and profile page.
+  - **Listen_Count:** This is an entry which counts the total amount of **Listens** contained within a whisper. This will be used for both sorting the database entries for the **Map**, depicting the size of the **Map** marker, and for displaying the amount of **Listens** a **Wyspa** has on the individual **Wyspa** page and profile page.
 
 ## Structure
 
@@ -159,11 +159,11 @@ Facebook is currently the most popular social media network, with approximately 
 
 ##### Header
 
-The header of the page contains the **NavBar** , the **Logo** , and the **Help** function. It is a static element, and is affixed to the top of the page at all times. Where the page body content exceeds the viewport of the screen, the **NavBar** has been designed **not** be a “sticky” element, so as to utilise the full viewport when required.
+The header of the page contains the **NavBar**, the **Logo**, and the **Help** function. It is a static element, and is affixed to the top of the page at all times. Where the page body content exceeds the viewport of the screen, the **NavBar** has been designed **not** be a “sticky” element, so as to utilise the full viewport when required.
 
 ##### Navigation
 
-On larger viewports, the navigational elements are separated into separate links within the **NavBar**. On medium viewports and lower, the navigational elements are collapsed into a **SideNav,** which can be activated with a toggler in the upper-left corner.
+On larger viewports, the navigational elements are separated into separate links within the **NavBar**. On medium viewports and lower, the navigational elements are collapsed into a **SideNav**, which can be activated with a toggler in the upper-left corner.
 
 ##### Logo
 
@@ -175,7 +175,7 @@ The **Help** functionality is embedded into every page, with the interactive ico
 
 ##### Login / Register / Logout
 
-The **Login** / **Register** functionality is embedded into every page; this allows a user to **log in** or **register** , via a slide-up **Modal** , or **log out** , regardless of their location on the site.
+The **Login** / **Register** functionality is embedded into every page; this allows a user to **log in** or **register**, via a slide-up **Modal**, or **log out**, regardless of their location on the site.
 
 ##### Footer
 
@@ -189,7 +189,7 @@ The Index page contains an overview of the website, describing and linking the m
 
 ##### My Voice
 
-The **My Voice** page offers a profile section, where users can view and manage their existing **Wyspas** , create new **Wyspas** , or delete their account.
+The **My Voice** page offers a profile section, where users can view and manage their existing **Wyspas**, create new **Wyspas**, or delete their account.
 
 ##### Wyspa
 
@@ -207,7 +207,7 @@ The **NavBar** contains the four unique page locations, along with the log in, r
 
 ##### Login/Register/Logout
 
-If a user is not logged in, the **NavBar/SideNav** provides the relevant **Log In/Register** links. When a user interacts with the **Log In/Register** link within the **NavBar** , a **slide-up Modal** appears which presents them with the required functionality. When a user is logged in, the **Logout** link replaces the **Log In/Register** links.
+If a user is not logged in, the **NavBar/SideNav** provides the relevant **Log In/Register** links. When a user interacts with the **Log In/Register** link within the **NavBar**, a **slide-up Modal** appears which presents them with the required functionality. When a user is logged in, the **Logout** link replaces the **Log In/Register** links.
 
 ##### Help
 
@@ -217,9 +217,9 @@ Interacting with the **Help** icon initialises a **centrally positioned Modal** 
 
 Each time the user visits the **Wyspa** page, a **Wyspa** from the database is selected at random and presented to the user.
 
-The content of the **Wyspa** is the primary aspect of this page, and is therefore placed in central view of the user and cannot be hidden. Underneath the content of the **Wyspa** is “Listen” counter, displaying how many users have “Listened” to the **Wyspa** , along with an interactive icon which allows a user to “Listen” to the **Wyspa**. Next to this icon lies a **Random Wyspa** icon, which randomly selects a new **Wyspa** from the database. If the author of the **Wyspa** is currently logged in, an **edit** icon is also provided here, navigating the user to a dedicated edit page.
+The content of the **Wyspa** is the primary aspect of this page, and is therefore placed in central view of the user and cannot be hidden. Underneath the content of the **Wyspa** is “Listen” counter, displaying how many users have “Listened” to the **Wyspa**, along with an interactive icon which allows a user to “Listen” to the **Wyspa**. Next to this icon lies a **Random Wyspa** icon, which randomly selects a new **Wyspa** from the database. If the author of the **Wyspa** is currently logged in, an **edit** icon is also provided here, navigating the user to a dedicated edit page.
 
-The comments for the selected **Wyspa** are hidden in a collapsible interactive element. This gives the user interactive control over how different aspects of the content are displayed. When this element is shown, the comments are displayed vertically, alternating left and right to produce a **conversational** aesthetic. For each comment, an interactive **delete** icon is presented to both the owner of the **Wyspa** , and the owner of the **comment.** This icon is displayed directly underneath the relevant comment, within its container.
+The comments for the selected **Wyspa** are hidden in a collapsible interactive element. This gives the user interactive control over how different aspects of the content are displayed. When this element is shown, the comments are displayed vertically, alternating left and right to produce a **conversational** aesthetic. For each comment, an interactive **delete** icon is presented to both the owner of the **Wyspa**, and the owner of the **comment.** This icon is displayed directly underneath the relevant comment, within its container.
 
 ##### My Voice
 
@@ -231,15 +231,15 @@ Underneath the **Wyspa Creation** form is a **Delete Account** container. A user
 
 ##### Map
 
-The **Map** feature takes the user directly to an interactive **World Map** , whereby all currently active **Wyspas** are displayed. A user can interact with a **Wyspa** by clicking on it, taking them directly to its **Wyspa page**. A **Wyspa’s** colour, size, and placement are all influenced by how users interact with and contribute to it. The **Map** itself is easy to navigate on all viewports, with intuitive zoom and drag functionality.
+The **Map** feature takes the user directly to an interactive **World Map**, whereby all currently active **Wyspas** are displayed. A user can interact with a **Wyspa** by clicking on it, taking them directly to its **Wyspa page**. A **Wyspa’s** colour, size, and placement are all influenced by how users interact with and contribute to it. The **Map** itself is easy to navigate on all viewports, with intuitive zoom and drag functionality.
 
 ##### Tooltips
 
-All interactive icons throughout **Wyspa** contain **tooltips** ; on Desktop, these appear when the user highlights the icon with a cursor. While the icons are self-descriptive, the tooltips provide an extra depth of engagement and interactivity. However, in its current state, a Mobile friendly tooltip has yet to be implemented, due to the nature in which they are interacted with and displayed. As such, Tooltips are disabled for Mobile users; however, the help functionality contains all additional and relevant information for each page and each interaction if required.
+All interactive icons throughout **Wyspa** contain **tooltips**; on Desktop, these appear when the user highlights the icon with a cursor. While the icons are self-descriptive, the tooltips provide an extra depth of engagement and interactivity. However, in its current state, a Mobile friendly tooltip has yet to be implemented, due to the nature in which they are interacted with and displayed. As such, Tooltips are disabled for Mobile users; however, the help functionality contains all additional and relevant information for each page and each interaction if required.
 
 ##### Toasts
 
-**Toasts** are used across **Wyspa** to communicate short snippets of important information without obfuscating the viewport, and without overloading the user with information. These can be dismissed via a “Dismiss” button within the **Toast** , or can be swiped away on mobile. These have been implemented to re-affirm a user’s action, or to draw a user’s attention to an error, providing an effective means of feedback to the user.
+**Toasts** are used across **Wyspa** to communicate short snippets of important information without obfuscating the viewport, and without overloading the user with information. These can be dismissed via a “Dismiss” button within the **Toast**, or can be swiped away on mobile. These have been implemented to re-affirm a user’s action, or to draw a user’s attention to an error, providing an effective means of feedback to the user.
 
 ## Skeleton
 
@@ -261,7 +261,7 @@ Edit Wireframe: [Link](./wyspa/static/wireframes/edit-wireframe.pdf)
 
 ### Database
 
-**WYSPA** utilises a NoSQL document-based Database via MongoDB for storing **User** credentials and **Wyspas**. The project uses two Collections: **Users** , and **Messages**. The format and structure of these collections are illustrated below:
+**WYSPA** utilises a NoSQL document-based Database via MongoDB for storing **User** credentials and **Wyspas**. The project uses two Collections: **Users**, and **Messages**. The format and structure of these collections are illustrated below:
 
 ![Database Design](https://res.cloudinary.com/bak2k3/image/upload/v1619531106/WYSPA/DB_Diagram_qxcjqm.png)
 
@@ -307,9 +307,9 @@ Text against a dark body is pure white, while text against a white body is pure 
 
 #### Google Maps and Static Background Image
 
-The **Map** Feature uses [Google Maps](https://developers.google.com/maps/) as its interactive **Map** , with a custom style designed through [SnazzyMaps](https://snazzymaps.com/editor/customize). The colour scheme utilises the full scale of the blue monochromatic colour scheme, with all major labels and icons removed. This results in a simple **Map** , leaving only country border lines, country names, and city names when zoomed in.
+The **Map** Feature uses [Google Maps](https://developers.google.com/maps/) as its interactive **Map**, with a custom style designed through [SnazzyMaps](https://snazzymaps.com/editor/customize). The colour scheme utilises the full scale of the blue monochromatic colour scheme, with all major labels and icons removed. This results in a simple **Map**, leaving only country border lines, country names, and city names when zoomed in.
 
-The Static Background Image used throughout the rest of the site is a static customised version of the interactive **Map** , edited in [Gimp](https://www.gimp.org/), and provides a basic world map outline with the same colour scheme, but with less identifiers.
+The Static Background Image used throughout the rest of the site is a static customised version of the interactive **Map**, edited in [Gimp](https://www.gimp.org/), and provides a basic world map outline with the same colour scheme, but with less identifiers.
 
 As the background image and **Map** are based on the same design, this provides a sense of repetition and flow as a user navigates through the website. Transitioning between any page and the **Map** feature produces the effect of the static background coming to life.
 
