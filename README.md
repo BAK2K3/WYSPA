@@ -646,7 +646,7 @@ HTML5 and CSS3 are used throughout this project.
 
 ## Python
 
-This project uses Python version 3.8.8 for back-end infrastructure and data pre-processing.
+This project uses Python version 3.8.9 for back-end infrastructure and data pre-processing.
 
 - **Packages**
   - [**Flask**](https://flask.palletsprojects.com/en/1.1.x/) – WSGI Web Application Microframework
@@ -655,6 +655,7 @@ This project uses Python version 3.8.8 for back-end infrastructure and data pre-
   - [**Flask-Pymongo**](https://flask-pymongo.readthedocs.io/en/latest/) – A PyMongo bridging Flask Extension
   - [**Geopy**](https://github.com/geopy/geopy) – A geocoding web services client.
   - [**Pymongo**](https://pymongo.readthedocs.io/en/stable/index.html) - A distribution for interacting with MongoDB through Python.
+  - [**gunicorn**](https://gunicorn.org/) - A Python WSGI HTTP Server.
 - For a full list of these packages’ dependencies, please see the requirements.txt.
 - This project uses [Jinja](https://jinja.palletsprojects.com/en/2.11.x/) templating language for HTML generation via Python.
 
