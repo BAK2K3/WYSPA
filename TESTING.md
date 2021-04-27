@@ -573,7 +573,85 @@ The website was physically tested on a Samsung Tab S4, and a Samsung Note 10+ 5G
 - Ensure the **modal** can be dismissed by interacting with the area outside of the modal, or via clicking the **close** button.
 - Ensure each page (including error pages) include page specific content.
 
-# Automated Testing
+# Automated Feature Testing
+
+Due to time constraints, limited unit testing was performed on the project. Below is a demonstration of unit testing, performed with [unittest](https://docs.python.org/3/library/unittest.html) and [Flask-Testing](https://pythonhosted.org/Flask-Testing/); with more time and resources, all of the above features would have been unit tested.
+
+For the full testing file, please see tests.py
+
+## Basic Routing
+
+Test 1: **test_home**
+
+- **Overview** : Test the response from a **get** request to the `/` URL.
+- **Expected Result** : 200 response code, index.html template returned, and "Penny for your thoughts" contained within HTML file.
+- **Outcome** : Pass
+
+Test 2 **: test_message_overview**
+
+- **Overview** : Test the response from a **get** request to the `/view_message` URL.
+- **Expected Result** : 200 response code, and mesages.html template returned.
+- **Outcome** : Pass
+
+Test 3 **: test_Map**
+
+- **Overview** : Test the response from a **get** request to the `Map_overview` URL.
+- **Expected Result** : 200 response code, and **Map** s.html template returned.
+- **Outcome** : Pass
+
+Test 4 **: test_my_voice**
+
+- **Overview** : Test the response from a **get** request to the `/my_voice` URL.
+- **Expected Result** : 302 response code, with a redirect next parameter of "My Voice" due to login required
+- **Outcome** : Pass
+
+## Database CRUD
+
+**Note** : These methods were named in alphabetic sequence to ensure correct compile order.
+
+Test 5: **test_a_register**
+
+- **Overview** : Submit a **post** request to `/register`, and check a user has been added to the **users** collection within MongoDB.
+- **Expected Result** : User added to the database, and username verified against that provided during the Post request for registration.
+- **Outcome** : Pass
+
+Test 6: **test_b_create**
+
+- **Overview** : Submit a **post** request to `/create_wyspa`, and check a Wyspa has been added to the **messages** collection within MongoDB.
+- **Expected Result** : Wyspa is successfully written to the database, and subsequently retrieved from the database for verification.
+- **Outcome** : Pass
+
+Test 7: **test_c_create**
+
+- **Overview** : Log in to Wyspa via previously created account, retrieve the previously submitted Wyspa from the DB, submit a **post** request to `/edit_wyspa`, and verify the two Wyspas for full contents and ID comparison.
+- **Expected Result** : Log in is successful, Wyspa is successfully retrieved from the database, Wyspa is successfully edited and updated within the database, both Wyspas do not match as a whole, but both contain the same ID.
+- **Outcome** : Pass
+
+Test 8: **test_d_create**
+
+- **Overview** : Log in to Wyspa via previously created account, delete the user account, delete all Wyspa's created by test account, and query both the Usersand Messages collections for deleted user and Wyspa.
+- **Expected Result** : Log in is successful, account is successfully deleted, Wyspa is successfully delete, and query on database produces no results for deleted user and no results for user's Wyspas.
+- **Outcome** : Pass
+
+## Wyspa
+
+Test 9: **test_random_wyspa**
+
+- **Overview** : Test the random Wyspa generation.
+- **Expected Result** : The method produces a random Wyspa from the Database.
+- **Outcome** : Pass
+
+Test 10: **test_location_to_latlong**
+
+- **Overview** : Test whether the location scrambling is working.
+- **Expected Result** : Search for "London" via the `location_to_latlong` method, and compare the scrambled results against the true geo-coordinates for London.
+- **Outcome** : Pass
+
+## Summary
+
+All tests were successful and performed as expected. Please note that `Flask-testing` is not included in the requirements.txt file as it is not a requirement of the deployed application.
+
+![Unit Test Results](https://res.cloudinary.com/bak2k3/image/upload/v1619531109/WYSPA/unit-test-outcome_rm38ev.jpg)
 
 # Browser Testing
 
