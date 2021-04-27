@@ -267,6 +267,88 @@ Edit Wireframe: [Link](./wyspa/static/wireframes/edit-wireframe.pdf)
 
 ## Surface
 
+The project encompasses the **Dark Mode** aesthetic, aligning with the secretive yet personal and sensitive nature of the project. Its intention is to be engaging, alluring, and cohesive.
+
+### Colour Scheme
+
+#### Primary Colour Scheme
+
+The primary colour scheme implemented across the project is a blue monochromatic scheme. The colours complement each other, yet are distinguishable when side-by-side.
+
+![Primary Colour Scheme](https://res.cloudinary.com/bak2k3/image/upload/v1619532900/WYSPA/Wyspa_Palette_b0yvvu.jpg)
+
+#### Text Colour Scheme
+
+Text against a dark body is pure white, while text against a white body is pure black. Whilst the chosen text colour scheme may seem basic, it complements the overall monochromatic blue colour scheme very well, and produces excellent contrast between the types of content being displayed.
+
+**White Text on Black Background**
+
+![White Text on Black Background](https://res.cloudinary.com/bak2k3/image/upload/v1619532900/WYSPA/White_Text_uwmv3j.jpg)
+
+![White on Black accessability](https://res.cloudinary.com/bak2k3/image/upload/v1619531061/WYSPA/white_on_black_dqlzuc.jpg)
+
+**Blck Text on White Background**
+
+![Black Text On White Background](https://res.cloudinary.com/bak2k3/image/upload/v1619532900/WYSPA/Black_Textr_agnfyk.jpg)
+
+![Black on White accessability](https://res.cloudinary.com/bak2k3/image/upload/v1619531061/WYSPA/black_on_white_uix0ff.jpg)
+
+### Typography
+
+#### Logo Font
+
+[Cinzel Decorative](https://fonts.google.com/specimen/Cinzel+Decorative?preview.text=WYSPA&preview.text_type=custom) was chosen for the **Logo**. This font is flamboyant, loud, and it stands out. The Logo is the only item within the project that uses this font, due to its iconicity, intending to make the logo, brand, and name recognisable.
+
+#### Body Font
+
+[Roboto](https://fonts.google.com/specimen/Roboto?preview.text=Penny%20for%20your%20thoughts%3F&preview.text_type=custom&query=roboto) was chosen for the **Body** text of the project. This font is simple, legible, and due to it being the default font for Android devices, is recognisable and relatable.
+
+### Visual Effects
+
+#### Google Maps and Static Background Image
+
+The **Map** Feature uses [Google Maps](https://developers.google.com/maps/) as its interactive **Map** , with a custom style designed through [SnazzyMaps](https://snazzymaps.com/editor/customize). The colour scheme utilises the full scale of the blue monochromatic colour scheme, with all major labels and icons removed. This results in a simple **Map** , leaving only country border lines, country names, and city names when zoomed in.
+
+The Static Background Image used throughout the rest of the site is a static customised version of the interactive **Map** , edited in [Gimp](https://www.gimp.org/), and provides a basic world map outline with the same colour scheme, but with less identifiers.
+
+As the background image and **Map** are based on the same design, this provides a sense of repetition and flow as a user navigates through the website. Transitioning between any page and the **Map** feature produces the effect of the static background coming to life.
+
+![Static Map](https://res.cloudinary.com/bak2k3/image/upload/v1619532793/WYSPA/Static_Map_gpq52b.jpg)
+![Interactive Map](https://res.cloudinary.com/bak2k3/image/upload/v1619532793/WYSPA/Dynamic_Map_eyc4tt.jpg)
+
+#### Opacity
+
+The project heavily relies on opacity in order to create a blended and cohesive aesthetic. These are either to draw the user’s attention to certain features, or to create a dynamic background colour on which to overlay text. Opacity is utilised in the following elements:
+
+- Header/Footer
+- Card Panels (Including Speech Bubbles/Wyspa Content/Wyspa Creation)
+- Modals (Opacity is applied to background overlay)
+- Sidebar (On medium and below viewports)
+- Toasts
+- Tooltips
+
+For the Card Panels, border shadows are also used to lift the content off the static background image, providing the content depth.
+
+#### Speech Bubble
+
+Within the **Wyspa** section, comments on individual **Wyspas** are formatted in a similar manner to Card Panels, with the addition of small triangular elements to create the illusion of a **Speech Bubble**. These alternate left and right, depending on the order in which the comments are generated, producing a conversational aesthetic.
+
+![Speech Bubble Example](https://res.cloudinary.com/bak2k3/image/upload/v1619533104/WYSPA/Speech_Bubble_zftk9e.jpg)
+
+#### Z-Axis Control
+
+The layering of content is crucial in **Wyspa**; Z-axis control is implemented on every page in order to appropriately layer content depending on its priority and interactivity. The order of Z-Axis control is as follows, from lowest priority to highest priority:
+
+- Background Image / Google Maps
+- Main body element
+- Footer
+- Header
+- Tooltips
+- Modals / SideNav
+- Toasts
+
+As a result of this, the Header and Footer can always be interacted with when interaction is intended. While the **SideNav** or a **Modal** is active, these take priority and the background content is made unavailable via an overlay. The **Toast** Container is always at the front most layer, yet does not disrupt interactivity with content visible to the user.
+
 ---
 
 # Features
