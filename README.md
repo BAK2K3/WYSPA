@@ -2,15 +2,7 @@
 
 # **WYSPA**: Wyspa Your Secrets, Publicly and Anonymously
 
-_**Wyspa**_: ˈwɪspə
-
-NOUN
-
-1: **WYSPA** (Acronym): Whisper Your Secrets Publicly and Anonymously – The Anonymous Social Media Network. _”Are you on WYSPA?”_
-
-2: **Wyspa** : An anonymous message. _”Have you listened to any Wyspas today?”_
-
-This project is an anonymous social media network, allowing users to post, comment on, and listen to messages anonymously.
+WYSPA is an anonymous social media network, allowing users to post, comment on, and listen to messages anonymously.
 
 View deployed site on [Heroku](https://w-y-s-p-a.herokuapp.com/).
 
@@ -37,6 +29,11 @@ View deployed site on [Heroku](https://w-y-s-p-a.herokuapp.com/).
 > 9.  [Disclaimer](#disclaimer)
 
 # Overview
+
+> _**Wyspa**_  
+> ˈwɪspə | NOUN  
+> 1: **WYSPA** (Acronym): Whisper Your Secrets Publicly and Anonymously – The Anonymous Social Media Network. _”Are you on WYSPA?”_  
+> 2: **Wyspa** : An anonymous message. _”Have you listened to any Wyspas today?”_
 
 **Wyspa** is an anonymous social media network, designed to inspire self-expression; it encourages the acknowledgement of, and engagement with, other posts to increase their visibility. All posts have user-determined expiry dates, and can be viewed on a global map, based on their scrambled geolocation.
 
