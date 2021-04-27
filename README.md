@@ -243,6 +243,28 @@ All interactive icons throughout **Wyspa** contain **tooltips** ; on Desktop, th
 
 ## Skeleton
 
+### Wireframes
+
+**Due to the resolution of the wireframe documents, it is recommended that these PDFs are downloaded to be viewed in the browser, rather than using GitHub’s native PDF viewer.**
+
+Header and Footer Wireframe: [Link](./wyspa/static/wireframes/header-footer-wireframe.pdf)
+
+Index Wireframe: [Link](./wyspa/static/wireframes/index-wireframe.pdf)
+
+My Voice Wireframe: [Link](./wyspa/static/wireframes/my-voice-wireframe.pdf)
+
+Wyspa Wireframe: [Link](./wyspa/static/wireframes/wyspa-wireframe.pdf)
+
+Map Wireframe: [Link](./wyspa/static/wireframes/map-wireframe.pdf)
+
+Edit Wireframe: [Link](./wyspa/static/wireframes/edit-wireframe.pdf)
+
+### Database
+
+**WYSPA** utilises a NoSQL document-based Database via MongoDB for storing **User** credentials and **Wyspas**. The project uses two Collections: **Users** , and **Messages**. The format and structure of these collections are illustrated below:
+
+![Database Design](https://res.cloudinary.com/bak2k3/image/upload/v1619531106/WYSPA/DB_Diagram_qxcjqm.png)
+
 ## Surface
 
 ---
