@@ -32,8 +32,8 @@ View deployed site on [Heroku](https://w-y-s-p-a.herokuapp.com/).
 
 > _**Wyspa**_  
 > ˈwɪspə | NOUN  
-> 1: **WYSPA** (Acronym): Whisper Your Secrets Publicly and Anonymously – The Anonymous Social Media Network. _”Are you on WYSPA?”_  
-> 2: **Wyspa** : An anonymous message. _”Have you listened to any Wyspas today?”_
+> 1: **WYSPA** (Acronym): Whisper Your Secrets Publicly and Anonymously – The Anonymous Social Media Network. _"Are you on WYSPA?"_  
+> 2: **Wyspa** : An anonymous message. _"Have you listened to any Wyspas today?"_
 
 **Wyspa** is an anonymous social media network, designed to inspire self-expression; it encourages the acknowledgement of, and engagement with, other posts to increase their visibility. All posts have user-determined expiry dates, and can be viewed on a global map, based on their scrambled geolocation.
 
@@ -49,42 +49,42 @@ The project was developed using **HTML**, **CSS**, **JavaScript**, and **Python*
 
 **What would your ideal social media network look like?**
 
-“_I don’t want to need to have a large following/network in order to get the most out of the platform.”_
+"_I don’t want to need to have a large following/network in order to get the most out of the platform._"
 
-“_I don’t want to be judged by my friends and family for how I’m feeling.”_
+"_I don’t want to be judged by my friends and family for how I’m feeling."_
 
-“_I want to be able to support those who need it.”_
+"_I want to be able to support those who need it."_
 
-“_I want to feel like my contribution makes a difference.”_
+"_I want to feel like my contribution makes a difference."_
 
-“_I want a more creative interface, and various degrees of interaction, in comparison to modern social media networks.”_
+"_I want a more creative interface, and various degrees of interaction, in comparison to modern social media networks."_
 
 ### Similar Project Review
 
 **Whisper:** [http://whisper.sh/](http://whisper.sh/)
 
-Whisper is a Social Media Network which allows users to make anonymous posts, which are called “Whispers”, and as of 2015 had 250 million monthly users. The platform has a dedicated app (for Android and IOS), however users can access and utilise the service via a browser (desktop/mobile). Whispers are created by providing a short extract of text, which are then overlayed onto either a user-provided or database generated image. Users can engage with each other through either post comments, or private pseudonymous chats. In terms of user experience, when first visiting the site its intention and purpose is unclear, as it appears to have become heavily influenced by brand advertising and blog posts; in order to find the “Whispers”, a user must first engage with a blog post, which in turn displays a random selection of relevant Whispers underneath. In its current state, without any prior knowledge of the site or its concept, it may not be clear how to use the site, or what its purpose is.
+Whisper is a Social Media Network which allows users to make anonymous posts, which are called "Whispers", and as of 2015 had 250 million monthly users. The platform has a dedicated app (for Android and IOS), however users can access and utilise the service via a browser (desktop/mobile). Whispers are created by providing a short extract of text, which are then overlayed onto either a user-provided or database generated image. Users can engage with each other through either post comments, or private pseudonymous chats. In terms of user experience, when first visiting the site its intention and purpose is unclear, as it appears to have become heavily influenced by brand advertising and blog posts; in order to find the "Whispers", a user must first engage with a blog post, which in turn displays a random selection of relevant Whispers underneath. In its current state, without any prior knowledge of the site or its concept, it may not be clear how to use the site, or what its purpose is.
 
 **Facebook:** [https://www.facebook.com/](https://www.facebook.com/)
 
-Facebook is currently the most popular social media network, with approximately 2.5 billion monthly active users. The concept of Facebook is primarily focused on a user’s “network”; insomuch as that the content they are shown is depicted by the size of their network. Users who have a much more diverse and growing network will be shown a wealth of content, as opposed to newer users (who have fewer “Friends”), who will have generic (if not limited) content being provided. Facebook is not an anonymous network, and all content, including personal data, is stored indefinitely unless requested otherwise by the user. The site’s intention and user interface is extremely effective; the implementation of the _”endless scroll”_ effectively engages users, to the extent the platform has been criticized for being [addictive](https://www.sciencedirect.com/science/article/abs/pii/S0165178117311678).
+Facebook is currently the most popular social media network, with approximately 2.5 billion monthly active users. The concept of Facebook is primarily focused on a user’s "network"; insomuch as that the content they are shown is depicted by the size of their network. Users who have a much more diverse and growing network will be shown a wealth of content, as opposed to newer users (who have fewer "Friends"), who will have generic (if not limited) content being provided. Facebook is not an anonymous network, and all content, including personal data, is stored indefinitely unless requested otherwise by the user. The site’s intention and user interface is extremely effective; the implementation of the _"endless scroll"_ effectively engages users, to the extent the platform has been criticized for being [addictive](https://www.sciencedirect.com/science/article/abs/pii/S0165178117311678).
 
 ### User Stories
 
-1. `”As a visitor to the website, I want to know what the website does, so that I can decide whether I’m interested in engaging within it.”`
-2. `”As a potential user, I want the usage to be either self-descriptive or the instructions clearly communicated, so that I can interact with the site with ease.”`
-3. `”As an unregistered user, I want to be able to view content on the site without having to register, so I can decide whether to make an account.”`
-4. `”As an unregistered user, I want to be able to make an account and log in, so that I can benefit from the features of a registered user.”`
-5. `”As a logged in user, I want to be able to make posts anonymously, and engage with other posts anonymously, so that I can express myself or support others without exposing any personal details.”`
-6. `”As a logged in user, I want to be able to edit or delete content, so that I have control over the content I have stored on the platform.”`
-7. `”As a user, I want to be able to see a Map of, and individually interact with, all Wyspas so that I can decide what content I see and interact with.”`
-8. `”As a mobile user, I want to be able to utilise all aspects of the site, so that I can interact with the website on the go.”`
+1. `"As a visitor to the website, I want to know what the website does, so that I can decide whether I’m interested in engaging within it."`
+2. `"As a potential user, I want the usage to be either self-descriptive or the instructions clearly communicated, so that I can interact with the site with ease."`
+3. `"As an unregistered user, I want to be able to view content on the site without having to register, so I can decide whether to make an account."`
+4. `"As an unregistered user, I want to be able to make an account and log in, so that I can benefit from the features of a registered user."`
+5. `"As a logged in user, I want to be able to make posts anonymously, and engage with other posts anonymously, so that I can express myself or support others without exposing any personal details."`
+6. `"As a logged in user, I want to be able to edit or delete content, so that I have control over the content I have stored on the platform."`
+7. `"As a user, I want to be able to see a Map of, and individually interact with, all Wyspas so that I can decide what content I see and interact with."`
+8. `"As a mobile user, I want to be able to utilise all aspects of the site, so that I can interact with the website on the go."`
 
 ### Project Strategy Summary
 
 **Ideal User:** An individual who wants to express themselves anonymously, or support and communicate with others anonymously.
 
-**Project Goal:** Provide a platform on which users can express themselves anonymously, allowing them control over their contributions, and giving them a sense of “involvement” in how the platform works.
+**Project Goal:** Provide a platform on which users can express themselves anonymously, allowing them control over their contributions, and giving them a sense of "involvement" in how the platform works.
 
 **User Needs:**
 
@@ -121,7 +121,7 @@ Facebook is currently the most popular social media network, with approximately 
 - Allow a user to edit and delete their own **Wyspa**.
 - Allow a user to comment on any **Wyspa**, and delete any comments they have made.
 - Allow a user to remove any comments left on their own **Wyspa**.
-- Allow a user to engage with other **Wyspas** through “**Listens**”.
+- Allow a user to engage with other **Wyspas** through "**Listens**".
 
 #### Random Wyspa Generation
 
@@ -159,7 +159,7 @@ Facebook is currently the most popular social media network, with approximately 
 
 ##### Header
 
-The header of the page contains the **NavBar**, the **Logo**, and the **Help** function. It is a static element, and is affixed to the top of the page at all times. Where the page body content exceeds the viewport of the screen, the **NavBar** has been designed **not** be a “sticky” element, so as to utilise the full viewport when required.
+The header of the page contains the **NavBar**, the **Logo**, and the **Help** function. It is a static element, and is affixed to the top of the page at all times. Where the page body content exceeds the viewport of the screen, the **NavBar** has been designed **not** be a "sticky" element, so as to utilise the full viewport when required.
 
 ##### Navigation
 
@@ -217,7 +217,7 @@ Interacting with the **Help** icon initialises a **centrally positioned Modal** 
 
 Each time the user visits the **Wyspa** page, a **Wyspa** from the database is selected at random and presented to the user.
 
-The content of the **Wyspa** is the primary aspect of this page, and is therefore placed in central view of the user and cannot be hidden. Underneath the content of the **Wyspa** is “Listen” counter, displaying how many users have “Listened” to the **Wyspa**, along with an interactive icon which allows a user to “Listen” to the **Wyspa**. Next to this icon lies a **Random Wyspa** icon, which randomly selects a new **Wyspa** from the database. If the author of the **Wyspa** is currently logged in, an **edit** icon is also provided here, navigating the user to a dedicated edit page.
+The content of the **Wyspa** is the primary aspect of this page, and is therefore placed in central view of the user and cannot be hidden. Underneath the content of the **Wyspa** is "Listen" counter, displaying how many users have "Listened" to the **Wyspa**, along with an interactive icon which allows a user to "Listen" to the **Wyspa**. Next to this icon lies a **Random Wyspa** icon, which randomly selects a new **Wyspa** from the database. If the author of the **Wyspa** is currently logged in, an **edit** icon is also provided here, navigating the user to a dedicated edit page.
 
 The comments for the selected **Wyspa** are hidden in a collapsible interactive element. This gives the user interactive control over how different aspects of the content are displayed. When this element is shown, the comments are displayed vertically, alternating left and right to produce a **conversational** aesthetic. For each comment, an interactive **delete** icon is presented to both the owner of the **Wyspa**, and the owner of the **comment.** This icon is displayed directly underneath the relevant comment, within its container.
 
@@ -225,7 +225,7 @@ The comments for the selected **Wyspa** are hidden in a collapsible interactive 
 
 **My Voice** shows a list of all active **Wyspas** the user has within the database. Each **Wyspa’s** message is displayed, along with a counter displaying how many **Listens** the **Wyspa** has, an interactive icon allowing the user to directly access the **Wyspa,** and an interactive **delete** icon. Consideration was given to add the **edit** icon within this contextual menu, however this resulted in a cluttered screen space, and prevented the tooltips from displaying as intended due content overflowing.
 
-Underneath the existing **Wyspas** is a collapsible element in which contains a **Wyspa Creation** form. The form contained within this element is self-descriptive with a user-friendly design, and is easy to complete and navigate. When the user interacts with the collapsible element, the heading text changes from “Create a **Wyspa**” to “The world is listening…”. This is reverted when this element is collapsed.
+Underneath the existing **Wyspas** is a collapsible element in which contains a **Wyspa Creation** form. The form contained within this element is self-descriptive with a user-friendly design, and is easy to complete and navigate. When the user interacts with the collapsible element, the heading text changes from "Create a **Wyspa**" to "The world is listening…". This is reverted when this element is collapsed.
 
 Underneath the **Wyspa Creation** form is a **Delete Account** container. A user must interact with this element to reveal a button which states **Permanently Delete.** This button will also produce a confirmation modal.
 
@@ -239,7 +239,7 @@ All interactive icons throughout **Wyspa** contain **tooltips**; on Desktop, the
 
 ##### Toasts
 
-**Toasts** are used across **Wyspa** to communicate short snippets of important information without obfuscating the viewport, and without overloading the user with information. These can be dismissed via a “Dismiss” button within the **Toast**, or can be swiped away on mobile. These have been implemented to re-affirm a user’s action, or to draw a user’s attention to an error, providing an effective means of feedback to the user.
+**Toasts** are used across **Wyspa** to communicate short snippets of important information without obfuscating the viewport, and without overloading the user with information. These can be dismissed via a "Dismiss" button within the **Toast**, or can be swiped away on mobile. These have been implemented to re-affirm a user’s action, or to draw a user’s attention to an error, providing an effective means of feedback to the user.
 
 ## Skeleton
 
@@ -377,7 +377,7 @@ Prior to form submission, browser-side verification occurs. The **Register** but
 
 JavaScript events are tied to each of the input fields, which change the colour of the respective field **Red** when the required format is not fulfilled, and provide a verbose description of the error under the header of the Modal. The input fields are verified when the user either changes which field they are focused on, or attempts to submit the form, and the errors take form order priority.
 
-Double submission prevention has been implemented by adding an “is-submitting” class to the form on successful submit; any subsequent attempts to submit the form are prevented when this class is present.
+Double submission prevention has been implemented by adding an "is-submitting" class to the form on successful submit; any subsequent attempts to submit the form are prevented when this class is present.
 
 ![Register 1](https://res.cloudinary.com/bak2k3/image/upload/v1619538212/WYSPA/log_in_1_pm48v7.jpg)
 
@@ -465,7 +465,7 @@ When creating a **Wyspa**, the user is asked to specify a location. Using the Th
 
 ![Address Failure](https://res.cloudinary.com/bak2k3/image/upload/v1619531105/WYSPA/Address_Toast_n6obwj.jpg)
 
-Once the location has been verified, the longitude and latitude are scrambled. The scrambling of this data is implemented through a simple function whereby both the longitude and latitude are amended by a random floating-point number between 0.1 and -0.1; this is achieved through python’s **random.uniform** function. After various implementations of this scrambling, these values appeared to produce the best output, retaining the general location of the **Wyspa**, while still obscuring the specificity of the location. Below is an example of three **Wyspas** being created all using the same location: “Madrid, Spain”.
+Once the location has been verified, the longitude and latitude are scrambled. The scrambling of this data is implemented through a simple function whereby both the longitude and latitude are amended by a random floating-point number between 0.1 and -0.1; this is achieved through python’s **random.uniform** function. After various implementations of this scrambling, these values appeared to produce the best output, retaining the general location of the **Wyspa**, while still obscuring the specificity of the location. Below is an example of three **Wyspas** being created all using the same location: "Madrid, Spain".
 
 ![3 Madrid](https://res.cloudinary.com/bak2k3/image/upload/v1619531105/WYSPA/3_Madrid_uqurpn.jpg)
 
@@ -541,7 +541,7 @@ An alternative way for a user to engage and interact with a **Wyspa** is by sele
 list(mongo.db.messages.aggregate("sample": {"size": 1}}]))
 ```
 
-This feature grants users a similar feature to the “endless scroll” of modern social media platforms, but through unbiased selection, and unaffected by a user’s network of following. A random **Wyspa** is presented to the user when the page is visited, or through interacting with the **Random Wyspa** icon in the action bar of the currently displayed **Wyspa.**
+This feature grants users a similar feature to the "endless scroll" of modern social media platforms, but through unbiased selection, and unaffected by a user’s network of following. A random **Wyspa** is presented to the user when the page is visited, or through interacting with the **Random Wyspa** icon in the action bar of the currently displayed **Wyspa.**
 
 ### Map
 
@@ -570,14 +570,14 @@ As discussed in **Wyspa: Mood**, the mood of the **Wyspa**, set by the user duri
 As discussed in **Wyspa: Listens**, the size of the marker is depicted by the amount of **Listens** a **Wyspa** has. When the pre-processed data is sent to JavaScript to place the markers on the **Map**, the radius of each marker is calculated using the following formula:
 
 ```javascript
-radius: Math.min(1000000, Math.max(10000, 10000 +  map_data[message][“Listens”] * 5000))
+radius: Math.min(1000000, Math.max(10000, 10000 +  map_data[message]["Listens"] * 5000))
 ```
 
 This function multiplies the amount of **Listens** a **Wyspa** has by 5,000, and sets a minimum (15,000) and maximum (10,000,000) value, before setting the outcome of this calculation to the radius of the circle. This ensures that **Wyspas** with no **Listens** are still visible on the **Map**, **Wyspas** scale appropriately and effectively for each **Listen**, and caps the maximum radius of each **Wyspa**.
 
 #### Overlapping Wyspas
 
-When the **Wyspas** are obtained from the database, they are sorted by **listen_count**. This is an independent field to the **Listens** field, however, is a direct representation of the length of the **Listens** array, incrementing each time a **Listen** is added to a **Wyspa**. By sorting the **Wyspas** in order of **listen_count**, **Wyspas** are placed on the **Map** in order of their size, placing the largest markers first. As two **Wyspas** may overlap, due to either two **Wyspas** being in close proximity or due to one **Wyspa** being significantly larger than the other, a user must be able to interact with both **Wyspas**. The result of this is that no matter how large a **Wyspa** is, all visible **Wyspas** can be interacted with. In the below example, clicking on the white field will take the user to the “Neutral” **Wyspa,** while clicking on the green field will take the user to the “Happy” **Wyspa**.
+When the **Wyspas** are obtained from the database, they are sorted by **listen_count**. This is an independent field to the **Listens** field, however, is a direct representation of the length of the **Listens** array, incrementing each time a **Listen** is added to a **Wyspa**. By sorting the **Wyspas** in order of **listen_count**, **Wyspas** are placed on the **Map** in order of their size, placing the largest markers first. As two **Wyspas** may overlap, due to either two **Wyspas** being in close proximity or due to one **Wyspa** being significantly larger than the other, a user must be able to interact with both **Wyspas**. The result of this is that no matter how large a **Wyspa** is, all visible **Wyspas** can be interacted with. In the below example, clicking on the white field will take the user to the "Neutral" **Wyspa,** while clicking on the green field will take the user to the "Happy" **Wyspa**.
 
 ![overlapping markers](https://res.cloudinary.com/bak2k3/image/upload/v1619531108/WYSPA/overlapping_markers_bhfof2.jpg)
 
@@ -743,7 +743,7 @@ The following environment variables must be set within your Heroku Server for th
   - For the Cluster that you would like to connect to, click the **Connect** button.
   - Click on **Connect your Application.**
   - Select **Python**, and Version **3.6 or Later.**
-  - Copy the connection string, replacing `<password></password>` with your MongoDB password, and `myFirstDatabase` with the name of the **MongoDB Collection** (Database) you would like to connect to.
+  - Copy the connection string, replacing `<password>` with your MongoDB password, and `myFirstDatabase` with the name of the **MongoDB Collection** (Database) you would like to connect to.
 - **MONGO_DBNAME**
   - The name of the Database you are connecting to (in the above example, the default would be `myFirstDatabase`.
 - **SECRET_KEY**
@@ -759,7 +759,7 @@ The following environment variables must be set within your Heroku Server for th
 - **GMAPS_ID**
   - An ID for a custom Map Style.
     - If no custom style is required, do not set a value to the key (although you must still insert the key).
-    - If using env.py, set the variable to an empty string: `”“`.
+    - If using env.py, set the variable to an empty string: `""`.
   - If a custom Map is required, navigate to the Google Maps [Map Manager](https://console.cloud.google.com/google/maps-apis/client-maps), whilst logged into your Google Account.
   - **Click** Create New Map ID.
     - Enter a **Name**.
@@ -790,13 +790,13 @@ The following environment variables must be set within your Heroku Server for th
 ```python
 import os
 
-os.environ.setdefault("IP", “<variable>”)
-os.environ.setdefault("PORT", “<variable>”)
-os.environ.setdefault("SECRET_KEY", “<variable>”)
-os.environ.setdefault("MONGO_URI", “<variable>”)
-os.environ.setdefault("MONGO_DBNAME", “<variable>”)
-os.environ.setdefault("GMAPS_API", “<variable>”)
-os.environ.setdefault("GMAPS_ID", “<variable> “)
+os.environ.setdefault("IP", "<variable>")
+os.environ.setdefault("PORT", "<variable>")
+os.environ.setdefault("SECRET_KEY", "<variable>")
+os.environ.setdefault("MONGO_URI", "<variable>")
+os.environ.setdefault("MONGO_DBNAME", "<variable>")
+os.environ.setdefault("GMAPS_API", "<variable>")
+os.environ.setdefault("GMAPS_ID", "<variable> ")
 ```
 
 The project will automatically locate this file, and read the required environment variables as and when necessary. This file has not been included within the repo due to the security implications.
@@ -811,7 +811,7 @@ The project will automatically locate this file, and read the required environme
 6. To run the `Master` branch, ensure the `Master` branch is selected next to the **branches** and **tags** subheadings. To run the `dev` branch, please select `dev` branch.
 7. Please note that any features that exist purely in the dev branch are in testing and may not be fully functional.
 8. Open the repository in Gitpod:
-9. Click the green “Gitpod” icon at the top of the Repository, or
+9. Click the green "Gitpod" icon at the top of the Repository, or
 10. Open the [master branch](https://gitpod.io/#https://github.com/BAK2K3/WYSPA/tree/master) or [dev branch](https://gitpod.io/#https://github.com/BAK2K3/WYSPA/tree/dev) directly in Gitpod via these links.
 11. A new workspace will open with the current state of the requested branch. Any changes made to the requested branch after this point will not be automatically updated in your Gitpod Workspace.
 12. Create the aforementioned env.py file in your root directory and declare the environment variables.
@@ -823,8 +823,8 @@ The project will automatically locate this file, and read the required environme
 #### Cloning the Repository
 
 1. Visit **WYSPA’s** [GitHub Repository](https://github.com/BAK2K3/WYSPA).
-2. Click the “Code” dropdown box above the repository’s file explorer.
-3. Under the “Clone” heading, click the “HTTPS” sub-heading.
+2. Click the "Code" dropdown box above the repository’s file explorer.
+3. Under the "Clone" heading, click the "HTTPS" sub-heading.
 4. Click the clipboard icon, or manually copy the text presented: `https://github.com/BAK2K3/WYSPA.git`
 5. Open your preferred IDE (VSCode, Atom, PyCharm, etc).
 6. Ensure your IDE has support for Git, or has the relevant Git extension.
@@ -837,8 +837,8 @@ The project will automatically locate this file, and read the required environme
 
 1. Visit **WYSPA's** [GitHub Repository](https://github.com/BAK2K3/WYSPA).
    - Ensure you have selected the appropriate branch, as previously discussed.
-2. Click the “Code” dropdown box above the repository’s file explorer.
-3. Click the “Download ZIP” option; this will download a copy of the selected branch’s repository as a zip file.
+2. Click the "Code" dropdown box above the repository’s file explorer.
+3. Click the "Download ZIP" option; this will download a copy of the selected branch’s repository as a zip file.
 4. Locate the ZIP file downloaded to your computer, and extract the ZIP to a designated folder which you would like the repository to be stored.
 
 #### Opening the Repository
@@ -893,7 +893,7 @@ The project will automatically locate this file, and read the required environme
 - JavaScript: Code extract obtained from [StackOverflow](https://stackoverflow.com/questions/5842747/how-can-i-use-javascript-to-limit-a-number-between-a-min-max-value) and modified for setting min and max limits on a variable.
 - JavaScript: Code extract obtained from [StackOverflow](https://stackoverflow.com/questions/9099345/google-maps-api-3-limit-pan-map-bounds) to implement Map bounds for Google Maps.
 - JavaScript: Guidance on creating dynamic Map Markers and OnClick events obtained from StackOverflow posts: [[1](https://stackoverflow.com/questions/16985867/adding-an-onclick-event-to-google-map-marker)] [[2](https://stackoverflow.com/questions/40568684/how-to-insert-a-javascript-variable-into-flask-url-for-function)]
-- JavaScript: Guidance on implementing hasOwnProperty in “for in” statement in JavaScript, following Jshint error, was obtained from [StackOverflow](https://stackoverflow.com/questions/4166551/javascript-jslint-error-the-body-of-a-for-in-should-be-wrapped-in-an-if-statem).
+- JavaScript: Guidance on implementing hasOwnProperty in "for in" statement in JavaScript, following Jshint error, was obtained from [StackOverflow](https://stackoverflow.com/questions/4166551/javascript-jslint-error-the-body-of-a-for-in-should-be-wrapped-in-an-if-statem).
 - MongoDB: General guidance on MongoDB commands taken from their [documentation](https://docs.mongodb.com/).
 - Python/HTML/JavaScript: Guidance on how to pass data from Python to JavaScript obtained from [StackOverflow](https://stackoverflow.com/questions/15321431/how-to-pass-a-list-from-python-by-jinja2-to-javascript).
 - Python: Code extract obtained from [StackOverflow](https://stackoverflow.com/questions/24833362/pylint-warning-w0212-with-properties-accessing-a-protected-member-how-to-avoi) and modified to allow access to restricted attributes of classes.
