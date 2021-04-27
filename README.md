@@ -689,6 +689,8 @@ The project uses [MongoDB](https://www.mongodb.com/), a document-based NoSQL Dat
 
 # Testing
 
+Testing documentation, processes, and outcomes can be found under [TESTING.md](TESTING.md).
+
 ---
 
 # Deployment
