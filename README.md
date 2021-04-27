@@ -1,10 +1,18 @@
 ![WYSPA Logo](https://res.cloudinary.com/bak2k3/image/upload/v1614792358/WYSPA/WYSPA-logo_asepp4.jpg)
 
-# WYSPA
+# **WYSPA**: Wyspa Your Secrets, Publicly and Anonymously
 
-Whisper Your Secrets Publicly and Anonymously
+_**Wyspa**_: ˈwɪspə
 
-See the work in progress [here](http://w-y-s-p-a.herokuapp.com/)
+NOUN
+
+1: **WYSPA** (Acronym): Whisper Your Secrets Publicly and Anonymously – The Anonymous Social Media Network. _”Are you on **WYSPA** ?”_
+
+2: **Wyspa** : An anonymous message. _”Have you listened to any **Wyspas** today?”_
+
+This project is an anonymous social media network, allowing users to post, comment on, and listen to messages anonymously.
+
+View deployed site on [Heroku](https://w-y-s-p-a.herokuapp.com/).
 
 # Table of contents
 
