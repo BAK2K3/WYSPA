@@ -43,8 +43,6 @@ The project was developed using **HTML** , **CSS** , **JavaScript** , and **Pyth
 
 # UX
 
----
-
 ## Strategy
 
 ### Stakeholder Interview
@@ -104,6 +102,52 @@ Facebook is currently the most popular social media network, with approximately 
 - To allow the user to navigate and control the application with ease on all platforms and devices.
 
 ## Scope
+
+### Functional Requirements
+
+#### Simple, Intuitive, and Engaging Interface
+
+- Allow a user to navigate, and interact with, the site with ease.
+- Take a minimalistic approach to layout, content, and structure, whilst always presenting sufficient and relevant information.
+- Ensure the layout and design is responsive to all media sizes.
+
+#### User Management
+
+- Allow a user to create an account, log in, log out, and delete their account.
+
+#### Anonymous Wyspa Management and Interaction
+
+- Allow a user to create **Wyspas** anonymously.
+- Allow a user to edit and delete their own **Wyspa**.
+- Allow a user to comment on any **Wyspa** , and delete any comments they have made.
+- Allow a user to remove any comments left on their own **Wyspa**.
+- Allow a user to engage with other **Wyspas** through “**Listens**”.
+
+#### Random Wyspa Generation
+
+- Allow a user to request a random **Wyspa** to view, comment on, and listen to.
+
+#### Interactive Wyspa Map
+
+- Allow a user to navigate a world **Map** presenting all **Wyspas** available, positioned according to their geolocation.
+- Allow a user to interact with each **Wyspa** individually.
+- Allow a user to identify the Mood of the **Wyspa** through colour.
+- Allow a user to identify how many **Listens** the **Wyspa** has had through size of its marker.
+
+### Content Requirements
+
+#### User created Wyspas
+
+- The website’s primary content is entirely user generated; the creation and editing of **Wyspas** within in the database.
+- When creating a **Wyspa** , the following information will be recorded, and for the following purposes:
+  - **Author:** This will be pre-populated by the server, allowing backend verification of **Wyspa** ownership.
+  - **Message:** This will be provided by the user, in free-text form. This will be the message the user would like to communicate, and therefore the message other users are able to read.
+  - **Location:** This will be provided in a verbose manner by the user (i.e London), converted to Lat-Long (51.500153° N, -0.1262362° E), and scrambled (N/E +-0.1). This will be used to position the **Wyspa** on the **Map**.
+  - **Mood:** This will be chosen by the user, out of choices presented to them. This will be used to colour the **Wyspa** marker on the **Map**.
+  - **Expiry Date:** This will be set by the user. This will depict when the document removed from the database.
+  - **Comments:** This is an entry which all logged in users will be able to contribute to; these comments will be displayed on the individual **Wyspa** page.
+  - **Listens :** This is an entry which will log the users who have listened to a **Wyspa** ; this will be used to prevent any single user listening to a **Wyspa** more than once.
+  - **Listen_Count:** This is an entry which counts the total amount of **Listens** contained within a whisper. This will be used for both sorting the database entries for the **Map** , depicting the size of the **Map** marker, and for displaying the amount of **Listens** a **Wyspa** has on the individual **Wyspa** page and profile page.
 
 ## Structure
 
