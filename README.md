@@ -913,8 +913,14 @@ The project will automatically locate this file, and read the required environme
 
 # Acknowledgements
 
+- The concept for this project was inspired by the circumstances of close friends and family during the pandemic; the ultimate goal was to produce a website they would want to embrace and engage with regularly.
+- Thank you to my wife, for her relentless patience and support.
+- Thank you to my mentor, Dick Vlaanderen, for his encouragement and guidance.
+
 ---
 
 # Disclaimer
+
+This website is for educational purposes only.
 
 ---
