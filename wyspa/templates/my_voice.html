@@ -215,49 +215,53 @@
 
 <p>
   <strong
-    >This is your voice; Manage your existing Wyspas, or create new ones</strong
+    >This is your voice. From here, you can manage your existing Wyspas, create
+    new ones, or delete your account.</strong
   >
 </p>
 
-<p>For each of your existing Wyspas, you can:</p>
+<p>For each of your active <strong>Wyspas</strong>, you can:</p>
 
 <ul class="browser-default">
   <li>
     <i class="material-icons wyspa-button">hearing</i> See how many people have
-    listened to your Wyspa.
+    listened to your <strong>Wyspa.</strong>
   </li>
   <li>
-    <i class="material-icons">send</i> Visit your Wyspa, to see comments or to
-    edit your Wyspa.
+    <i class="material-icons">send</i> Visit your <strong>Wyspa,</strong> to see
+    comments or to edit your <strong>Wyspa.</strong>
   </li>
-  <li><i class="material-icons">delete_forever</i> Delete your Wyspa.</li>
+  <li>
+    <i class="material-icons">delete_forever</i> Delete your
+    <strong>Wyspa.</strong>
+  </li>
 </ul>
 
 <p>
-  To create a new Wyspa, click <strong>Create New Wyspa</strong>, and fill out
-  the following fields:
+  To create a new <strong>Wyspa,</strong> click
+  <strong>Create New Wyspa</strong>, and fill out the following fields:
 </p>
 
 <ul class="browser-default">
   <li>
-    <strong>Message</strong>: This is the body of your message; take this
+    <strong>Message:</strong> This is the body of your message; take this
     opportunity to express yourself.
     <ul class="browser-default">
       <li>
-        Please be cautious of the language you use. Wyspa does not implement any
-        censorship as it beleives in entitlement to self expression, but please
-        be respectful of others
+        Please be cautious of the language you use. <strong>WYSPA</strong> does
+        not implement any censorship as it believes in entitlement to
+        self-expression, but please be respectful of others.
       </li>
     </ul>
   </li>
   <li>
-    <strong>Location</strong>: Enter where abouts you are in the world.
+    <strong>Location:</strong> Enter where abouts you are in the world.
     <ul class="browser-default">
       <li>
-        This information is used to place your Wyspa on the Map; however the
-        geolocation is scrambled before being saved to the database, so the
-        information stored is random and would not allow anyone to pinpoint your
-        exact location.
+        This information is used to place your <strong>Wyspa</strong> on the
+        Map; however the geolocation is scrambled before being saved to the
+        database, so the information stored is random and would not allow anyone
+        to pinpoint your exact location.
       </li>
       <li>
         Be as exact or vague as you want with the address, be it full address,
@@ -267,27 +271,37 @@
     </ul>
   </li>
   <li>
-    <strong>Mood</strong>: Choose the tone of your Wyspa.
+    <strong>Mood:</strong> Choose the tone of your <strong>Wyspa.</strong>
     <ul class="browser-default">
       <li>
         Drag the slider to chose an emotion which represents the tone of your
-        Wyspa: <span class="negativeLabel">Sad</span>, Neutral, or
-        <span class="positiveLabel">Happy</span>.
+        <strong>Wyspa:</strong> <span class="negativeLabel">Sad</span>, Neutral,
+        or <span class="positiveLabel">Happy</span>.
       </li>
       <li>
-        Your selection will impact the colour of the Wyspa's marker on the map.
+        Your selection will impact the colour of the
+        <strong>Wyspa's</strong> marker on the map.
       </li>
     </ul>
   </li>
   <li>
-    <strong>Expiry Date</strong>: Input the date you would like your Wyspa to
-    expire.
+    <strong>Expiry Date:</strong> Input the date you would like your
+    <strong>Wyspa</strong> to expire.
   </li>
   <li>
-    <strong>Expiry Time</strong>: Input the time you would like your Wyspa to
-    expire.
+    <strong>Expiry Time:</strong> Input the time you would like your
+    <strong>Wyspa</strong> to expire.
+    <ul class="browser-default">
+      <li>The Expiry Date and Time must be in the future!</li>
+    </ul>
   </li>
 </ul>
+
+<p>
+  You can also <strong>Delete</strong> your account from here. But be warned,
+  this is permanent, and will also delete any active <strong>Wyspas</strong> you
+  have.
+</p>
 
 {% endblock %} {% block scripts %}
 <script src="{{ url_for('static', filename='js/wyspa-form.js', _scheme='https', _external=True) }}"></script>
