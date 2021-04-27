@@ -38,6 +38,10 @@ View deployed site on [Heroku](https://w-y-s-p-a.herokuapp.com/).
 
 # Overview
 
+**Wyspa** is an anonymous social media network, designed to inspire self-expression; it encourages the acknowledgement of, and engagement with, other posts to increase their visibility. All posts have user-determined expiry dates, and can be viewed on a global map, based on their scrambled geolocation.
+
+The project was developed using **HTML** , **CSS** , **JavaScript** , and **Python** , and utilises a NoSQL document-based database via **MongoDB**.
+
 ---
 
 # UX
