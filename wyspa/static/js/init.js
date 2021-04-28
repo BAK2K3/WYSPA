@@ -12,12 +12,26 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // Modal Init
 document.addEventListener("DOMContentLoaded", function () {
-  var elems = document.querySelectorAll(".modal");
+  var elems = document.querySelectorAll(".modal:not(.modal.bottom-sheet)");
   var instances = M.Modal.init(
     elems,
     (options = {
       startingTop: "0%",
       endingTop: "12%",
+    })
+  );
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+  var elems = document.querySelectorAll(".bottom-sheet");
+  var instances = M.Modal.init(
+    elems,
+    (options = {
+      startingTop: "0%",
+      endingTop: "12%",
+      onCloseEnd: () => {
+        clearForms();
+      },
     })
   );
 });
