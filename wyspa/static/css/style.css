@@ -263,7 +263,7 @@ nav i.material-icons.help-trigger {
   text-align: center;
 }
 
-/********** Log in Modal **********/
+/********** Log in/Register Modal **********/
 
 .modal {
   border-radius: 25px;
@@ -638,6 +638,10 @@ button.month-prev:focus {
   margin-top: 10px;
 }
 
+.wyspa-container {
+  font-size: 16px;
+}
+
 .speech-bubble.empty-comments {
   padding-top: 5px;
   padding-bottom: 5px;
@@ -941,6 +945,10 @@ textarea.materialize-textarea {
 
   #helpModal.modal .modal-content {
     padding: 20px;
+  }
+
+  .wyspa-container {
+    font-size: 15px;
   }
 
   .error-message {
