@@ -643,6 +643,17 @@ button.month-prev:focus {
   font-weight: 400;
 }
 
+.speech-bubble a {
+  color: white;
+  text-decoration: underline;
+  display: inline-block;
+}
+
+.speech-bubble a:hover {
+  color: white;
+  text-decoration: underline;
+}
+
 .col.s12.wyspa-action-bar {
   padding-top: 15px;
   padding-bottom: 15px;
