@@ -118,3 +118,47 @@ document.querySelectorAll("form:not(.user-registration)").forEach((form) => {
     form.classList.add("is-submitting");
   });
 });
+
+// Script called by the modal dismissal for cleaning Login and Registration Forms
+function clearForms() {
+  // Obtain all login inputs
+  const loginInputs = document
+    .querySelector("#userLoginForm")
+    .getElementsByTagName("input");
+  // Obtain all Register inputs
+  const registerInputs = document
+    .querySelector("#userRegistrationForm")
+    .getElementsByTagName("input");
+
+  // Cycle through login inputs
+  for (let i = 0; i < loginInputs.length; i++) {
+    // If the element is not the timezone element
+    if (loginInputs[i].id != "timezoneLogin") {
+      // Reset the value and classes
+      loginInputs[i].value = "";
+      loginInputs[i].classList.remove("valid");
+      loginInputs[i].classList.remove("invalid");
+      // And reset the respective input's label
+      document
+        .querySelector("label[for=" + loginInputs[i].id + "]")
+        .classList.remove("active");
+    }
+  }
+
+  // Cycle through login inputs
+  for (let i = 0; i < registerInputs.length; i++) {
+    // If the element is not the timezone element
+    if (registerInputs[i].id != "timezoneRegister") {
+      // Reset the value and classes
+      registerInputs[i].value = "";
+      registerInputs[i].classList.remove("valid");
+      registerInputs[i].classList.remove("invalid");
+      // And reset the respective input's label
+      document
+        .querySelector("label[for=" + registerInputs[i].id + "]")
+        .classList.remove("active");
+    }
+    // Clear any error message
+    errorMessageField.innerHTML = "";
+  }
+}

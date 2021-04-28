@@ -649,10 +649,10 @@ HTML5 and CSS3 are used throughout this project.
 This project uses Python version 3.8.9 for back-end infrastructure and data pre-processing.
 
 - **Packages**
-  - [**Flask**](https://flask.palletsprojects.com/en/1.1.x/) – WSGI Web Application Microframework
-  - [**Flask-Login**](https://flask-login.readthedocs.io/en/latest/) – User Session Management Flask Extension
-  - [**Flask-Pretty**](https://flask-pretty.readthedocs.io/en/latest/) – HTML Prettifying Flask Extension
-  - [**Flask-Pymongo**](https://flask-pymongo.readthedocs.io/en/latest/) – A PyMongo bridging Flask Extension
+  - [**Flask**](https://flask.palletsprojects.com/en/1.1.x/) – WSGI Web Application Microframework.
+  - [**Flask-Login**](https://flask-login.readthedocs.io/en/latest/) – User Session Management Flask Extension.
+  - [**Flask-Pretty**](https://flask-pretty.readthedocs.io/en/latest/) – HTML Prettifying Flask Extension.
+  - [**Flask-Pymongo**](https://flask-pymongo.readthedocs.io/en/latest/) – A PyMongo bridging Flask Extension.
   - [**Geopy**](https://github.com/geopy/geopy) – A geocoding web services client.
   - [**Pymongo**](https://pymongo.readthedocs.io/en/stable/index.html) - A distribution for interacting with MongoDB through Python.
   - [**gunicorn**](https://gunicorn.org/) - A Python WSGI HTTP Server.
@@ -757,7 +757,7 @@ The following environment variables must be set within your Heroku Server for th
   - Make an account with [Google](https://accounts.google.com/signup/v2/), and navigate to [Google Developers Console.](https://developers.google.com/apis/)
   - Navigate to **APIs & Services.**
   - Select **Credentials**.
-  - Click **Create Credentials.**
+  - Click **Create Credentials**.
   - Click **Create API Key**.
   - Copy the provided **API Key** into the `VALUE` variable of the Heroku Config Vars.
 - **GMAPS_ID**

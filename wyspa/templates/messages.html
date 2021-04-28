@@ -52,8 +52,7 @@
                         {% if (message_entry.comments | length == 0) and (not current_user.is_authenticated) %}
                         <div class="col s10 offset-s1 speech-bubble empty-comments z-depth-5">There are no comments on this Wyspa
                             yet! Why
-                            not log in
-                            and leave your own?</div>
+                            not <a href="#loginModal" class="modal-trigger">Login</a> and leave your own?</div>
                         {% else %}
                         {# For each comment in the message #}
                         {% for entry in message_entry.comments %}
@@ -133,7 +132,6 @@
         <h2>We can't find any WYSPAs!</h2>
         <em>Consider logging in and getting things started!</em>
     </div>
-
     </div>
     </div>
     </div>
@@ -150,27 +148,28 @@
 <!-- Help Modal for Messages -->
 <h4 class="center">Wyspas</h4>
 
-<p><strong>Listen to or comment on a random Wyspa</strong></p>
+<p><strong>Engaging with a Wyspa</strong></p>
 
-<p>Each time you visit this page, a random Wyspa will be presented. Refresh the page, or click the Wyspas link
-    again, to be shown a new random Wyspa. If this is your Wyspa, you can also edit it from this page.</p>
+<p>This page allows you to <strong>engage</strong> with a Wyspa; whether that’s reading, commenting, or listening.</p>
+<ul class="browser-default">
+    <li>If you’ve reached this page from <strong>My Voice</strong> or from the <strong>Map</strong>, you’re looking at a specific <strong>Wyspa.</strong></li>
+    <li>If you’ve reached this page by interacting with the <strong>Wyspa</strong> link, you’re looking at a <strong>Random Wyspa.</strong></li>
+</ul>
+<p>Fancy a new <strong >Random Wyspa?</strong> Interact with the <strong>Random</strong> icon: <i class="material-icons">cached</i> 
 
-<p>To acknowledge you've listened to a Wyspa, interact with the <strong>listen</strong> icon: <i
-        class="material-icons">hearing</i>. However, you must be logged in to do this.
-    You can listen to your own Wyspa, because if you can't listen to yourself, who can you listen to?
-</p>
+<p><strong>Logged in</strong> users can dig a little deeper into the workings of a <strong>Wyspa</strong> by <strong>listening</strong> or <strong>commenting.</strong>
 
-<p>Each Wyspa can only be listened to once per user. For every listen a Wyspa receives, its marker grows on
-    the map. So the more listens a Wyspa receives,
-    the more it is heard.</p>
+<p>To acknowledge you've listened to a Wyspa, interact with the <strong>listen</strong> icon: <i class="material-icons">hearing</i></p>
+    <ul class="browser-default">
+        <li>You can listen to your own Wyspa, because if you can't listen to yourself, who can you listen to? Each Wyspa can only be listened to once per user.</li>
+        <li>For every listen a Wyspa receives, its marker grows on the map. The more listens a Wyspa receives, the more chance it is of being heard.</li>
+    </ul>    
 
-<p>This page doesn't display the mood of the Wyspa. This allows users to listen to and acknowledge each
-    other
-    with as little context as possible.</p>
+<p>Commenters can delete their own comments, and <strong>Wyspa</strong> owners can delete any comment left on their <strong>Wyspa.</strong></p>
+    <ul class="browser-default">
+        <li>WYSPA doesn't believe in censorship, so it's down to you to respect yourself and each other.</li>
+    </ul>
 
-<p> Logged in users may comment on a Wyspa. Commenters can delete their own comments, along with the owners of the
-    Wyspa. Remember that WYSPA doesn't believe in censorship,
-    so it's down to you to respect yourself and each
-    other.</p>
+<p>If this is your Wyspa, you can also edit it from this page, by interacting with the <strong>edit</strong> icon:  <i class="material-icons">edit</i></p>
 
 {% endblock %}
