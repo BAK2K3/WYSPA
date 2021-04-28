@@ -271,6 +271,7 @@ nav i.material-icons.help-trigger {
 
 .modal.bottom-sheet {
   width: 75%;
+  max-height: 100%;
   margin: auto;
   border-top-left-radius: 25px;
   border-top-right-radius: 25px;
@@ -980,5 +981,6 @@ textarea.materialize-textarea {
 
   .modal.bottom-sheet {
     width: 50%;
+    max-height: 100%;
   }
 }
