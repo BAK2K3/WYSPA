@@ -275,7 +275,7 @@ This aspect of the testing focuses on **User Management**:
 - A user must not be able to **delete** their account without following these steps.
 - A user must be **logged out** of their account during the **deletion** process.
 - A user must not be able to **log in** with their previous credentials once the account **deletion** has occurred.
-- Ensure a user's **Wyspas** arealso be deleted, after successful account **deletion**.
+- Ensure a user's **Wyspas** are also be deleted, after successful account **deletion**.
 - **Database Test:** On successful account deletion, ensure the user's entry within the **Users** collection has been removed, and no **Wyspas** exist in the **Messages** collection with the deleted accounts **username** as the **author**.
 - **Stress Test:** Ensure that when a user that is not logged in types `/delete_user` in the URL, they are redirected to the **Home** page, and instructed to log in to access this page via **Toast**.
 - **Stress Test:** Ensure that when a logged in user in types `/delete_user` in the URL, they are redirected to the **My Voice** page, and informed they must interact with the deletion process, via **Toast**.
@@ -287,13 +287,13 @@ This aspect of the testing focuses on **Wyspa Management**:
 
 - Front End and User Experience for **Creating**, **Editing**, **Deleting**, and **Interacting** with **Wyspas**.
 - Server data handling and processing, focusing on the respective **Wyspa** class and views.
-- **Creating, Reading, Updating**, and **Deleting** documentsfrom the **messages** collection in **MongoDB**.
+- **Creating, Reading, Updating**, and **Deleting** documents from the **messages** collection in **MongoDB**.
 
 ### Wyspa: Creation
 
 - Ensure that only a logged in user can access the **Wyspa Creation** form in **My Voice**.
 - Ensure that when the **Create a Wyspa** form is collapsed, when a user interacts with the heading, the title text changes to "The world is listening…" and the **Wyspa Creation** form appears underneath.
-- Ensure that when the **Create a Wyspa** form is revealed, when a user interacts with the **The world is listening…** heading, the title text reverts back to **Create a Wypa**, and the form collapses.
+- Ensure that when the **Create a Wyspa** form is revealed, when a user interacts with the **The world is listening…** heading, the title text reverts back to **Create a Wyspa**, and the form collapses.
 - Within the **Wyspa Creation** form, ensure that the following validation occurs appropriately:
   - **Your Wyspa**
     - Requirement: _Required/Must not only contain Whitespace_
@@ -343,7 +343,7 @@ This aspect of the testing focuses on **Wyspa Management**:
   - **author:** The username of the user who submitted the Wyspa.
   - **message:** The text entered into "Your Wyspa".
   - **mood:** A numerical value between 0-2 depicted by slider position.
-  - **location:** ALat/Long dictionary, calculated as per **Wyspa: Location**.
+  - **location:** A Lat/Long dictionary, calculated as per **Wyspa: Location**.
   - **expiry:** A UTC date time stamp, converted as per **Wyspa: Expiry**.
   - **comments:** An empty list.
   - **listens:** An empty list.
@@ -371,7 +371,7 @@ It must be noted that as the **Location** feature heavily relies on the external
 - Ensure that each degree of location specificity is translated into the appropriate location:
   - **Europe**: Places a marker in Germany.
   - **Pacific Ocean**: Places a marker in the Pacific Ocean.
-  - **UK**:Places a marker in the north of the England.
+  - **UK**: Places a marker in the north of the England.
   - **London**: Places a marker in London.
   - **Buckingham Palace, London**: Places a marker near Buckingham Palace in London.
   - **SW1A 1AA:** Places a marker near Buckingham Palace in London.
@@ -423,14 +423,14 @@ The testing for **Wyspa: Mood** was largely completed within the **Wyspa: Creati
   - If a user has already **listened** to a **Wyspa**, and attempts to listen to the same **Wyspa** for a second time, they should be redirected to the same message, with a **toast** confirming they can only listen to each **Wyspa** once.
   - Ensure, when this happens, the **listen** and **listen_field** fields within the relevant **Wyspa's** document in the database have not been modified.
   - Ensure the **listen** count on the **Wyspa** page does not change when this happens.
-- Ensure that the size of a **Wyspa's Map Marke** increases with the size of the **listen_count** variable.
+- Ensure that the size of a **Wyspa's Map Marker** increases with the size of the **listen_count** variable.
 - **Stress Test:** Ensure that if a user attempts to perform their first **listen** to a single **Wyspa** in quick succession (clicking the **Listen** icon rapidly, for example), only a single valid **listen** is recorded, and any subsequent requests through the route are handled appropriately.
 - **Stress Test:** Ensure that if a user hard codes a URL to force **Listen** to a **Wyspa**, the request is handled the same as if the user interacts with the **Listen** icon.
 
 ### Wyspa: Comments
 
 - Ensure that when any user visits a **Wyspa**, the comments are collapsed under the **Comments** header.
-- Ensure that when a user clicks the **Comments** header, when the commentsare collapsed, the **Wyspa's** comments are revealed.
+- Ensure that when a user clicks the **Comments** header, when the comments are collapsed, the **Wyspa's** comments are revealed.
 - Ensure that when a user clicks the **Comments** header, when the comments are revealed, the **Wyspa's** comments are collapsed.
 - Ensure that **Comments** are displayed sequentially, alternating between left and right speech bubble styling and layout.
 - Ensure that **Logged in** users are presented with a **Comment** form at the end of the **comment** trail, contained within the collapsible element.
@@ -547,7 +547,7 @@ Using Chrome Development tools, either via the pre-set mobile device resolutions
 The website was physically tested on a Samsung Tab S4, and a Samsung Note 10+ 5G. The following tests were completing:
 
 - Ensure all interactive **icons** are distinguishable, identifiable, and are correctly sized and placed to allow users to interact with each of them via touchscreen individually.
-- Ensure all inputs within the **Wyspa Creation** formrespond appropriately to touchscreen devices.
+- Ensure all inputs within the **Wyspa Creation** form respond appropriately to touchscreen devices.
 - Ensure all text input fields respond appropriately to on-screen keyboards.
 - Ensure on-screen keyboards do not obfuscate the users view of the site or the corresponding inputs.
 - Ensure the **SideNav** can be swiped to collapse or reveal.
@@ -595,7 +595,7 @@ Test 2 **: test_message_overview**
 - **Expected Result** : 200 response code, and mesages.html template returned.
 - **Outcome** : Pass
 
-Test 3 **: test_Map**
+Test 3 **: test_map**
 
 - **Overview** : Test the response from a **get** request to the `Map_overview` URL.
 - **Expected Result** : 200 response code, and **Map** s.html template returned.
@@ -631,7 +631,7 @@ Test 7: **test_c_create**
 
 Test 8: **test_d_create**
 
-- **Overview** : Log in to Wyspa via previously created account, delete the user account, delete all Wyspa's created by test account, and query both the Usersand Messages collections for deleted user and Wyspa.
+- **Overview** : Log in to Wyspa via previously created account, delete the user account, delete all Wyspa's created by test account, and query both the Users and Messages collections for deleted user and Wyspa.
 - **Expected Result** : Log in is successful, account is successfully deleted, Wyspa is successfully delete, and query on database produces no results for deleted user and no results for user's Wyspas.
 - **Outcome** : Pass
 
@@ -694,7 +694,7 @@ As WYSPA uses JavaScript ES6, support for Internet Explorer 11 has not been cons
 ## JavaScript
 
 - The project's JavaScript was validated using the open source automated service, [JSHint](https://jshint.com/), at intervals throughout the development process.
-- Warnings are currently present, however these are regarding ES6 Compatibility; I'm aware of these and am satisfied these can be dismissed.
+- Warnings are currently present; however, these are regarding ES6 Compatibility; I'm aware of these and am satisfied these can be dismissed.
 - One error was presented, in **maps.js**, when using a `for (const x in y)` statement:
   - `The body of a for in should be wrapped in an if statement to filter unwanted properties from the prototype.`
   - This was easily fixed after reviewing a similar error on [StackOverflow.](https://stackoverflow.com/questions/4166551/javascript-jslint-error-the-body-of-a-for-in-should-be-wrapped-in-an-if-statem)
@@ -706,7 +706,7 @@ As WYSPA uses JavaScript ES6, support for Internet Explorer 11 has not been cons
 - The following warnings were presented:
   - [app.py:15:4](https://github.com/BAK2K3/WYSPA/blob/86dec8a923916d6afebb6d12a7ed1ab462443b77/app.py#L14): `W0611: Unused import env (unused-import)`
   - [wyspa/factory/initialisation.py:18:4](https://github.com/BAK2K3/WYSPA/blob/86dec8a923916d6afebb6d12a7ed1ab462443b77/wyspa/factory/initialisation.py#L18): `W0611: Unused import env (unused-import)`
-    - These warnings has been considered, however they appear to be incorrectly reporting `env.py` as being unused, due to how env.py works. Once deployed, this will not be imported anyway, and therefore this has been added to the ignore rule within these particular python modules.
+    - These warnings have been considered, however they appear to be incorrectly reporting `env.py` as being unused, due to how env.py works. Once deployed, this will not be imported anyway, and therefore this has been added to the ignore rule within these particular python modules.
     - `# pylint: disable=unused-import`
   - [wyspa/messages/classes.py:26:0](https://github.com/BAK2K3/WYSPA/blob/86dec8a923916d6afebb6d12a7ed1ab462443b77/wyspa/messages/classes.py#L29): `R0902: Too many instance attributes (9/7) (too-many-instance-attributes)`
   - [wyspa/messages/classes.py:127:4](https://github.com/BAK2K3/WYSPA/blob/86dec8a923916d6afebb6d12a7ed1ab462443b77/wyspa/messages/classes.py#L130): `R0913: Too many arguments (10/5) (too-many-arguments)`
@@ -851,6 +851,8 @@ When initially implementing the **Date and Time Pickers** for **Wyspa: Create** 
 After reaching a dead end with the specific nature of this particular issue, I looked into the Materialize CSS [issues](https://github.com/Dogfalo/materialize/issues) to find 616 open issues, with the last commit being in June 2020. A discussion on one of the issues stated the repository was [no longer being supported](https://github.com/Dogfalo/materialize/issues/6615), and that a group of contributors had forked the project and have been producing nightly builds of a _"community enhanced"_ [Materialize CSS](https://github.com/materializecss/materialize).
 
 I created a new branch within my project (called nightly-css), and attempted to integrate a [nightly build](/C:%5CUsers%5Cbenja%5CDesktop%5CDevelopment%5CCodeInstitute%5CMS3%5Cnightly%20build%20=%20https:%5Cnightly.link%5Cmaterializecss%5Cmaterialize%5Cworkflows%5Cnightly%5Cdev%5Cbuild.zip) of the community enhanced Materialize CSS on the off chance that this would resolve the Date Picker behaviour. After hosting the source code locally, and removing the CDN links to the old Materialize, I tested all features of the website thoroughly, and while there did not appear to be any substantial differences to the framework (other than a [deprecated component](https://github.com/materializecss/materialize/pull/49) of the Toast that I needed to update), everything worked as intended, and the Date Picker dropdowns no longer dismissed on first interaction; this is the reason the project uses the open sourced, community driven, version of Materialize CSS.
+
+The deployed version of this project uses the first full [Alpha](https://github.com/materializecss/materialize/releases) release of the community enhanced Materialize CSS.
 
 ## Changing Layout in Chrome Dev Tools Breaks Page Layout
 

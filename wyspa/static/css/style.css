@@ -263,7 +263,7 @@ nav i.material-icons.help-trigger {
   text-align: center;
 }
 
-/********** Log in Modal **********/
+/********** Log in/Register Modal **********/
 
 .modal {
   border-radius: 25px;
@@ -271,6 +271,7 @@ nav i.material-icons.help-trigger {
 
 .modal.bottom-sheet {
   width: 75%;
+  max-height: 100%;
   margin: auto;
   border-top-left-radius: 25px;
   border-top-right-radius: 25px;
@@ -637,6 +638,10 @@ button.month-prev:focus {
   margin-top: 10px;
 }
 
+.wyspa-container {
+  font-size: 16px;
+}
+
 .speech-bubble.empty-comments {
   padding-top: 5px;
   padding-bottom: 5px;
@@ -942,6 +947,10 @@ textarea.materialize-textarea {
     padding: 20px;
   }
 
+  .wyspa-container {
+    font-size: 15px;
+  }
+
   .error-message {
     padding-bottom: 5px;
     padding-left: 10px;
@@ -980,5 +989,6 @@ textarea.materialize-textarea {
 
   .modal.bottom-sheet {
     width: 50%;
+    max-height: 100%;
   }
 }
