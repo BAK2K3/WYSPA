@@ -307,7 +307,7 @@ Text against a dark body is pure white, while text against a white body is pure 
 
 #### Google Maps and Static Background Image
 
-The **Map** Feature uses [Google Maps](https://developers.google.com/maps/) as its interactive **Map**, with a custom style designed through [SnazzyMaps](https://snazzymaps.com/editor/customize). The colour scheme utilises the full scale of the blue monochromatic colour scheme, with all major labels and icons removed. This results in a simple **Map**, leaving only country border lines, country names, and city names when zoomed in.
+The **Map** Feature uses [Google Maps](https://developers.google.com/maps/) as its interactive **Map**, with a custom style designed through [SnazzyMaps](https://snazzymaps.com/). The colour scheme utilises the full scale of the blue monochromatic colour scheme, with all major labels and icons removed. This results in a simple **Map**, leaving only country border lines, country names, and city names when zoomed in.
 
 The Static Background Image used throughout the rest of the site is a static customised version of the interactive **Map**, edited in [Gimp](https://www.gimp.org/), and provides a basic world map outline with the same colour scheme, but with less identifiers.
 
@@ -639,7 +639,7 @@ In order to expand on the **Map** functionality, consideration was given to impl
 
 HTML5 and CSS3 are used throughout this project.
 
-- This project uses a nightly build of the community improved [Materialize CSS](https://github.com/materializecss/materialize) framework due to the original (also called [Materialize CSS](https://github.com/Dogfalo/materialize)) [no longer being supported](https://github.com/Dogfalo/materialize/issues/6615).
+- This project uses an alpha build of the community improved [Materialize CSS](https://github.com/materializecss/materialize) framework due to the original (also called [Materialize CSS](https://github.com/Dogfalo/materialize)) [no longer being supported](https://github.com/Dogfalo/materialize/issues/6615).
 - The project uses [Google Material Icons](https://fonts.google.com/icons?selected=Material+Icons) for icons.
 - The project uses [Google Fonts](https://fonts.google.com/) for typography.
 - The project’s cross-browser compatibility was enhanced using [Autoprefixer.io](https://autoprefixer.github.io/).
@@ -705,7 +705,7 @@ This project has three branches:
 - `Dev` (Dev Environment)
 - `Nightly-CSS` (Nightly CSS integration environment)
 
-All development takes place in the `Dev` branch. As the project uses a nightly build of a community enhanced Materialize CSS, any nightly releases are integrated into the project via the `Nightly-CSS` branch and tested, before being merged with the `Dev` branch prior to merging with the `Master` branch for deployment.
+All development takes place in the `Dev` branch. As the project uses an alpha build of a community enhanced Materialize CSS, any nightly releases are integrated into the project via the `Nightly-CSS` branch and tested, before being merged with the `Dev` branch prior to merging with the `Master` branch for deployment.
 
 ## How this project was Deployed
 
