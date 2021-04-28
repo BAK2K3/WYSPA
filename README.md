@@ -4,11 +4,11 @@
 
 Whisper Your Secrets Publicly and Anonymously
 
-See the work in progress [here](http://w-y-s-p-a.herokuapp.com/)
+See the live site [here](http://w-y-s-p-a.herokuapp.com/).
 
 # Important
 
-The nightly-css branch is now deprecated, and was last updated on 20/04/2021.
+The nightly-css branch is now deprecated, and was last updated on 28/04/2021.
 
 The nightly-css branch was created to implement and test the community driven [Materialize CSS](https://github.com/materializecss/materialize) build due to the original [no longer being supported](https://github.com/Dogfalo/materialize/issues/6615).
 
