@@ -247,13 +247,13 @@ def delete_user():
     Returns
     -------
     Redirect (My Voice) [Get]
-    Redirect (Logout) [Post]
+    Redirect (Index) [Post]
     """
 
     if request.method == "POST":
         User.delete_user(current_user.username)
         flash("Account and Wyspas deleted Successfully!")
-        return redirect(url_for('users.logout'))
+        return redirect(url_for('core.index'))
     # Route for GET
     flash("Please select 'Delete Account' below to proceed")
     return redirect(url_for("messages.my_voice"))
