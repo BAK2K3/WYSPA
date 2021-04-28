@@ -142,7 +142,7 @@ Facebook is currently the most popular social media network, with approximately 
 - When creating a **Wyspa**, the following information will be recorded, and for the following purposes:
   - **Author:** This will be pre-populated by the server, allowing backend verification of **Wyspa** ownership.
   - **Message:** This will be provided by the user, in free-text form. This will be the message the user would like to communicate, and therefore the message other users are able to read.
-  - **Location:** This will be provided in a verbose manner by the user (i.e London), converted to Lat-Long (51.500153° N, -0.1262362° E), and scrambled (N/E +-0.1). This will be used to position the **Wyspa** on the **Map**.
+  - **Location:** This will be provided in a verbose manner by the user (i.e. London), converted to Lat-Long (51.500153° N, -0.1262362° E), and scrambled (N/E +-0.1). This will be used to position the **Wyspa** on the **Map**.
   - **Mood:** This will be chosen by the user, out of choices presented to them. This will be used to colour the **Wyspa** marker on the **Map**.
   - **Expiry Date:** This will be set by the user. This will depict when the document removed from the database.
   - **Comments:** This is an entry which all logged in users will be able to contribute to; these comments will be displayed on the individual **Wyspa** page.
@@ -461,7 +461,7 @@ Once this form is submitted, and the data is validated and formatted accordingly
 
 While anonymity is at the heart of **WYSPA**, one of the primary features is to allow users to identify **Wyspas** from around the world, using the **Map** feature, and interact with any **Wyspa** they choose. If the platform became popular enough, it would theoretically be possible to see a **mood Map** of the world (See **Mood** section below). Therefore, while a user should be able to retain anonymity, they should also have the ability to specify a location, without this feature storing identifiable information regarding a particular user. As such, while it is a requirement for a user to provide a location when creating a **Wyspa**, this can be as specific or vague as the user wishes, and the subsequent geographical information is scrambled. This both grants users control over how much information they want to reveal, ensures anonymity, and solves a potential problem regarding overlapping **Wyspas**.
 
-When creating a **Wyspa**, the user is asked to specify a location. Using the Third Party package [GeoPy](https://github.com/geopy/geopy), the verbal description of a location is converted to exact longitude and latitude. This allows a user to be specific (i.e 1 Main Street) or vague (England), and geocoordinates are calculated accordingly. If a location cannot be identified from the package, the user is informed that the location could not be found, via a **Toast**. Additional information is also provided in the Help feature of the page to assist a user if this continues to occur.
+When creating a **Wyspa**, the user is asked to specify a location. Using the Third Party package [GeoPy](https://github.com/geopy/geopy), the verbal description of a location is converted to exact longitude and latitude. This allows a user to be specific (i.e. 1 Main Street) or vague (England), and geocoordinates are calculated accordingly. If a location cannot be identified from the package, the user is informed that the location could not be found, via a **Toast**. Additional information is also provided in the Help feature of the page to assist a user if this continues to occur.
 
 ![Address Failure](https://res.cloudinary.com/bak2k3/image/upload/v1619531105/WYSPA/Address_Toast_n6obwj.jpg)
 
@@ -584,7 +584,7 @@ When the **Wyspas** are obtained from the database, they are sorted by **listen_
 
 ![overlapping markers](https://res.cloudinary.com/bak2k3/image/upload/v1619531108/WYSPA/overlapping_markers_bhfof2.jpg)
 
-When implementing this functionality, multiple solutions were explored as to the most efficient and effective way of sorting the entries in the database. While a [\$size aggregation](https://docs.mongodb.com/manual/reference/operator/aggregation/size/) query on the MongoDB would have produced similar effects, this would take significantly longer to obtain the data when handling a larger set of data, and as such, the trade off was made between memory and computational speed. The implemented solution to this is simple, requires a small amount of additional storage space per **Wyspa**, and ultimately functions as intended.
+When implementing this functionality, multiple solutions were explored as to the most efficient and effective way of sorting the entries in the database. While a [\$size aggregation](https://docs.mongodb.com/manual/reference/operator/aggregation/size/) query on the MongoDB would have produced similar effects, this would take significantly longer to obtain the data when handling a larger set of data, and as such, the trade-off was made between memory and computational speed. The implemented solution to this is simple, requires a small amount of additional storage space per **Wyspa**, and ultimately functions as intended.
 
 ```python
 list(mongo.db.messages.aggregate("sort": {"listen_count": -1}}]))
@@ -771,10 +771,10 @@ The following environment variables must be set within your Heroku Server for th
     - Set **Options** as **Raster**.
     - Click Next.
   - Copy and paste the provided **Map ID** into the **Variable** field within Heroku.
-  - Return to Google Maps and click [Map Styles](https://console.cloud.google.com/google/maps-apis/client-styles)from the navigation pane.
+  - Return to Google Maps and click [Map Styles](https://console.cloud.google.com/google/maps-apis/client-styles) from the navigation pane.
   - Click **Create New Map Style**.
     - Either use the tool provided to create a Map, or;
-    - Use [snazzyMaps](https://snazzymaps.com/) to choose a pre-made style, and copy the provided JSON code into the **Import JSON** option in Google Maps Style Editor.
+    - Use [SnazzyMaps](https://snazzymaps.com/) to choose a pre-made style, and copy the provided JSON code into the **Import JSON** option in Google Maps Style Editor.
   - Once the Map has been designed, return to [Map Manager](https://console.cloud.google.com/google/maps-apis/client-maps).
   - Select your new **Map ID**.
   - Select your new **Map Style** from the dropdown box.
