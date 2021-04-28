@@ -19,6 +19,9 @@ from wyspa.messages.classes import Wyspa
 # Set the Google Maps API Key to be passed to view
 GMAPS_API = os.environ.get("GMAPS_API")
 
+# Set the Google Maps Custom ID to be passed to view
+GMAPS_ID = os.environ.get("GMAPS_ID")
+
 # Configure Blueprint for maps route
 maps = Blueprint('maps', __name__)
 
@@ -30,7 +33,7 @@ def map_overview():
     Login: Not Required
 
     This route queries the DB for all Wyspas, prepares the data,
-    and sends both the Gmaps API and map_data to the rendered HTML page.
+    and sends the Gmaps API, Custom ID, and map_data to the rendered HTML page.
 
     Parameters
     ----------
@@ -50,4 +53,5 @@ def map_overview():
     # Render Map template, passing in API and map data
     return render_template('maps.html',
                            GMAPS_API=GMAPS_API,
+                           GMAPS_ID=GMAPS_ID,
                            map_data=map_data)

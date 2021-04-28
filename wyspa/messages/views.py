@@ -17,7 +17,7 @@ Functions:
 """
 
 # pylint: disable=too-many-return-statements
-# Considered edit_wyspa return statements, and beleive it is neccessary.
+# Considered edit_wyspa return statements, and believe it is necessary.
 
 from flask import render_template, Blueprint, request, redirect, url_for, flash
 from flask_login import current_user, login_required
@@ -250,6 +250,9 @@ def remove_comment(message_id, comment_id):
             retrieved_wyspa.remove_comment(comment_index)
         else:
             flash("You are not authorised to delete this comment!")
+    # GET Route
+    else:
+        flash("Please use the icons provided to delete comments!")
 
     # GET and POST Routes
     return redirect(url_for("messages.view_message",
@@ -297,6 +300,7 @@ def add_listen(message_id):
 
         # Store Listen
         else:
+            flash("Thank you for listening.")
             retrieved_wyspa.add_listen(current_user.username)
 
     # Inform the user they need to be logged in
@@ -437,7 +441,9 @@ def delete_wyspa(message_id):
 
         # Delete Wyspa
         Wyspa.delete_wyspa(message_id)
+        flash("Wyspa deleted successfully!")
         return redirect(url_for("messages.my_voice"))
 
+    flash("Please use the delete icon to delete a Wyspa!")
     # Route for GET
     return redirect(url_for("messages.my_voice"))

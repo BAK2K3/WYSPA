@@ -6,7 +6,7 @@ const moodMap = {
 };
 
 // Main function for initialising Google Maps
-function initMap(map_data) {
+function initMap(map_data, map_id) {
   // Starting point
   const myLatLng = {
     lat: 56.218923,
@@ -23,7 +23,7 @@ function initMap(map_data) {
     mapTypeControl: false,
     streetViewControl: false,
     // Custom Map ID
-    mapId: "65f95462d95daa3",
+    mapId: map_id,
     // https://stackoverflow.com/questions/9099345/google-maps-api-3-limit-pan-map-bounds
     restriction: {
       latLngBounds: { north: 83.8, south: -57, west: -180, east: 180 },
@@ -37,6 +37,7 @@ function initMap(map_data) {
       // Define colour of Circle
       let wyspaColor = moodMap[map_data[message].mood];
 
+      // https://developers.google.com/maps/documentation/javascript/examples/circle-simple
       // Add a cirlce for each wyspa
       const wyspaCircle = new google.maps.Circle({
         strokeColor: wyspaColor,
@@ -60,4 +61,16 @@ function initMap(map_data) {
       });
     }
   }
+}
+
+// Catch any Gmaps Auth Fails
+function gm_authFailure() {
+  // Replace Gmaps with Static Map
+  document.getElementById("map").children[0].id = "staticMap";
+  // Remove the alert
+  document.getElementById("map").children[0].children[0].remove();
+  // Unhide the error container
+  document
+    .getElementsByClassName("hidden-error")[0]
+    .classList.remove("hidden-error");
 }

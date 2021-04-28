@@ -114,16 +114,6 @@ nav i.material-icons.help-trigger {
   font-size: 30px;
 }
 
-@media only screen and (min-width: 601px) {
-  nav,
-  nav .nav-wrapper i,
-  nav nav a.sidenav-trigger,
-  nav a.sidenav-trigger i {
-    height: 75px;
-    line-height: 75px;
-  }
-}
-
 /********** Side Nav **********/
 
 .sidenav {
@@ -217,13 +207,6 @@ nav i.material-icons.help-trigger {
   color: black;
 }
 
-@media only screen and (min-width: 993px) {
-  #toast-container {
-    top: 65px;
-    margin: auto;
-  }
-}
-
 /********** Tooltip **********/
 
 .material-tooltip {
@@ -280,7 +263,7 @@ nav i.material-icons.help-trigger {
   text-align: center;
 }
 
-/********** Log in Modal **********/
+/********** Log in/Register Modal **********/
 
 .modal {
   border-radius: 25px;
@@ -288,15 +271,10 @@ nav i.material-icons.help-trigger {
 
 .modal.bottom-sheet {
   width: 75%;
+  max-height: 100%;
   margin: auto;
   border-top-left-radius: 25px;
   border-top-right-radius: 25px;
-}
-
-@media only screen and (min-width: 993px) {
-  .modal.bottom-sheet {
-    width: 50%;
-  }
 }
 
 .modal .modal-content {
@@ -624,7 +602,9 @@ button.month-prev:focus {
   touch-action: none;
 }
 
-.hidden-form {
+.hidden-form,
+.hidden-error,
+.hidden-header {
   display: none;
 }
 
@@ -658,10 +638,25 @@ button.month-prev:focus {
   margin-top: 10px;
 }
 
+.wyspa-container {
+  font-size: 16px;
+}
+
 .speech-bubble.empty-comments {
   padding-top: 5px;
   padding-bottom: 5px;
   font-weight: 400;
+}
+
+.speech-bubble a {
+  color: white;
+  text-decoration: underline;
+  display: inline-block;
+}
+
+.speech-bubble a:hover {
+  color: white;
+  text-decoration: underline;
 }
 
 .col.s12.wyspa-action-bar {
@@ -906,9 +901,20 @@ textarea.materialize-textarea {
 .footer-content a:hover {
   color: white;
   text-decoration: underline;
+  display: inline-block;
 }
 
 /********** Media Queries **********/
+
+@media only screen and (min-width: 601px) {
+  nav,
+  nav .nav-wrapper i,
+  nav nav a.sidenav-trigger,
+  nav a.sidenav-trigger i {
+    height: 75px;
+    line-height: 75px;
+  }
+}
 
 @media only screen and (max-width: 601px) {
   h2 {
@@ -941,6 +947,10 @@ textarea.materialize-textarea {
     padding: 20px;
   }
 
+  .wyspa-container {
+    font-size: 15px;
+  }
+
   .error-message {
     padding-bottom: 5px;
     padding-left: 10px;
@@ -968,5 +978,17 @@ textarea.materialize-textarea {
 
   .material-tooltip {
     display: none;
+  }
+}
+
+@media only screen and (min-width: 993px) {
+  #toast-container {
+    top: 65px;
+    margin: auto;
+  }
+
+  .modal.bottom-sheet {
+    width: 50%;
+    max-height: 100%;
   }
 }

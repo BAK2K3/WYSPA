@@ -2,12 +2,40 @@
 content %}
 <!-- Interactive Map -->
 <div id="map"></div>
+
+<!-- 404 Splash -->
+<section class="container hidden-error">
+  <div class="container">
+    <div class="row">
+      <div class="col s12">
+        <!-- Card Panel -->
+        <div class="card-panel z-depth-5">
+          <!-- Card Header -->
+          <h2 class="white-text center">Oops!</h2>
+          <!-- Card Content -->
+          <div class="card-content">
+            <div class="row">
+              <div class="col s12 center white-text">
+                <p>Google Maps isn't feeling very well at the minute!</p>
+                <p>Try refreshing the page or hard refreshing your cache!</p>
+                <p>
+                  if the error persists, please contact the developer using the
+                  link in the footer!
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 {% endblock %} {% block scripts %}
 <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
 <script src="https://maps.googleapis.com/maps/api/js?key={{GMAPS_API}}&map_ids=65f95462d95daa3&&libraries=&v=weekly"></script>
 <script src="{{ url_for('static', filename='js/maps.js', _scheme='https', _external=True) }}"></script>
 <script>
-  initMap({{ map_data| tojson | safe}})
+  initMap({{ map_data| tojson | safe}}, {{GMAPS_ID | tojson | safe}})
 </script>
 
 {% endblock %} {% block helpmodal %}
@@ -17,16 +45,16 @@ content %}
 <p><strong>Visualise Wyspas from around the world</strong></p>
 
 <p>
-  Each Wyspa has it's geolocation scrambled before being projected onto the
-  world map, and given a user can choose how precisely to record their location,
-  there is no way to truly identify who submitted the Wyspa, or where they are
-  from.
+  Each <strong>Wyspa</strong> has its geolocation scrambled before being
+  projected onto the world map, and given a user can choose how precisely to
+  record their location, there is no way to truly identify who submitted the
+  <strong>Wyspa</strong>, or where they are from.
 </p>
 
 <p>
-  Each Wyspa is coloured based on the mood set out by the user on submission.
-  The size of the Wyspa is calculated based on how many people have acknowledged
-  they've listened to it.
+  Each <strong>Wyspa</strong> is coloured based on the <strong>mood</strong> set
+  out by the user on submission. The size of the <strong>Wyspa</strong> is
+  calculated based on how many people have <strong>listened</strong> to it.
 </p>
 
 <p>

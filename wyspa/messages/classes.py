@@ -11,7 +11,7 @@ Classes: Wyspa
 
 # https://stackoverflow.com/questions/24434510/how-to-deal-with-pylints-too-many-instance-attributes-message
 # pylint: disable=too-many-arguments, too-many-instance-attributes
-# Considered attributes for Class and beleive it is reasonable in this scenario
+# Considered attributes for Class and believe it is reasonable in this scenario
 
 import re
 from random import uniform
@@ -267,7 +267,8 @@ class Wyspa():
         self.mood = mood
         self.location = location
         self.expiry = expiry
-        mongo.db.messages.update({"_id": ObjectId(self._id)}, self.get_info())
+        mongo.db.messages.update_one({"_id": ObjectId(self._id)},
+                                     {"$set": self.get_info()})
 
     def remove_comment(self, index):
         """Removes a comment from the Wyspa, and updates the Database.
@@ -287,7 +288,8 @@ class Wyspa():
         """
 
         self.comments.pop(index)
-        mongo.db.messages.update({"_id": ObjectId(self._id)}, self.get_info())
+        mongo.db.messages.update_one({"_id": ObjectId(self._id)},
+                                     {"$set": self.get_info()})
 
     def add_comment(self, new_comment, comment_author):
         """Adds a comment to the Wyspa, and updates the Database.
@@ -308,7 +310,8 @@ class Wyspa():
         """
 
         self.comments.append({comment_author: new_comment})
-        mongo.db.messages.update({"_id": ObjectId(self._id)}, self.get_info())
+        mongo.db.messages.update_one({"_id": ObjectId(self._id)},
+                                     {"$set": self.get_info()})
 
     def add_listen(self, listener):
         """Adds a Listen to the Wyspa, and updates the Database.
@@ -329,7 +332,8 @@ class Wyspa():
 
         self.listens.append(listener)
         self.listen_count += 1
-        mongo.db.messages.update({"_id": ObjectId(self._id)}, self.get_info())
+        mongo.db.messages.update_one({"_id": ObjectId(self._id)},
+                                     {"$set": self.get_info()})
 
     @classmethod
     def get_by_id(cls, _id):
@@ -475,7 +479,7 @@ class Wyspa():
         """
 
         if ObjectId.is_valid(_id):
-            mongo.db.messages.remove({"_id": ObjectId(_id)})
+            mongo.db.messages.remove_one({"_id": ObjectId(_id)})
 
     @staticmethod
     def location_to_latlong(user_location):
