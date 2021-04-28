@@ -669,7 +669,7 @@ This project uses JavaScript ES6.
   - [**Google Maps API**](https://developers.google.com/maps/documentation/javascript/overview) – A JavaScript API for implementing Google Maps.
   - [**Polyfill.io**](https://polyfill.io/v3/) – A browser polyfill package required by Google Maps.
 
-## Testing
+## Testing and Validation
 
 - The project’s HTML was validated using [W3C HTML Markup Validator](https://validator.w3.org/).
 - The project’s CSS was validated using [W3C Jigsaw CSS Validator](https://jigsaw.w3.org/css-validator/).
