@@ -52,8 +52,7 @@
                         {% if (message_entry.comments | length == 0) and (not current_user.is_authenticated) %}
                         <div class="col s10 offset-s1 speech-bubble empty-comments z-depth-5">There are no comments on this Wyspa
                             yet! Why
-                            not log in
-                            and leave your own?</div>
+                            not <a href="#loginModal" class="modal-trigger">Login</a> and leave your own?</div>
                         {% else %}
                         {# For each comment in the message #}
                         {% for entry in message_entry.comments %}
