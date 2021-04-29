@@ -479,7 +479,7 @@ class Wyspa():
         """
 
         if ObjectId.is_valid(_id):
-            mongo.db.messages.remove_one({"_id": ObjectId(_id)})
+            mongo.db.messages.delete_one({"_id": ObjectId(_id)})
 
     @staticmethod
     def location_to_latlong(user_location):
