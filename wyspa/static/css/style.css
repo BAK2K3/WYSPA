@@ -851,7 +851,8 @@ textarea.materialize-textarea {
   vertical-align: top;
 }
 
-.btn.add-comment {
+.btn.add-comment,
+.btn.cancel-edit {
   background-color: transparent;
   border: 1px solid white;
   color: white;
@@ -859,10 +860,18 @@ textarea.materialize-textarea {
   margin-bottom: 15px;
 }
 
+.btn.cancel-edit {
+  text-decoration: none;
+  font-weight: 400;
+}
+
 .btn.add-comment:hover,
-.btn.add-comment:focus {
+.btn.add-comment:focus,
+.btn.cancel-edit:hover,
+.btn.cancel-edit:focus {
   background-color: white;
   color: black;
+  text-decoration: none;
 }
 
 /********** Maps **********/
