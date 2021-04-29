@@ -56,9 +56,14 @@ function initMap(map_data, map_id) {
       });
 
       // Onclick event to redirect to the message clicked on
-      google.maps.event.addListener(wyspaCircle, "click", function (event) {
-        document.location.href = "/view_message/" + wyspaCircle.message_id;
-      });
+      google.maps.event.addListener(
+        wyspaCircle,
+        "click",
+        function (event) {
+          document.location.href = "/view_message/" + wyspaCircle.message_id;
+        },
+        false
+      );
     }
   }
 }
