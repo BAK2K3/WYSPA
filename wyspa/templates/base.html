@@ -1,95 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
     <!-- Google Icon Font Import -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
     <!-- Materialize CSS Import -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/materialize.min.css', _scheme='https', _external=True) }}"
     type="text/css">
-
     <!-- Alertify css -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/alertify.css', _scheme='https', _external=True) }}"
     type="text/css">
-
     <!-- local css -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css', _scheme='https', _external=True) }}"
         type="text/css">
-
     <!-- Add Favicon -->
     <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico', _scheme='https', _external=True) }}">
-
     <!-- Primary Meta Tags -->
     <title>Wyspa - The Anonymous Social Media Network</title>
     <meta name="title" content="WYSPA - The Anonymous Social Media Network">
     <meta name="description" content="Wyspa Your Secrets, Publicly and Anonymously. ">
-
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://w-y-s-p-a.herokuapp.com/">
     <meta property="og:title" content="WYSPA - The Anonymous Social Media Network">
     <meta property="og:description" content="Wyspa Your Secrets, Publicly and Anonymously. ">
     <meta property="og:image" content="https://res.cloudinary.com/bak2k3/image/upload/v1618938956/WYSPA/social_acavr2.png">
-
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://w-y-s-p-a.herokuapp.com/">
     <meta property="twitter:title" content="WYSPA - The Anonymous Social Media Network">
     <meta property="twitter:description" content="Wyspa Your Secrets, Publicly and Anonymously. ">
     <meta property="twitter:image" content="https://res.cloudinary.com/bak2k3/image/upload/v1618938956/WYSPA/social_acavr2.png">
-
 </head>
 
 {% if GMAPS_API %}
-
 <body>
-
     {%else%}
-
     <body id="staticMap">
         {%endif%}
 
-        <!-- Primary Header -->
+        <!-- NavBar -->
         <header>
             <nav class="transparent-banner">
                 <div class="nav-wrapper">
-
                     <a href="#" data-target="mobile-sidenav" class="sidenav-trigger"><i
                             class="material-icons">menu</i></a>
                     <ul id="nav-mobile" class="left hide-on-med-and-down">
                         <li {% if active_page == "index" %} class="active" {% endif %}><a
                                 href="{{ url_for('core.index') }}">Home</a></li>
-
                         {%if current_user.is_authenticated %}
                         <li {% if active_page == "my_voice" %} class="active" {% endif %}><a
                                 href="{{ url_for('messages.my_voice') }}">My Voice</a></li>
                         {% endif %}
-
-
                         <li {% if active_page == "view_message" %} class="active" {% endif %}><a
                                 href="{{ url_for('messages.view_message') }}">Wyspas</a></li>
                         <li {% if active_page == "map_overview" %} class="active" {% endif %}><a
                                 href="{{ url_for('maps.map_overview') }}">Map</a></li>
-
                         {%if current_user.is_authenticated %}
-
                         <li><a href="{{ url_for('users.logout') }}">Logout</a></li>
-
                         {% else %}
-
                         <li><a href="#loginModal" class="modal-trigger">Login</a></li>
                         <li><a href="#registerModal" class="modal-trigger">Register</a></li>
-
                         {% endif %}
-
                     </ul>
-
                     <a href="{{ url_for('core.index') }}" class="brand-logo center heading-font">WYSPA</a>
-
                     <a href="#helpModal" class="modal-trigger">
                         <i class="medium material-icons help-trigger button-glow white-text right tooltipped"
                             data-position="left" data-tooltip="Need help?">help_outline</i>
@@ -108,22 +83,15 @@
                 <li {% if active_page == "my_voice" %} class="active" {% endif %}><a tabindex="-1"
                         href="{{ url_for('messages.my_voice') }}">My Voice</a></li>
                 {% endif %}
-
-
                 <li {% if active_page == "view_message" %} class="active" {% endif %}><a tabindex="-1"
                         href="{{ url_for('messages.view_message') }}">Wyspas</a></li>
                 <li {% if active_page == "map_overview" %} class="active" {% endif %}><a tabindex="-1"
                         href="{{ url_for('maps.map_overview') }}">Map</a></li>
-
                 {%if current_user.is_authenticated %}
-
                 <li><a tabindex="-1" href="{{ url_for('users.logout') }}">Logout</a></li>
-
                 {% else %}
-
                 <li><a tabindex="-1" href="#loginModal" class="modal-trigger sidenav-close">Login</a></li>
                 <li><a tabindex="-1" href="#registerModal" class="modal-trigger sidenav-close">Register</a></li>
-
                 {% endif %}
             </ul>
         </div>
@@ -141,12 +109,10 @@
             </div>
         </footer>
 
-
         <!-- Login Modal -->
         <div id="loginModal" class="modal bottom-sheet">
             <div class="modal-content center">
                 <h4>Login</h4>
-
                 <div class="row">
                     <form id="userLoginForm" class="col s12" method="POST" action="{{url_for('users.login')}}">
                         <div class="row">
@@ -247,39 +213,30 @@
         <div id="helpModal" class="modal">
             <div class="row">
                 <div class="modal-content my-voice-help">
-
                     {% block helpmodal %}
                     {% endblock %}
                 </div>
                 <div class="row footer-modal center">
                     <button class="btn login-button modal-close waves-effect waves-light" type="button">Close<i
                             class="material-icons right">cancel</i></button>
-
                 </div>
             </div>
         </div>
 
         <!-- Materialize JS Import -->
         <script src="{{ url_for('static', filename='js/materialize.min.js', _scheme='https', _external=True) }}"> </script>
-
         <!-- Javascript Initialisation Import -->
         <script src="{{ url_for('static', filename='js/init.js', _scheme='https', _external=True) }}"> </script>
-
         <!-- Javascript custom Toast Script Import -->
         <script src="{{ url_for('static', filename='js/toasts.js', _scheme='https', _external=True) }}"> </script>
-
         <!-- Javascript custom Validation Script Import -->
         <script src="{{ url_for('static', filename='js/validate.js', _scheme='https', _external=True) }}"> </script>
-
         <!-- Alertify JS Import -->
         <script src="{{ url_for('static', filename='js/alertify.min.js', _scheme='https', _external=True) }}"> </script>
-
         <!-- Custom Alert Import -->
         <script src="{{ url_for('static', filename='js/alerts.js', _scheme='https', _external=True) }}"> </script>
-
         <!-- Custom Time Zone js import -->
         <script src="{{ url_for('static', filename='js/timezone.js', _scheme='https', _external=True) }}"> </script>
-
         <!-- https://stackoverflow.com/questions/15321431/how-to-pass-a-list-from-python-by-jinja2-to-javascript -->
         <!-- Flash Messages -->
         {% with messages = get_flashed_messages() %}
@@ -289,10 +246,7 @@
         </script>
         {%endif%}
         {%endwith%}
-
         {% block scripts %}
         {% endblock %}
-
     </body>
-
 </html>
