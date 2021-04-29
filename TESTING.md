@@ -40,7 +40,7 @@ The Main README documentation can be found under [README.md](README.md)
 - Each page contains a **help icon** in the upper right corner, which, when interacted with, presents the user with a **Modal** containing page specific guidance. As the content is generated per page, the information presented to the user is relevant to the page they're currently engaged with, so as to ensure only relevant information is provided at any given time.
 - The **NavBar** contains links which aid with user navigation:
   - At the largest viewport, users can hover each navigational link with their mouse, producing a highlighting effect. This effect connotes interactivity, allowing users to intuitively understand how to navigate the website.
-  - On smaller viewports, the **NavBar** is collapsed into a **SideNav** ; the icon to present the **SideNav** is a universal burger icon, thus identifiable and relatable.
+  - On smaller viewports, the **NavBar** is collapsed into a **SideNav**; the icon to present the **SideNav** is a universal burger icon, thus identifiable and relatable.
   - On all viewports, a user's active location within website is depicted through alternative styling on the relevant link within the **NavBar**/**SideNav**, allowing a user to know their location at any given time.
 - All interactive icons in the site are relevant to their action, so as to communicate intuitive instructions to the user.
   - On larger viewports, these icons are accompanied by tooltips which provide a verbal explanation of each action.

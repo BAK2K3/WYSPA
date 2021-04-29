@@ -146,7 +146,7 @@ Facebook is currently the most popular social media network, with approximately 
   - **Mood:** This will be chosen by the user, out of choices presented to them. This will be used to colour the **Wyspa** marker on the **Map**.
   - **Expiry Date:** This will be set by the user. This will depict when the document removed from the database.
   - **Comments:** This is an entry which all logged in users will be able to contribute to; these comments will be displayed on the individual **Wyspa** page.
-  - **Listens :** This is an entry which will log the users who have listened to a **Wyspa** ; this will be used to prevent any single user listening to a **Wyspa** more than once.
+  - **Listens :** This is an entry which will log the users who have listened to a **Wyspa**; this will be used to prevent any single user listening to a **Wyspa** more than once.
   - **Listen_Count:** This is an entry which counts the total amount of **Listens** contained within a whisper. This will be used for both sorting the database entries for the **Map**, depicting the size of the **Map** marker, and for displaying the amount of **Listens** a **Wyspa** has on the individual **Wyspa** page and profile page.
 
 ## Structure
