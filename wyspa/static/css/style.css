@@ -375,6 +375,11 @@ nav i.material-icons.help-trigger {
   border-radius: 25px;
 }
 
+.card-panel p {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
 .flex-nowrap {
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
