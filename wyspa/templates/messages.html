@@ -14,7 +14,7 @@
                         <!-- Message Body -->
                         <div class="col s12 center wyspa-container">
                             {% if message_entry %}
-                            <em>"{{ message_entry.message }}"</em>
+                            <p>"{{ message_entry.message }}"</p>
                         </div>
                         <!-- Action Bar -->
                         <div class="col s12 center wyspa-action-bar">
@@ -32,7 +32,6 @@
                                     data-position="bottom" data-tooltip="Edit">edit</i></a>
                             {%endif%}
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -49,6 +48,7 @@
                     </div>
                     <!-- Comments  -->
                     <div class="collapsible-body">
+                        {# If the comments are empty and the user isn't logged in #}
                         {% if (message_entry.comments | length == 0) and (not current_user.is_authenticated) %}
                         <div class="col s10 offset-s1 speech-bubble empty-comments z-depth-5">There are no comments on this Wyspa
                             yet! Why
@@ -126,6 +126,7 @@
         </div>
     </div>
 
+    {# If there are no Wyspas #}
     {% else %}
 
     <div class="empty-messages">
