@@ -12,13 +12,11 @@
             {% if users_messages %}
             <ul class="collection">
               {% for entry in users_messages %}
-
               <li class="collection-item">
                 <!-- Wyspa content -->
                 <div class="user-message">
-                  <em>"{{ entry.message }}"</em>
+                  <p>"{{ entry.message }}"</p>
                 </div>
-
                 <!-- Wyspa control -->
                 <div class="message-control">
                   <form
@@ -40,7 +38,6 @@
                       {{ entry.listens|length }}
                     </span>
                     <i class="material-icons wyspa-action">hearing</i>
-
                     <!-- Go to Wyspa -->
                     <a
                       class="wyspa-button wyspa-action"
@@ -53,6 +50,7 @@
                       ></a
                     >
                   </form>
+                  <!-- Expiry -->
                   <span
                     ><em
                       >Expires: {{entry.expiry.strftime("%d-%m-%Y %H:%M")}}</em
@@ -60,22 +58,17 @@
                   >
                 </div>
               </li>
-
               {%endfor%}
             </ul>
-
             {% else %}
-
             <div><em>It doesn't look like you've left any WYSPAs yet!</em></div>
-
             {% endif %}
           </div>
         </div>
       </div>
     </div>
-
+    <!-- Collapsable WYSPA -->
     <div class="col s12">
-      <!-- Collapsable WYSPA -->
       <ul class="collapsible">
         <li>
           <div
@@ -142,7 +135,6 @@
                   />
                   <label for="expiryDate">Expiry Date</label>
                 </div>
-
                 <!-- Time Picker -->
                 <div class="input-field message-field date-field col s6 m2">
                   <input
@@ -155,7 +147,6 @@
                   />
                   <label for="expiryTime">Expiry Time</label>
                 </div>
-
                 <!-- Submit -->
                 <div class="col s12 submit-col">
                   <button class="btn add-comment waves-effect" type="submit">
@@ -169,9 +160,8 @@
         </li>
       </ul>
     </div>
-
+    <!-- Collapsable Delete -->
     <div class="col s12">
-      <!-- Collapsable Delete -->
       <ul class="collapsible">
         <li>
           <div

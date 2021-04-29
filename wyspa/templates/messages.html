@@ -14,7 +14,7 @@
                         <!-- Message Body -->
                         <div class="col s12 center wyspa-container">
                             {% if message_entry %}
-                            <em>"{{ message_entry.message }}"</em>
+                            <p>"{{ message_entry.message }}"</p>
                         </div>
                         <!-- Action Bar -->
                         <div class="col s12 center wyspa-action-bar">
@@ -32,7 +32,6 @@
                                     data-position="bottom" data-tooltip="Edit">edit</i></a>
                             {%endif%}
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -49,6 +48,7 @@
                     </div>
                     <!-- Comments  -->
                     <div class="collapsible-body">
+                        {# If the comments are empty and the user isn't logged in #}
                         {% if (message_entry.comments | length == 0) and (not current_user.is_authenticated) %}
                         <div class="col s10 offset-s1 speech-bubble empty-comments z-depth-5">There are no comments on this Wyspa
                             yet! Why
@@ -126,6 +126,7 @@
         </div>
     </div>
 
+    {# If there are no Wyspas #}
     {% else %}
 
     <div class="empty-messages">
@@ -155,9 +156,9 @@
     <li>If you’ve reached this page from <strong>My Voice</strong> or from the <strong>Map</strong>, you’re looking at a specific <strong>Wyspa.</strong></li>
     <li>If you’ve reached this page by interacting with the <strong>Wyspa</strong> link, you’re looking at a <strong>Random Wyspa.</strong></li>
 </ul>
-<p>Fancy a new <strong >Random Wyspa?</strong> Interact with the <strong>Random</strong> icon: <i class="material-icons">cached</i> 
+<p>Fancy a new <strong>Random Wyspa?</strong> Interact with the <strong>Random</strong> icon: <i class="material-icons">cached</i></p> 
 
-<p><strong>Logged in</strong> users can dig a little deeper into the workings of a <strong>Wyspa</strong> by <strong>listening</strong> or <strong>commenting.</strong>
+<p><strong>Logged in</strong> users can dig a little deeper into the workings of a <strong>Wyspa</strong> by <strong>listening</strong> or <strong>commenting.</strong></p>
 
 <p>To acknowledge you've listened to a Wyspa, interact with the <strong>listen</strong> icon: <i class="material-icons">hearing</i></p>
     <ul class="browser-default">
