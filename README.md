@@ -4,7 +4,7 @@
 
 WYSPA is an anonymous social media network, allowing users to post, comment on, and listen to messages anonymously.
 
-View deployed site on [Heroku](https://w-y-s-p-a.herokuapp.com/).
+View deployed site on [Render](https://wyspa.onrender.com/).
 
 # Table of contents
 
@@ -571,8 +571,8 @@ As discussed in **Wyspa: Listens**, the size of the marker is depicted by the am
 
 ```javascript
 radius: Math.min(
-  1000000,
-  Math.max(10000, 10000 + map_data[message]["Listens"] * 5000)
+	1000000,
+	Math.max(10000, 10000 + map_data[message]["Listens"] * 5000)
 );
 ```
 
